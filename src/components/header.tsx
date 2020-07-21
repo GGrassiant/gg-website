@@ -2,6 +2,8 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
+import styles from './header.module.scss';
+
 const Header = ({ siteTitle }) => (
   <header
     style={{
@@ -9,6 +11,7 @@ const Header = ({ siteTitle }) => (
       marginBottom: `1.45rem`,
     }}
   >
+    <div className={styles.testClass}>Coucou</div>
     <div
       style={{
         margin: `0 auto`,
