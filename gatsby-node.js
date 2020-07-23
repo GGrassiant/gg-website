@@ -1,7 +1,15 @@
 const path = require('path');
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
+
+  createRedirect({
+    fromPath: '/',
+    isPermanent: true,
+    redirectInBrowser: true,
+    toPath: '/en'
+  });
+
   const result = await graphql(`
       query {
       allContentfulProject {
@@ -31,9 +39,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       path: pagePath,
       component: ProjectTemplate,
       context: {
-        pagePath,
-        slug: node.slug,
-        lang: node.node_locale,
         id: node.id,
       },
     })
