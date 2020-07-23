@@ -1,14 +1,16 @@
 const path = require('path');
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage, createRedirect } = actions;
+  const { createPage } = actions;
 
-  createRedirect({
-    fromPath: '/',
-    isPermanent: true,
-    redirectInBrowser: true,
-    toPath: '/en'
-  });
+  // If redirecting always to /en
+  // const { createPage, createRedirect } = actions;
+  // createRedirect({
+  //   fromPath: '/',
+  //   isPermanent: true,
+  //   redirectInBrowser: true,
+  //   toPath: '/en'
+  // });
 
   const result = await graphql(`
       query {
