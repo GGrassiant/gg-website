@@ -18,7 +18,8 @@ const TestComponent = styled.div`
   background-color: red;
 `;
 
-const Layout: React.FC<any> = ({ children }) => {
+const Layout: React.FC<any> = (props) => {
+  const { children } = props;
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
