@@ -3,7 +3,7 @@ const path = require('path');
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  // If redirecting always to /en
+  // If always redirecting to /en
   // const { createPage, createRedirect } = actions;
   // createRedirect({
   //   fromPath: '/',
@@ -33,7 +33,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const ProjectTemplate = path.resolve('src/templates/Project/Project.tsx');
 
-  result.data.allContentfulProject.edges.forEach(({ node }) => {
+  return result.data.allContentfulProject.edges.forEach(({ node }) => {
     const lang = `${node.node_locale}/`;
     const pagePath = `${lang}project/${node.slug}`;
 
