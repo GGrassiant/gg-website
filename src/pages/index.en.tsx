@@ -1,13 +1,13 @@
 // Libs
-import React from "react"
-import { graphql, Link } from "gatsby"
+import React from 'react';
+import { graphql, Link } from 'gatsby';
 
 // Components
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Layout from '../components/layout';
+import Image from '../components/image';
+import SEO from '../components/seo';
 
-const IndexPageEn = (props: any) => {
+const IndexPageEn: React.FC<any> = (props) => {
   console.log(props.data);
   return (
     <Layout>
@@ -21,13 +21,13 @@ const IndexPageEn = (props: any) => {
       <Link to="/en/page-2/">Go to page 2</Link> <br />
     </Layout>
   );
-}
+};
 
 export default IndexPageEn;
 
 export const query = graphql`
   query {
-    allContentfulProject(filter: {node_locale: {eq: "en"}}) {
+    allContentfulProject(filter: { node_locale: { eq: "en" } }) {
       edges {
         node {
           title

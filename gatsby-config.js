@@ -44,6 +44,19 @@ module.exports = {
     'gatsby-plugin-sass',
     `gatsby-plugin-sharp`,
     {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        include: /\.tsx$|\.ts$/,
+        test: /\.js$|\.jsx$|\.tsx$|\.ts$/,
+        exclude: /(node_modules|.cache|public)/,
+        stages: ['develop'],
+        options: {
+          emitWarning: true,
+          failOnError: true,
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,

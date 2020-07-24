@@ -1,12 +1,12 @@
 // Libs
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
 // Styles
-import "./layout.scss"
+import './layout.scss';
 
 // Components
-import Header from "./header"
+import Header from './header';
 
 const Layout: React.FC<any> = (props) => {
   const { children } = props;
@@ -18,7 +18,7 @@ const Layout: React.FC<any> = (props) => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <>
@@ -33,7 +33,7 @@ const Layout: React.FC<any> = (props) => {
         <main>{children}</main>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Layout;

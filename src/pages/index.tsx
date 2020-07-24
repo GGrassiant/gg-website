@@ -1,34 +1,35 @@
 // Libs
-import React, { useEffect } from "react";
-import { graphql, navigate } from "gatsby"
+import React, { useEffect } from 'react';
+import { navigate } from 'gatsby';
 
 // Components
-import SEO from "../components/seo"
+import SEO from '../components/seo';
 
 const getRedirectLanguage = () => {
   if (typeof navigator === `undefined`) {
-    return "en";
+    return 'en';
   }
 
-  const lang = navigator && navigator.language && navigator.language.split("-")[0];
-  if (!lang) return "en";
+  const lang =
+    navigator && navigator.language && navigator.language.split('-')[0];
+  if (!lang) return 'en';
 
   switch (lang) {
-    case "fr":
-      return "fr";
+    case 'fr':
+      return 'fr';
     default:
-      return "en";
+      return 'en';
   }
 };
 
-const IndexPage = () => {
+const IndexPage: React.FC = () => {
   useEffect(() => {
     const urlLang = getRedirectLanguage();
 
     navigate(`/${urlLang}`);
   }, []);
 
-  return <SEO title="Home" />
+  return <SEO title="Home" />;
 };
 
 export default IndexPage;
