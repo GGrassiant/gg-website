@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "gg-website",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Guillaume Grassiant - Software Developer from Montreal",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Guillaume Grassiant <guillaumegrassiant@hey.com>",
   "dependencies": {
     "@types/styled-components": "^5.1.1",
     "babel-plugin-styled-components": "^1.10.7",
