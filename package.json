@@ -46,7 +46,15 @@
     "typescript-plugin-css-modules": "^2.4.0"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "React",
+    "TypeScript",
+    "Styled Components",
+    "Portfolio",
+    "Software Developer",
+    "Canada",
+    "Montreal",
+    "Contenful"
   ],
   "license": "0BSD",
   "scripts": {
@@ -62,10 +70,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/GGrassiant/gg-website"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/GGrassiant/gg-website"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
