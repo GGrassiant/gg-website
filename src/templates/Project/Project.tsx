@@ -6,9 +6,7 @@ const Project: React.FC<any> = ({
   data: {
     contentfulProject: { title },
   },
-}) => {
-  return <div>Coucou, {title}</div>;
-};
+}) => <div>Coucou, {title}</div>;
 
 export default Project;
 

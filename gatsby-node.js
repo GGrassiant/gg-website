@@ -13,7 +13,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // });
 
   const result = await graphql(`
-      query {
+    query {
       allContentfulProject {
         edges {
           node {
@@ -24,14 +24,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
-    }`
-  );
+    }
+  `);
 
   if (result.errors) {
-    return reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return reporter.panicOnBuild('Error while running GraphQL query.');
   }
 
-  const ProjectTemplate = path.resolve(`src/templates/Project/Project.tsx`);
+  const ProjectTemplate = path.resolve('src/templates/Project/Project.tsx');
 
   result.data.allContentfulProject.edges.forEach(({ node }) => {
     const lang = `${node.node_locale}/`;
@@ -43,6 +43,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         id: node.id,
       },
-    })
-  })
+    });
+  });
 };

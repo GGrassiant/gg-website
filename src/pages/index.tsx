@@ -6,7 +6,7 @@ import { navigate } from 'gatsby';
 import SEO from '../components/seo';
 
 const getRedirectLanguage = () => {
-  if (typeof navigator === `undefined`) {
+  if (typeof navigator === 'undefined') {
     return 'en';
   }
 

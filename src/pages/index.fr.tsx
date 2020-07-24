@@ -15,7 +15,7 @@ const IndexPageFr: React.FC<any> = ({ data }) => {
       <h1>French Version</h1>
       <p>Lolz</p>
       <p>Les copains</p>
-      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
+      <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
         <Image />
       </div>
       <Link to="/fr/page-2/">Go to page 2</Link> <br />

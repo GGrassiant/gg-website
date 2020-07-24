@@ -13,6 +13,11 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
   env: {
     browser: true,
@@ -30,13 +35,20 @@ module.exports = {
   rules: {
     'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
     '@typescript-eslint/explicit-function-return-type': 'off',
+    'no-console': 'off', // Allow console.log
+    'import/extensions': 'off', // Don't need to specify file's extension
+    'react/jsx-filename-extension': 'off', // Don't need to specify file's extension
+    'object-curly-newline': 'off', // Disable to avoid conflict between prettier and object destructuring in argument
+    'react/jsx-one-expression-per-line': 'off', // Disable to avoid conflicts between prettier and eslint when using props in the same line as other element
+    'operator-linebreak': 'off', // Disable to avoid conflicts between prettier and eslint
   },
   overrides: [
     // Override some TypeScript rules just for .js files
     {
       files: ['*.js'],
       rules: {
-        '@typescript-eslint/no-var-requires': 'off', //
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off', // Disable to avoid eslint wanting to type return and props in .js and .jsx files
       },
     },
   ],
