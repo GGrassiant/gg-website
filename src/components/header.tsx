@@ -1,17 +1,14 @@
+// Libs
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
 
-import styles from './header.module.scss';
-
-const Header = ({ siteTitle }) => (
+const Header: React.FC<any> = ({ siteTitle }) => (
   <header
     style={{
       background: `rebeccapurple`,
       marginBottom: `1.45rem`,
     }}
   >
-    <div className={styles.testClass}>Coucou</div>
     <div
       style={{
         margin: `0 auto`,
@@ -32,14 +29,6 @@ const Header = ({ siteTitle }) => (
       </h1>
     </div>
   </header>
-)
+);
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header
+export default Header;
