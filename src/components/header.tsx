@@ -1,9 +1,29 @@
 // Libs
-import { Link } from 'gatsby';
 import React from 'react';
+import { Link } from 'gatsby';
 
 // Utils
 import ThemeContext from '../context/ThemeContext';
+
+const SelectLanguage: React.FC<any> = (props) => {
+  const { langs } = props;
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const links = langs.map(({ langKey, link }) => (
+    <li>
+      <Link key={langKey} to={link}>
+        {langKey}
+      </Link>
+    </li>
+  ));
+
+  return (
+    <div>
+      <ul>{links}</ul>
+    </div>
+  );
+};
 
 const Header: React.FC<any> = ({ siteTitle }) => (
   <ThemeContext.Consumer>
@@ -20,6 +40,14 @@ const Header: React.FC<any> = ({ siteTitle }) => (
             marginBottom: '1.45rem',
           }}
         >
+          <div>
+            <SelectLanguage
+              langs={[
+                { langKey: 'fr', link: '/fr' },
+                { langKey: 'en', link: '/en' },
+              ]}
+            />
+          </div>
           <div
             style={{
               margin: '0 auto',
