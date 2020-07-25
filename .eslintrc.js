@@ -41,6 +41,8 @@ module.exports = {
     'object-curly-newline': 'off', // Disable to avoid conflict between prettier and object destructuring in argument
     'react/jsx-one-expression-per-line': 'off', // Disable to avoid conflicts between prettier and eslint when using props in the same line as other element
     'operator-linebreak': 'off', // Disable to avoid conflicts between prettier and eslint
+    'implicit-arrow-linebreak': 'off', // Disable to avoid conflicts between prettier and eslint
+    'import/prefer-default-export': 'off', // Disable to avoid bugs and issues with Gatsby API
   },
   overrides: [
     // Override some TypeScript rules just for .js files

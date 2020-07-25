@@ -2,6 +2,9 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
+// Utils
+import ThemeContext from '../context/ThemeContext';
+
 // Styles
 import './layout.scss';
 
@@ -21,18 +24,22 @@ const Layout: React.FC<any> = (props) => {
   `);
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: '0 auto',
-          maxWidth: 960,
-          padding: '0 1.0875rem 1.45rem',
-        }}
-      >
-        <main>{children}</main>
-      </div>
-    </>
+    <ThemeContext.Consumer>
+      {(theme) => (
+        <div className={theme.dark ? 'dark' : 'light'}>
+          <Header siteTitle={data.site.siteMetadata.title} />
+          <div
+            style={{
+              margin: '0 auto',
+              maxWidth: 960,
+              padding: '0 1.0875rem 1.45rem',
+            }}
+          >
+            <main>{children}</main>
+          </div>
+        </div>
+      )}
+    </ThemeContext.Consumer>
   );
 };
 
