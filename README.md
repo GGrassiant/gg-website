@@ -1,9 +1,7 @@
 <h1 align="center">
-  GG Website
+  GG Website <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/ggrassiant/gg-website/GG%20Website%20CI">
 </h1>
 This is my personal website repository. (Work in progress)
-
-<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/ggrassiant/gg-website/GG%20Website%20CI">
 
 ## 🚀 Tech Stack
 
