@@ -11,7 +11,7 @@ const SelectLanguage: React.FC<any> = (props) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const links = langs.map(({ langKey, link }) => (
-    <li>
+    <li key={langKey}>
       <Link key={langKey} to={link}>
         {langKey}
       </Link>
