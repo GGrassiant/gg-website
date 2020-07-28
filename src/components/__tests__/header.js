@@ -1,31 +1,30 @@
 // Libs
 import React from 'react';
-import renderer from 'react-test-renderer';
 
 // Utils
-import ThemeContext from '../../context/ThemeContext';
+import { render, fireEvent, getByText, screen } from './utils/test-utils';
 
-// Components
+// Component
 import Header from '../header';
 
-describe('Header', () => {
-  it('renders correctly', () => {
-    const tree = renderer
-      .create(<Header siteTitle="Default Starter" />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+describe('<Header>', () => {
+  describe('mounts', () => {
+    test('component mounts', () => {
+      const { container } = render(<Header />);
+      expect(container).toBeInTheDocument();
+    });
+  });
 
-    console.log(
-      renderer.create(
-        <ThemeContext.Provider
-          value={{
-            dark: true,
-            toggleDark: () => console.log('test Header'),
-          }}
-        >
-          <Header siteTitle="Default Starter" />
-        </ThemeContext.Provider>,
-      ).root,
+  describe('click', () => {
+    const { container } = render(<Header />);
+    expect(screen.getByText('Light mode ☀')).toBeInTheDocument();
+    fireEvent(
+      getByText(container, 'Light mode ☀'),
+      new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }),
     );
+    expect(screen.getByText('Dark mode ☾')).toBeInTheDocument();
   });
 });
