@@ -11,7 +11,7 @@ const SelectLanguage: React.FC<any> = (props) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const links = langs.map(({ langKey, link }) => (
-    <li>
+    <li key={langKey}>
       <Link key={langKey} to={link}>
         {langKey}
       </Link>
@@ -44,7 +44,7 @@ const Header: React.FC<any> = ({ siteTitle }) => (
             <SelectLanguage
               langs={[
                 { langKey: 'fr', link: '/fr' },
-                { langKey: 'en', link: '/en' },
+                { langKey: 'en', link: '/' },
               ]}
             />
           </div>

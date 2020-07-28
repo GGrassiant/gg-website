@@ -1,59 +1,50 @@
-// // Libs
-// import React, { useEffect } from 'react';
-// import { navigate } from 'gatsby';
-//
-// // Components
-// import SEO from '../components/seo';
-//
-// const getRedirectLanguage = () => {
-//   if (typeof navigator === 'undefined') {
-//     return 'en';
-//   }
-//
-//   const lang =
-//     navigator && navigator.language && navigator.language.split('-')[0];
-//   if (!lang) return 'en';
-//
-//   switch (lang) {
-//     case 'fr':
-//       return 'fr';
-//     default:
-//       return 'en';
-//   }
-// };
-//
-// const IndexPage: React.FC = () => {
-//   useEffect(() => {
-//     const urlLang = getRedirectLanguage();
-//
-//     navigate(`/${urlLang}`);
-//   }, []);
-//
-//   return <SEO title="Home" />;
-// };
-//
-// export default IndexPage;
-
 // Libs
-import React from 'react';
-import { graphql, Link } from 'gatsby';
+import React, { useEffect } from 'react';
+import { navigate, graphql } from 'gatsby';
 
-// Components
+// Utils
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { useLocalization } from 'gatsby-theme-i18n';
+import { useLocalization, LocalizedLink as Link } from 'gatsby-theme-i18n';
 import { useIntl } from 'react-intl';
-import Layout from '../components/layout';
-import Image from '../components/image';
-import SEO from '../components/seo';
 
-const IndexPageEn: React.FC<any> = (props) => {
-  const intl = useIntl();
+// Components
+import SEO from '../components/seo';
+import Image from '../components/image';
+
+const getRedirectLanguage = () => {
+  if (typeof navigator === 'undefined') {
+    return 'en';
+  }
+
+  const lang =
+    navigator && navigator.language && navigator.language.split('-')[0];
+  if (!lang) return 'en';
+
+  switch (lang) {
+    case 'fr':
+      return 'fr';
+    default:
+      return 'en';
+  }
+};
+
+const IndexPage: React.FC<any> = (props) => {
   const { data } = props;
   console.log(data);
+  const intl = useIntl();
   const { locale, config, defaultLang } = useLocalization();
+
+  useEffect(() => {
+    const urlLang = getRedirectLanguage();
+
+    if (urlLang !== 'en') {
+      navigate(`/${urlLang}`);
+    }
+  }, []);
+
   return (
-    <Layout>
+    <>
       <SEO title="Home" />
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>
@@ -65,21 +56,23 @@ const IndexPageEn: React.FC<any> = (props) => {
       <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
         <Image />
       </div>
-      <Link to="/en/page-2/">Go to page 2</Link> <br />
-    </Layout>
+      <Link to="/page-2/">Go to page 2</Link> <br />
+    </>
   );
 };
 
-export default IndexPageEn;
-
 export const query = graphql`
   query {
-    allContentfulProject(filter: { node_locale: { eq: "en" } }) {
-      edges {
-        node {
-          title
+    allContentfulProject {
+      group(field: node_locale) {
+        edges {
+          node {
+            shortDescription
+          }
         }
       }
     }
   }
 `;
+
+export default IndexPage;
