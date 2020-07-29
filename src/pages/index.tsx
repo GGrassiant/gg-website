@@ -5,12 +5,13 @@ import { navigate, graphql } from 'gatsby';
 // Utils
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { useLocalization, LocalizedLink as Link } from 'gatsby-theme-i18n';
+import { LocalizedLink, useLocalization } from 'gatsby-theme-i18n';
 import { useIntl } from 'react-intl';
 
 // Components
 import SEO from '../components/seo';
 import Image from '../components/image';
+import Layout from '../components/layout';
 
 const getRedirectLanguage = () => {
   if (typeof navigator === 'undefined') {
@@ -31,9 +32,10 @@ const getRedirectLanguage = () => {
 
 const IndexPage: React.FC<any> = (props) => {
   const { data } = props;
-  console.log(data);
   const intl = useIntl();
-  const { locale, config, defaultLang } = useLocalization();
+  const { locale } = useLocalization();
+
+  console.log(data);
 
   useEffect(() => {
     const urlLang = getRedirectLanguage();
@@ -44,20 +46,14 @@ const IndexPage: React.FC<any> = (props) => {
   }, []);
 
   return (
-    <>
+    <Layout locale={locale}>
       <SEO title="Home" />
-      <h1>Hi people</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
-      <div>Current locale: {locale}</div>
-      <div>Current defaultLang: {defaultLang}</div>
       <h1>{intl.formatMessage({ id: 'helloWorld' })}</h1>
-      <pre>{JSON.stringify(config, null, 2)}</pre>
       <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
         <Image />
       </div>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-    </>
+      <LocalizedLink to="/page-2/">Go to page 2</LocalizedLink> <br />
+    </Layout>
   );
 };
 

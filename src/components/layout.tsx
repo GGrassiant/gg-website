@@ -3,6 +3,8 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 // Utils
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Location } from '@reach/router';
 import ThemeContext from '../context/ThemeContext';
 
 // Styles
@@ -12,7 +14,7 @@ import './layout.scss';
 import Header from './header';
 
 const Layout: React.FC<any> = (props) => {
-  const { children } = props;
+  const { children, locale } = props;
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -27,7 +29,15 @@ const Layout: React.FC<any> = (props) => {
     <ThemeContext.Consumer>
       {(theme) => (
         <div className={theme.dark ? 'dark' : 'light'}>
-          <Header siteTitle={data.site.siteMetadata.title} />
+          <Location>
+            {(location) => (
+              <Header
+                siteTitle={data.site.siteMetadata.title}
+                location={location}
+                locale={locale}
+              />
+            )}
+          </Location>
           <div
             style={{
               margin: '0 auto',
