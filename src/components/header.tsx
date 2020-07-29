@@ -14,12 +14,15 @@ const SelectLanguage: React.FC<any> = (props) => {
   const isHome = (path: string) => ['/', '/fr', '/fr/'].includes(path);
 
   const links = langs.map(({ langKey }: any) => {
-    // eslint-disable-next-line
-    const to = isHome(pathname)
-      ? '/'
-      : langKey === 'en' && locale !== 'en'
-      ? pathname.slice(3)
-      : pathname;
+    let to;
+    if (isHome(pathname)) {
+      to = '/';
+    } else if (langKey === 'en' && locale !== 'en') {
+      to = pathname.slice(3);
+    } else {
+      to = pathname;
+    }
+
     return (
       <li key={langKey}>
         <LocalizedLink key={langKey} to={to} language={langKey}>
