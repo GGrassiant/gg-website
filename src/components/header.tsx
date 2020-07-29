@@ -1,11 +1,8 @@
 // Libs
 import React from 'react';
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { LocalizedLink } from 'gatsby-theme-i18n';
-
 // Utils
+import { LocalizedLink } from 'gatsby-theme-i18n';
 import ThemeContext from '../context/ThemeContext';
 
 const SelectLanguage: React.FC<any> = (props) => {

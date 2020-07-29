@@ -2,8 +2,6 @@
 import React from 'react';
 
 // Utils
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import { useIntl } from 'react-intl';
 
