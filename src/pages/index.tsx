@@ -1,9 +1,9 @@
 // Libs
 import React, { useEffect } from 'react';
-import { navigate } from 'gatsby';
+import { navigate, graphql } from 'gatsby';
 
 // Components
-import SEO from '../components/seo';
+import IndexPageComponent from '../components/Pages/IndexPageComponent';
 
 const getRedirectLanguage = () => {
   if (typeof navigator === 'undefined') {
@@ -22,14 +22,33 @@ const getRedirectLanguage = () => {
   }
 };
 
-const IndexPage: React.FC = () => {
+const IndexPage: React.FC<any> = (props) => {
+  const { data } = props;
+
   useEffect(() => {
     const urlLang = getRedirectLanguage();
 
-    navigate(`/${urlLang}`);
+    if (urlLang !== 'en') {
+      navigate(`/${urlLang}`);
+    }
   }, []);
 
-  return <SEO title="Home" />;
+  // Need to create a component to pass the data since we use withLayout HOC
+  return <IndexPageComponent data={data} />;
 };
+
+export const query = graphql`
+  query {
+    allContentfulProject {
+      group(field: node_locale) {
+        edges {
+          node {
+            shortDescription
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default IndexPage;
