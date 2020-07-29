@@ -2,16 +2,8 @@
 import React, { useEffect } from 'react';
 import { navigate, graphql } from 'gatsby';
 
-// Utils
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { LocalizedLink, useLocalization } from 'gatsby-theme-i18n';
-import { useIntl } from 'react-intl';
-
 // Components
-import SEO from '../components/seo';
-import Image from '../components/image';
-import Layout from '../components/layout';
+import IndexPageComponent from '../components/Pages/IndexPageComponent';
 
 const getRedirectLanguage = () => {
   if (typeof navigator === 'undefined') {
@@ -32,10 +24,6 @@ const getRedirectLanguage = () => {
 
 const IndexPage: React.FC<any> = (props) => {
   const { data } = props;
-  const intl = useIntl();
-  const { locale } = useLocalization();
-
-  console.log(data);
 
   useEffect(() => {
     const urlLang = getRedirectLanguage();
@@ -45,16 +33,8 @@ const IndexPage: React.FC<any> = (props) => {
     }
   }, []);
 
-  return (
-    <Layout locale={locale}>
-      <SEO title="Home" />
-      <h1>{intl.formatMessage({ id: 'helloWorld' })}</h1>
-      <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
-        <Image />
-      </div>
-      <LocalizedLink to="/page-2/">Go to page 2</LocalizedLink> <br />
-    </Layout>
-  );
+  // Need to create a component to pass the data since we use withLayout HOC
+  return <IndexPageComponent data={data} />;
 };
 
 export const query = graphql`

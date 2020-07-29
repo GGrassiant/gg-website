@@ -3,6 +3,7 @@ const path = require('path');
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
+  // Deprecated, was computed when using i18n-plugin
   // If always redirecting to /en
   // const { createPage, createRedirect } = actions;
   // createRedirect({
@@ -35,7 +36,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   return result.data.allContentfulProject.edges.forEach(({ node }) => {
     const lang = `${node.node_locale}/`;
-    const pagePath = `${lang}project/${node.slug}`;
+    let pagePath;
+    if (node.node_locale === 'en') {
+      pagePath = `project/${node.slug}`;
+    } else {
+      pagePath = `${lang}project/${node.slug}`;
+    }
 
     createPage({
       path: pagePath,

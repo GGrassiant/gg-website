@@ -1,6 +1,5 @@
 // Libs
 import React from 'react';
-import { Link } from 'gatsby';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -77,7 +76,7 @@ const Header: React.FC<any> = (props) => {
               }}
             >
               <h1 style={{ margin: 0 }}>
-                <Link
+                <LocalizedLink
                   to="/"
                   style={{
                     color: 'white',
@@ -85,7 +84,7 @@ const Header: React.FC<any> = (props) => {
                   }}
                 >
                   {siteTitle}
-                </Link>
+                </LocalizedLink>
               </h1>
               <button
                 className="dark-switcher"

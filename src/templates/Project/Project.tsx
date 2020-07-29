@@ -2,11 +2,13 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-const Project: React.FC<any> = ({
-  data: {
-    contentfulProject: { title },
-  },
-}) => <div>Coucou, {title}</div>;
+// Components
+import ProjectPageComponent from '../../components/Pages/ProjectPageComponent';
+
+const Project: React.FC<any> = (props) => {
+  const { data } = props;
+  return <ProjectPageComponent data={data} />;
+};
 
 export default Project;
 
