@@ -26,6 +26,7 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
+    siteUrl: 'https://gatsby-theme-i18n.netlify.app',
     title: 'Guillaume Grassiant - Software developer',
     description:
       'React lover, JavaScript & Rails aficionado, Flutter enthusiast',
@@ -74,12 +75,16 @@ module.exports = {
       options: contentfulConfig,
     },
     {
-      resolve: 'gatsby-plugin-i18n',
+      resolve: 'gatsby-theme-i18n',
       options: {
-        langKeyDefault: 'en',
-        langKeyForNull: 'en',
-        prefixDefault: true,
-        useLangKeyLayout: false,
+        defaultLang: 'en',
+        configPath: require.resolve('./i18n/config.json'),
+      },
+    },
+    {
+      resolve: 'gatsby-theme-i18n-react-intl',
+      options: {
+        defaultLocale: './i18n/react-intl/en.json',
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
