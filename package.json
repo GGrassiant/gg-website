@@ -21,7 +21,7 @@
     "gatsby-theme-i18n": "^1.0.2",
     "gatsby-source-filesystem": "^2.3.23",
     "gatsby-source-contentful": "^2.3.33",
-    "gatsby-transformer-sharp": "^2.5.7",
+    "gatsby-transformer-sharp": "^2.5.11",
     "node-sass": "^4.14.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
