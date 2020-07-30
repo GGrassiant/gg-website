@@ -11,7 +11,7 @@ const withLayout: any = (WrappedComponent: any) => (props: any) => {
   const { locale } = useLocalization();
   return (
     <Layout locale={locale}>
-      <WrappedComponent props={props} />
+      <WrappedComponent {...props} locale={locale} />
     </Layout>
   );
 };

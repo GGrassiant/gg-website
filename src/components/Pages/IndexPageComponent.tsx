@@ -10,10 +10,7 @@ import withLayout from '../../Hoc/PageWrapper/WithLayout';
 import SEO from '../seo';
 import Image from '../image';
 
-const IndexPageComponent: React.FC<any> = (parentProps) => {
-  const { props } = parentProps;
-  const { data } = props;
-  console.log(data);
+const IndexPageComponent: React.FC<any> = () => {
   const intl = useIntl();
   return (
     <>

@@ -2,6 +2,8 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const siteMetadata = require('./src/utils/siteMetaData');
+
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
@@ -25,13 +27,7 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
-  siteMetadata: {
-    siteUrl: 'https://gatsby-theme-i18n.netlify.app',
-    title: 'Guillaume Grassiant - Software developer',
-    description:
-      'React lover, JavaScript & Rails aficionado, Flutter enthusiast',
-    author: 'Guillaume Grassiant - 2020',
-  },
+  siteMetadata,
   plugins: [
     'gatsby-plugin-react-helmet',
     {
