@@ -38,9 +38,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const lang = `${node.node_locale}/`;
     let pagePath;
     if (node.node_locale === 'en') {
-      pagePath = `project/${node.slug}`;
+      pagePath = `projects/${node.slug}`;
     } else {
-      pagePath = `${lang}project/${node.slug}`;
+      pagePath = `${lang}projects/${node.slug}`;
     }
 
     createPage({

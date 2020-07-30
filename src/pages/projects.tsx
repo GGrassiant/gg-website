@@ -15,9 +15,12 @@ export const query = graphql`
   query {
     allContentfulProject {
       group(field: node_locale) {
+        fieldValue
         edges {
           node {
             shortDescription
+            slug
+            id
           }
         }
       }
