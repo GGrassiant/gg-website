@@ -1,8 +1,9 @@
 // Libs
 import React from 'react';
+// import { Link } from 'gatsby';
 
 // Utils
-import { LocalizedLink } from 'gatsby-theme-i18n';
+import { LocalizedLink as Link } from 'gatsby-theme-i18n';
 import ThemeContext from '../context/ThemeContext';
 
 const SelectLanguage: React.FC<any> = (props) => {
@@ -21,9 +22,9 @@ const SelectLanguage: React.FC<any> = (props) => {
 
     return (
       <li key={langKey}>
-        <LocalizedLink key={langKey} to={to} language={langKey}>
+        <Link key={langKey} to={to} language={langKey}>
           {langKey}
-        </LocalizedLink>
+        </Link>
       </li>
     );
   });
@@ -73,7 +74,7 @@ const Header: React.FC<any> = (props) => {
               }}
             >
               <h1 style={{ margin: 0 }}>
-                <LocalizedLink
+                <Link
                   to="/"
                   style={{
                     color: 'white',
@@ -81,7 +82,7 @@ const Header: React.FC<any> = (props) => {
                   }}
                 >
                   {siteTitle}
-                </LocalizedLink>
+                </Link>
               </h1>
               <button
                 className="dark-switcher"
