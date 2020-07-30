@@ -5,8 +5,7 @@ import React from 'react';
 import withLayout from '../../Hoc/PageWrapper/WithLayout';
 import SEO from '../seo';
 
-const ProjectPageComponent: React.FC<any> = (parentProps) => {
-  const { props } = parentProps;
+const ProjectPageComponent: React.FC<any> = (props) => {
   const {
     data: {
       contentfulProject: { title },

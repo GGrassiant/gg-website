@@ -44,6 +44,7 @@ module.exports = {
     'operator-linebreak': 'off', // Disable to avoid conflicts between prettier and eslint
     'implicit-arrow-linebreak': 'off', // Disable to avoid conflicts between prettier and eslint
     'import/prefer-default-export': 'off', // Disable to avoid bugs and issues with Gatsby API
+    'react/jsx-props-no-spreading': 'off', // Allow spreading props;
   },
   overrides: [
     // Override some TypeScript rules just for .js files
