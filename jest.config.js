@@ -13,7 +13,7 @@ module.exports = {
     '<rootDir>.*/public',
     'src/components/__tests__/utils/test-utils.js',
   ],
-  transformIgnorePatterns: ['node_modules/(?!(gatsby)/)'],
+  transformIgnorePatterns: ['node_modules/(?!(gatsby-theme-i18n)/)'],
   globals: {
     __PATH_PREFIX__: '',
   },
