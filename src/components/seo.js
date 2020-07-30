@@ -18,7 +18,13 @@ const SEO = ({ description, lang, meta, title }) => {
           siteMetadata {
             title
             description
-            author
+            author {
+              name
+            }
+            menu {
+              slug
+              label
+            }
           }
         }
       }

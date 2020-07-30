@@ -1,5 +1,6 @@
 // Libs
 import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 
 // Utils
 import { LocalizedLink } from 'gatsby-theme-i18n';
@@ -35,6 +36,13 @@ const SelectLanguage: React.FC<any> = (props) => {
   );
 };
 
+const getMenuItems = (menu: any) =>
+  menu.map((item: any) => (
+    <LocalizedLink to={item.slug} key={item.slug}>
+      <li>{item.label}</li>
+    </LocalizedLink>
+  ));
+
 const Header: React.FC<any> = (props) => {
   const {
     siteTitle,
@@ -43,6 +51,25 @@ const Header: React.FC<any> = (props) => {
       location: { pathname },
     },
   } = props;
+  const {
+    site: {
+      siteMetadata: { menu },
+    },
+  } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            menu {
+              slug
+              label
+            }
+          }
+        }
+      }
+    `,
+  );
+
   return (
     <ThemeContext.Consumer>
       {(theme) => (
@@ -65,6 +92,7 @@ const Header: React.FC<any> = (props) => {
                 locale={locale}
               />
             </div>
+            <ul>{getMenuItems(menu)}</ul>
             <div
               style={{
                 margin: '0 auto',
