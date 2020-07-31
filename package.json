@@ -75,8 +75,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "jest",
-    "test:watch": "npm test -- --watch",
-    "test:coverage": "npm run test -- --coverage --watchAll=false --updateSnapshot",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --watchAll=false --updateSnapshot|| true",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "lint:fix": "eslint --fix --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx"
   },
