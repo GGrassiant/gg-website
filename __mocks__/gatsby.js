@@ -2,6 +2,10 @@
 const React = require('react');
 const gatsby = jest.requireActual('gatsby');
 
+// Utils
+const siteMetaData = require('../src/utils/siteMetaData');
+const langs = require('../src/utils/languages');
+
 module.exports = {
   ...gatsby,
   graphql: jest.fn(),
@@ -27,11 +31,8 @@ module.exports = {
   useStaticQuery: jest.fn().mockImplementation(() => ({
     site: {
       siteMetadata: {
-        menu: [
-          { label: 'home', slug: '/' },
-          { label: 'projects', slug: '/projects/' },
-        ]
-      }
+        ...siteMetaData,
+      },
     },
     themeI18N: {
       defaultLang: 'en',
