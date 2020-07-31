@@ -1,5 +1,5 @@
+// Libs
 const React = require('react');
-
 const gatsby = jest.requireActual('gatsby');
 
 module.exports = {
@@ -25,6 +25,14 @@ module.exports = {
   ),
   StaticQuery: jest.fn(),
   useStaticQuery: jest.fn().mockImplementation(() => ({
+    site: {
+      siteMetadata: {
+        menu: [
+          { label: 'home', slug: '/' },
+          { label: 'projects', slug: '/projects/' },
+        ]
+      }
+    },
     themeI18N: {
       defaultLang: 'en',
       config: {

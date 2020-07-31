@@ -1,9 +1,9 @@
 // Libs
 import React from 'react';
-// import { Link } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
 // Utils
-import { LocalizedLink as Link } from 'gatsby-theme-i18n';
+import { LocalizedLink } from 'gatsby-theme-i18n';
 import ThemeContext from '../context/ThemeContext';
 
 const SelectLanguage: React.FC<any> = (props) => {
@@ -22,9 +22,9 @@ const SelectLanguage: React.FC<any> = (props) => {
 
     return (
       <li key={langKey}>
-        <Link key={langKey} to={to} language={langKey}>
+        <LocalizedLink key={langKey} to={to} language={langKey}>
           {langKey}
-        </Link>
+        </LocalizedLink>
       </li>
     );
   });
@@ -36,6 +36,13 @@ const SelectLanguage: React.FC<any> = (props) => {
   );
 };
 
+const getMenuItems = (menu: any) =>
+  menu.map((item: any) => (
+    <LocalizedLink to={item.slug} key={item.slug}>
+      <li>{item.label}</li>
+    </LocalizedLink>
+  ));
+
 const Header: React.FC<any> = (props) => {
   const {
     siteTitle,
@@ -44,6 +51,25 @@ const Header: React.FC<any> = (props) => {
       location: { pathname },
     },
   } = props;
+  const {
+    site: {
+      siteMetadata: { menu },
+    },
+  } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            menu {
+              slug
+              label
+            }
+          }
+        }
+      }
+    `,
+  );
+
   return (
     <ThemeContext.Consumer>
       {(theme) => (
@@ -66,6 +92,7 @@ const Header: React.FC<any> = (props) => {
                 locale={locale}
               />
             </div>
+            <ul>{getMenuItems(menu)}</ul>
             <div
               style={{
                 margin: '0 auto',
@@ -74,7 +101,7 @@ const Header: React.FC<any> = (props) => {
               }}
             >
               <h1 style={{ margin: 0 }}>
-                <Link
+                <LocalizedLink
                   to="/"
                   style={{
                     color: 'white',
@@ -82,7 +109,7 @@ const Header: React.FC<any> = (props) => {
                   }}
                 >
                   {siteTitle}
-                </Link>
+                </LocalizedLink>
               </h1>
               <button
                 className="dark-switcher"
