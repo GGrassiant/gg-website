@@ -1,10 +1,10 @@
 // Libs
 const React = require('react');
+
 const gatsby = jest.requireActual('gatsby');
 
 // Utils
 const siteMetaData = require('../src/utils/siteMetaData');
-const langs = require('../src/utils/languages');
 
 module.exports = {
   ...gatsby,
