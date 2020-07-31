@@ -9,6 +9,8 @@ This is my personal website repository. (Work in progress)
 
 1.  **Gatsby**
 
+1.  **Gatsby-theme-i18n**
+
 1.  **Styled-Components and SCSS modules**
 
 1.  **Eslint and Prettier with a Husky / Lint-staged hook**
@@ -17,4 +19,4 @@ This is my personal website repository. (Work in progress)
 
 1.  **Heroku**
 
-1.  **Jest / Enzyme**
+1.  **Jest / React-Testing-Library**
