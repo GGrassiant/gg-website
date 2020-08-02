@@ -6,6 +6,11 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import ThemeContext from '../context/ThemeContext';
 
+const styleToggle = {
+  fontWeight: 'bold',
+};
+const defaultStyle = {};
+
 const SelectLanguage: React.FC<any> = (props) => {
   const { langs, pathname, locale } = props;
   const isHome = (path: string) => ['/', '/fr', '/fr/'].includes(path);
@@ -23,7 +28,9 @@ const SelectLanguage: React.FC<any> = (props) => {
     return (
       <li key={langKey}>
         <LocalizedLink key={langKey} to={to} language={langKey}>
-          {langKey}
+          <span style={langKey === locale ? styleToggle : defaultStyle}>
+            {langKey}
+          </span>
         </LocalizedLink>
       </li>
     );
@@ -36,12 +43,16 @@ const SelectLanguage: React.FC<any> = (props) => {
   );
 };
 
-const getMenuItems = (menu: any) =>
-  menu.map((item: any) => (
+const getMenuItems = (menu: any, pathname: string, locale: string) => {
+  const delocalizedSlug = locale === 'en' ? pathname : pathname.slice(3);
+  return menu.map((item: any) => (
     <LocalizedLink to={item.slug} key={item.slug}>
-      <li>{item.label}</li>
+      <li style={item.slug === delocalizedSlug ? styleToggle : defaultStyle}>
+        {item.label}
+      </li>
     </LocalizedLink>
   ));
+};
 
 const Header: React.FC<any> = (props) => {
   const {
@@ -92,7 +103,7 @@ const Header: React.FC<any> = (props) => {
                 locale={locale}
               />
             </div>
-            <ul>{getMenuItems(menu)}</ul>
+            <ul>{getMenuItems(menu, pathname, locale)}</ul>
             <div
               style={{
                 margin: '0 auto',
