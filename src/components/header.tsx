@@ -1,26 +1,39 @@
 // Libs
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 
 // Utils
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import ThemeContext from '../context/ThemeContext';
+import * as langsSettings from '../utils/languages';
+import * as siteMetaData from '../utils/siteMetaData';
 
 // Helpers
+const languagesHomeUrlArray = langsSettings.langs.reduce(
+  (acc: Array<string>, cur: string) => {
+    if (cur !== langsSettings.defaultLangKey) {
+      acc.push(`/${cur}`, `/${cur}/`);
+    }
+    return acc;
+  },
+  ['/'],
+);
+const isHome = (path: string) => languagesHomeUrlArray.includes(path);
 const styleToggle = {
   fontWeight: 'bold',
 };
 const defaultStyle = {};
-const isHome = (path: string) => ['/', '/fr', '/fr/'].includes(path);
 
 const SelectLanguage: React.FC<any> = (props) => {
-  const { langs, pathname, locale } = props;
+  const { pathname, locale } = props;
 
-  const links = langs.map(({ langKey }: any) => {
+  const links = langsSettings.langs.map((langKey: string) => {
     let to;
     if (isHome(pathname)) {
       to = '/';
-    } else if (langKey === 'en' && locale !== 'en') {
+    } else if (
+      langKey === `${langsSettings.defaultLangKey}` &&
+      locale !== `${langsSettings.defaultLangKey}`
+    ) {
       to = pathname.slice(3);
     } else {
       to = pathname;
@@ -44,9 +57,12 @@ const SelectLanguage: React.FC<any> = (props) => {
   );
 };
 
-const getMenuItems = (menu: any, pathname: string, locale: string) =>
-  menu.map((item: any) => {
-    const delocalizedPath = locale === 'en' ? pathname : pathname.slice(3);
+const getMenuItems = (pathname: string, locale: string) =>
+  siteMetaData.menu.map((item: any) => {
+    const delocalizedPath =
+      locale === `${langsSettings.defaultLangKey}`
+        ? pathname
+        : pathname.slice(3);
     let linkStyle;
     if (isHome(pathname) && isHome(item.slug)) {
       linkStyle = styleToggle;
@@ -70,24 +86,6 @@ const Header: React.FC<any> = (props) => {
       location: { pathname },
     },
   } = props;
-  const {
-    site: {
-      siteMetadata: { menu },
-    },
-  } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            menu {
-              slug
-              label
-            }
-          }
-        }
-      }
-    `,
-  );
 
   return (
     <ThemeContext.Consumer>
@@ -105,13 +103,9 @@ const Header: React.FC<any> = (props) => {
             }}
           >
             <div>
-              <SelectLanguage
-                pathname={pathname}
-                langs={[{ langKey: 'fr' }, { langKey: 'en' }]}
-                locale={locale}
-              />
+              <SelectLanguage pathname={pathname} locale={locale} />
             </div>
-            <ul>{getMenuItems(menu, pathname, locale)}</ul>
+            <ul>{getMenuItems(pathname, locale)}</ul>
             <div
               style={{
                 margin: '0 auto',
@@ -121,7 +115,7 @@ const Header: React.FC<any> = (props) => {
             >
               <h1 style={{ margin: 0 }}>
                 <LocalizedLink
-                  to="/"
+                  to={siteMetaData.menu[0].slug}
                   style={{
                     color: 'white',
                     textDecoration: 'none',
