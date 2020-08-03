@@ -6,9 +6,15 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import ThemeContext from '../context/ThemeContext';
 
+// Helpers
+const styleToggle = {
+  fontWeight: 'bold',
+};
+const defaultStyle = {};
+const isHome = (path: string) => ['/', '/fr', '/fr/'].includes(path);
+
 const SelectLanguage: React.FC<any> = (props) => {
   const { langs, pathname, locale } = props;
-  const isHome = (path: string) => ['/', '/fr', '/fr/'].includes(path);
 
   const links = langs.map(({ langKey }: any) => {
     let to;
@@ -23,7 +29,9 @@ const SelectLanguage: React.FC<any> = (props) => {
     return (
       <li key={langKey}>
         <LocalizedLink key={langKey} to={to} language={langKey}>
-          {langKey}
+          <span style={langKey === locale ? styleToggle : defaultStyle}>
+            {langKey}
+          </span>
         </LocalizedLink>
       </li>
     );
@@ -36,12 +44,23 @@ const SelectLanguage: React.FC<any> = (props) => {
   );
 };
 
-const getMenuItems = (menu: any) =>
-  menu.map((item: any) => (
-    <LocalizedLink to={item.slug} key={item.slug}>
-      <li>{item.label}</li>
-    </LocalizedLink>
-  ));
+const getMenuItems = (menu: any, pathname: string, locale: string) =>
+  menu.map((item: any) => {
+    const delocalizedPath = locale === 'en' ? pathname : pathname.slice(3);
+    let linkStyle;
+    if (isHome(pathname) && isHome(item.slug)) {
+      linkStyle = styleToggle;
+    } else if (!isHome(item.slug) && delocalizedPath.startsWith(item.slug)) {
+      linkStyle = styleToggle;
+    } else {
+      linkStyle = defaultStyle;
+    }
+    return (
+      <LocalizedLink to={item.slug} key={item.slug}>
+        <li style={linkStyle}>{item.label}</li>
+      </LocalizedLink>
+    );
+  });
 
 const Header: React.FC<any> = (props) => {
   const {
@@ -92,7 +111,7 @@ const Header: React.FC<any> = (props) => {
                 locale={locale}
               />
             </div>
-            <ul>{getMenuItems(menu)}</ul>
+            <ul>{getMenuItems(menu, pathname, locale)}</ul>
             <div
               style={{
                 margin: '0 auto',

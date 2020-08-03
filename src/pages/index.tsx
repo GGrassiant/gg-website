@@ -2,8 +2,14 @@
 import React, { useEffect } from 'react';
 import { navigate } from 'gatsby';
 
+// Utils
+import { LocalizedLink } from 'gatsby-theme-i18n';
+import { useIntl } from 'react-intl';
+
 // Components
-import IndexPageComponent from '../components/Pages/IndexPageComponent';
+import withLayout from '../Hoc/PageWrapper/WithLayout';
+import SEO from '../components/seo';
+import Image from '../components/image';
 
 const getRedirectLanguage = () => {
   if (typeof navigator === 'undefined') {
@@ -23,6 +29,7 @@ const getRedirectLanguage = () => {
 };
 
 const IndexPage: React.FC<any> = () => {
+  const intl = useIntl();
   useEffect(() => {
     const urlLang = getRedirectLanguage();
 
@@ -30,7 +37,17 @@ const IndexPage: React.FC<any> = () => {
       navigate(`/${urlLang}`);
     }
   }, []);
-  return <IndexPageComponent />;
+
+  return (
+    <>
+      <SEO title="Home" />
+      <h1>{intl.formatMessage({ id: 'helloWorld' })}</h1>
+      <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
+        <Image />
+      </div>
+      <LocalizedLink to="/page-2/">Go to page 2</LocalizedLink> <br />
+    </>
+  );
 };
 
-export default IndexPage;
+export default withLayout(IndexPage);
