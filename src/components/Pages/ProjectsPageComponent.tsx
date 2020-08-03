@@ -3,6 +3,7 @@ import React from 'react';
 
 // Utils
 import { LocalizedLink } from 'gatsby-theme-i18n';
+import * as siteMetaData from '../../utils/siteMetaData';
 
 // Components
 import withLayout from '../../Hoc/PageWrapper/WithLayout';
@@ -17,7 +18,7 @@ const ProjectsPageComponent: React.FC<any> = (props) => {
   const renderInformation = () =>
     informationElements.map((edge: any) => (
       <li key={edge.node.id}>
-        <LocalizedLink to={`/projects/${edge.node.slug}`}>
+        <LocalizedLink to={`${siteMetaData.menu[1].slug}${edge.node.slug}`}>
           {edge.node.shortDescription}
         </LocalizedLink>
       </li>

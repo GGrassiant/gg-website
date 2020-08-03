@@ -115,7 +115,7 @@ const Header: React.FC<any> = (props) => {
             >
               <h1 style={{ margin: 0 }}>
                 <LocalizedLink
-                  to="/"
+                  to={siteMetaData.menu[0].slug}
                   style={{
                     color: 'white',
                     textDecoration: 'none',
