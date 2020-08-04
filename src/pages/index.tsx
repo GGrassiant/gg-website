@@ -12,7 +12,7 @@ import withLayout from '../Hoc/PageWrapper/WithLayout';
 import SEO from '../components/seo';
 import Image from '../components/image';
 
-const getRedirectLanguage = () => {
+const getRedirectLanguage = (): string => {
   if (typeof navigator === 'undefined') {
     return `${langsSettings.defaultLangKey}`;
   }
@@ -29,10 +29,10 @@ const getRedirectLanguage = () => {
   }
 };
 
-const IndexPage: React.FC<any> = () => {
+const IndexPage: React.FC = () => {
   const intl = useIntl();
-  useEffect(() => {
-    const urlLang = getRedirectLanguage();
+  useEffect((): void => {
+    const urlLang: string = getRedirectLanguage();
 
     if (urlLang !== `${langsSettings.defaultLangKey}`) {
       navigate(`/${urlLang}`);
