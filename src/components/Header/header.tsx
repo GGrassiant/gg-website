@@ -1,5 +1,5 @@
 // Libs
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 // Utils
 import { LocalizedLink } from 'gatsby-theme-i18n';
@@ -8,7 +8,20 @@ import * as langsSettings from '../../utils/languages';
 import * as siteMetaData from '../../utils/siteMetaData';
 
 // Helpers
-const languagesHomeUrlArray = langsSettings.langs.reduce(
+interface HeaderProps {
+  siteTitle: string;
+  locale: string;
+  location: {
+    location: { pathname: string };
+  };
+}
+
+interface NavigationItem {
+  slug: string;
+  label: string;
+}
+
+const languagesHomeUrlArray: Array<string> = langsSettings.langs.reduce(
   (acc: Array<string>, cur: string) => {
     if (cur !== langsSettings.defaultLangKey) {
       acc.push(`/${cur}`, `/${cur}/`);
@@ -17,38 +30,44 @@ const languagesHomeUrlArray = langsSettings.langs.reduce(
   },
   ['/'],
 );
-const isHome = (path: string) => languagesHomeUrlArray.includes(path);
-const styleToggle = {
+const isHome: (arg: string) => boolean = (path: string) =>
+  languagesHomeUrlArray.includes(path);
+
+const styleToggle: CSSProperties = {
   fontWeight: 'bold',
 };
-const defaultStyle = {};
+const defaultStyle: CSSProperties = {};
 
-const SelectLanguage: React.FC<any> = (props) => {
+const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
+  props,
+) => {
   const { pathname, locale } = props;
 
-  const links = langsSettings.langs.map((langKey: string) => {
-    let to;
-    if (isHome(pathname)) {
-      to = '/';
-    } else if (
-      langKey === `${langsSettings.defaultLangKey}` &&
-      locale !== `${langsSettings.defaultLangKey}`
-    ) {
-      to = pathname.slice(3);
-    } else {
-      to = pathname;
-    }
+  const links: Array<React.ReactElement> = langsSettings.langs.map(
+    (langKey: string): React.ReactElement => {
+      let to: string;
+      if (isHome(pathname)) {
+        to = '/';
+      } else if (
+        langKey === `${langsSettings.defaultLangKey}` &&
+        locale !== `${langsSettings.defaultLangKey}`
+      ) {
+        to = pathname.slice(3);
+      } else {
+        to = pathname;
+      }
 
-    return (
-      <li key={langKey}>
-        <LocalizedLink key={langKey} to={to} language={langKey}>
-          <span style={langKey === locale ? styleToggle : defaultStyle}>
-            {langKey}
-          </span>
-        </LocalizedLink>
-      </li>
-    );
-  });
+      return (
+        <li key={langKey}>
+          <LocalizedLink key={langKey} to={to} language={langKey}>
+            <span style={langKey === locale ? styleToggle : defaultStyle}>
+              {langKey}
+            </span>
+          </LocalizedLink>
+        </li>
+      );
+    },
+  );
 
   return (
     <div>
@@ -58,27 +77,31 @@ const SelectLanguage: React.FC<any> = (props) => {
 };
 
 const getMenuItems = (pathname: string, locale: string) =>
-  siteMetaData.menu.map((item: any) => {
-    const delocalizedPath =
-      locale === `${langsSettings.defaultLangKey}`
-        ? pathname
-        : pathname.slice(3);
-    let linkStyle;
-    if (isHome(pathname) && isHome(item.slug)) {
-      linkStyle = styleToggle;
-    } else if (!isHome(item.slug) && delocalizedPath.startsWith(item.slug)) {
-      linkStyle = styleToggle;
-    } else {
-      linkStyle = defaultStyle;
-    }
-    return (
-      <LocalizedLink to={item.slug} key={item.slug}>
-        <li style={linkStyle}>{item.label}</li>
-      </LocalizedLink>
-    );
-  });
+  siteMetaData.menu.map(
+    (item: NavigationItem): React.ReactElement => {
+      const delocalizedPath: string =
+        locale === `${langsSettings.defaultLangKey}`
+          ? pathname
+          : pathname.slice(3);
 
-const Header: React.FC<any> = (props) => {
+      let linkStyle: CSSProperties;
+      if (isHome(pathname) && isHome(item.slug)) {
+        linkStyle = styleToggle;
+      } else if (!isHome(item.slug) && delocalizedPath.startsWith(item.slug)) {
+        linkStyle = styleToggle;
+      } else {
+        linkStyle = defaultStyle;
+      }
+
+      return (
+        <LocalizedLink to={item.slug} key={item.slug}>
+          <li style={linkStyle}>{item.label}</li>
+        </LocalizedLink>
+      );
+    },
+  );
+
+const Header: React.FC<HeaderProps> = (props) => {
   const {
     siteTitle,
     locale,
