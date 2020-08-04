@@ -3,12 +3,9 @@ import React from 'react';
 
 // Utils
 import { graphql } from 'gatsby';
-import { ProjectsPageProps } from './pages.types';
-
-// Components
 import ProjectsPageComponent from '../components/Pages/ProjectsPageComponent';
 
-const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
+const ProjectsPage: React.FC<any> = (props) => {
   const { data } = props;
   // Need to create a component to pass the data since we use withLayout HOC
   return <ProjectsPageComponent data={data} />;

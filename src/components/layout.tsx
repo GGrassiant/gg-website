@@ -3,24 +3,19 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 // Utils
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Location } from '@reach/router';
-import ThemeContext from '../../context/ThemeContext';
+import ThemeContext from '../context/ThemeContext';
 
 // Styles
 import './layout.scss';
 
 // Components
-import Header from '../Header/header';
+import Header from './header';
 
-interface LayoutProps {
-  children: Array<React.ReactElement>;
-  locale: string;
-}
-
-const Layout: React.FC<LayoutProps> = (props) => {
+const Layout: React.FC<any> = (props) => {
   const { children, locale } = props;
-  // TODO: typecheck any
-  const data: { [key: string]: any } = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {

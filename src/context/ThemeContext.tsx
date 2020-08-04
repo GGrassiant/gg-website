@@ -1,30 +1,19 @@
 // Libs
 import React, { Component, createContext } from 'react';
 
-interface ThemeProps {
-  children: Array<React.ReactElement>;
-}
-
-interface BackgroundMode {
-  dark: boolean;
-}
-
-interface DefaultState extends BackgroundMode {
-  toggleDark: () => void | null;
-}
-
-const defaultState: DefaultState = {
+const defaultState = {
   dark: false,
-  toggleDark: () => null,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  toggleDark: () => {},
 };
-const ThemeContext: React.Context<DefaultState> = createContext(defaultState);
+const ThemeContext = createContext(defaultState);
 // Getting dark mode information from OS.
 // You need macOS Mojave + Safari Technology Preview Release 68
-const supportsDarkMode = (): boolean =>
+const supportsDarkMode = () =>
   window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-class ThemeProvider extends Component<ThemeProps, BackgroundMode> {
-  constructor(props: ThemeProps) {
+class ThemeProvider extends Component<any, any> {
+  constructor(props: any) {
     super(props);
     this.state = {
       dark: false,

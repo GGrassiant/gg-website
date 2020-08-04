@@ -6,7 +6,7 @@ import { Location } from '@reach/router';
 import { render, fireEvent, getByText, screen } from './utils/test-utils';
 
 // Component
-import Header from '../Header/header';
+import Header from '../header';
 
 describe('<Header>', () => {
   describe('mounts', () => {

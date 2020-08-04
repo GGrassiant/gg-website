@@ -3,14 +3,11 @@ import React from 'react';
 
 // Utils
 import { useLocalization } from 'gatsby-theme-i18n';
-import { WithLayoutProps } from '../hoc.types';
 
 // Components
-import Layout from '../../components/Layout/layout';
+import Layout from '../../components/layout';
 
-const withLayout: (
-  WC: React.FC<WithLayoutProps>,
-) => React.FC<WithLayoutProps> = (WrappedComponent) => (props) => {
+const withLayout: any = (WrappedComponent: any) => (props: any) => {
   const { locale } = useLocalization();
   return (
     <Layout locale={locale}>

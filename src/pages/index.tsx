@@ -10,14 +10,14 @@ import * as langsSettings from '../utils/languages';
 // Components
 import withLayout from '../Hoc/PageWrapper/WithLayout';
 import SEO from '../components/seo';
-import Image from '../components/Image/image';
+import Image from '../components/image';
 
-const getRedirectLanguage = (): string => {
+const getRedirectLanguage = () => {
   if (typeof navigator === 'undefined') {
     return `${langsSettings.defaultLangKey}`;
   }
 
-  const lang: string =
+  const lang =
     navigator && navigator.language && navigator.language.split('-')[0];
   if (!lang) return `${langsSettings.defaultLangKey}`;
 
@@ -29,10 +29,10 @@ const getRedirectLanguage = (): string => {
   }
 };
 
-const IndexPage: React.FC = () => {
+const IndexPage: React.FC<any> = () => {
   const intl = useIntl();
-  useEffect((): void => {
-    const urlLang: string = getRedirectLanguage();
+  useEffect(() => {
+    const urlLang = getRedirectLanguage();
 
     if (urlLang !== `${langsSettings.defaultLangKey}`) {
       navigate(`/${urlLang}`);
