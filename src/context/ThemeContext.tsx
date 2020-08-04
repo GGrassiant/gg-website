@@ -5,8 +5,11 @@ interface ThemeProps {
   children: Array<React.ReactElement>;
 }
 
-interface DefaultState {
+interface BackgroundMode {
   dark: boolean;
+}
+
+interface DefaultState extends BackgroundMode {
   toggleDark: () => void | null;
 }
 
@@ -20,7 +23,7 @@ const ThemeContext: React.Context<DefaultState> = createContext(defaultState);
 const supportsDarkMode = (): boolean =>
   window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-class ThemeProvider extends Component<ThemeProps, { dark: boolean }> {
+class ThemeProvider extends Component<ThemeProps, BackgroundMode> {
   constructor(props: ThemeProps) {
     super(props);
     this.state = {

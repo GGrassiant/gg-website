@@ -3,9 +3,9 @@ import React from 'react';
 
 // Utils
 import { LocalizedLink } from 'gatsby-theme-i18n';
-import ThemeContext from '../context/ThemeContext';
-import * as langsSettings from '../utils/languages';
-import * as siteMetaData from '../utils/siteMetaData';
+import ThemeContext from '../../context/ThemeContext';
+import * as langsSettings from '../../utils/languages';
+import * as siteMetaData from '../../utils/siteMetaData';
 
 // Helpers
 const languagesHomeUrlArray = langsSettings.langs.reduce(

@@ -5,13 +5,13 @@ import { useStaticQuery, graphql } from 'gatsby';
 // Utils
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Location } from '@reach/router';
-import ThemeContext from '../context/ThemeContext';
+import ThemeContext from '../../context/ThemeContext';
 
 // Styles
 import './layout.scss';
 
 // Components
-import Header from './header';
+import Header from '../Header/header';
 
 const Layout: React.FC<any> = (props) => {
   const { children, locale } = props;

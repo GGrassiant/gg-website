@@ -10,14 +10,14 @@ import * as langsSettings from '../utils/languages';
 // Components
 import withLayout from '../Hoc/PageWrapper/WithLayout';
 import SEO from '../components/seo';
-import Image from '../components/image';
+import Image from '../components/Image/image';
 
 const getRedirectLanguage = (): string => {
   if (typeof navigator === 'undefined') {
     return `${langsSettings.defaultLangKey}`;
   }
 
-  const lang =
+  const lang: string =
     navigator && navigator.language && navigator.language.split('-')[0];
   if (!lang) return `${langsSettings.defaultLangKey}`;
 
