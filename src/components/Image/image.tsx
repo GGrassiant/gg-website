@@ -15,7 +15,8 @@ import Img from 'gatsby-image';
  */
 
 const Image: React.FC = () => {
-  const data = useStaticQuery(graphql`
+  // TODO: Typecheck any
+  const data: { [key: string]: any } = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
         childImageSharp {
