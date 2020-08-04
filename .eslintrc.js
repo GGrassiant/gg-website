@@ -26,7 +26,10 @@ module.exports = {
     jest: true,
   },
   plugins: ['@typescript-eslint', 'react'],
-  ignorePatterns: ['_this_is_virtual_fs_path_/$virtual/sync-requires.js'],
+  ignorePatterns: [
+    '_this_is_virtual_fs_path_/$virtual/sync-requires.js',
+    'gatsby.js',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
