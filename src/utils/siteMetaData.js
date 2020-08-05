@@ -1,7 +1,7 @@
 const languages = require('./languages');
 
 module.exports = {
-  siteUrl: 'https://gatsby-theme-i18n.netlify.app',
+  siteUrl: 'https://gg-website.herokuapp.com/',
   title: 'Guillaume Grassiant - Software developer',
   description: 'React lover, JavaScript & Rails aficionado, Flutter enthusiast',
   author: {
