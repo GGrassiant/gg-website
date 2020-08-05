@@ -3,9 +3,6 @@
   "private": true,
   "description": "Guillaume Grassiant - Software Developer from Montreal",
   "version": "0.1.0",
-  "engines": {
-    "node": "12.17.0"
-  },
   "author": "Guillaume Grassiant <guillaumegrassiant@hey.com>",
   "dependencies": {
     "@types/styled-components": "^5.1.2",

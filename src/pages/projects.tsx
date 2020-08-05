@@ -3,7 +3,7 @@ import React from 'react';
 
 // Utils
 import { graphql } from 'gatsby';
-import { ProjectsPageProps } from './pages.types';
+import { ProjectsPageProps } from '../utils/pages.types';
 
 // Components
 import ProjectsPageComponent from '../components/Pages/ProjectsPageComponent';
