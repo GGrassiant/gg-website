@@ -1,5 +1,4 @@
-// Utils
-import { ContentfulProject } from '../../utils/site.types';
+import { ContentfulProject } from '../../../site';
 
 export type Edge = {
   node: ContentfulProject;
