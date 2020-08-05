@@ -19,6 +19,6 @@ This is my personal website repository. (Work in progress)
 
 1.  **Contentful**
 
-1.  **Heroku**
+1.  **Heroku for hosting + Netlify for previews**
 
 1.  **Jest / React-Testing-Library**
