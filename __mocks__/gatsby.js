@@ -45,5 +45,15 @@ module.exports = {
         dateFormat: 'MM/DD/YYYY',
       },
     },
+    placeholderImage: {
+      childImageSharp: {
+        fluid: {
+          aspectRatio: 1,
+          src: 'test.png',
+          srcSet: 'test',
+          sizes: 'test,'
+        }
+      }
+    }
   })),
 };

@@ -22,10 +22,10 @@ module.exports = {
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   coverageThreshold: {
     global: {
-      statements: 80,
-      branches: 80,
-      functions: 80,
-      lines: 80,
+      statements: 70,
+      branches: 60,
+      functions: 70,
+      lines: 70,
     },
   },
 };
