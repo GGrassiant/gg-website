@@ -9,6 +9,7 @@ import { ProjectsPageProps } from './pages.types';
 import ProjectsPageComponent from '../components/Pages/ProjectsPageComponent';
 
 const ProjectsPage: React.FC<ProjectsPageProps> = (props) => {
+  // TODO: Check data type
   const { data } = props;
   // Need to create a component to pass the data since we use withLayout HOC
   return <ProjectsPageComponent data={data} />;
