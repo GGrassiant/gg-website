@@ -6,6 +6,7 @@ import { LocalizedLink } from 'gatsby-theme-i18n';
 import * as siteMetaData from '../../utils/siteMetaData';
 import { WithLayoutProps } from '../../Hoc/hoc.types';
 import { Edge } from './pages-components.types';
+import { ensure } from '../../utils/typescript.utils';
 
 // Components
 import withLayout from '../../Hoc/PageWrapper/WithLayout';
@@ -13,8 +14,8 @@ import SEO from '../seo';
 
 const ProjectsPageComponent: React.FC<WithLayoutProps> = (props) => {
   const { data, locale } = props;
-  const informationElements: Array<Edge> = data.allContentfulProject.group.find(
-    (lang: { [key: string]: string }) => lang.fieldValue === locale,
+  const informationElements: Array<Edge> = ensure(
+    data.allContentfulProject.group.find((lang) => lang.fieldValue === locale),
   ).edges;
 
   const renderInformation = (): Array<React.ReactElement> =>
