@@ -14,7 +14,7 @@ import './layout.scss';
 import Header from '../Header/header';
 
 interface LayoutProps {
-  children: Array<React.ReactElement>;
+  children: Array<React.ReactElement> | React.ReactElement;
   locale: string;
 }
 
