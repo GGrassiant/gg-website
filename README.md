@@ -21,4 +21,4 @@ This is my personal website repository. (Under construction, like early early st
 
 1.  **Heroku for hosting + Netlify for previews**
 
-1.  **Jest / React-Testing-Library**
+1.  **Jest / Enzyme / React-Testing-Library**
