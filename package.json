@@ -28,7 +28,7 @@
     "react-helmet": "^6.1.0",
     "react-intl": "^5.4.6",
     "styled-components": "^5.1.1",
-    "babel-jest": "^26.1.0",
+    "babel-jest": "^26.3.0",
     "@testing-library/jest-dom": "^5.11.1"
   },
   "devDependencies": {
