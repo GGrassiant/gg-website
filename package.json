@@ -78,7 +78,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --watchAll=false --updateSnapshot",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
-    "lint:fix": "eslint --fix --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx"
+    "lint:fix": "eslint --fix --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
+    "compile": "formatjs compile"
   },
   "repository": {
     "type": "git",
