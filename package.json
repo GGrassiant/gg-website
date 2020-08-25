@@ -50,7 +50,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.1",
     "lint-staged": "^10.2.11",
-    "prettier": "2.0.5",
+    "prettier": "2.1.0",
     "react-test-renderer": "^16.13.1",
     "typescript": "^3.9.7",
     "typescript-plugin-css-modules": "^2.4.0"
