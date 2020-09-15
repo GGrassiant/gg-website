@@ -53,7 +53,7 @@
     "prettier": "2.1.1",
     "react-test-renderer": "^16.13.1",
     "typescript": "^3.9.7",
-    "typescript-plugin-css-modules": "^2.4.0"
+    "typescript-plugin-css-modules": "^2.5.0"
   },
   "keywords": [
     "gatsby",
