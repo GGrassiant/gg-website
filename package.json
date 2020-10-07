@@ -20,7 +20,7 @@
     "gatsby-theme-i18n-react-intl": "^1.0.4",
     "gatsby-theme-i18n": "^1.0.4",
     "gatsby-source-filesystem": "^2.3.32",
-    "gatsby-source-contentful": "^2.3.49",
+    "gatsby-source-contentful": "^2.3.50",
     "gatsby-transformer-sharp": "^2.5.16",
     "node-sass": "^4.14.1",
     "react": "^16.12.0",
