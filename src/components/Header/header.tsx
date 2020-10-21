@@ -113,15 +113,9 @@ const Header: React.FC<HeaderProps> = (props) => {
   return (
     <ThemeContext.Consumer>
       {(theme) => (
-        <div
-          style={{
-            background: 'rebeccapurple',
-            marginBottom: '1.45rem',
-          }}
-        >
+        <>
           <header
             style={{
-              background: 'rebeccapurple',
               marginBottom: '1.45rem',
             }}
           >
@@ -160,7 +154,7 @@ const Header: React.FC<HeaderProps> = (props) => {
               </button>
             </div>
           </header>
-        </div>
+        </>
       )}
     </ThemeContext.Consumer>
   );

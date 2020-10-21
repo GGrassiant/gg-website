@@ -33,24 +33,44 @@ const Layout: React.FC<LayoutProps> = (props) => {
   return (
     <ThemeContext.Consumer>
       {(theme) => (
-        <div className={theme.dark ? 'dark' : 'light'}>
-          <Location>
-            {(location) => (
-              <Header
-                siteTitle={data.site.siteMetadata.title}
-                location={location}
-                locale={locale}
-              />
-            )}
-          </Location>
+        <div
+          className={theme.dark ? 'dark' : 'light'}
+          style={{ height: '100vh' }}
+        >
           <div
             style={{
-              margin: '0 auto',
-              maxWidth: 960,
-              padding: '0 1.0875rem 1.45rem',
+              border: '1px solid red',
+              height: '100%',
+              padding: '0 2rem',
             }}
           >
-            <main>{children}</main>
+            <Location>
+              {(location) => (
+                <Header
+                  siteTitle={data.site.siteMetadata.title}
+                  location={location}
+                  locale={locale}
+                />
+              )}
+            </Location>
+            <div
+              style={{
+                width: '100vw',
+                backgroundColor: 'red',
+                position: 'absolute',
+              }}
+            >
+              Coucou Coucou Coucou Coucou Coucou Coucou
+            </div>
+            <div
+              style={{
+                margin: '0 auto',
+                maxWidth: 960,
+                padding: '0 1.0875rem 1.45rem',
+              }}
+            >
+              <main>{children}</main>
+            </div>
           </div>
         </div>
       )}
