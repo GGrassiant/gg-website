@@ -632,13 +632,7 @@ pre tt:after {
   border: none;
   cursor: pointer;
 }
-@media (min-width: 992px) {
-  .dark-switcher {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-  }
-}
+
 .dark {
   background-color: #2a2b2d;
   color: #fff;

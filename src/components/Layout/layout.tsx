@@ -39,7 +39,6 @@ const Layout: React.FC<LayoutProps> = (props) => {
         >
           <div
             style={{
-              border: '1px solid red',
               height: '100%',
               padding: '0 2rem',
             }}
@@ -53,15 +52,6 @@ const Layout: React.FC<LayoutProps> = (props) => {
                 />
               )}
             </Location>
-            <div
-              style={{
-                width: '100vw',
-                backgroundColor: 'red',
-                position: 'absolute',
-              }}
-            >
-              Coucou Coucou Coucou Coucou Coucou Coucou
-            </div>
             <div
               style={{
                 margin: '0 auto',
