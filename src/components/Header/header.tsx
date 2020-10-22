@@ -1,11 +1,14 @@
 // Libs
-import React, { CSSProperties } from 'react';
+import React from 'react';
 
 // Utils
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import ThemeContext from '../../context/ThemeContext';
 import * as langsSettings from '../../utils/languages';
 import * as siteMetaData from '../../utils/siteMetaData';
+
+// Styles
+import styles from './header.module.scss';
 
 // Helpers
 interface HeaderProps {
@@ -33,46 +36,32 @@ const languagesHomeUrlArray: Array<string> = langsSettings.langs.reduce(
 const isHome: (arg: string) => boolean = (path: string) =>
   languagesHomeUrlArray.includes(path);
 
-const styleToggle: CSSProperties = {
-  fontWeight: 'bold',
-};
-const defaultStyle: CSSProperties = {};
-
 const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
   props,
 ) => {
   const { pathname, locale } = props;
 
-  const links: Array<React.ReactElement> = langsSettings.langs.map(
-    (langKey: string): React.ReactElement => {
-      let to: string;
-      if (isHome(pathname)) {
-        to = '/';
-      } else if (
-        langKey === `${langsSettings.defaultLangKey}` &&
-        locale !== `${langsSettings.defaultLangKey}`
-      ) {
-        to = pathname.slice(3);
-      } else {
-        to = pathname;
-      }
+  let to: string;
 
-      return (
-        <li key={langKey}>
-          <LocalizedLink key={langKey} to={to} language={langKey}>
-            <span style={langKey === locale ? styleToggle : defaultStyle}>
-              {langKey}
-            </span>
-          </LocalizedLink>
-        </li>
-      );
-    },
-  );
+  if (isHome(pathname)) {
+    to = '/';
+  } else if (locale !== `${langsSettings.defaultLangKey}`) {
+    to = pathname.slice(3);
+  } else {
+    to = pathname;
+  }
+
+  const newLocale =
+    locale === `${langsSettings.defaultLangKey}`
+      ? 'fr'
+      : `${langsSettings.defaultLangKey}`;
 
   return (
-    <div>
-      <ul>{links}</ul>
-    </div>
+    <li style={{ width: '1.3rem' }}>
+      <LocalizedLink to={to} language={newLocale} className={styles.lang}>
+        <span>{newLocale}</span>
+      </LocalizedLink>
+    </li>
   );
 };
 
@@ -84,26 +73,27 @@ const getMenuItems = (pathname: string, locale: string) =>
           ? pathname
           : pathname.slice(3);
 
-      let linkStyle: CSSProperties;
+      let className: string;
       if (isHome(pathname) && isHome(item.slug)) {
-        linkStyle = styleToggle;
+        className = `${styles.headerWrapper__menu} ${styles.active}`;
       } else if (!isHome(item.slug) && delocalizedPath.startsWith(item.slug)) {
-        linkStyle = styleToggle;
+        className = `${styles.headerWrapper__menu} ${styles.active}`;
       } else {
-        linkStyle = defaultStyle;
+        className = '';
       }
 
       return (
-        <LocalizedLink to={item.slug} key={item.slug}>
-          <li style={linkStyle}>{item.label}</li>
-        </LocalizedLink>
+        <li key={item.slug}>
+          <LocalizedLink to={item.slug} className={className}>
+            {item.label}
+          </LocalizedLink>
+        </li>
       );
     },
   );
 
 const Header: React.FC<HeaderProps> = (props) => {
   const {
-    siteTitle,
     locale,
     location: {
       location: { pathname },
@@ -113,54 +103,25 @@ const Header: React.FC<HeaderProps> = (props) => {
   return (
     <ThemeContext.Consumer>
       {(theme) => (
-        <div
-          style={{
-            background: 'rebeccapurple',
-            marginBottom: '1.45rem',
-          }}
-        >
-          <header
-            style={{
-              background: 'rebeccapurple',
-              marginBottom: '1.45rem',
-            }}
-          >
-            <div>
-              <SelectLanguage pathname={pathname} locale={locale} />
-            </div>
-            <ul>{getMenuItems(pathname, locale)}</ul>
-            <div
-              style={{
-                margin: '0 auto',
-                maxWidth: 960,
-                padding: '1.45rem 1.0875rem',
-              }}
-            >
-              <h1 style={{ margin: 0 }}>
-                <LocalizedLink
-                  to={siteMetaData.menu[0].slug}
-                  style={{
-                    color: 'white',
-                    textDecoration: 'none',
-                  }}
-                >
-                  {siteTitle}
-                </LocalizedLink>
-              </h1>
-              <button
-                className="dark-switcher"
-                type="button"
-                onClick={theme.toggleDark}
-              >
-                {theme.dark ? (
-                  <span>Light mode ☀</span>
-                ) : (
-                  <span>Dark mode ☾</span>
-                )}
-              </button>
-            </div>
-          </header>
-        </div>
+        <header className={styles.headerWrapper}>
+          <div className={styles.headerWrapper__gg}>
+            <p>Guillaume</p>
+            <p>Grassiant</p>
+          </div>
+          <ul className={styles.headerWrapper__menu}>
+            {getMenuItems(pathname, locale)}
+            <SelectLanguage pathname={pathname} locale={locale} />
+            {/* eslint-disable-next-line max-len */}
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
+            <li className="dark-switcher" onClick={theme.toggleDark}>
+              {theme.dark ? (
+                <span className="dark-switcher__toggle">☀</span>
+              ) : (
+                <span>☾</span>
+              )}
+            </li>
+          </ul>
+        </header>
       )}
     </ThemeContext.Consumer>
   );

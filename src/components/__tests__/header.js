@@ -31,15 +31,15 @@ describe('<Header>', () => {
           )}
         </Location>,
       );
-      expect(screen.getByText('Light mode ☀')).toBeInTheDocument();
+      expect(screen.getByText('☀')).toBeInTheDocument();
       fireEvent(
-        getByText(container, 'Light mode ☀'),
+        getByText(container, '☀'),
         new MouseEvent('click', {
           bubbles: true,
           cancelable: true,
         }),
       );
-      expect(screen.getByText('Dark mode ☾')).toBeInTheDocument();
+      expect(screen.getByText('☾')).toBeInTheDocument();
     });
   });
 });

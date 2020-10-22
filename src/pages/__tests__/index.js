@@ -11,9 +11,6 @@ describe('<Index>', () => {
     test('components mounts', () => {
       const { container } = render(<IndexPage />);
       expect(container).toBeInTheDocument();
-      expect(
-        screen.getByText('Guillaume Grassiant - Software developer'),
-      ).toBeInTheDocument();
       expect(container.querySelector('h1')).toBeInTheDocument();
       expect(container.querySelector('img')).toBeInTheDocument();
       expect(screen.getByText('Go to page 2')).toBeInTheDocument();
