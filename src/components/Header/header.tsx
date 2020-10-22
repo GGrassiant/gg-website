@@ -58,7 +58,7 @@ const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
 
   return (
     <li style={{ width: '1.3rem' }}>
-      <LocalizedLink to={to} language={newLocale}>
+      <LocalizedLink to={to} language={newLocale} className={styles.lang}>
         <span>{newLocale}</span>
       </LocalizedLink>
     </li>
@@ -79,7 +79,7 @@ const getMenuItems = (pathname: string, locale: string) =>
       } else if (!isHome(item.slug) && delocalizedPath.startsWith(item.slug)) {
         className = `${styles.headerWrapper__menu} ${styles.active}`;
       } else {
-        className = 'defaultStyle';
+        className = '';
       }
 
       return (

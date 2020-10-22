@@ -1,3 +1,4 @@
+// Styles
 .headerWrapper {
   display: flex;
   justify-content: space-between;
@@ -41,36 +42,37 @@
     }
 
     a {
+      position: relative;
       text-decoration: none;
       margin: 0;
 
-      &:before {
+      &:not(.lang):before {
         content: '';
         position: absolute;
-        top: 1.4rem;
+        top: 1.5rem;
         left: 0;
-        border-bottom: 1px solid white;
         width: 0;
+        transition: all 0.3s ease-in;
       }
 
-      &.active {
+      &:not(.lang).active {
         position: relative;
         font-weight: bold;
 
         &:before {
+          content: '';
+          position: absolute;
+          top: 1.4rem;
+          left: 0;
           width: 100%;
-          transition: width 1s ease-in-out;
+          border-bottom: 1px solid white;
         }
       }
 
-      //&.active:before {
-      //  content: '';
-      //  position: absolute;
-      //  top: 1.4rem;
-      //  left: 0;
-      //  border-bottom: 1px solid white;
-      //  width: 100%;
-      //}
+      &:not(.lang):hover:before {
+        width: 100%;
+        border-bottom: 1px solid white;
+      }
     }
   }
 }
