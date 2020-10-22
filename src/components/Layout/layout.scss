@@ -631,6 +631,7 @@ pre tt:after {
   background: transparent;
   border: none;
   cursor: pointer;
+  width: 1rem;
 }
 
 .dark {
@@ -641,6 +642,10 @@ pre tt:after {
 .light {
   transition: all 0.6s ease;
   background-color: #fefefe;
+
+  span {
+    color: #663399;
+  }
 }
 .dark a,
 .dark a:visited {

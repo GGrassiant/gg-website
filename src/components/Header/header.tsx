@@ -57,7 +57,7 @@ const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
       : `${langsSettings.defaultLangKey}`;
 
   return (
-    <li>
+    <li style={{ width: '1.3rem' }}>
       <LocalizedLink to={to} language={newLocale}>
         <span>{newLocale}</span>
       </LocalizedLink>
@@ -83,8 +83,8 @@ const getMenuItems = (pathname: string, locale: string) =>
       }
 
       return (
-        <li>
-          <LocalizedLink to={item.slug} key={item.slug} className={className}>
+        <li key={item.slug}>
+          <LocalizedLink to={item.slug} className={className}>
             {item.label}
           </LocalizedLink>
         </li>
@@ -115,9 +115,9 @@ const Header: React.FC<HeaderProps> = (props) => {
             {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
             <li className="dark-switcher" onClick={theme.toggleDark}>
               {theme.dark ? (
-                <span>Light mode ☀</span>
+                <span className="dark-switcher__toggle">☀</span>
               ) : (
-                <span>Dark mode ☾</span>
+                <span>☾</span>
               )}
             </li>
           </ul>
