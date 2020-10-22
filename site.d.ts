@@ -13,6 +13,11 @@ export interface ContentfulProject {
  * Metadata coming from Gatsby
  */
 
+export type Menu = {
+  slug: string;
+  label: string;
+};
+
 export interface SiteMetaData {
   site: {
     siteMetadata: {
@@ -21,10 +26,7 @@ export interface SiteMetaData {
       author: {
         name: string;
       };
-      menu: {
-        slug: string;
-        label: string;
-      };
+      menu: Menu;
     };
   };
 }

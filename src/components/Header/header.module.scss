@@ -25,6 +25,10 @@
     }
   }
 
+  &__logo {
+    text-decoration: none;
+  }
+
   &__menu {
     display: flex;
     justify-content: flex-end;
@@ -39,6 +43,10 @@
       line-height: 1rem;
       margin: 0 1rem 0 0;
       text-transform: capitalize;
+
+      &.lang__wrapper {
+        width: 1.3rem;
+      }
     }
 
     a {
@@ -55,7 +63,7 @@
         transition: all 0.3s ease-in;
       }
 
-      &:not(.lang).active {
+      &.active {
         position: relative;
         font-weight: bold;
 
@@ -69,7 +77,7 @@
         }
       }
 
-      &:not(.lang):hover:before {
+      &:hover:before {
         width: 100%;
         border-bottom: 1px solid white;
       }

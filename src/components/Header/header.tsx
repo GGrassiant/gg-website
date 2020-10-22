@@ -6,6 +6,7 @@ import { LocalizedLink } from 'gatsby-theme-i18n';
 import ThemeContext from '../../context/ThemeContext';
 import * as langsSettings from '../../utils/languages';
 import * as siteMetaData from '../../utils/siteMetaData';
+import { Menu } from '../../../site';
 
 // Styles
 import styles from './header.module.scss';
@@ -57,7 +58,7 @@ const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
       : `${langsSettings.defaultLangKey}`;
 
   return (
-    <li style={{ width: '1.3rem' }}>
+    <li className={styles.lang__wrapper}>
       <LocalizedLink to={to} language={newLocale} className={styles.lang}>
         <span>{newLocale}</span>
       </LocalizedLink>
@@ -65,32 +66,33 @@ const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
   );
 };
 
-const getMenuItems = (pathname: string, locale: string) =>
-  siteMetaData.menu.map(
-    (item: NavigationItem): React.ReactElement => {
-      const delocalizedPath: string =
-        locale === `${langsSettings.defaultLangKey}`
-          ? pathname
-          : pathname.slice(3);
+const getMenuItems = (pathname: string, locale: string) => {
+  const delocalizedPath: string =
+    locale === `${langsSettings.defaultLangKey}` ? pathname : pathname.slice(3);
 
-      let className: string;
-      if (isHome(pathname) && isHome(item.slug)) {
-        className = `${styles.headerWrapper__menu} ${styles.active}`;
-      } else if (!isHome(item.slug) && delocalizedPath.startsWith(item.slug)) {
-        className = `${styles.headerWrapper__menu} ${styles.active}`;
-      } else {
-        className = '';
+  return siteMetaData.menu.reduce(
+    (acc: Array<React.ReactElement>, cur: Menu) => {
+      if (isHome(cur.slug)) {
+        return acc;
       }
 
-      return (
-        <li key={item.slug}>
-          <LocalizedLink to={item.slug} className={className}>
-            {item.label}
+      const className: string =
+        !isHome(cur.slug) && delocalizedPath.startsWith(cur.slug)
+          ? `${styles.headerWrapper__menu} ${styles.active}`
+          : '';
+
+      const link = (
+        <li key={cur.slug}>
+          <LocalizedLink to={cur.slug} className={className}>
+            {cur.label}
           </LocalizedLink>
         </li>
       );
+      return acc.concat(link);
     },
+    [],
   );
+};
 
 const Header: React.FC<HeaderProps> = (props) => {
   const {
@@ -105,21 +107,30 @@ const Header: React.FC<HeaderProps> = (props) => {
       {(theme) => (
         <header className={styles.headerWrapper}>
           <div className={styles.headerWrapper__gg}>
-            <p>Guillaume</p>
-            <p>Grassiant</p>
+            <LocalizedLink
+              to="/"
+              locale={locale}
+              className={styles.headerWrapper__logo}
+            >
+              <p>Guillaume</p>
+              <p>Grassiant</p>
+            </LocalizedLink>
           </div>
           <ul className={styles.headerWrapper__menu}>
             {getMenuItems(pathname, locale)}
             <SelectLanguage pathname={pathname} locale={locale} />
-            {/* eslint-disable-next-line max-len */}
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-            <li className="dark-switcher" onClick={theme.toggleDark}>
+            <button
+              className="dark-switcher"
+              onClick={theme.toggleDark}
+              onKeyDown={theme.toggleDark}
+              type="button"
+            >
               {theme.dark ? (
                 <span className="dark-switcher__toggle">☀</span>
               ) : (
                 <span>☾</span>
               )}
-            </li>
+            </button>
           </ul>
         </header>
       )}
