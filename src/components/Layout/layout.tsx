@@ -16,10 +16,11 @@ import Header from '../Header/header';
 interface LayoutProps {
   children: Array<React.ReactElement> | React.ReactElement;
   locale: string;
+  banner?: boolean;
 }
 
 const Layout: React.FC<LayoutProps> = (props) => {
-  const { children, locale } = props;
+  const { children, locale, banner = false } = props;
   const data: SiteMetaData = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -37,30 +38,33 @@ const Layout: React.FC<LayoutProps> = (props) => {
           className={theme.dark ? 'dark' : 'light'}
           style={{ height: '100vh' }}
         >
+          <Location>
+            {(location) => (
+              <Header
+                siteTitle={data.site.siteMetadata.title}
+                location={location}
+                locale={locale}
+              />
+            )}
+          </Location>
+          {banner && (
+            <div
+              style={{
+                width: '100%',
+                height: '20px',
+                backgroundColor: 'red',
+                marginTop: '1rem',
+              }}
+            >
+              Sliding banner lolz les copains le fun dis donc #nomoreubi
+            </div>
+          )}
           <div
             style={{
-              height: '100%',
               padding: '0 2rem',
             }}
           >
-            <Location>
-              {(location) => (
-                <Header
-                  siteTitle={data.site.siteMetadata.title}
-                  location={location}
-                  locale={locale}
-                />
-              )}
-            </Location>
-            <div
-              style={{
-                margin: '0 auto',
-                maxWidth: 960,
-                padding: '0 1.0875rem 1.45rem',
-              }}
-            >
-              <main>{children}</main>
-            </div>
+            <main>{children}</main>
           </div>
         </div>
       )}

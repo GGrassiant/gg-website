@@ -4,7 +4,6 @@ import { navigate } from 'gatsby';
 
 // Utils
 import { LocalizedLink } from 'gatsby-theme-i18n';
-import { useIntl } from 'react-intl';
 import * as langsSettings from '../utils/languages';
 
 // Components
@@ -30,7 +29,6 @@ const getRedirectLanguage = (): string => {
 };
 
 const IndexPage: React.FC = () => {
-  const intl = useIntl();
   useEffect((): void => {
     const urlLang: string = getRedirectLanguage();
 
@@ -42,7 +40,6 @@ const IndexPage: React.FC = () => {
   return (
     <>
       <SEO title="Home" />
-      <h1>{intl.formatMessage({ id: 'helloWorld' })}</h1>
       <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
         <Image />
       </div>
@@ -51,4 +48,4 @@ const IndexPage: React.FC = () => {
   );
 };
 
-export default withLayout(IndexPage);
+export default withLayout(IndexPage, true);

@@ -9,4 +9,5 @@ export interface WithLayoutProps {
     contentfulProject: { title: string };
   };
   locale?: string;
+  banner?: boolean;
 }

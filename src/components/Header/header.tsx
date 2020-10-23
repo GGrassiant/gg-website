@@ -1,5 +1,6 @@
 // Libs
 import React from 'react';
+import { useIntl, IntlShape } from 'react-intl';
 
 // Utils
 import { LocalizedLink } from 'gatsby-theme-i18n';
@@ -18,11 +19,6 @@ interface HeaderProps {
   location: {
     location: { pathname: string };
   };
-}
-
-interface NavigationItem {
-  slug: string;
-  label: string;
 }
 
 const languagesHomeUrlArray: Array<string> = langsSettings.langs.reduce(
@@ -66,7 +62,7 @@ const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
   );
 };
 
-const getMenuItems = (pathname: string, locale: string) => {
+const getMenuItems = (pathname: string, locale: string, intl: IntlShape) => {
   const delocalizedPath: string =
     locale === `${langsSettings.defaultLangKey}` ? pathname : pathname.slice(3);
 
@@ -84,7 +80,7 @@ const getMenuItems = (pathname: string, locale: string) => {
       const link = (
         <li key={cur.slug}>
           <LocalizedLink to={cur.slug} className={className}>
-            {cur.label}
+            {intl.formatMessage({ id: `${cur.label}` })}
           </LocalizedLink>
         </li>
       );
@@ -102,11 +98,12 @@ const Header: React.FC<HeaderProps> = (props) => {
     },
   } = props;
 
+  const intl = useIntl();
   return (
     <ThemeContext.Consumer>
       {(theme) => (
         <header className={styles.headerWrapper}>
-          <div className={styles.headerWrapper__gg}>
+          <h1 className={styles.headerWrapper__gg}>
             <LocalizedLink
               to="/"
               locale={locale}
@@ -115,9 +112,9 @@ const Header: React.FC<HeaderProps> = (props) => {
               <p>Guillaume</p>
               <p>Grassiant</p>
             </LocalizedLink>
-          </div>
+          </h1>
           <ul className={styles.headerWrapper__menu}>
-            {getMenuItems(pathname, locale)}
+            {getMenuItems(pathname, locale, intl)}
             <SelectLanguage pathname={pathname} locale={locale} />
             <button
               className="dark-switcher"
