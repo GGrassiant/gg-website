@@ -15,7 +15,7 @@ import SEO from '../seo';
 const ProjectsPageComponent: React.FC<WithLayoutProps> = (props) => {
   const { data, locale } = props;
   const informationElements: Array<Edge> = ensure(
-    data.allContentfulProject.group.find((lang) => lang.fieldValue === locale),
+    data?.allContentfulProject.group.find((lang) => lang.fieldValue === locale),
   ).edges;
 
   const renderInformation = (): Array<React.ReactElement> =>

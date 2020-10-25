@@ -17,10 +17,11 @@ interface LayoutProps {
   children: Array<React.ReactElement> | React.ReactElement;
   locale: string;
   banner?: boolean;
+  fullHeight?: boolean;
 }
 
 const Layout: React.FC<LayoutProps> = (props) => {
-  const { children, locale, banner = false } = props;
+  const { children, locale, banner = false, fullHeight = false } = props;
   const data: SiteMetaData = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -34,10 +35,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
   return (
     <ThemeContext.Consumer>
       {(theme) => (
-        <div
-          className={theme.dark ? 'dark' : 'light'}
-          style={{ height: '100vh' }}
-        >
+        <div className={theme.dark ? 'dark' : 'light'}>
           <Location>
             {(location) => (
               <Header
@@ -51,20 +49,31 @@ const Layout: React.FC<LayoutProps> = (props) => {
             <div
               style={{
                 width: '100%',
-                height: '20px',
-                backgroundColor: 'red',
+                height: '100px',
                 marginTop: '1rem',
+                fontFamily: 'Piazzolla',
+                color: '#B8B8B8',
+                fontWeight: 300,
+                fontSize: '70px',
+                lineHeight: '99.4px',
               }}
             >
-              Sliding banner lolz les copains le fun dis donc #nomoreubi
+              Sliding banner lolz les copains le fun dis donc
             </div>
           )}
           <div
-            style={{
-              padding: '0 2rem',
-            }}
+            className={`content-wrapper ${
+              // eslint-disable-next-line no-nested-ternary
+              fullHeight
+                ? banner
+                  ? 'with-banner-full-height'
+                  : 'full-height'
+                : ''
+            }`}
           >
-            <main>{children}</main>
+            <main className="full-height-main">
+              {React.cloneElement(children, { darkTheme: theme.dark })}
+            </main>
           </div>
         </div>
       )}

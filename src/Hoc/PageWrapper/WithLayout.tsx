@@ -9,12 +9,15 @@ import { WithLayoutProps } from '../hoc.types';
 import Layout from '../../components/Layout/layout';
 
 const withLayout: (
-  WrappedComponent: React.FC<WithLayoutProps>,
+  WrappedComponent: React.FC<any>,
   banner?: boolean,
-) => React.FC<WithLayoutProps> = (WrappedComponent, banner) => (props) => {
+  fullHeight?: boolean,
+) => React.FC<WithLayoutProps> = (WrappedComponent, banner, fullHeight) => (
+  props,
+) => {
   const { locale } = useLocalization();
   return (
-    <Layout locale={locale} banner={banner}>
+    <Layout locale={locale} banner={banner} fullHeight={fullHeight}>
       <WrappedComponent {...props} locale={locale} />
     </Layout>
   );
