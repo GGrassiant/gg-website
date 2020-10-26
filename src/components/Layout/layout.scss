@@ -662,15 +662,19 @@ pre tt:after {
 }
 
 .content-wrapper {
-  padding: 0 2rem;
+  width: calc(100% - 4rem);
+  max-width: 1440px;
+  margin: 0 auto;
   background: inherit;
 
   &.full-height {
     height: calc(100% - 5rem - 1px);
+    max-height: 700px;
   }
 
   &.with-banner-full-height {
     height: calc(100% - 5rem - 1px - 100px - 1rem);
+    max-height: 700px;
   }
 }
 
