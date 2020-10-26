@@ -19,6 +19,7 @@ export const query = graphql`
     allContentfulProject {
       group(field: node_locale) {
         fieldValue
+        totalCount
         edges {
           node {
             shortDescription

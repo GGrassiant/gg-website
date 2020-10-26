@@ -1,6 +1,6 @@
 // Libs
 import React from 'react';
-import { useIntl, IntlShape } from 'react-intl';
+import { IntlShape, useIntl } from 'react-intl';
 
 // Utils
 import { LocalizedLink } from 'gatsby-theme-i18n';
@@ -8,6 +8,7 @@ import ThemeContext from '../../context/ThemeContext';
 import * as langsSettings from '../../utils/languages';
 import * as siteMetaData from '../../utils/siteMetaData';
 import { Menu } from '../../../site';
+import { useSiteMetadata } from '../../utils/query-hooks';
 
 // Styles
 import styles from './header.module.scss';
@@ -62,7 +63,12 @@ const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
   );
 };
 
-const getMenuItems = (pathname: string, locale: string, intl: IntlShape) => {
+const getMenuItems = (
+  pathname: string,
+  locale: string,
+  intl: IntlShape,
+  numberOfProjects: number,
+) => {
   const delocalizedPath: string =
     locale === `${langsSettings.defaultLangKey}` ? pathname : pathname.slice(3);
 
@@ -81,6 +87,11 @@ const getMenuItems = (pathname: string, locale: string, intl: IntlShape) => {
         <li key={cur.slug}>
           <LocalizedLink to={cur.slug} className={className}>
             {intl.formatMessage({ id: `${cur.label}` })}
+            {cur.slug === '/projects/' && (
+              <span className={styles.projects__number}>
+                {numberOfProjects}
+              </span>
+            )}
           </LocalizedLink>
         </li>
       );
@@ -98,6 +109,11 @@ const Header: React.FC<HeaderProps> = (props) => {
     },
   } = props;
 
+  const {
+    allContentfulProject: { group },
+  } = useSiteMetadata();
+  const numberOfProjects = group.length;
+
   const intl = useIntl();
   return (
     <ThemeContext.Consumer>
@@ -114,7 +130,7 @@ const Header: React.FC<HeaderProps> = (props) => {
             </LocalizedLink>
           </h1>
           <ul className={styles.headerWrapper__menu}>
-            {getMenuItems(pathname, locale, intl)}
+            {getMenuItems(pathname, locale, intl, numberOfProjects)}
             <SelectLanguage pathname={pathname} locale={locale} />
             <button
               className="dark-switcher"

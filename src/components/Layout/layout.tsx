@@ -72,6 +72,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
             }`}
           >
             <main className="full-height-main">
+              {/* @ts-ignore */}
               {React.cloneElement(children, { darkTheme: theme.dark })}
             </main>
           </div>

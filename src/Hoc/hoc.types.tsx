@@ -4,9 +4,12 @@ import { Edge } from '../components/Pages/pages-components.types';
 export interface WithLayoutProps {
   data?: {
     allContentfulProject: {
-      group: Array<{ fieldValue: string; edges: Array<Edge> }>;
+      group: Array<{
+        fieldValue: string;
+        edges: Array<Edge>;
+        totalCount: number;
+      }>;
     };
-    contentfulProject: { title: string };
   };
   locale?: string;
   banner?: boolean;
