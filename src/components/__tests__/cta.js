@@ -1,11 +1,13 @@
 // Libs
 import React from 'react';
+import { shallow } from 'enzyme';
 
 // Utils
 import { render, getByText } from './utils/test-utils';
 
 // Components
 import CTA from '../CTA';
+import { CTAWrapper } from '../CTA/cta-styles';
 
 describe('<CTA>', () => {
   describe('mounts', () => {
@@ -41,14 +43,15 @@ describe('<CTA>', () => {
       );
     });
 
-    test('renders the style props', () => {
-      const { container } = render(
-        <CTA size="large" theme="dark">
+    test('renders the theme props', () => {
+      const wrapper = shallow(
+        <CTA size="large" theme="dark" link="projects">
           Click Me
         </CTA>,
       );
 
-      console.log(container);
+      expect(wrapper.find(CTAWrapper).prop('theme')).toBe('dark');
+      expect(wrapper.find(CTAWrapper).prop('size')).toBe('large');
     });
   });
 });
