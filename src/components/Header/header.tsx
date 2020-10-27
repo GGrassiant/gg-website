@@ -87,12 +87,10 @@ const getMenuItems = (
         <li key={cur.slug}>
           <LocalizedLink to={cur.slug} className={className}>
             {intl.formatMessage({ id: `${cur.label}` })}
-            {cur.slug === '/projects/' && (
-              <span className={styles.projects__number}>
-                {numberOfProjects}
-              </span>
-            )}
           </LocalizedLink>
+          {cur.slug === '/projects/' && (
+            <span className={styles.projects__number}>{numberOfProjects}</span>
+          )}
         </li>
       );
       return acc.concat(link);
