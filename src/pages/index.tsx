@@ -58,10 +58,7 @@ const IndexPage: React.FC<IndexProps> = (props) => {
         <Title size="xxl" weight="semibold">
           {intl.formatMessage({ id: 'Developer' })}
         </Title>
-        <CTA
-          theme={darkTheme ? 'dark' : 'light'}
-          link="https://github.com/GGrassiant"
-        >
+        <CTA theme={darkTheme ? 'dark' : 'light'} link="projects">
           {intl.formatMessage({ id: 'Explore' })}
           <br />
           {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />

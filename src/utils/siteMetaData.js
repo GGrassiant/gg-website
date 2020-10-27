@@ -1,9 +1,10 @@
+// Utils
 const languages = require('./languages');
 
 module.exports = {
-  siteUrl: 'https://gg-website.herokuapp.com/',
+  siteUrl: 'https://www.guillaumegrassiant.com/',
   title: 'Guillaume Grassiant - Software developer',
-  description: 'React lover, JavaScript & Rails aficionado, Flutter enthusiast',
+  description: 'React lover, JavaScript & Rails aficionado',
   author: {
     name: 'Guillaume Grassiant',
     bio:
@@ -13,6 +14,7 @@ module.exports = {
     defaultLink: 'https://github.com/ggrassiant',
   },
   sourceCodeLink: 'https://github.com/ggrassiant/gg-website',
+  // MENU: Add all new routes to this constant
   menu: [
     { label: 'home', slug: '/' },
     { label: 'projects', slug: '/projects/' },

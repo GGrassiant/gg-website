@@ -54,6 +54,11 @@ module.exports = {
           sizes: 'test,'
         }
       }
+    },
+    allContentfulProject: {
+      group: [
+        {fieldValue: 'en', totalCount: 2}
+      ]
     }
   })),
 };

@@ -31,7 +31,8 @@ const languagesHomeUrlArray: Array<string> = langsSettings.langs.reduce(
   },
   ['/'],
 );
-const isHome: (arg: string) => boolean = (path: string) =>
+
+export const isHome: (arg: string) => boolean = (path: string) =>
   languagesHomeUrlArray.includes(path);
 
 const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
