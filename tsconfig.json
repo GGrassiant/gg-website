@@ -24,6 +24,7 @@
     "src",
     "styles.d.ts",
     "i18n.d.ts",
-    "site.d.ts"
+    "site.d.ts",
+    "pages.d.ts"
   ]
 }

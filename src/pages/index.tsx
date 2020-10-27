@@ -10,7 +10,7 @@ import * as langsSettings from '../utils/languages';
 
 // Utils
 import styles from './index.module.scss';
-import { IndexProps } from './index-types';
+import { IndexProps } from '../../pages';
 
 // Components
 import withLayout from '../Hoc/PageWrapper/WithLayout';

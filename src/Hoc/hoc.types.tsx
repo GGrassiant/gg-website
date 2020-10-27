@@ -1,5 +1,5 @@
 // Lib
-import { Edge } from '../components/Pages/pages-components.types';
+import { Edge } from '../../pages';
 
 export interface WithLayoutProps {
   data?: {

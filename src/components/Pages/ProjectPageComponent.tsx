@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Utils
-import { ProjectPageComponentProps } from './pages-components.types';
+import { ProjectPageComponentProps } from '../../../pages';
 
 // Components
 import withLayout from '../../Hoc/PageWrapper/WithLayout';
