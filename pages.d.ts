@@ -1,4 +1,4 @@
-import { ContentfulProject } from '../../../site';
+import { ContentfulProject } from './site';
 
 export type Edge = {
   node: ContentfulProject;

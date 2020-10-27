@@ -5,7 +5,7 @@ import React from 'react';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import * as siteMetaData from '../../utils/siteMetaData';
 import { WithLayoutProps } from '../../Hoc/hoc.types';
-import { Edge } from './pages-components.types';
+import { Edge } from '../../../pages';
 import { ensure } from '../../utils/typescript.utils';
 
 // Components

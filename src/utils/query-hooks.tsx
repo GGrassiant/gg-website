@@ -1,6 +1,6 @@
 // Libs
 import { graphql, useStaticQuery } from 'gatsby';
-import { Edge } from '../components/Pages/pages-components.types';
+import { Edge } from '../../pages';
 
 export interface ContentFulData {
   allContentfulProject: {
