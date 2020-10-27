@@ -18,14 +18,14 @@ module.exports = {
     __PATH_PREFIX__: '',
   },
   testURL: 'http://localhost',
-  setupFiles: ['<rootDir>/loadershim.js'],
+  setupFiles: ['<rootDir>/loadershim.js', './setupJest.js'],
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   coverageThreshold: {
     global: {
-      statements: 70,
-      branches: 55,
-      functions: 70,
-      lines: 70,
+      statements: 80,
+      branches: 50,
+      functions: 80,
+      lines: 80,
     },
   },
 };

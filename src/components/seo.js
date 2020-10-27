@@ -9,8 +9,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import { useIntl } from 'react-intl';
 
 const SEO = ({ description, lang, meta, title }) => {
+  const intl = useIntl();
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -38,7 +40,7 @@ const SEO = ({ description, lang, meta, title }) => {
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={intl.formatMessage({ id: `${title}` })}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
@@ -47,7 +49,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           property: 'og:title',
-          content: title,
+          content: intl.formatMessage({ id: `${title}` }),
         },
         {
           property: 'og:description',
@@ -67,7 +69,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           name: 'twitter:title',
-          content: title,
+          content: intl.formatMessage({ id: `${title}` }),
         },
         {
           name: 'twitter:description',

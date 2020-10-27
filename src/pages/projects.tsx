@@ -9,9 +9,9 @@ import ProjectsPageComponent from '../components/Pages/ProjectsPageComponent';
 import { WithLayoutProps } from '../Hoc/hoc.types';
 
 const ProjectsPage: React.FC<WithLayoutProps> = (props) => {
-  const { data } = props;
+  const { data, banner } = props;
   // Need to create a component to pass the data since we use withLayout HOC
-  return <ProjectsPageComponent data={data} />;
+  return <ProjectsPageComponent data={data} banner={banner} />;
 };
 
 export const query = graphql`
@@ -19,6 +19,7 @@ export const query = graphql`
     allContentfulProject {
       group(field: node_locale) {
         fieldValue
+        totalCount
         edges {
           node {
             shortDescription

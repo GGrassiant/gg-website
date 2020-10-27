@@ -2,13 +2,13 @@
 import React from 'react';
 
 // Utils
-import { WithLayoutProps } from '../../Hoc/hoc.types';
+import { ProjectPageComponentProps } from './pages-components.types';
 
 // Components
 import withLayout from '../../Hoc/PageWrapper/WithLayout';
 import SEO from '../seo';
 
-const ProjectPageComponent: React.FC<WithLayoutProps> = (props) => {
+const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
   const {
     data: {
       contentfulProject: { title },

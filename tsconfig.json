@@ -23,6 +23,7 @@
   "include": [
     "src",
     "styles.d.ts",
-    "i18n.d.ts"
+    "i18n.d.ts",
+    "site.d.ts"
   ]
 }

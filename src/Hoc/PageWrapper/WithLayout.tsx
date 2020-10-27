@@ -1,3 +1,5 @@
+// TODO: fix 'any' type
+
 // Libs
 import React from 'react';
 
@@ -9,11 +11,15 @@ import { WithLayoutProps } from '../hoc.types';
 import Layout from '../../components/Layout/layout';
 
 const withLayout: (
-  WC: React.FC<WithLayoutProps>,
-) => React.FC<WithLayoutProps> = (WrappedComponent) => (props) => {
+  WrappedComponent: React.FC<any>,
+  banner?: boolean,
+  fullHeight?: boolean,
+) => React.FC<WithLayoutProps> = (WrappedComponent, banner, fullHeight) => (
+  props,
+) => {
   const { locale } = useLocalization();
   return (
-    <Layout locale={locale}>
+    <Layout locale={locale} banner={banner} fullHeight={fullHeight}>
       <WrappedComponent {...props} locale={locale} />
     </Layout>
   );

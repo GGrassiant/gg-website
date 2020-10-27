@@ -30,3 +30,6 @@ export interface SiteMetaData {
     };
   };
 }
+
+// MENU: Add all new routes to this constant
+export const menuItems = ['projects'] as const;
