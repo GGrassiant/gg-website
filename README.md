@@ -3,8 +3,6 @@
 </h1> 
 This is my personal website repository. (Under construction, like early early stage 😛 )
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/bf57ef9e-6c7c-4b45-bad6-8b795dd8da5e/deploy-status)](https://sleepy-lewin-3d576a.netlify.app/)
-
 ## 🚀 Tech Stack
 
 1.  **React with TypeScript**
