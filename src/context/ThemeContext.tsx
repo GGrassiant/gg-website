@@ -6,7 +6,7 @@ interface ThemeProps {
 }
 
 interface BackgroundMode {
-  dark: boolean;
+  dark: boolean | null;
 }
 
 interface DefaultState extends BackgroundMode {
@@ -14,7 +14,7 @@ interface DefaultState extends BackgroundMode {
 }
 
 const defaultState: DefaultState = {
-  dark: false,
+  dark: null,
   toggleDark: () => null,
 };
 const ThemeContext: React.Context<DefaultState> = createContext(defaultState);
@@ -27,7 +27,7 @@ class ThemeProvider extends Component<ThemeProps, BackgroundMode> {
   constructor(props: ThemeProps) {
     super(props);
     this.state = {
-      dark: false,
+      dark: null,
     };
   }
 
