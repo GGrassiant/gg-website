@@ -93,6 +93,7 @@ module.exports = {
           families: ['Piazzolla', 'Rubik'],
         },
       },
+      display: 'swap',
     },
   ],
 };
