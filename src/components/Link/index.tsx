@@ -11,7 +11,7 @@ const Link: React.FC<LinkProps> = (props) => {
   const { children, theme = 'dark', href } = props;
   return (
     <LinkWrapper theme={theme} target="_blank" href={href}>
-      <p>{children}</p>
+      {children}
     </LinkWrapper>
   );
 };
