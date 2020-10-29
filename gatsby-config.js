@@ -86,12 +86,5 @@ module.exports = {
         defaultLocale: './i18n/react-intl/en.json',
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-fonts',
-      options: {
-        fonts: ['Piazzolla', 'Rubik'],
-      },
-      display: 'block',
-    },
   ],
 };
