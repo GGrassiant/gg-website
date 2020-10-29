@@ -1,67 +1,42 @@
 // If you make modifications to this file, restart your server
 
-//breakpoints
-$sm: 600px;
-$md: 960px;
-$lg: 1280px;
-$xl: 1440px;
-$medium-height: 700px;
+:root {
+  //breakpoints, styled components version in typescript.utils.ts
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 960px;
+  --breakpoint-lg: 1280px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-medium-height: 700px;
 
-//fonts
-$default-title-font: Piazzolla, serif;
-$default-content-font: Rubik, sans-serif;
+  //fonts
+  --default-title-font: Piazzolla, serif;
+  --default-content-font: Rubik, sans-serif;
 
-//font-size
-$font-size-xxl: 165px;
-$font-size-xl: 140px;
-$font-size-very-large: 100px;
-$font-size-large: 70px;
-$font-size-medium: 25px;
-$font-size-normal: 16px;
-$font-size-default: 14px;
-$font-size-small: 12px;
+  //font-size
+  --font-size-xxl: 165px;
+  --font-size-xl: 140px;
+  --font-size-very-large: 100px;
+  --font-size-large: 70px;
+  --font-size-medium: 25px;
+  --font-size-normal: 16px;
+  --font-size-default: 14px;
+  --font-size-small: 12px;
 
-//font-weight
-$bold: 700;
-$semi-bold: 600;
-$medium: 500;
-$regular: 400;
-$light: 300;
+  //font-weight
+  --font-weight-bold: 700;
+  --font-weight-semi-bold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  --font-weight-light: 300;
 
-//colors:
-$main-dark: #2f2d2d;
-$main-dark-lighter: #b8b8b8;
-$main-light: #fff;
-$secondary-dark: #2a2b2d;
-$secondary-light: #fefefe;
+  //colors:
+  --main-dark: #2f2d2d;
+  --main-dark-lighter: #b8b8b8;
+  --main-light: #fff;
+  --secondary-dark: #2a2b2d;
+  --secondary-light: #fefefe;
 
-//transition:
-$default-transition-time: 0.3s;
-$medium-transition-time: 0.6s;
-
-:export {
-  breakPointSm: $sm;
-  breakPointMd: $md;
-  breakPointLg: $lg;
-  breakPointXl: $xl;
-  mediumHeight: $medium-height;
-  defaultTitleFont: $default-title-font;
-  defaultContentFont: $default-content-font;
-  fontSizeXxl: $font-size-xxl;
-  fontSizeXl: $font-size-xl;
-  fontSizeVeryLarge: $font-size-very-large;
-  fontSizeLarge: $font-size-large;
-  fontSizeMedium: $font-size-medium;
-  fontSizeNormal: $font-size-normal;
-  fontSizeDefault: $font-size-default;
-  fontSizeSmall: $font-size-small;
-  fontWeightBold: $bold;
-  fontWeightSemiBold: $semi-bold;
-  fontWeightMedium: $medium;
-  fontWeightRegular: $regular;
-  fontWeightLight: $light;
-  colorMainDark: $main-dark;
-  colorMainDarkLighter: $main-dark-lighter;
-  colorMainLight: $main-light;
-  defaultTransitionTime: $default-transition-time;
+  //transition:
+  --default-transition-time: 0.3s;
+  --medium-transition-time: 0.6s;
 }
