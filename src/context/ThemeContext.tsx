@@ -6,28 +6,24 @@ interface ThemeProps {
 }
 
 interface BackgroundMode {
-  dark: boolean | null;
+  dark: boolean;
 }
 
 interface DefaultState extends BackgroundMode {
-  toggleDark: () => void | null;
+  toggleDark: () => void;
 }
 
 const defaultState: DefaultState = {
-  dark: null,
+  dark: false,
   toggleDark: () => null,
 };
 const ThemeContext: React.Context<DefaultState> = createContext(defaultState);
-// Getting dark mode information from OS.
-// You need macOS Mojave + Safari Technology Preview Release 68
-const supportsDarkMode = (): boolean =>
-  window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 class ThemeProvider extends Component<ThemeProps, BackgroundMode> {
   constructor(props: ThemeProps) {
     super(props);
     this.state = {
-      dark: null,
+      dark: false,
     };
   }
 
@@ -36,8 +32,8 @@ class ThemeProvider extends Component<ThemeProps, BackgroundMode> {
     const lsDark = JSON.parse(localStorage.getItem('dark') as string);
     if (lsDark) {
       this.setState({ dark: lsDark });
-    } else if (supportsDarkMode()) {
-      this.setState({ dark: true });
+    } else {
+      this.setState({ dark: false });
     }
   }
 
