@@ -1,9 +1,5 @@
 @import 'src/utils/variables';
 
-.lolz {
-  font-family: var(--fontfamily3);
-}
-
 .home {
   display: flex;
   flex-direction: column;
@@ -11,6 +7,10 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
+
+  .lolzlolz {
+    color: var(--lolzcolor);
+  }
 
   &__title {
     display: flex;

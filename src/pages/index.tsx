@@ -51,6 +51,7 @@ const IndexPage: React.FC<IndexProps> = (props) => {
   return (
     <div className={styles.home}>
       <div className={styles.home__links}>
+        <p>Lolz</p>
         <Link
           theme={darkTheme ? 'dark' : 'light'}
           href="https://www.linkedin.com/in/guillaumegrassiant/"
