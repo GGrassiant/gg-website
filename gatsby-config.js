@@ -87,11 +87,12 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-fonts',
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        fonts: ['Piazzolla', 'Rubik'],
+        google: {
+          families: ['Piazzolla', 'Rubik'],
+        },
       },
-      display: 'block',
     },
   ],
 };
