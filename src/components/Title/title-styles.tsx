@@ -17,8 +17,7 @@ const customFontWeight: { [key: string]: Property.FontWeight } = {
 };
 
 export const TitleWrapper = styled.p<TitleWrapperProps>`
-  //font-family: ${variables.defaultTitleFont};
-  font-family: Arial, serif;
+  font-family: ${variables.defaultTitleFont};
   font-weight: ${(props) => customFontWeight[props.weight]};
 `;
 TitleWrapper.displayName = 'TitleWrapper';
