@@ -17,7 +17,7 @@ const customColor: { [key: string]: Property.Color } = {
 export const LinkWrapper = styled.a<LinkProps>`
   font-family: var(--fontfamily3);
   font-weight: ${variables.fontWeightRegular};
-  font-size: ${variables.fontSizeDefault};
+  font-size: var(--fontsizedefault);
   line-height: 13px;
   color: ${(props) => customColor[props.theme]};
   text-transform: capitalize;
