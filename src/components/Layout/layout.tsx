@@ -50,12 +50,12 @@ const Layout: React.FC<LayoutProps> = (props) => {
               style={{
                 width: '100%',
                 height: '100px',
-                marginTop: '1rem',
                 fontFamily: 'Piazzolla',
                 color: '#B8B8B8',
                 fontWeight: 300,
-                fontSize: '70px',
+                fontSize: '50px',
                 lineHeight: '99.4px',
+                background: 'transparent',
               }}
             >
               Sliding banner lolz les copains le fun dis donc
