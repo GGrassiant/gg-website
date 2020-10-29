@@ -21,7 +21,7 @@ export const LinkWrapper = styled.a<LinkProps>`
   line-height: 13px;
   color: ${(props) => customColor[props.theme]};
   text-transform: capitalize;
-  //text-decoration: none;
+  text-decoration: none;
   transition: all ${variables.defaultTransitionTime} ease-in;
 
   svg {
