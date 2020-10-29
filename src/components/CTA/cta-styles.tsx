@@ -2,9 +2,6 @@
 import styled from 'styled-components';
 import { Property } from 'csstype';
 
-// Styles
-import * as variables from '../../utils/_variables.scss';
-
 interface CTAWrapperProps {
   readonly size: string;
   readonly theme: string;
@@ -24,14 +21,14 @@ const customRadius: { [key: string]: Property.BorderRadius } = {
   small: '50px',
 };
 
-const customBackgroundColor: { [key: string]: Property.BackgroundColor } = {
-  dark: variables.colorMainLight,
-  light: variables.colorMainDark,
+const customBackgroundColor: { [key: string]: Property.Color } = {
+  dark: 'var(--main-light)',
+  light: 'var(--main-dark)',
 };
 
-const customColor: { [key: string]: Property.BackgroundColor } = {
-  dark: variables.colorMainDark,
-  light: variables.colorMainLight,
+const customColor: { [key: string]: Property.Color } = {
+  dark: 'var(--main-dark)',
+  light: 'var(--main-light)',
 };
 
 export const CTAWrapper = styled.div<CTAWrapperProps>`
@@ -42,13 +39,13 @@ export const CTAWrapper = styled.div<CTAWrapperProps>`
   width: ${(props) => customSize[props.size]};
   border-radius: ${(props) => customRadius[props.size]};
   background-color: ${(props) => customBackgroundColor[props.theme]};
-  transition: all ${variables.defaultTransitionTime} ease-in;
+  transition: all var(--default-transition-time) ease-in;
 
   p {
     margin-bottom: 0;
-    font-family: ${variables.defaultTitleFont};
-    font-weight: ${variables.fontWeightMedium};
-    font-size: ${variables.fontSizeMedium};
+    font-family: var(--default-title-font);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-medium);
     line-height: 26px;
     color: ${(props) => customColor[props.theme]};
     text-align: center;

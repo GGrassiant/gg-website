@@ -7,9 +7,9 @@
   align-items: center;
   height: 5rem;
   width: calc(100% - 4rem);
-  max-width: $xl;
+  max-width: var(--breakpoint-xl);
   margin: 0 auto;
-  font-family: $default-content-font;
+  font-family: var(--default-content-font);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 
   &__gg {
@@ -20,8 +20,9 @@
     width: 5rem;
 
     p {
+      font-family: var(--default-content-font);
       font-size: 1rem;
-      font-weight: $medium;
+      font-weight: var(--font-weight-medium);
       line-height: 1rem;
       margin: 0;
 
@@ -47,7 +48,7 @@
       position: relative;
       display: flex;
       align-items: center;
-      font-weight: $regular;
+      font-weight: var(--font-weight-regular);
       line-height: 1rem;
       margin: 0 2rem 0 0;
       text-transform: capitalize;
@@ -68,11 +69,11 @@
         top: 1.5rem;
         left: 0;
         width: 0;
-        transition: all $default-transition-time ease-in;
+        transition: all var(--default-transition-time) ease-in;
       }
 
       &.active {
-        font-weight: $bold;
+        font-weight: var(--font-weight-bold);
 
         &:before {
           content: '';
@@ -80,20 +81,20 @@
           top: 1.5rem;
           left: 0;
           width: 100%;
-          border-bottom: 1px solid $main-light;
+          border-bottom: 1px solid var(--main-light);
         }
       }
 
       &:hover:before {
         width: 100%;
-        border-bottom: 1px solid $main-light;
+        border-bottom: 1px solid var(--main-light);
       }
     }
     .projects__number {
       position: absolute;
       top: -8px;
       right: -8px;
-      font-size: $font-size-small;
+      font-size: var(--font-size-small);
     }
   }
 }

@@ -8,10 +8,6 @@
   width: 100%;
   overflow: hidden;
 
-  .lolzlolz {
-    color: var(--lolzcolor);
-  }
-
   &__title {
     display: flex;
     flex-direction: column;
@@ -24,7 +20,7 @@
       margin-bottom: 11%;
       margin-top: 2rem;
 
-      @media (min-width: $lg) {
+      @media (min-width: var(--breakpoint-lg)) {
         margin-top: initial;
       }
     }
@@ -53,7 +49,7 @@
     width: 5rem;
     margin-top: auto;
 
-    @media (min-width: $lg) {
+    @media (min-width: var(--breakpoint-lg)) {
       margin-bottom: 2.5rem;
     }
   }

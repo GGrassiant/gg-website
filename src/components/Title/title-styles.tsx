@@ -1,62 +1,51 @@
 // Libs
 import styled from 'styled-components';
-import { Property } from 'csstype';
 
-// Styles
-import * as variables from '../../utils/_variables.scss';
+// Utils
+import { breakPoints } from '../../utils/typescript.utils';
 
 interface TitleWrapperProps {
   readonly weight: string;
 }
 
-const customFontWeight: { [key: string]: Property.FontWeight } = {
-  bold: variables.fontWeightBold,
-  semibold: variables.fontWeightSemiBold,
-  regular: variables.fontWeightRegular,
-  light: variables.fontWeightLight,
+const customFontWeight: { [key: string]: string } = {
+  bold: 'var(--font-weight-bold)',
+  semibold: 'var(--font-weight-semi-bold)',
+  regular: 'var(--font-weight-regular)',
+  light: 'var(--font-weight-light)',
 };
 
 export const TitleWrapper = styled.p<TitleWrapperProps>`
-  font-family: ${variables.defaultTitleFont};
+  font-family: var(--default-title-font);
   font-weight: ${(props) => customFontWeight[props.weight]};
 `;
 TitleWrapper.displayName = 'TitleWrapper';
 
 export const TitleWrapperSmall = styled(TitleWrapper)<TitleWrapperProps>`
-  font-family: ${variables.defaultTitleFont};
-  font-weight: ${(props) => customFontWeight[props.weight]};
-  font-size: ${variables.fontSizesmall};
+  font-size: var(--font-size-small);
 `;
 TitleWrapperSmall.displayName = 'TitleWrapperSmall';
 
 export const TitleWrapperNormal = styled(TitleWrapper)<TitleWrapperProps>`
-  font-family: ${variables.defaultTitleFont};
-  font-weight: ${(props) => customFontWeight[props.weight]};
-  font-size: ${variables.fontSizeNormal};
+  font-size: var(--font-size-normal);
 `;
 TitleWrapperNormal.displayName = 'TitleWrapperNormal';
 
 export const TitleWrapperLarge = styled(TitleWrapper)<TitleWrapperProps>`
-  font-family: ${variables.defaultTitleFont};
-  font-weight: ${(props) => customFontWeight[props.weight]};
-  font-size: ${variables.fontSizeLarge};
+  font-size: var(--font-size-large);
 `;
 TitleWrapperLarge.displayName = 'TitleWrapperLarge';
 
 export const TitleWrapperXL = styled(TitleWrapper)<TitleWrapperProps>`
-  font-family: ${variables.defaultTitleFont};
-  font-weight: ${(props) => customFontWeight[props.weight]};
-  font-size: ${variables.fontSizeXl};
+  font-size: var(--font-size-xl);
 `;
 TitleWrapperXL.displayName = 'TitleWrapperXL';
 
 export const TitleWrapperXXL = styled(TitleWrapper)<TitleWrapperProps>`
-  font-family: ${variables.defaultTitleFont};
-  font-weight: ${(props) => customFontWeight[props.weight]};
-  font-size: ${variables.fontSizeXl};
+  font-size: var(--font-size-xl);
 
-  @media (min-width: ${variables.breakPointLg}) {
-    font-size: ${variables.fontSizeXxl};
+  @media (min-width: ${breakPoints.breakPointLg}) {
+    font-size: var(--font-size-xxl);
   }
 `;
 TitleWrapperXXL.displayName = 'TitleWrapperXXL';
