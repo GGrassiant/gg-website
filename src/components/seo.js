@@ -81,7 +81,6 @@ const SEO = ({ description, lang, meta, title }) => {
         href="https://fonts.googleapis.com/css?family=Piazzolla&family=Rubik"
         rel="stylesheet"
       />
-      <link href="../utils/_variables.scss" rel="stylesheet" />
     </Helmet>
   );
 };
