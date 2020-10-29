@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { navigate } from 'gatsby';
 // import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
-import { useIntl } from 'react-intl';
+// import { useIntl } from 'react-intl';
 
 // Utils
 import * as langsSettings from '../utils/languages';

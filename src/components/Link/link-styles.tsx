@@ -15,7 +15,7 @@ const customColor: { [key: string]: Property.Color } = {
 };
 
 export const LinkWrapper = styled.a<LinkProps>`
-  font-family: var(--fontfamily1);
+  font-family: var(--fontfamily3);
   font-weight: ${variables.fontWeightRegular};
   font-size: ${variables.fontSizeDefault};
   line-height: 13px;
