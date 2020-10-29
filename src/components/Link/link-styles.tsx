@@ -2,26 +2,30 @@
 import styled from 'styled-components';
 import { Property } from 'csstype';
 
+// Styles
+import * as variables from '../../utils/_variables.scss';
+
 interface LinkProps {
   theme: string;
 }
 
 const customColor: { [key: string]: Property.Color } = {
-  dark: '#FFF',
-  light: '#2F2D2D',
+  dark: variables.colorMainLight,
+  light: variables.colorMainDark,
 };
 
 export const LinkWrapper = styled.a<LinkProps>`
-  font-family: Rubik, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
+  font-family: ${variables.defaultContentFont};
+  font-weight: ${variables.fontWeightRegular};
+  font-size: ${variables.fontSizeDefault};
   line-height: 13px;
   color: ${(props) => customColor[props.theme]};
   text-transform: capitalize;
   text-decoration: none;
-  transition: all 0.3s ease-in;
+  transition: all ${variables.defaultTransitionTime} ease-in;
 
   svg {
     margin-left: 8px;
   }
 `;
+LinkWrapper.displayName = 'LinkWrapper';

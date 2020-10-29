@@ -1,3 +1,5 @@
+@import 'src/utils/variables';
+
 * {
   box-sizing: border-box;
 }
@@ -631,9 +633,10 @@ pre tt:after {
   }
 }
 
+// Custom CSS
 /* Dark mode styles */
 .dark-switcher {
-  color: #fff;
+  color: $main-light;
   margin-top: 5px;
   background: transparent;
   border: none;
@@ -643,14 +646,14 @@ pre tt:after {
 
 .dark {
   height: 100%;
-  background-color: #2a2b2d;
-  color: #fff;
-  transition: all 0.6s ease;
+  background-color: $secondary-dark;
+  color: $main-light;
+  transition: all $medium-transition-time ease;
 }
 .light {
   height: 100%;
-  transition: all 0.6s ease;
-  background-color: #fefefe;
+  transition: all $medium-transition-time ease;
+  background-color: $secondary-light;
 
   span {
     color: #663399;
@@ -658,23 +661,23 @@ pre tt:after {
 }
 .dark a,
 .dark a:visited {
-  color: #fff;
+  color: $main-light;
 }
 
 .content-wrapper {
   width: calc(100% - 4rem);
-  max-width: 1440px;
+  max-width: $xl;
   margin: 0 auto;
   background: inherit;
 
   &.full-height {
     height: calc(100% - 5rem - 1px);
-    max-height: 700px;
+    max-height: $medium-height;
   }
 
   &.with-banner-full-height {
     height: calc(100% - 5rem - 1px - 100px - 1rem);
-    max-height: 700px;
+    max-height: $medium-height;
   }
 }
 
