@@ -1,5 +1,10 @@
 @import 'src/utils/variables';
 
+.testlolx {
+  font-family: $default-title-font;
+  color: $main-dark;
+}
+
 .home {
   display: flex;
   flex-direction: column;
