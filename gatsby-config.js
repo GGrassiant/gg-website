@@ -91,7 +91,6 @@ module.exports = {
       options: {
         fonts: ['Piazzolla', 'Rubik'],
       },
-      display: 'swap',
     },
   ],
 };
