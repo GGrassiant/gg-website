@@ -143,9 +143,17 @@ const Header: React.FC<HeaderProps> = (props) => {
                 type="button"
               >
                 {theme.colorMode === 'dark' ? (
-                  <span className="dark-switcher__toggle">☀</span>
+                  <span
+                    role="img"
+                    aria-label="Sun"
+                    className="dark-switcher__toggle"
+                  >
+                    🌞
+                  </span>
                 ) : (
-                  <span>☾</span>
+                  <span role="img" aria-label="Moon">
+                    🌝
+                  </span>
                 )}
               </button>
             </ul>
