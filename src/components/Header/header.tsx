@@ -4,7 +4,7 @@ import { IntlShape, useIntl } from 'react-intl';
 
 // Utils
 import { LocalizedLink } from 'gatsby-theme-i18n';
-import ThemeContext from '../../context/ThemeContext';
+import { ThemeContext, ThemeContextState } from '../../context/ThemeContext';
 import * as langsSettings from '../../utils/languages';
 import * as siteMetaData from '../../utils/siteMetaData';
 import { Menu } from '../../../site';
@@ -57,7 +57,7 @@ const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
 
   return (
     <li className={styles.lang__wrapper}>
-      <LocalizedLink to={to} language={newLocale}>
+      <LocalizedLink to={to} language={newLocale} className={styles.lang}>
         <span>{newLocale}</span>
       </LocalizedLink>
     </li>
@@ -114,38 +114,44 @@ const Header: React.FC<HeaderProps> = (props) => {
   const numberOfProjects = group.length;
 
   const intl = useIntl();
+
   return (
     <ThemeContext.Consumer>
-      {(theme) => (
-        <header className={styles.headerWrapper}>
-          <h1 className={styles.headerWrapper__gg}>
-            <LocalizedLink
-              to="/"
-              locale={locale}
-              className={styles.headerWrapper__logo}
-            >
-              <p>Guillaume</p>
-              <p>Grassiant</p>
-            </LocalizedLink>
-          </h1>
-          <ul className={styles.headerWrapper__menu}>
-            {getMenuItems(pathname, locale, intl, numberOfProjects)}
-            <SelectLanguage pathname={pathname} locale={locale} />
-            <button
-              className="dark-switcher"
-              onClick={theme.toggleDark}
-              onKeyDown={theme.toggleDark}
-              type="button"
-            >
-              {theme.dark ? (
-                <span className="dark-switcher__toggle">☀</span>
-              ) : (
-                <span>☾</span>
-              )}
-            </button>
-          </ul>
-        </header>
-      )}
+      {(theme: ThemeContextState) => {
+        const toggleTheme = () => {
+          theme.setColorMode(theme.colorMode === 'dark' ? 'light' : 'dark');
+        };
+        return (
+          <header className={styles.headerWrapper}>
+            <h1 className={styles.headerWrapper__gg}>
+              <LocalizedLink
+                to="/"
+                locale={locale}
+                className={styles.headerWrapper__logo}
+              >
+                <p>Guillaume</p>
+                <p>Grassiant</p>
+              </LocalizedLink>
+            </h1>
+            <ul className={styles.headerWrapper__menu}>
+              {getMenuItems(pathname, locale, intl, numberOfProjects)}
+              <SelectLanguage pathname={pathname} locale={locale} />
+              <button
+                className="dark-switcher"
+                onClick={toggleTheme}
+                onKeyDown={toggleTheme}
+                type="button"
+              >
+                {theme.colorMode === 'dark' ? (
+                  <span className="dark-switcher__toggle">☀</span>
+                ) : (
+                  <span>☾</span>
+                )}
+              </button>
+            </ul>
+          </header>
+        );
+      }}
     </ThemeContext.Consumer>
   );
 };

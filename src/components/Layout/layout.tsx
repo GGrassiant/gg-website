@@ -1,10 +1,11 @@
 // Libs
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import { useIntl } from 'react-intl';
 
 // Utils
 import { Location } from '@reach/router';
-import ThemeContext from '../../context/ThemeContext';
+import { ThemeContext, ThemeContextState } from '../../context/ThemeContext';
 import { SiteMetaData } from '../../../site';
 
 // Styles
@@ -22,6 +23,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = (props) => {
   const { children, locale, banner = false, fullHeight = false } = props;
+  const intl = useIntl();
   const data: SiteMetaData = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -34,8 +36,8 @@ const Layout: React.FC<LayoutProps> = (props) => {
 
   return (
     <ThemeContext.Consumer>
-      {(theme) => (
-        <div className={theme.dark ? 'dark' : 'light'}>
+      {(theme: ThemeContextState) => (
+        <>
           <Location>
             {(location) => (
               <Header
@@ -45,38 +47,35 @@ const Layout: React.FC<LayoutProps> = (props) => {
               />
             )}
           </Location>
-          {banner && (
+          <div className="page-wrapper">
+            {banner && (
+              <div className="banner">
+                {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
+                <p className="banner-content">
+                  {intl.formatMessage({
+                    id:
+                      'Under construction ¯\\_(ツ)_/¯, come back soon fren 🐶',
+                  })}
+                </p>
+              </div>
+            )}
             <div
-              style={{
-                width: '100%',
-                height: '100px',
-                fontFamily: 'Piazzolla',
-                color: '#B8B8B8',
-                fontWeight: 300,
-                fontSize: '50px',
-                lineHeight: '99.4px',
-                background: 'transparent',
-              }}
+              className={`content-wrapper ${
+                // eslint-disable-next-line no-nested-ternary
+                fullHeight
+                  ? banner
+                    ? 'with-banner-full-height'
+                    : 'full-height'
+                  : ''
+              }`}
             >
-              Sliding banner lolz les copains le fun dis donc
+              <main className="full-height-main">
+                {/* @ts-ignore */}
+                {React.cloneElement(children, { theme: theme.colorMode })}
+              </main>
             </div>
-          )}
-          <div
-            className={`content-wrapper ${
-              // eslint-disable-next-line no-nested-ternary
-              fullHeight
-                ? banner
-                  ? 'with-banner-full-height'
-                  : 'full-height'
-                : ''
-            }`}
-          >
-            <main className="full-height-main">
-              {/* @ts-ignore */}
-              {React.cloneElement(children, { darkTheme: theme.dark })}
-            </main>
           </div>
-        </div>
+        </>
       )}
     </ThemeContext.Consumer>
   );

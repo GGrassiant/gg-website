@@ -1,16 +1,23 @@
 @import 'src/utils/variables';
 
-// Styles
 .headerWrapper {
+  position: absolute;
+  top: 0;
+  left: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 5rem;
-  width: calc(100% - 4rem);
-  max-width: var(--breakpoint-xl);
-  margin: 0 auto;
+  height: $header-height;
+  width: calc(100% - #{$layout-offset});
+  max-width: $breakpoint-xl;
   font-family: var(--default-content-font);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: $header-border solid var(--color-divider);
+
+  // TODO: Why + 0.25rem??? ¯\_(ツ)_/¯
+  @media (min-width: $breakpoint-xl + $layout-offset + 0.25rem) {
+    left: 0;
+    margin-left: calc((100vw - #{$breakpoint-xl}) * 0.5);
+  }
 
   &__gg {
     display: flex;
@@ -20,11 +27,12 @@
     width: 5rem;
 
     p {
+      margin: 0;
       font-family: var(--default-content-font);
       font-size: 1rem;
       font-weight: var(--font-weight-medium);
       line-height: 1rem;
-      margin: 0;
+      color: var(--color-reversetext);
 
       &:first-of-type {
         text-align: right;
@@ -43,18 +51,20 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+    color: var(--color-reversetext);
 
     li {
       position: relative;
       display: flex;
       align-items: center;
+      margin: 0 2rem 0 0;
       font-weight: var(--font-weight-regular);
       line-height: 1rem;
-      margin: 0 2rem 0 0;
       text-transform: capitalize;
 
       &.lang__wrapper {
         width: 1.3rem;
+        margin: 0 0.5rem 0 0;
       }
     }
 
@@ -62,6 +72,7 @@
       position: relative;
       text-decoration: none;
       margin: 0;
+      color: var(--color-reversetext);
 
       &:not(.lang):before {
         content: '';
@@ -81,13 +92,13 @@
           top: 1.5rem;
           left: 0;
           width: 100%;
-          border-bottom: 1px solid var(--main-light);
+          border-bottom: 1px solid var(--color-reversetext);
         }
       }
 
       &:hover:before {
         width: 100%;
-        border-bottom: 1px solid var(--main-light);
+        border-bottom: 1px solid var(--color-reversetext);
       }
     }
     .projects__number {

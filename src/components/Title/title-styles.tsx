@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 // Utils
-import { breakPoints } from '../../utils/typescript.utils';
+import { breakPoints } from '../../utils/constants';
 
 interface TitleWrapperProps {
   readonly weight: string;
@@ -42,10 +42,18 @@ export const TitleWrapperXL = styled(TitleWrapper)<TitleWrapperProps>`
 TitleWrapperXL.displayName = 'TitleWrapperXL';
 
 export const TitleWrapperXXL = styled(TitleWrapper)<TitleWrapperProps>`
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-medium);
+
+  @media (min-width: ${breakPoints.breakPointSm}) {
+    font-size: var(--font-size-large);
+  }
+
+  @media (min-width: ${breakPoints.breakPointMd}) {
+    font-size: var(--font-size-very-large);
+  }
 
   @media (min-width: ${breakPoints.breakPointLg}) {
-    font-size: var(--font-size-xxl);
+    font-size: var(--font-size-xl);
   }
 `;
 TitleWrapperXXL.displayName = 'TitleWrapperXXL';

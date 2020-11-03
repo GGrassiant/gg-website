@@ -1,66 +1,77 @@
-// Libs
-import React, { Component, createContext } from 'react';
+import React, { useEffect, createContext, Context } from 'react';
+
+// Utils
+import {
+  COLOR_MODE_KEY,
+  COLORS,
+  INITIAL_COLOR_MODE_CSS_PROP,
+} from '../utils/constants';
 
 interface ThemeProps {
   children: Array<React.ReactElement>;
 }
 
 interface BackgroundMode {
-  dark: boolean;
+  colorMode: string | undefined;
 }
 
-interface DefaultState extends BackgroundMode {
-  toggleDark: () => void;
+export interface ThemeContextState extends BackgroundMode {
+  setColorMode: (arg: string) => void;
 }
 
-const defaultState: DefaultState = {
-  dark: false,
-  toggleDark: () => null,
+const defaultState: ThemeContextState = {
+  colorMode: 'light',
+  setColorMode: (colorMode = 'light') => console.log(colorMode),
 };
-const ThemeContext: React.Context<DefaultState> = createContext(defaultState);
 
-class ThemeProvider extends Component<ThemeProps, BackgroundMode> {
-  constructor(props: ThemeProps) {
-    super(props);
-    this.state = {
-      dark: false,
-    };
-  }
+export const ThemeContext: Context<ThemeContextState> = createContext(
+  defaultState,
+);
 
-  componentDidMount(): void {
-    // Getting dark mode value from localStorage
-    const lsDark = JSON.parse(localStorage.getItem('dark') as string);
-    if (lsDark) {
-      this.setState({ dark: lsDark });
-    } else {
-      this.setState({ dark: false });
-    }
-  }
+export const ThemeProvider: React.FC<ThemeProps> = ({ children }) => {
+  const [colorMode, rawSetColorMode] = React.useState<
+    BackgroundMode['colorMode']
+  >(undefined);
 
-  toggleDark = (): void => {
-    const { state } = this;
-    const dark = !state.dark;
-    localStorage.setItem('dark', JSON.stringify(dark));
-    this.setState({ dark });
-  };
+  useEffect(() => {
+    const root = window.document.documentElement;
 
-  render(): React.ReactElement {
-    const { children } = this.props;
-    const { dark } = this.state;
-    const { toggleDark } = this;
-    return (
-      <ThemeContext.Provider
-        value={{
-          dark,
-          toggleDark,
-        }}
-      >
-        {children}
-      </ThemeContext.Provider>
+    // Because colors matter so much for the initial page view, we're
+    // doing a lot of the work in gatsby-ssr. That way it can happen before
+    // the React component tree mounts.
+    const initialColorValue = root.style.getPropertyValue(
+      INITIAL_COLOR_MODE_CSS_PROP,
     );
-  }
-}
 
-export default ThemeContext;
+    rawSetColorMode(initialColorValue);
+  }, []);
 
-export { ThemeProvider };
+  const contextValue = React.useMemo(() => {
+    function setColorMode(newValue: string) {
+      const root = window.document.documentElement;
+
+      localStorage.setItem(COLOR_MODE_KEY, newValue);
+
+      Object.entries(COLORS).forEach(([name, colorByTheme]) => {
+        const cssVarName = `--color-${name}`;
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        root.style.setProperty(cssVarName, colorByTheme[newValue]);
+      });
+
+      rawSetColorMode(newValue);
+    }
+
+    return {
+      colorMode,
+      setColorMode,
+    };
+  }, [colorMode, rawSetColorMode]);
+
+  return (
+    <ThemeContext.Provider value={contextValue}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};

@@ -10,7 +10,6 @@ import * as langsSettings from '../utils/languages';
 
 // Utils
 import styles from './index.module.scss';
-import { IndexProps } from '../../pages';
 
 // Components
 import withLayout from '../Hoc/PageWrapper/WithLayout';
@@ -36,9 +35,8 @@ const getRedirectLanguage = (): string => {
   }
 };
 
-const IndexPage: React.FC<IndexProps> = (props) => {
+const IndexPage: React.FC = () => {
   const intl = useIntl();
-  const { darkTheme } = props;
 
   useEffect((): void => {
     const urlLang: string = getRedirectLanguage();
@@ -53,29 +51,23 @@ const IndexPage: React.FC<IndexProps> = (props) => {
       <SEO title="Home" />
       <div className={styles.home__title}>
         <Title size="xxl" weight="semibold">
-          {intl.formatMessage({ id: 'I am Software' })}
+          {intl.formatMessage({ id: 'I am a Software' })}
         </Title>
         <Title size="xxl" weight="semibold">
           {intl.formatMessage({ id: 'Developer' })}
         </Title>
-        <CTA theme={darkTheme ? 'dark' : 'light'} link="projects">
+        <CTA link="projects">
           {intl.formatMessage({ id: 'Explore' })}
           <br />
           {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
         </CTA>
       </div>
       <div className={styles.home__links}>
-        <Link
-          theme={darkTheme ? 'dark' : 'light'}
-          href="https://www.linkedin.com/in/guillaumegrassiant/"
-        >
+        <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
           LinkedIn
           <BsBoxArrowUpRight />
         </Link>
-        <Link
-          theme={darkTheme ? 'dark' : 'light'}
-          href="https://github.com/GGrassiant"
-        >
+        <Link href="https://github.com/GGrassiant">
           Github
           <BsBoxArrowUpRight />
         </Link>

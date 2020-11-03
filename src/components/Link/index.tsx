@@ -8,9 +8,9 @@ import { LinkProps } from './index-types';
 import { LinkWrapper } from './link-styles';
 
 const Link: React.FC<LinkProps> = (props) => {
-  const { children, theme = 'dark', href } = props;
+  const { children, href } = props;
   return (
-    <LinkWrapper theme={theme} target="_blank" href={href}>
+    <LinkWrapper target="_blank" href={href}>
       {children}
     </LinkWrapper>
   );
