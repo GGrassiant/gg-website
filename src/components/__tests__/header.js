@@ -32,15 +32,15 @@ describe('<Header>', () => {
           )}
         </Location>,
       );
-      expect(getByText(container, '☾')).toBeInTheDocument();
+      expect(getByText(container, '🌝')).toBeInTheDocument();
       fireEvent(
-        getByText(container, '☾'),
+        getByText(container, '🌝'),
         new MouseEvent('click', {
           bubbles: true,
           cancelable: true,
         }),
       );
-      expect(getByText(container, '☀')).toBeInTheDocument();
+      expect(getByText(container, '🌞')).toBeInTheDocument();
     });
 
     test('language toggler fr', () => {
