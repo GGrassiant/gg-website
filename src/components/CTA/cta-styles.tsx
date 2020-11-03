@@ -1,54 +1,37 @@
 // Libs
 import styled from 'styled-components';
-import { Property } from 'csstype';
 
-interface CTAWrapperProps {
-  readonly size: string;
-  readonly theme: string;
-}
+// Utils
+import { breakPoints } from '../../utils/constants';
 
-const customSize: { [key: string]: Property.Height } = {
-  large: '200px',
-  medium: '175px',
-  small: '100px',
-};
-
-// Make sure these values are half of the ones above
-// for the same value/pair
-const customRadius: { [key: string]: Property.BorderRadius } = {
-  large: '100px',
-  medium: '87.5px',
-  small: '50px',
-};
-
-const customBackgroundColor: { [key: string]: Property.Color } = {
-  dark: 'var(--main-light)',
-  light: 'var(--main-dark)',
-};
-
-const customColor: { [key: string]: Property.Color } = {
-  dark: 'var(--main-dark)',
-  light: 'var(--main-light)',
-};
-
-export const CTAWrapper = styled.div<CTAWrapperProps>`
+export const CTAWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: ${(props) => customSize[props.size]};
-  width: ${(props) => customSize[props.size]};
-  border-radius: ${(props) => customRadius[props.size]};
-  background-color: ${(props) => customBackgroundColor[props.theme]};
+  height: 8rem;
+  width: 8rem;
+  border-radius: 4rem;
+  background-color: var(--color-reversebackground);
   transition: all var(--default-transition-time) ease-in;
+
+  @media (min-width: ${breakPoints.breakPointSm}) {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 5rem;
+  }
 
   p {
     margin-bottom: 0;
     font-family: var(--default-title-font);
     font-weight: var(--font-weight-medium);
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-normal);
     line-height: 26px;
-    color: ${(props) => customColor[props.theme]};
+    color: var(--color-text);
     text-align: center;
+
+    @media (min-width: ${breakPoints.breakPointSm}) {
+      font-size: var(--font-size-bigger);
+    }
 
     svg {
       display: block;

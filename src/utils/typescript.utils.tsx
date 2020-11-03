@@ -9,12 +9,3 @@ export const ensure = <T, _>(
 
   return argument;
 };
-
-// For styled components
-export const breakPoints = {
-  breakPointSm: '600px',
-  breakPointMd: '960px',
-  breakPointLg: '1280px',
-  breakPointXl: '1440px',
-  breakPointMediumHeight: '700px',
-};

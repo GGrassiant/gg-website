@@ -20,28 +20,28 @@ const Title: React.FC<TitleProps> = (props) => {
   switch (size) {
     case 'small':
       wrapper = (
-        <TitleWrapperSmall weight={weight}>{children} </TitleWrapperSmall>
+        <TitleWrapperSmall weight={weight}>{children}</TitleWrapperSmall>
       );
       break;
     case 'normal':
       wrapper = (
-        <TitleWrapperNormal weight={weight}>{children} </TitleWrapperNormal>
+        <TitleWrapperNormal weight={weight}>{children}</TitleWrapperNormal>
       );
       break;
     case 'l':
       wrapper = (
-        <TitleWrapperLarge weight={weight}>{children} </TitleWrapperLarge>
+        <TitleWrapperLarge weight={weight}>{children}</TitleWrapperLarge>
       );
       break;
     case 'xl':
-      wrapper = <TitleWrapperXL weight={weight}>{children} </TitleWrapperXL>;
+      wrapper = <TitleWrapperXL weight={weight}>{children}</TitleWrapperXL>;
       break;
     case 'xxl':
-      wrapper = <TitleWrapperXXL weight={weight}>{children} </TitleWrapperXXL>;
+      wrapper = <TitleWrapperXXL weight={weight}>{children}</TitleWrapperXXL>;
       break;
     default:
       wrapper = (
-        <TitleWrapperNormal weight={weight}>{children} </TitleWrapperNormal>
+        <TitleWrapperNormal weight={weight}>{children}</TitleWrapperNormal>
       );
   }
 

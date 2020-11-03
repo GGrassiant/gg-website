@@ -9,7 +9,3 @@ export interface ProjectPageComponentProps {
     contentfulProject: ContentfulProject;
   };
 }
-
-export interface IndexProps {
-  darkTheme: boolean;
-}

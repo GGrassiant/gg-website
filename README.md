@@ -27,3 +27,7 @@ When adding a route don't forget to edit:
 
 - siteMetaData
 - site.d.ts 
+
+## Articles I used so far:
+- Josh Comeau: [Dark Mode](https://joshwcomeau.com/gatsby/dark-mode/) 
+- [css variables styled components](https://ronvalstar.nl/react-styled-components-and-sass-less-variables)

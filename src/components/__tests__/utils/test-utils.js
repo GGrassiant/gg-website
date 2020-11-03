@@ -3,15 +3,16 @@ import React, { useState } from 'react';
 import { render } from '@testing-library/react';
 
 // Utils
-import ThemeContext from '../../../context/ThemeContext';
+import { ThemeContext } from '../../../context/ThemeContext';
 
 const AllTheProviders = ({ children }) => {
-  const [dark, setDark] = useState(true);
+  const [colorMode, setColorModeHandler] = useState(undefined);
+  const setColorMode = (value) => setColorModeHandler(value);
   return (
     <ThemeContext.Provider
       value={{
-        dark,
-        toggleDark: () => setDark(!dark),
+        colorMode,
+        setColorMode,
       }}
     >
       {children}

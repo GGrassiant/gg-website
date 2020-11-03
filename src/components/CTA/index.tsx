@@ -11,14 +11,14 @@ import { ensure } from '../../utils/typescript.utils';
 import { CTAWrapper } from './cta-styles';
 
 const CTA: React.FC<CTAProps> = (props) => {
-  const { size = 'medium', theme = 'dark', link, children } = props;
+  const { link, children } = props;
   let hrefUrl;
   if (link) {
     hrefUrl = ensure(siteMetaData.menu.find((el) => el.label === link)).slug;
   }
 
   return (
-    <CTAWrapper size={size} theme={theme}>
+    <CTAWrapper>
       {link ? (
         <LocalizedLink to={hrefUrl}>
           <p>{children}</p>
