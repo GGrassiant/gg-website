@@ -59,12 +59,15 @@
       align-items: center;
       margin: 0 2rem 0 0;
       font-weight: var(--font-weight-regular);
-      line-height: 1rem;
       text-transform: capitalize;
 
       &.lang__wrapper {
         width: 1.3rem;
         margin: 0 0.5rem 0 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
       }
     }
 

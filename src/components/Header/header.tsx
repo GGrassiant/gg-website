@@ -136,18 +136,32 @@ const Header: React.FC<HeaderProps> = (props) => {
             <ul className={styles.headerWrapper__menu}>
               {getMenuItems(pathname, locale, intl, numberOfProjects)}
               <SelectLanguage pathname={pathname} locale={locale} />
-              <button
-                className="dark-switcher"
-                onClick={toggleTheme}
-                onKeyDown={toggleTheme}
-                type="button"
-              >
-                {theme.colorMode === 'dark' ? (
-                  <span className="dark-switcher__toggle">☀</span>
-                ) : (
-                  <span>☾</span>
-                )}
-              </button>
+              <li>
+                <button
+                  className="dark-switcher"
+                  onClick={toggleTheme}
+                  onKeyDown={toggleTheme}
+                  type="button"
+                >
+                  {theme.colorMode === 'dark' ? (
+                    <span
+                      role="img"
+                      aria-label="Sun"
+                      className="dark-switcher__toggle"
+                    >
+                      🌞
+                    </span>
+                  ) : (
+                    <span
+                      role="img"
+                      aria-label="Moon"
+                      className="dark-switcher__toggle"
+                    >
+                      🌝
+                    </span>
+                  )}
+                </button>
+              </li>
             </ul>
           </header>
         );
