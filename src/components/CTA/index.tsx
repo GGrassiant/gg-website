@@ -13,6 +13,7 @@ import { CTAWrapper } from './cta-styles';
 const CTA: React.FC<CTAProps> = (props) => {
   const { link, children } = props;
   let hrefUrl;
+
   if (link) {
     hrefUrl = ensure(siteMetaData.menu.find((el) => el.label === link)).slug;
   }

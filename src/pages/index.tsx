@@ -8,7 +8,7 @@ import { useIntl } from 'react-intl';
 // Utils
 import * as langsSettings from '../utils/languages';
 
-// Utils
+// Styles
 import styles from './index.module.scss';
 
 // Components
