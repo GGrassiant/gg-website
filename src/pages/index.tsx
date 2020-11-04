@@ -71,6 +71,10 @@ const IndexPage: React.FC = () => {
           Github
           <BsBoxArrowUpRight />
         </Link>
+        <Link href="https://drive.google.com/file/d/1FWqspNFcz4xOw326Uckna7Ciam8erI_-/view?usp=sharing">
+          {intl.formatMessage({ id: 'Resume' })}
+          <BsBoxArrowUpRight />
+        </Link>
       </div>
     </div>
   );
