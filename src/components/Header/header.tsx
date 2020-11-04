@@ -143,7 +143,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                   onKeyDown={toggleTheme}
                   type="button"
                 >
-                  {theme.colorMode === 'dark' ? (
+                  {theme.colorMode && theme.colorMode === 'dark' ? (
                     <span
                       role="img"
                       aria-label="Sun"
