@@ -102,8 +102,6 @@ const getMenuItems = (
 
 const Header: React.FC<HeaderProps> = (props) => {
   const { colorMode, setColorMode } = useContext(ThemeContext);
-
-  console.log('colorMode', colorMode);
   const {
     locale,
     location: {
@@ -122,27 +120,17 @@ const Header: React.FC<HeaderProps> = (props) => {
     setColorMode(colorMode === 'dark' ? 'light' : 'dark');
   };
 
-  const toggleElement = () => {
-    if (!colorMode) {
-      return;
-    }
-
-    if (colorMode === 'dark') {
-      // eslint-disable-next-line consistent-return
-      return (
-        <span role="img" aria-label="Sun" className="dark-switcher__toggle">
-          🌞
-        </span>
-      );
-    }
-
-    // eslint-disable-next-line consistent-return
-    return (
-      <span role="img" aria-label="Moon" className="dark-switcher__toggle">
-        🌝
-      </span>
-    );
-  };
+  const toggleElement = () => (
+    <span
+      role="img"
+      aria-label="toggle"
+      className={`dark-switcher__toggle ${
+        !colorMode && 'dark-switcher__toggle--no-display'
+      }`}
+    >
+      {colorMode === 'dark' ? '🌞' : '🌝'}
+    </span>
+  );
 
   return (
     <header className={styles.headerWrapper}>

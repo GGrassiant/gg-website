@@ -59,6 +59,11 @@ a:hover {
 
   &__toggle {
     font-size: 2rem;
+    transition: opacity 0.3s ease-in;
+
+    &--no-display {
+      opacity: 0;
+    }
   }
 }
 
