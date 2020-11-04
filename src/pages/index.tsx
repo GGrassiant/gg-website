@@ -55,12 +55,12 @@ const IndexPage: React.FC = () => {
         </Title>
         <Title size="xxl" weight="semibold">
           {intl.formatMessage({ id: 'Developer' })}
+          <CTA link="projects">
+            {intl.formatMessage({ id: 'Explore' })}
+            <br />
+            {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
+          </CTA>
         </Title>
-        <CTA link="projects">
-          {intl.formatMessage({ id: 'Explore' })}
-          <br />
-          {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
-        </CTA>
       </div>
       <div className={styles.home__links}>
         <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
