@@ -38,7 +38,7 @@
     "url": "https://github.com/GGrassiant/gg-website"
   },
   "dependencies": {
-    "babel-jest": "^26.6.2",
+    "babel-jest": "^26.6.3",
     "babel-plugin-styled-components": "^1.11.1",
     "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
