@@ -1,10 +1,10 @@
 // Libs
-import React from 'react';
+import React, { useContext } from 'react';
 import { IntlShape, useIntl } from 'react-intl';
 
 // Utils
 import { LocalizedLink } from 'gatsby-theme-i18n';
-import { ThemeContext, ThemeContextState } from '../../context/ThemeContext';
+import { ThemeContext } from '../../context/ThemeContext';
 import * as langsSettings from '../../utils/languages';
 import * as siteMetaData from '../../utils/siteMetaData';
 import { Menu } from '../../../site';
@@ -101,6 +101,9 @@ const getMenuItems = (
 };
 
 const Header: React.FC<HeaderProps> = (props) => {
+  const { colorMode, setColorMode } = useContext(ThemeContext);
+
+  console.log('colorMode', colorMode);
   const {
     locale,
     location: {
@@ -115,58 +118,59 @@ const Header: React.FC<HeaderProps> = (props) => {
 
   const intl = useIntl();
 
+  const toggleTheme = () => {
+    setColorMode(colorMode === 'dark' ? 'light' : 'dark');
+  };
+
+  const toggleElement = () => {
+    if (!colorMode) {
+      return;
+    }
+
+    if (colorMode === 'dark') {
+      // eslint-disable-next-line consistent-return
+      return (
+        <span role="img" aria-label="Sun" className="dark-switcher__toggle">
+          🌞
+        </span>
+      );
+    }
+
+    // eslint-disable-next-line consistent-return
+    return (
+      <span role="img" aria-label="Moon" className="dark-switcher__toggle">
+        🌝
+      </span>
+    );
+  };
+
   return (
-    <ThemeContext.Consumer>
-      {(theme: ThemeContextState) => {
-        const toggleTheme = () => {
-          theme.setColorMode(theme.colorMode === 'dark' ? 'light' : 'dark');
-        };
-        return (
-          <header className={styles.headerWrapper}>
-            <h1 className={styles.headerWrapper__gg}>
-              <LocalizedLink
-                to="/"
-                locale={locale}
-                className={styles.headerWrapper__logo}
-              >
-                <p>Guillaume</p>
-                <p>Grassiant</p>
-              </LocalizedLink>
-            </h1>
-            <ul className={styles.headerWrapper__menu}>
-              {getMenuItems(pathname, locale, intl, numberOfProjects)}
-              <SelectLanguage pathname={pathname} locale={locale} />
-              <li>
-                <button
-                  className="dark-switcher"
-                  onClick={toggleTheme}
-                  onKeyDown={toggleTheme}
-                  type="button"
-                >
-                  {theme.colorMode && theme.colorMode === 'dark' ? (
-                    <span
-                      role="img"
-                      aria-label="Sun"
-                      className="dark-switcher__toggle"
-                    >
-                      🌞
-                    </span>
-                  ) : (
-                    <span
-                      role="img"
-                      aria-label="Moon"
-                      className="dark-switcher__toggle"
-                    >
-                      🌝
-                    </span>
-                  )}
-                </button>
-              </li>
-            </ul>
-          </header>
-        );
-      }}
-    </ThemeContext.Consumer>
+    <header className={styles.headerWrapper}>
+      <h1 className={styles.headerWrapper__gg}>
+        <LocalizedLink
+          to="/"
+          locale={locale}
+          className={styles.headerWrapper__logo}
+        >
+          <p>Guillaume</p>
+          <p>Grassiant</p>
+        </LocalizedLink>
+      </h1>
+      <ul className={styles.headerWrapper__menu}>
+        {getMenuItems(pathname, locale, intl, numberOfProjects)}
+        <SelectLanguage pathname={pathname} locale={locale} />
+        <li>
+          <button
+            className="dark-switcher"
+            onClick={toggleTheme}
+            onKeyDown={toggleTheme}
+            type="button"
+          >
+            {toggleElement()}
+          </button>
+        </li>
+      </ul>
+    </header>
   );
 };
 
