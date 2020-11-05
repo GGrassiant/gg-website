@@ -140,11 +140,11 @@ a:hover {
   }
 
   &.with-banner-full-height {
-    @media (max-height: 1300px) {
+    @media (max-height: $breakpoint-large-height) {
       padding-top: $header-height;
     }
 
-    @media (max-height: 668px) {
+    @media (max-height: $breakpoint-small-height) {
       padding-top: calc(#{$header-height + 0.5 * $banner-height-small});
     }
 

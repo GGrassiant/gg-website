@@ -5,7 +5,6 @@ import { useIntl } from 'react-intl';
 
 // Utils
 import { Location } from '@reach/router';
-import { ThemeContext, ThemeContextState } from '../../context/ThemeContext';
 import { SiteMetaData } from '../../../site';
 
 // Styles
@@ -35,49 +34,40 @@ const Layout: React.FC<LayoutProps> = (props) => {
   `);
 
   return (
-    <ThemeContext.Consumer>
-      {(theme: ThemeContextState) => (
-        <>
-          <Location>
-            {(location) => (
-              <Header
-                siteTitle={data.site.siteMetadata.title}
-                location={location}
-                locale={locale}
-              />
-            )}
-          </Location>
-          <div className="page-wrapper">
-            {banner && (
-              <div className="banner">
-                {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
-                <p className="banner-content">
-                  {intl.formatMessage({
-                    id:
-                      'Under construction ¯\\_(ツ)_/¯, come back soon fren 🐶',
-                  })}
-                </p>
-              </div>
-            )}
-            <div
-              className={`content-wrapper ${
-                // eslint-disable-next-line no-nested-ternary
-                fullHeight
-                  ? banner
-                    ? 'with-banner-full-height'
-                    : 'full-height'
-                  : ''
-              }`}
-            >
-              <main className="full-height-main">
-                {/* @ts-ignore */}
-                {React.cloneElement(children, { theme: theme.colorMode })}
-              </main>
-            </div>
+    <>
+      <Location>
+        {(location) => (
+          <Header
+            siteTitle={data.site.siteMetadata.title}
+            location={location}
+            locale={locale}
+          />
+        )}
+      </Location>
+      <div className="page-wrapper">
+        {banner && (
+          <div className="banner">
+            <p className="banner-content">
+              {intl.formatMessage({
+                id: 'Under construction ¯\\_(ツ)_/¯, come back soon fren 🐶',
+              })}
+            </p>
           </div>
-        </>
-      )}
-    </ThemeContext.Consumer>
+        )}
+        <div
+          className={`content-wrapper ${
+            // eslint-disable-next-line no-nested-ternary
+            fullHeight
+              ? banner
+                ? 'with-banner-full-height'
+                : 'full-height'
+              : ''
+          }`}
+        >
+          <main className="full-height-main">{children}</main>
+        </div>
+      </div>
+    </>
   );
 };
 
