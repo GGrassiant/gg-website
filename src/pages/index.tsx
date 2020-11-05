@@ -51,10 +51,10 @@ const IndexPage: React.FC = () => {
       <SEO title="Home" />
       <div className={styles.home__title}>
         <Title size="xxl" weight="semibold">
-          {intl.formatMessage({ id: 'I am a Software' })}
+          <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
         </Title>
         <Title size="xxl" weight="semibold">
-          {intl.formatMessage({ id: 'Developer' })}
+          <p>{intl.formatMessage({ id: 'Developer' })}</p>
           <CTA link="projects">
             {intl.formatMessage({ id: 'Explore' })}
             <br />

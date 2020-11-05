@@ -21,17 +21,19 @@
     p {
       text-align: center;
     }
-
-    > p:first-child {
+    // Title with the offset on desktop
+    > div:first-child {
       @media (min-width: $breakpoint-md) {
         text-align: left;
         margin-left: $title-offset;
       }
     }
 
-    > p:last-child {
+    // Title that wraps the CTA
+    > div:last-child {
       position: relative;
 
+      // CTA
       > div {
         cursor: pointer;
         margin: 1rem auto;
@@ -43,6 +45,8 @@
           margin: 0;
         }
 
+        // offset the p according to the svg to center
+        // vertically on last line of the p
         p {
           margin-top: 0.8rem;
 
