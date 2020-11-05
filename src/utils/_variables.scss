@@ -1,13 +1,13 @@
 // If you make modifications to this file, restart your server
 
-// Breakpoints. Styled Components version in the constant.js file
+// Breakpoints. Need scss version for media queries
+// Styled Components version in the constant.js file
 $breakpoint-xsm: 325px; // before that breakpoint: old smartphones such as iphone 5
 $breakpoint-sm: 600px; // start of tablets
 $breakpoint-md: 960px; // start of desktops
 $breakpoint-lg: 1280px;
 $breakpoint-xl: 90rem;
 $breakpoint-small-height: 668px;
-$breakpoint-medium-height: 800px;
 $breakpoint-large-height: 1000px;
 
 // layout variables
