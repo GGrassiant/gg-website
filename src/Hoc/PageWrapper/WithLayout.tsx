@@ -1,5 +1,3 @@
-// TODO: fix 'any' type
-
 // Libs
 import React from 'react';
 

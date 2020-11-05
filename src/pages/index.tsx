@@ -8,7 +8,7 @@ import { useIntl } from 'react-intl';
 // Utils
 import * as langsSettings from '../utils/languages';
 
-// Utils
+// Styles
 import styles from './index.module.scss';
 
 // Components
@@ -51,16 +51,16 @@ const IndexPage: React.FC = () => {
       <SEO title="Home" />
       <div className={styles.home__title}>
         <Title size="xxl" weight="semibold">
-          {intl.formatMessage({ id: 'I am a Software' })}
+          <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
         </Title>
         <Title size="xxl" weight="semibold">
-          {intl.formatMessage({ id: 'Developer' })}
+          <p>{intl.formatMessage({ id: 'Developer' })}</p>
+          <CTA link="projects">
+            {intl.formatMessage({ id: 'Explore' })}
+            <br />
+            {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
+          </CTA>
         </Title>
-        <CTA link="projects">
-          {intl.formatMessage({ id: 'Explore' })}
-          <br />
-          {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
-        </CTA>
       </div>
       <div className={styles.home__links}>
         <Link href="https://www.linkedin.com/in/guillaumegrassiant/">

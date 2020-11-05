@@ -24,7 +24,7 @@ export const CTAWrapper = styled.div`
     margin-bottom: 0;
     font-family: var(--default-title-font);
     font-weight: var(--font-weight-medium);
-    font-size: var(--font-size-normal);
+    font-size: var(--font-size-normal-alt);
     line-height: 26px;
     color: var(--color-text);
     text-align: center;

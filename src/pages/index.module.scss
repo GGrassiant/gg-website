@@ -8,7 +8,6 @@
   width: 100%;
 
   &__title {
-    position: relative;
     flex: 8.5;
     display: flex;
     flex-direction: column;
@@ -22,30 +21,38 @@
     p {
       text-align: center;
     }
-
-    > p:first-child {
+    // Title with the offset on desktop
+    > div:first-child {
       @media (min-width: $breakpoint-md) {
         text-align: left;
         margin-left: $title-offset;
       }
     }
 
-    > div {
-      cursor: pointer;
-      margin-top: 1rem;
+    // Title that wraps the CTA
+    > div:last-child {
+      position: relative;
 
-      @media (min-width: $breakpoint-md) {
-        position: absolute;
-        margin-right: $title-offset;
-        right: 7rem;
-        top: 60%;
-      }
+      // CTA
+      > div {
+        cursor: pointer;
+        margin: 1rem auto;
 
-      p {
-        margin-top: 0.8rem;
+        @media (min-width: $breakpoint-md) {
+          position: absolute;
+          right: -11rem;
+          top: 5rem;
+          margin: 0;
+        }
 
-        svg {
+        // offset the p according to the svg to center
+        // vertically on last line of the p
+        p {
           margin-top: 0.8rem;
+
+          svg {
+            margin-top: 0.8rem;
+          }
         }
       }
     }
