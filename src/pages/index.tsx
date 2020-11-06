@@ -51,7 +51,17 @@ const IndexPage: React.FC = () => {
     <div className={styles.home}>
       <SEO title="Home" />
       <div className={styles.home__title}>
-        <div>Coucou</div>
+        <Title size="xxl" weight="semibold">
+          <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
+        </Title>
+        <Title size="xxl" weight="semibold">
+          <p>{intl.formatMessage({ id: 'Developer' })}</p>
+          <CTA link="projects">
+            {intl.formatMessage({ id: 'Explore' })}
+            <br />
+            {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
+          </CTA>
+        </Title>
       </div>
       <div className={styles.home__links}>
         <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
