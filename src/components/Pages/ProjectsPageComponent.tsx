@@ -45,6 +45,5 @@ const ProjectsPageComponent: React.FC<WithLayoutProps> = (props) => {
 };
 
 const fullHeight = true;
-const banner = false;
 
-export default withLayout(ProjectsPageComponent, banner, fullHeight);
+export default withLayout(ProjectsPageComponent, fullHeight);

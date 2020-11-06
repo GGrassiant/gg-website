@@ -41,7 +41,6 @@ a:hover {
 }
 
 .page-wrapper {
-  //padding-top: $header-height;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -72,62 +71,6 @@ a:hover {
   color: var(--color-text);
 }
 
-@keyframes marquee {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(-100%, 0);
-  }
-}
-
-.banner {
-  position: absolute;
-  top: $header-height;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  width: 100%;
-  height: $banner-height-small;
-  font-family: Piazzolla, serif;
-  color: #b8b8b8;
-  font-weight: 300;
-  font-size: var(--font-size-bigger);
-  background: transparent;
-  overflow: hidden;
-
-  .banner-content {
-    display: inline-block;
-    padding-left: 100%;
-    will-change: transform;
-    animation: marquee 15s linear infinite;
-
-    &:hover {
-      animation-play-state: paused;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .banner {
-      white-space: normal;
-    }
-    .banner .banner-content {
-      animation-iteration-count: 1;
-      animation-duration: 0.01s;
-      padding-left: 0;
-    }
-  }
-
-  @media (min-width: $breakpoint-xsm) {
-    height: $banner-height;
-    font-size: var(--font-size-medium-light);
-  }
-
-  @media (min-width: $breakpoint-sm) {
-    font-size: var(--font-size-medium);
-  }
-}
-
 .content-wrapper {
   width: calc(100% - #{$layout-offset});
   max-width: $breakpoint-xl;
@@ -137,20 +80,6 @@ a:hover {
 
   &.full-height {
     padding-top: $header-height;
-  }
-
-  &.with-banner-full-height {
-    @media (max-height: $breakpoint-large-height) {
-      padding-top: $header-height;
-    }
-
-    @media (max-height: $breakpoint-small-height) {
-      padding-top: calc(#{$header-height + 0.5 * $banner-height-small});
-    }
-
-    @media (min-width: $breakpoint-xsm) and (max-height: 668px) {
-      padding-top: calc(#{$header-height + 0.5 * $banner-height});
-    }
   }
 }
 
