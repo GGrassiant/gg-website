@@ -1,7 +1,9 @@
+/* eslint no-unused-vars: 0 */
 // Libs
 import React from 'react';
 
 // Utils
+import styled from 'styled-components';
 import { TitleProps } from './title-types';
 
 // Styles
@@ -13,39 +15,13 @@ import {
   TitleWrapperSmall,
 } from './title-styles';
 
-const Title: React.FC<TitleProps> = (props) => {
-  const { size = 'normal', weight = 'regular', children } = props;
+const Test = styled.div`
+  font-family: var(--default-title-font);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xl);
+`;
 
-  let wrapper;
-  switch (size) {
-    case 'small':
-      wrapper = (
-        <TitleWrapperSmall weight={weight}>{children}</TitleWrapperSmall>
-      );
-      break;
-    case 'normal':
-      wrapper = (
-        <TitleWrapperNormal weight={weight}>{children}</TitleWrapperNormal>
-      );
-      break;
-    case 'l':
-      wrapper = (
-        <TitleWrapperLarge weight={weight}>{children}</TitleWrapperLarge>
-      );
-      break;
-    case 'xl':
-      wrapper = <TitleWrapperXL weight={weight}>{children}</TitleWrapperXL>;
-      break;
-    case 'xxl':
-      wrapper = <TitleWrapperXXL weight={weight}>{children}</TitleWrapperXXL>;
-      break;
-    default:
-      wrapper = (
-        <TitleWrapperNormal weight={weight}>{children}</TitleWrapperNormal>
-      );
-  }
-
-  return wrapper;
-};
+// eslint-disable-next-line react/destructuring-assignment
+const Title = (props: any) => <Test>{props.children}</Test>;
 
 export default Title;
