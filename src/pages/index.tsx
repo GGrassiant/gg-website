@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: 0 */
 // Libs
 import React, { useEffect } from 'react';
 import { navigate } from 'gatsby';
@@ -50,17 +51,7 @@ const IndexPage: React.FC = () => {
     <div className={styles.home}>
       <SEO title="Home" />
       <div className={styles.home__title}>
-        <Title size="xxl" weight="semibold">
-          <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
-        </Title>
-        <Title size="xxl" weight="semibold">
-          <p>{intl.formatMessage({ id: 'Developer' })}</p>
-          <CTA link="projects">
-            {intl.formatMessage({ id: 'Explore' })}
-            <br />
-            {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
-          </CTA>
-        </Title>
+        <div>Coucou</div>
       </div>
       <div className={styles.home__links}>
         <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
