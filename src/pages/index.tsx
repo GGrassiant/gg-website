@@ -80,7 +80,6 @@ const IndexPage: React.FC = () => {
   );
 };
 
-const bannerPresent = true;
 const fullHeight = true;
 
-export default withLayout(IndexPage, bannerPresent, fullHeight);
+export default withLayout(IndexPage, fullHeight);

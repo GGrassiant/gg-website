@@ -12,6 +12,5 @@ export interface WithLayoutProps {
     };
   };
   locale?: string;
-  banner?: boolean;
   fullHeight?: boolean;
 }
