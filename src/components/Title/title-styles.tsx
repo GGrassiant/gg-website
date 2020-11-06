@@ -41,7 +41,9 @@ export const TitleWrapperXL = styled(TitleWrapper)<TitleWrapperProps>`
 `;
 TitleWrapperXL.displayName = 'TitleWrapperXL';
 
-export const TitleWrapperXXL = styled(TitleWrapper)<TitleWrapperProps>`
+export const TitleWrapperXXL = styled.div<TitleWrapperProps>`
+  font-family: var(--default-title-font);
+  font-weight: ${(props) => customFontWeight[props.weight]};
   font-size: var(--font-size-medium);
 
   @media (min-width: ${breakPoints.breakPointSm}) {

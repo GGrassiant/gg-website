@@ -18,6 +18,7 @@ import SEO from '../components/seo';
 import Title from '../components/Title';
 import CTA from '../components/CTA';
 import Link from '../components/Link';
+import { TitleWrapperXXL } from '../components/Title/title-styles';
 
 const getRedirectLanguage = (): string => {
   if (typeof navigator === 'undefined') {
@@ -51,17 +52,17 @@ const IndexPage: React.FC = () => {
     <div className={styles.home}>
       <SEO title="Home" />
       <div className={styles.home__title}>
-        <div>
+        <TitleWrapperXXL weight="semibold">
           <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
-        </div>
-        <div>
+        </TitleWrapperXXL>
+        <TitleWrapperXXL weight="semibold">
           <p>{intl.formatMessage({ id: 'Developer' })}</p>
           <CTA link="projects">
             {intl.formatMessage({ id: 'Explore' })}
             <br />
             {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
           </CTA>
-        </div>
+        </TitleWrapperXXL>
       </div>
       <div className={styles.home__links}>
         <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
