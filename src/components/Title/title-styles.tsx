@@ -16,7 +16,7 @@ const customFontWeight: { [key: string]: string } = {
 };
 
 export const TitleWrapper = styled.div<TitleWrapperProps>`
-  font-family: var(--default-title-font);
+  font-family: var(--default-content-font);
   font-weight: ${(props) => customFontWeight[props.weight]};
 `;
 TitleWrapper.displayName = 'TitleWrapper';

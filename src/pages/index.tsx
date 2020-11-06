@@ -1,4 +1,3 @@
-/* eslint no-unused-vars: 0 */
 // Libs
 import React, { useEffect } from 'react';
 import { navigate } from 'gatsby';
@@ -51,28 +50,17 @@ const IndexPage: React.FC = () => {
     <div className={styles.home}>
       <SEO title="Home" />
       <div className={styles.home__title}>
-        <div className={styles.home__title__content}>
+        <Title size="xxl" weight="semibold">
           <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
-        </div>
-        <div className={styles.home__title__content}>
+        </Title>
+        <Title size="xxl" weight="semibold">
           <p>{intl.formatMessage({ id: 'Developer' })}</p>
-          {/* <CTA link="projects"> */}
-          {/*  {intl.formatMessage({ id: 'Explore' })} */}
-          {/*  <br /> */}
-          {/*  {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight /> */}
-          {/* </CTA> */}
-        </div>{' '}
-        <div>
-          <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
-        </div>
-        <div>
-          <p>{intl.formatMessage({ id: 'Developer' })}</p>
-          {/* <CTA link="projects"> */}
-          {/*  {intl.formatMessage({ id: 'Explore' })} */}
-          {/*  <br /> */}
-          {/*  {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight /> */}
-          {/* </CTA> */}
-        </div>
+          <CTA link="projects">
+            {intl.formatMessage({ id: 'Explore' })}
+            <br />
+            {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
+          </CTA>
+        </Title>
       </div>
       <div className={styles.home__links}>
         <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
