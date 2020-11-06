@@ -15,6 +15,7 @@ import styles from './index.module.scss';
 // Components
 import withLayout from '../Hoc/PageWrapper/WithLayout';
 import SEO from '../components/seo';
+import Title from '../components/Title';
 import CTA from '../components/CTA';
 import Link from '../components/Link';
 
@@ -50,29 +51,8 @@ const IndexPage: React.FC = () => {
     <div className={styles.home}>
       <SEO title="Home" />
       <div className={styles.home__title}>
-        <div
-          style={{
-            fontFamily: 'Piazzolla',
-            fontWeight: 600,
-            fontSize: '8.5rem',
-          }}
-        >
-          <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
-        </div>
-        <div
-          style={{
-            fontFamily: 'Piazzolla',
-            fontWeight: 600,
-            fontSize: '8.5rem',
-          }}
-        >
-          <p>{intl.formatMessage({ id: 'Developer' })}</p>
-          <CTA link="projects">
-            {intl.formatMessage({ id: 'Explore' })}
-            <br />
-            {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
-          </CTA>
-        </div>
+        <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
+        <p>{intl.formatMessage({ id: 'Developer' })}</p>
       </div>
       <div className={styles.home__links}>
         <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
