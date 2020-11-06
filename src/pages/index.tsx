@@ -61,6 +61,17 @@ const IndexPage: React.FC = () => {
           {/*  <br /> */}
           {/*  {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight /> */}
           {/* </CTA> */}
+        </div>{' '}
+        <div>
+          <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
+        </div>
+        <div>
+          <p>{intl.formatMessage({ id: 'Developer' })}</p>
+          {/* <CTA link="projects"> */}
+          {/*  {intl.formatMessage({ id: 'Explore' })} */}
+          {/*  <br /> */}
+          {/*  {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight /> */}
+          {/* </CTA> */}
         </div>
       </div>
       <div className={styles.home__links}>
