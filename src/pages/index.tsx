@@ -56,11 +56,11 @@ const IndexPage: React.FC = () => {
         </div>
         <div className={styles.home__title__content}>
           <p>{intl.formatMessage({ id: 'Developer' })}</p>
-          <CTA link="projects">
-            {intl.formatMessage({ id: 'Explore' })}
-            <br />
-            {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
-          </CTA>
+          {/* <CTA link="projects"> */}
+          {/*  {intl.formatMessage({ id: 'Explore' })} */}
+          {/*  <br /> */}
+          {/*  {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight /> */}
+          {/* </CTA> */}
         </div>
       </div>
       <div className={styles.home__links}>

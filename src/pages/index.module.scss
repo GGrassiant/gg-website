@@ -60,19 +60,20 @@
     &__content {
       font-family: var(--default-title-font);
       font-weight: var(--font-weight-semi-bold);
-      font-size: var(--font-size-medium);
+      //font-size: var(--font-size-medium);
+      font-size: var(--font-size-xl);
 
-      @media (min-width: $breakpoint-sm) {
-        font-size: var(--font-size-large);
-      }
-
-      @media (min-width: $breakpoint-md) {
-        font-size: var(--font-size-very-large);
-      }
-
-      @media (min-width: $breakpoint-lg) {
-        font-size: var(--font-size-xl);
-      }
+      //@media (min-width: $breakpoint-sm) {
+      //  font-size: var(--font-size-large);
+      //}
+      //
+      //@media (min-width: $breakpoint-md) {
+      //  font-size: var(--font-size-very-large);
+      //}
+      //
+      //@media (min-width: $breakpoint-lg) {
+      //  font-size: var(--font-size-xl);
+      //}
     }
   }
 
