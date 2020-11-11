@@ -1,0 +1,291 @@
+@import '../../utils/variables';
+
+.about {
+  font-family: var(--default-content-font);
+
+  @media (min-height: $breakpoint-md) {
+    padding: 0 9rem;
+  }
+
+  .intro {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    // TODO: make the border bottom a pseudo element
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+
+    @media (min-width: $breakpoint-md) {
+      display: grid;
+      grid-template-columns: 5fr 2fr;
+      height: calc(100vh - 5rem);
+    }
+
+    //@media (min-width: $breakpoint-md) and (min-height: $breakpoint-small-height) {
+    //  height: 750px;
+    //}
+
+    @media (min-width: $breakpoint-lg) and (min-height: $breakpoint-small-height) {
+      height: 600px;
+    }
+
+    .id_wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      order: 2;
+
+      div {
+        text-align: center;
+
+        @media (min-width: $breakpoint-sm) {
+          text-align: left;
+        }
+      }
+
+      .initials {
+        color: #e1e417;
+      }
+
+      .description {
+        width: 80%;
+        padding-top: 1rem;
+        font-size: var(--font-size-normal-alt);
+        line-height: 45px;
+
+        @media (min-width: $breakpoint-md) {
+          text-align: left;
+          margin-left: $title-offset;
+        }
+      }
+    }
+
+    .id_images {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      @media (min-width: $breakpoint-md) {
+        order: 2;
+      }
+
+      .avatar {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto;
+        height: 60%;
+        width: 250px;
+
+        img {
+          border-radius: 50%;
+        }
+      }
+
+      .cta__wrapper {
+        display: none;
+
+        @media (min-width: $breakpoint-md) {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          height: 40%;
+        }
+
+        div {
+          position: relative;
+          cursor: pointer;
+
+          svg {
+            position: absolute;
+            left: 50%;
+            bottom: 15%;
+            transform: translateX(-50%);
+          }
+        }
+      }
+    }
+
+    .cta__wrapper__mobile {
+      order: 3;
+      margin: 1rem auto;
+
+      div {
+        position: relative;
+        cursor: pointer;
+
+        svg {
+          position: absolute;
+          left: 50%;
+          bottom: 20%;
+          transform: translateX(-50%);
+        }
+      }
+
+      @media (min-width: $breakpoint-md) {
+        display: none;
+      }
+    }
+  }
+
+  .skills,
+  .experience {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+
+    @media (min-width: $breakpoint-md) {
+      display: grid;
+      grid-template-columns: minmax(33%, 1fr) 2fr;
+      padding: 2rem 0;
+    }
+
+    &:not(.experience) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  .skills__list {
+    list-style-type: none;
+    padding: 0;
+
+    .skill__item {
+      display: flex;
+      align-items: center;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      font-size: var(--font-size-normal-alt);
+      font-weight: var(--font-weight-regular);
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-of-type {
+        @media (max-width: $breakpoint-md) {
+          border-bottom: none;
+        }
+      }
+
+      svg {
+        background-color: var(--color-reversebackground);
+        margin-right: 1rem;
+        padding: 0.2rem;
+        border-radius: 50%;
+        font-size: var(--font-size-bigger);
+        color: var(--color-text);
+        font-weight: var(--font-weight-medium);
+      }
+    }
+  }
+
+  .experience__content__wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .experience__content {
+      display: flex;
+      align-items: center;
+      height: fit-content;
+      width: 100%;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+      > svg:first-of-type {
+        background-color: var(--color-reversebackground);
+        margin-right: 1rem;
+        padding: 0.4rem;
+        border-radius: 50%;
+        font-size: var(--font-size-bigger);
+        font-weight: var(--font-weight-medium);
+      }
+    }
+  }
+
+  .contact {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 1.5rem 0;
+    text-align: center;
+    background-color: var(--color-reversebackground);
+    color: var(--color-text);
+
+    &__content__wrapper {
+      position: relative;
+      height: calc(100% + 1.5rem);
+      max-height: $breakpoint-x-large-height;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 50%;
+    }
+
+    &__content__arm {
+      position: absolute;
+      width: 10rem;
+      height: 15rem;
+      max-height: 15rem;
+      bottom: 0;
+      right: 0;
+
+      @media (min-width: $breakpoint-xsm) {
+        width: 10rem;
+        height: 18rem;
+        max-height: 18rem;
+      }
+
+      @media (min-width: $breakpoint-sm) {
+        width: 20rem;
+        height: 100%;
+        max-height: 40rem;
+      }
+    }
+
+    &__content__list {
+      padding: 0;
+      list-style: none;
+
+      @media (min-width: $breakpoint-sm) {
+        padding: 0 0 0 1rem;
+      }
+    }
+
+    &__content__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: var(--font-size-default);
+      line-height: 45px;
+
+      @media (min-width: $breakpoint-xsm) {
+        font-size: var(--font-size-normal);
+      }
+
+      @media (min-width: $breakpoint-sm) {
+        font-size: var(--font-size-normal-alt);
+      }
+
+      span {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 1rem;
+        font-size: var(--font-size-normal);
+      }
+
+      a {
+        color: inherit;
+        transition: color 0.3s ease-in;
+
+        &:hover {
+          color: blue;
+        }
+      }
+    }
+  }
+}

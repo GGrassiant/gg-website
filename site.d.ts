@@ -9,6 +9,10 @@ export interface ContentfulProject {
   id: string;
 }
 
+export interface ContentfulDescription {
+  content: string;
+}
+
 /**
  * Metadata coming from Gatsby
  */
@@ -32,4 +36,4 @@ export interface SiteMetaData {
 }
 
 // MENU: Add all new routes to this constant
-export const menuItems = ['projects'] as const;
+export const menuItems = ['projects', 'about'] as const;

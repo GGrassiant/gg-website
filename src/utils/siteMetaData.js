@@ -14,10 +14,12 @@ module.exports = {
     defaultLink: 'https://github.com/ggrassiant',
   },
   sourceCodeLink: 'https://github.com/ggrassiant/gg-website',
-  // MENU: Add all new routes to this constant
+  // MENU: Add all new routes to this constant. The order in the array will be the order in the menu
+  // Don't forget to add translations in the locale files
   menu: [
     { label: 'home', slug: '/' },
     { label: 'projects', slug: '/projects/' },
+    { label: 'about', slug: '/about/' },
   ],
   languages,
   contact: [

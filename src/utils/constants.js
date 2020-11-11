@@ -33,3 +33,12 @@ export const breakPoints = {
 
 export const COLOR_MODE_KEY = 'color-mode';
 export const INITIAL_COLOR_MODE_CSS_PROP = '--initial-color-mode';
+
+export const SKILLS = [
+  { id: 1, skill: 'HTML - CSS - SASS' },
+  { id: 6, skill: 'ES6' },
+  { id: 4, skill: 'React' },
+  { id: 5, skill: 'Redux' },
+  { id: 3, skill: 'Rails' },
+  { id: 2, skill: 'Node' },
+];

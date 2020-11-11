@@ -57,9 +57,19 @@
       position: relative;
       display: flex;
       align-items: center;
-      margin: 0 2rem 0 0;
-      font-weight: var(--font-weight-regular);
+      margin: 0 0.7rem 0 0;
+      font-size: var(--font-size-small);
       text-transform: capitalize;
+
+      @media (min-width: $breakpoint-xsm) {
+        font-size: var(--font-size-normal);
+        font-weight: var(--font-weight-regular);
+        margin: 0 1rem 0 0;
+      }
+
+      @media (min-width: $breakpoint-md) {
+        margin: 0 2rem 0 0;
+      }
 
       &.lang__wrapper {
         width: 1.3rem;
