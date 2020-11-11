@@ -27,6 +27,7 @@ When adding a route don't forget to edit:
 
 - siteMetaData
 - site.d.ts 
+- fr.json and en.json with the route name
 
 ## Articles I used so far:
 - Josh Comeau: [Dark Mode](https://joshwcomeau.com/gatsby/dark-mode/) 

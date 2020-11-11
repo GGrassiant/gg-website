@@ -1,5 +1,5 @@
 // Lib
-import { Edge } from '../../pages';
+import { Edge, DescriptionEdge } from '../../pages';
 
 export interface WithLayoutProps {
   data?: {
@@ -7,6 +7,13 @@ export interface WithLayoutProps {
       group: Array<{
         fieldValue: string;
         edges: Array<Edge>;
+        totalCount: number;
+      }>;
+    };
+    allContentfulDescription: {
+      group: Array<{
+        fieldValue: string;
+        edges: Array<DescriptionEdge>;
         totalCount: number;
       }>;
     };

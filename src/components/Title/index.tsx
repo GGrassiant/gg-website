@@ -9,6 +9,7 @@ import {
   TitleWrapperXXL,
   TitleWrapperXL,
   TitleWrapperLarge,
+  TitleWrapperMedium,
   TitleWrapperNormal,
   TitleWrapperSmall,
 } from './title-styles';
@@ -26,6 +27,11 @@ const Title: React.FC<TitleProps> = (props) => {
     case 'normal':
       wrapper = (
         <TitleWrapperNormal weight={weight}>{children}</TitleWrapperNormal>
+      );
+      break;
+    case 'medium':
+      wrapper = (
+        <TitleWrapperMedium weight={weight}>{children}</TitleWrapperMedium>
       );
       break;
     case 'l':

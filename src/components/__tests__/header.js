@@ -72,7 +72,7 @@ describe('<Header>', () => {
     });
 
     test('render menu', () => {
-      siteMetaData.menu.slice(1).forEach((menuItem, index) => {
+      siteMetaData.menu.slice(1, -1).forEach((menuItem, index) => {
         const projectMenuName = index + 1;
         const projectMenuLink = menuItem.slug;
         const { container } = render(

@@ -31,13 +31,22 @@ export const TitleWrapperNormal = styled(TitleWrapper)<TitleWrapperProps>`
 `;
 TitleWrapperNormal.displayName = 'TitleWrapperNormal';
 
+export const TitleWrapperMedium = styled(TitleWrapper)<TitleWrapperProps>`
+  font-size: var(--font-size-medium-light);
+`;
+TitleWrapperNormal.displayName = 'TitleWrapperMedium';
+
 export const TitleWrapperLarge = styled(TitleWrapper)<TitleWrapperProps>`
   font-size: var(--font-size-large);
 `;
 TitleWrapperLarge.displayName = 'TitleWrapperLarge';
 
 export const TitleWrapperXL = styled(TitleWrapper)<TitleWrapperProps>`
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-large);
+
+  @media (min-width: ${breakPoints.breakPointMd}) {
+    font-size: var(--font-size-very-large);
+  }
 `;
 TitleWrapperXL.displayName = 'TitleWrapperXL';
 

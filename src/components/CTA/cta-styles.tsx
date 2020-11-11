@@ -30,7 +30,7 @@ export const CTAWrapper = styled.div`
     text-align: center;
 
     @media (min-width: ${breakPoints.breakPointSm}) {
-      font-size: var(--font-size-bigger);
+      font-size: var(--font-size-cta);
     }
 
     svg {

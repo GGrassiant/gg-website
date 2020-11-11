@@ -11,7 +11,7 @@ import { ensure } from '../../utils/typescript.utils';
 import { CTAWrapper } from './cta-styles';
 
 const CTA: React.FC<CTAProps> = (props) => {
-  const { link, children } = props;
+  const { link, children, onClick } = props;
   let hrefUrl;
 
   if (link) {
@@ -19,7 +19,7 @@ const CTA: React.FC<CTAProps> = (props) => {
   }
 
   return (
-    <CTAWrapper>
+    <CTAWrapper onClick={onClick}>
       {link ? (
         <LocalizedLink to={hrefUrl}>
           <p>{children}</p>
