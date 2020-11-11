@@ -3,9 +3,9 @@ import React, { useRef } from 'react';
 import { useIntl } from 'react-intl';
 import { AiOutlineArrowDown, AiFillLinkedin } from 'react-icons/ai';
 import { BsBoxArrowUpRight, BsCodeSlash } from 'react-icons/bs';
-import { GrDocumentText } from 'react-icons/gr';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
+import { TiDocumentText } from 'react-icons/ti';
 
 // Utils
 import { WithLayoutProps } from '../../Hoc/hoc.types';
@@ -100,7 +100,7 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
           </Title>
           <div className={styles.experience__content__wrapper}>
             <div className={styles.experience__content}>
-              <GrDocumentText />
+              <TiDocumentText />
               <Link href="https://drive.google.com/file/d/1FWqspNFcz4xOw326Uckna7Ciam8erI_-/view?usp=sharing">
                 {intl.formatMessage({ id: 'Resume' })}
                 <BsBoxArrowUpRight />

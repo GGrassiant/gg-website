@@ -8,6 +8,10 @@ export const COLORS = {
     light: '#2f2d2d', // gray
     dark: '#fff', // white
   },
+  reversetextwithopacity: {
+    light: 'rgba(47, 45, 45, 0.9)',
+    dark: 'rgba(255, 255, 255, 0.9)',
+  },
   background: {
     light: '#fff', // white
     dark: '#2f2d2d', // gray
@@ -19,6 +23,10 @@ export const COLORS = {
   divider: {
     light: 'rgba(47, 45, 45, 0.2)', // gray with opacity
     dark: 'rgba(255, 255, 255, 0.2)', // white with opacity
+  },
+  borderlight: {
+    light: 'rgba(47, 45, 45, 0.3)',
+    dark: 'rgba(255, 255, 255, 0.3)',
   },
 };
 
