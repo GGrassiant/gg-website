@@ -19,7 +19,9 @@ const CTA: React.FC<CTAProps> = (props) => {
   }
 
   return (
-    <CTAWrapper onClick={onClick}>
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    <CTAWrapper onClick={onClick} data-testid="custom-element">
       {link ? (
         <LocalizedLink to={hrefUrl}>
           <p>{children}</p>

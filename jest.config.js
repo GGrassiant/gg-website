@@ -7,6 +7,11 @@ module.exports = {
     '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/__mocks__/file-mock.js',
   },
+  collectCoverageFrom: [
+    'src/**/*.{js,ts,tsx,jsx}',
+    '!src/**/*.types.tsx',
+    '!src/**/*types.tsx',
+  ],
   testPathIgnorePatterns: [
     'node_modules',
     '\\.cache',
