@@ -207,6 +207,7 @@
     text-align: center;
     background-color: var(--color-reversebackground);
     color: var(--color-text);
+    overflow: hidden;
 
     &__content__wrapper {
       position: relative;
@@ -228,7 +229,7 @@
       height: 15rem;
       max-height: 15rem;
       bottom: 0;
-      right: 0;
+      right: 1rem;
 
       @media (min-width: $breakpoint-xsm) {
         width: 10rem;

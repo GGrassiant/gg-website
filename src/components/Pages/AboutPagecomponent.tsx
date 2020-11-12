@@ -23,7 +23,7 @@ import Title from '../Title';
 import Image from '../Image/image';
 import CTA from '../CTA';
 import Link from '../Link';
-import ArmImage from '../Image/arm';
+import rockSVG from '../../images/rock.svg';
 
 const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
   const intl = useIntl();
@@ -116,7 +116,7 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
             </Title>
             <div className={styles.contact__content}>
               <div className={styles.contact__content__arm}>
-                <ArmImage />
+                <img src={rockSVG} alt="rock-sign-hand" />
               </div>
               <ul className={styles.contact__content__list}>
                 <li className={styles.contact__content__item}>
