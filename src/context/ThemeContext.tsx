@@ -19,7 +19,7 @@ export interface ThemeContextState extends BackgroundMode {
   setColorMode: (arg: string) => void;
 }
 
-const defaultState: ThemeContextState = {
+export const defaultState: ThemeContextState = {
   colorMode: undefined,
   setColorMode: (colorMode = 'light') => console.log(colorMode),
 };

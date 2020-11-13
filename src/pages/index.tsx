@@ -18,7 +18,7 @@ import Title from '../components/Title';
 import CTA from '../components/CTA';
 import Link from '../components/Link';
 
-const getRedirectLanguage = (): string => {
+export const getRedirectLanguage = (): string => {
   if (typeof navigator === 'undefined') {
     return `${langsSettings.defaultLangKey}`;
   }

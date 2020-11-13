@@ -32,6 +32,16 @@ describe('<Title>', () => {
       expect(getByText(container, 'Coucou')).toBeInTheDocument();
     });
 
+    test('renders the default props', () => {
+      const wrapper = shallow(
+        <Title weight="regular" size="">
+          Coucou
+        </Title>,
+      );
+
+      expect(wrapper.find(TitleWrapperNormal).prop('weight')).toBe('regular');
+    });
+
     test('renders the theme prop normal', () => {
       const wrapper = shallow(
         <Title size="normal" weight="regular">
