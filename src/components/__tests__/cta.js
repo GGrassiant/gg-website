@@ -23,13 +23,13 @@ describe('<CTA>', () => {
 
     test('renders the link', () => {
       const { container } = render(
-        <CTA size="large" link="projects">
+        <CTA size="large" link="about">
           Click Me
         </CTA>,
       );
       expect(getByText(container, 'Click Me').closest('a')).toHaveAttribute(
         'href',
-        '/projects/',
+        '/about/',
       );
     });
   });
