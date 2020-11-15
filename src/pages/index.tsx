@@ -1,12 +1,13 @@
 // Libs
 import React, { useEffect } from 'react';
-import { navigate } from 'gatsby';
+import { graphql, navigate } from 'gatsby';
 import { AiOutlineArrowRight } from 'react-icons/ai';
-import { BsBoxArrowUpRight } from 'react-icons/bs';
 import { useIntl } from 'react-intl';
 
 // Utils
 import * as langsSettings from '../utils/languages';
+import { ensure } from '../utils/typescript.utils';
+import { Edge } from '../../pages';
 
 // Styles
 import styles from './index.module.scss';
@@ -16,7 +17,7 @@ import withLayout from '../Hoc/PageWrapper/WithLayout';
 import SEO from '../components/seo';
 import Title from '../components/Title';
 import CTA from '../components/CTA';
-import Link from '../components/Link';
+import { WithLayoutProps } from '../Hoc/hoc.types';
 
 export const getRedirectLanguage = (): string => {
   if (typeof navigator === 'undefined') {
@@ -35,8 +36,17 @@ export const getRedirectLanguage = (): string => {
   }
 };
 
-const IndexPage: React.FC = () => {
+const IndexPage: React.FC<Pick<WithLayoutProps, 'data' | 'locale'>> = (
+  props,
+) => {
+  const { data, locale } = props;
   const intl = useIntl();
+
+  const informationElements: Array<Edge> = ensure(
+    data?.allContentfulProject.group.find((lang) => lang.fieldValue === locale),
+  ).edges;
+
+  console.log(informationElements);
 
   useEffect((): void => {
     const urlLang: string = getRedirectLanguage();
@@ -55,30 +65,34 @@ const IndexPage: React.FC = () => {
         </Title>
         <Title size="xxl" weight="semibold">
           <p>{intl.formatMessage({ id: 'Developer' })}</p>
-          <CTA link="about">
-            {intl.formatMessage(
-              {
-                id: 'get to know me',
-              },
-              { breakingLine: <br key="get to know me" /> },
-            )}
-            <AiOutlineArrowRight />
+          <CTA link="">
+            {intl.formatMessage({ id: 'Explore' })}
+            <br />
+            {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
           </CTA>
         </Title>
-      </div>
-      <div className={styles.home__links}>
-        <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
-          LinkedIn
-          <BsBoxArrowUpRight />
-        </Link>
-        <Link href="https://github.com/GGrassiant">
-          Github
-          <BsBoxArrowUpRight />
-        </Link>
       </div>
     </div>
   );
 };
+
+export const query = graphql`
+  query {
+    allContentfulProject {
+      group(field: node_locale) {
+        fieldValue
+        totalCount
+        edges {
+          node {
+            shortDescription
+            slug
+            id
+          }
+        }
+      }
+    }
+  }
+`;
 
 const fullHeight = true;
 
