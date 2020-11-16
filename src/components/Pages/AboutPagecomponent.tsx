@@ -10,7 +10,7 @@ import { TiDocumentText } from 'react-icons/ti';
 // Utils
 import { WithLayoutProps } from '../../Hoc/hoc.types';
 import { DescriptionEdge } from '../../../pages';
-import { ensure } from '../../utils/typescript.utils';
+import { ensure, scrollToRefObject } from '../../utils/typescript.utils';
 import { SKILLS } from '../../utils/constants';
 
 // Styles
@@ -47,14 +47,6 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
     ));
 
   const contactRef = useRef(null);
-  const scrollToRefObject = (ref: React.MutableRefObject<null>) => {
-    window.scrollTo({
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      top: ref?.current?.offsetTop,
-      behavior: 'smooth',
-    });
-  };
   const executeScroll = () => scrollToRefObject(contactRef);
 
   return (

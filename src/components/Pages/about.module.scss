@@ -1,6 +1,7 @@
 @import '../../utils/variables';
 
 .about {
+  padding-top: $header-height;
   font-family: var(--default-content-font);
 
   @media (min-height: $breakpoint-md) {

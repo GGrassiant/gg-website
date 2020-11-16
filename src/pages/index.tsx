@@ -1,13 +1,14 @@
 // Libs
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { graphql, navigate } from 'gatsby';
-import { AiOutlineArrowRight } from 'react-icons/ai';
+import { AiOutlineArrowDown } from 'react-icons/ai';
 import { useIntl } from 'react-intl';
 
 // Utils
 import * as langsSettings from '../utils/languages';
-import { ensure } from '../utils/typescript.utils';
+import { ensure, scrollToRefObject } from '../utils/typescript.utils';
 import { Edge } from '../../pages';
+import { WithLayoutProps } from '../Hoc/hoc.types';
 
 // Styles
 import styles from './index.module.scss';
@@ -17,7 +18,7 @@ import withLayout from '../Hoc/PageWrapper/WithLayout';
 import SEO from '../components/seo';
 import Title from '../components/Title';
 import CTA from '../components/CTA';
-import { WithLayoutProps } from '../Hoc/hoc.types';
+import ProjectCard from '../components/ProjectCard';
 
 export const getRedirectLanguage = (): string => {
   if (typeof navigator === 'undefined') {
@@ -46,7 +47,15 @@ const IndexPage: React.FC<Pick<WithLayoutProps, 'data' | 'locale'>> = (
     data?.allContentfulProject.group.find((lang) => lang.fieldValue === locale),
   ).edges;
 
-  console.log(informationElements);
+  const renderInformation = (): Array<React.ReactElement> =>
+    informationElements.map(
+      (edge): React.ReactElement => (
+        <ProjectCard edge={edge} key={edge.node.id} />
+      ),
+    );
+
+  const projectsRef = useRef(null);
+  const executeScroll = () => scrollToRefObject(projectsRef);
 
   useEffect((): void => {
     const urlLang: string = getRedirectLanguage();
@@ -57,22 +66,28 @@ const IndexPage: React.FC<Pick<WithLayoutProps, 'data' | 'locale'>> = (
   }, []);
 
   return (
-    <div className={styles.home}>
-      <SEO title="Home" />
-      <div className={styles.home__title}>
-        <Title size="xxl" weight="semibold">
-          <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
-        </Title>
-        <Title size="xxl" weight="semibold">
-          <p>{intl.formatMessage({ id: 'Developer' })}</p>
-          <CTA link="">
-            {intl.formatMessage({ id: 'Explore' })}
-            <br />
-            {intl.formatMessage({ id: 'my Projects' })} <AiOutlineArrowRight />
-          </CTA>
-        </Title>
+    <>
+      <div className={styles.home}>
+        <SEO title="Home" />
+        <div className={styles.home__title}>
+          <Title size="xxl" weight="semibold">
+            <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
+          </Title>
+          <Title size="xxl" weight="semibold">
+            <p>{intl.formatMessage({ id: 'Developer' })}</p>
+            <CTA link="" onClick={executeScroll}>
+              {intl.formatMessage({ id: 'Explore' })}
+              <br />
+              {intl.formatMessage({ id: 'my Projects' })}
+              <AiOutlineArrowDown />
+            </CTA>
+          </Title>
+        </div>
       </div>
-    </div>
+      <div className={styles.homeProjectsWrapper} ref={projectsRef}>
+        {renderInformation()}
+      </div>
+    </>
   );
 };
 
@@ -84,9 +99,17 @@ export const query = graphql`
         totalCount
         edges {
           node {
-            shortDescription
+            title
+            mainTech
+            year
             slug
             id
+            mainPicture {
+              id
+              fluid(maxWidth: 500) {
+                ...GatsbyContentfulFluid
+              }
+            }
           }
         }
       }

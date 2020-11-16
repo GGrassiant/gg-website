@@ -7,6 +7,10 @@
   height: 100%;
   width: 100%;
 
+  @media (max-width: $breakpoint-md) {
+    padding-top: $header-height;
+  }
+
   &__title {
     flex: 8.5;
     display: flex;
@@ -80,5 +84,27 @@
       width: 6rem;
       margin-bottom: 2.5rem;
     }
+  }
+}
+
+.homeProjectsWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 1rem;
+  padding: 1rem 0;
+
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  > a:nth-child(even) {
+    margin-top: 20%;
+  }
+
+  a {
+    height: fit-content;
   }
 }

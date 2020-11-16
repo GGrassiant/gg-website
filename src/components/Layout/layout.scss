@@ -77,12 +77,6 @@ a:hover {
   margin: 0 auto;
   background-color: var(--color-background);
   height: 100%;
-
-  &.full-height {
-    @media (max-width: $breakpoint-md) {
-      padding-top: $header-height;
-    }
-  }
 }
 
 .full-height-main {

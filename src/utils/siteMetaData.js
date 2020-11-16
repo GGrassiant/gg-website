@@ -18,6 +18,7 @@ module.exports = {
   // Don't forget to add translations in the locale files
   menu: [
     { label: 'home', slug: '/' },
+    { label: 'projects', slug: '/projects/' },
     { label: 'about', slug: '/about/' },
   ],
   languages,
