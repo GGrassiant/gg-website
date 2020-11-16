@@ -24,9 +24,14 @@ export const ProjectCardWrapper = styled.div`
   > div:nth-child(2) {
     flex: 2;
     display: flex;
-    width: 75%;
-    margin-top: 2rem;
-    margin-bottom: -2rem;
+    margin-top: 1rem;
+    margin-bottom: -1rem;
+
+    @media (min-width: ${breakPoints.breakPointLg}) {
+      width: 75%;
+      margin-top: 2rem;
+      margin-bottom: -2rem;
+    }
   }
 
   > div:nth-child(3) {
@@ -48,10 +53,14 @@ export const ProjectCardHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--font-size-normal-alt);
+  font-size: var(--font-size-default);
   border-bottom: 1px solid black;
 
   span {
     margin-top: 1.2rem;
+
+    @media (min-width: ${breakPoints.breakPointLg}) {
+      font-size: var(--font-size-normal-alt);
+    }
   }
 `;
