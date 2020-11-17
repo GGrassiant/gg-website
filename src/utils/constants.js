@@ -50,3 +50,9 @@ export const SKILLS = [
   { id: 3, skill: 'Rails' },
   { id: 2, skill: 'Node' },
 ];
+
+export const FOOTER_CTA_MESSAGES = [
+  'get coffee',
+  'learn more about me',
+  'start project',
+];

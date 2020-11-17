@@ -5,7 +5,7 @@
   font-family: var(--default-content-font);
 
   @media (min-height: $breakpoint-md) {
-    padding: 0 9rem;
+    padding: $header-height 9rem;
   }
 
   .intro {

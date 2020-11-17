@@ -6,7 +6,11 @@ import { useIntl } from 'react-intl';
 
 // Utils
 import * as langsSettings from '../utils/languages';
-import { ensure, scrollToRefObject } from '../utils/typescript.utils';
+import {
+  ensure,
+  scrollToRefObject,
+  generateRandomFooterCta,
+} from '../utils/typescript.utils';
 import { Edge } from '../../pages';
 import { WithLayoutProps } from '../Hoc/hoc.types';
 
@@ -19,6 +23,7 @@ import SEO from '../components/seo';
 import Title from '../components/Title';
 import CTA from '../components/CTA';
 import ProjectCard from '../components/ProjectCard';
+import LetsConnect from '../components/CTA/footer-cta/LetConnect';
 
 export const getRedirectLanguage = (): string => {
   if (typeof navigator === 'undefined') {
@@ -118,5 +123,9 @@ export const query = graphql`
 `;
 
 const fullHeight = true;
+const ctaContent = {
+  title: generateRandomFooterCta(),
+  component: () => <LetsConnect />,
+};
 
-export default withLayout(IndexPage, fullHeight);
+export default withLayout(IndexPage, fullHeight, ctaContent);

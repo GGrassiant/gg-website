@@ -1,5 +1,6 @@
 // Lib
 import { Edge, DescriptionEdge } from '../../pages';
+import { FooterProps } from '../components/Footer/footer-types';
 
 export interface WithLayoutProps {
   data?: {
@@ -20,4 +21,5 @@ export interface WithLayoutProps {
   };
   locale?: string;
   fullHeight?: boolean;
+  ctaContent?: Pick<FooterProps, 'ctaContent'>;
 }
