@@ -46,4 +46,4 @@ export interface SiteMetaData {
 }
 
 // MENU: Add all new routes to this constant
-export type menuItems = 'about' | 'blog' | '';
+export type menuItems = 'about' | 'blog' | 'contact' | '';

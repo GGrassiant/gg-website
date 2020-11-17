@@ -20,6 +20,7 @@ module.exports = {
     { label: 'home', slug: '/' },
     { label: 'projects', slug: '/projects/' },
     { label: 'about', slug: '/about/' },
+    { label: 'contact', slug: '/contact/' },
   ],
   languages,
   contact: [

@@ -1,6 +1,9 @@
 // Libs
 import styled from 'styled-components';
 
+// Utils
+import { breakPoints } from '../../utils/constants';
+
 export const FooterCtaWrapper = styled.div`
   position: relative;
   display: flex;
@@ -28,5 +31,10 @@ export const FooterCtaWrapper = styled.div`
 
   > div:first-child {
     margin-bottom: 2rem;
+
+    @media (max-width: ${breakPoints.breakPointMd}) {
+      font-size: var(--font-size-bigger);
+      text-align: center;
+    }
   }
 `;

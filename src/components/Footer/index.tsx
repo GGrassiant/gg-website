@@ -26,7 +26,7 @@ const Footer: React.FC<FooterProps> = (props) => {
       )}
       <PermanentFooter>
         <p>Guillaume Grassiant - 2020</p>
-        <div>
+        <div className="links-wrapper">
           <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
             LinkedIn
             <BsBoxArrowUpRight />
