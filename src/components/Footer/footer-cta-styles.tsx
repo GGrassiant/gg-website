@@ -25,4 +25,8 @@ export const FooterCtaWrapper = styled.div`
   a {
     z-index: 10;
   }
+
+  > div:first-child {
+    margin-bottom: 2rem;
+  }
 `;
