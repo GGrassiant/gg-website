@@ -1,16 +1,14 @@
 // Libs
 import React, { useRef } from 'react';
 import { useIntl } from 'react-intl';
-import { AiOutlineArrowDown, AiFillLinkedin } from 'react-icons/ai';
+import { AiOutlineArrowDown } from 'react-icons/ai';
 import { BsBoxArrowUpRight, BsCodeSlash } from 'react-icons/bs';
-import { FaPhoneAlt } from 'react-icons/fa';
-import { MdEmail } from 'react-icons/md';
 import { TiDocumentText } from 'react-icons/ti';
 
 // Utils
 import { WithLayoutProps } from '../../Hoc/hoc.types';
 import { DescriptionEdge } from '../../../pages';
-import { ensure, scrollToRefObject } from '../../utils/typescript.utils';
+import { ensure, generateRandomFooterCta } from '../../utils/typescript.utils';
 import { SKILLS } from '../../utils/constants';
 
 // Styles
@@ -23,7 +21,7 @@ import Title from '../Title';
 import Image from '../Image/image';
 import CTA from '../CTA';
 import Link from '../Link';
-import rockSVG from '../../images/rock.svg';
+import LetsConnect from '../CTA/footer-cta/LetConnect';
 
 const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
   const intl = useIntl();
@@ -46,7 +44,20 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
       </li>
     ));
 
+  const translatedCta = intl.formatMessage(
+    { id: 'get to know me' },
+    { breakingLine: '<br/>' },
+  );
+
   const contactRef = useRef(null);
+  const scrollToRefObject = (ref: React.MutableRefObject<null>) => {
+    window.scrollTo({
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      top: ref?.current?.offsetTop,
+      behavior: 'smooth',
+    });
+  };
   const executeScroll = () => scrollToRefObject(contactRef);
 
   return (
@@ -68,18 +79,19 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
             </div>
             <div className={styles.cta__wrapper}>
               <CTA onClick={executeScroll}>
-                {intl.formatMessage({ id: 'contact-me' })}{' '}
+                <p dangerouslySetInnerHTML={{ __html: translatedCta }} />
                 <AiOutlineArrowDown />
               </CTA>
             </div>
           </div>
           <div className={styles.cta__wrapper__mobile}>
             <CTA onClick={executeScroll}>
-              {intl.formatMessage({ id: 'contact-me' })} <AiOutlineArrowDown />
+              <p dangerouslySetInnerHTML={{ __html: translatedCta }} />
+              <AiOutlineArrowDown />
             </CTA>
           </div>
         </div>
-        <div className={styles.skills}>
+        <div className={styles.skills} ref={contactRef}>
           <Title size="medium" weight="semibold">
             {intl.formatMessage({ id: 'skills' })}
           </Title>
@@ -100,56 +112,15 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
             </div>
           </div>
         </div>
-        <div className={styles.contact} ref={contactRef}>
-          <div className={styles.contact__content__wrapper}>
-            <Title size="medium" weight="semibold">
-              {intl.formatMessage({ id: 'contact-me' })}{' '}
-              {intl.formatMessage({ id: 'now' })}
-            </Title>
-            <div className={styles.contact__content}>
-              <div className={styles.contact__content__arm}>
-                <img src={rockSVG} alt="rock-sign-hand" />
-              </div>
-              <ul className={styles.contact__content__list}>
-                <li className={styles.contact__content__item}>
-                  <span>
-                    <MdEmail />
-                  </span>
-                  <a
-                    href="mailto:guillaumegrassiant@hey.com"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    guillaumegrassiant@hey.com
-                  </a>
-                </li>
-                <li className={styles.contact__content__item}>
-                  <span>
-                    <FaPhoneAlt />
-                  </span>
-                  514 823 6883
-                </li>
-                <li className={styles.contact__content__item}>
-                  <span>
-                    <AiFillLinkedin />
-                  </span>
-                  <a
-                    href="https://www.linkedin.com/in/guillaumegrassiant"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    www.linkedin.com/in/guillaumegrassiant
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
     </>
   );
 };
 
 const fullHeight = true;
+const ctaContent = {
+  title: generateRandomFooterCta(),
+  component: () => <LetsConnect />,
+};
 
-export default withLayout(AboutPageComponent, fullHeight);
+export default withLayout(AboutPageComponent, fullHeight, ctaContent);
