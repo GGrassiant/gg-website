@@ -65,7 +65,7 @@
     "react-icons": "^3.11.0",
     "react-intl": "^4.6.9",
     "styled-components": "^5.2.1",
-    "terser": "^3.16.1 "
+    "terser": "^5.4.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.6",
