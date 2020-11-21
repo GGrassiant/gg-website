@@ -36,7 +36,7 @@ export const breakPoints = {
   breakPointSm: '600px',
   breakPointMd: '960px',
   breakPointLg: '1280px',
-  breakPointXl: '1443px',
+  breakPointXl: '1440px',
 };
 
 export const COLOR_MODE_KEY = 'color-mode';

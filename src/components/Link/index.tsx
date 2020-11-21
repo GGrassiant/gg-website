@@ -10,7 +10,7 @@ import { LinkWrapper } from './link-styles';
 const Link: React.FC<LinkProps> = (props) => {
   const { children, href } = props;
   return (
-    <LinkWrapper target="_blank" href={href}>
+    <LinkWrapper target="_blank" href={href} rel="noreferrer">
       {children}
     </LinkWrapper>
   );

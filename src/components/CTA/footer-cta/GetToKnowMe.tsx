@@ -14,7 +14,7 @@ const GetToKnowMe: React.FC = () => {
   );
   return (
     <CTA link="about">
-      <p dangerouslySetInnerHTML={{ __html: translatedCta }} />
+      <span dangerouslySetInnerHTML={{ __html: translatedCta }} />
       <AiOutlineArrowRight />
     </CTA>
   );

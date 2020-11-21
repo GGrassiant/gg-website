@@ -76,7 +76,7 @@ export const PermanentFooter = styled.div`
 
     @media (min-width: $breakpoint-xl + $layout-offset + 0.25rem) {
       left: 0;
-      margin-left: calc((100vw - ${breakPoints.breakPointMd}) * 0.5);
+      margin-left: calc((100vw - ${breakPoints.breakPointXl}) * 0.5);
     }
   }
 `;

@@ -79,14 +79,14 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
             </div>
             <div className={styles.cta__wrapper}>
               <CTA onClick={executeScroll}>
-                <p dangerouslySetInnerHTML={{ __html: translatedCta }} />
+                <span dangerouslySetInnerHTML={{ __html: translatedCta }} />
                 <AiOutlineArrowDown />
               </CTA>
             </div>
           </div>
           <div className={styles.cta__wrapper__mobile}>
             <CTA onClick={executeScroll}>
-              <p dangerouslySetInnerHTML={{ __html: translatedCta }} />
+              <span dangerouslySetInnerHTML={{ __html: translatedCta }} />
               <AiOutlineArrowDown />
             </CTA>
           </div>
