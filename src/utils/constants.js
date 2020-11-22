@@ -28,15 +28,35 @@ export const COLORS = {
     light: 'rgba(47, 45, 45, 0.3)',
     dark: 'rgba(255, 255, 255, 0.3)',
   },
+  armfadebackground: {
+    light:
+      'linear-gradient(\n' +
+      '            to top,\n' +
+      '            rgba(255, 255, 255, 1),\n' +
+      '            rgba(255, 255, 255, 1),\n' +
+      '            rgba(255, 255, 255, 0.8),\n' +
+      '            rgba(255, 255, 255, 0)\n' +
+      '        )',
+    dark:
+      'linear-gradient(\n' +
+      '            to top,\n' +
+      '            rgba(47, 45, 45, 1),\n' +
+      '            rgba(47, 45, 45, 1),\n' +
+      '            rgba(47, 45, 45, 0.8),\n' +
+      '            rgba(47, 45, 45, 0)\n' +
+      '        )',
+  },
 };
 
 // For styled components
+// NOTE: make sure they are the same as the css variables
 export const breakPoints = {
   breakPointXsm: '325px',
   breakPointSm: '600px',
   breakPointMd: '960px',
   breakPointLg: '1280px',
   breakPointXl: '1440px',
+  layoutOffset: '64px', // equivalent to $layout-offset: 4rem;
 };
 
 export const COLOR_MODE_KEY = 'color-mode';

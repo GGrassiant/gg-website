@@ -3,7 +3,11 @@ import React from 'react';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
 
 // Styles
-import { FooterWrapper, PermanentFooter } from './footer-styles';
+import {
+  FooterWrapper,
+  PermanentFooter,
+  PermanentFooterContent,
+} from './footer-styles';
 
 // Components
 import FooterCta from './FooterCta';
@@ -25,17 +29,19 @@ const Footer: React.FC<FooterProps> = (props) => {
         />
       )}
       <PermanentFooter>
-        <p>Guillaume Grassiant - 2020</p>
-        <div className="links-wrapper">
-          <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
-            LinkedIn
-            <BsBoxArrowUpRight />
-          </Link>
-          <Link href="https://github.com/GGrassiant">
-            Github
-            <BsBoxArrowUpRight />
-          </Link>
-        </div>
+        <PermanentFooterContent>
+          <p>Guillaume Grassiant - 2020</p>
+          <div className="links-wrapper">
+            <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
+              LinkedIn
+              <BsBoxArrowUpRight />
+            </Link>
+            <Link href="https://github.com/GGrassiant">
+              Github
+              <BsBoxArrowUpRight />
+            </Link>
+          </div>
+        </PermanentFooterContent>
       </PermanentFooter>
     </FooterWrapper>
   );

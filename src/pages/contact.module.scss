@@ -3,12 +3,14 @@
 .contactPage {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: 2fr 1fr;
   padding-top: $header-height;
   height: 90%;
   font-family: var(--default-content-font);
 
-  @media (min-width: $breakpoint-md) {
+  @media (min-width: $breakpoint-sm) {
     grid-template-columns: 2fr 3fr;
+    grid-template-rows: auto;
   }
 
   .intro {
@@ -22,8 +24,7 @@
       text-align: left;
     }
 
-    img,
-    svg {
+    > div:last-child {
       position: absolute;
       top: 130px;
       left: 50%;
@@ -32,25 +33,23 @@
 
       @media (min-width: $breakpoint-md) {
         top: 200px;
-        height: 75%;
       }
-    }
 
-    .blurElement {
-      z-index: 100;
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      height: 2rem;
-      width: 90%;
-      transform: translateX(-50%);
-      background: linear-gradient(
-        to top,
-        rgba(47, 45, 45, 1),
-        rgba(47, 45, 45, 1),
-        rgba(47, 45, 45, 0.8),
-        rgba(47, 45, 45, 0)
-      );
+      img,
+      svg {
+        height: 100%;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        pointer-events: none;
+        background: var(--color-armfadebackground);
+        width: 100%;
+        height: 3rem;
+      }
     }
   }
 
@@ -58,13 +57,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
     margin: 0 0 1rem 0;
     padding: 0;
     list-style-type: none;
     width: 100%;
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $breakpoint-sm) {
       align-items: initial;
       border-left: 1px solid var(--color-borderlight);
       border-right: 1px solid var(--color-borderlight);
@@ -75,7 +73,7 @@
       align-items: center;
       height: 100%;
 
-      @media (min-width: $breakpoint-md) {
+      @media (min-width: $breakpoint-sm) {
         padding-left: 2rem;
         border-bottom: 1px solid var(--color-borderlight);
       }
@@ -92,6 +90,10 @@
 
         @media (min-width: $breakpoint-xsm) {
           font-size: var(--font-size-normal);
+        }
+
+        @media (min-width: $breakpoint-sm) {
+          font-size: var(--font-size-normal-alt);
         }
 
         @media (min-width: $breakpoint-md) {
@@ -120,14 +122,15 @@
         }
 
         &.contactMeansArrow {
-          margin-left: 1rem;
-          padding: 0.2rem;
-          border-radius: 50%;
-          background-color: var(--color-background);
-          color: var(--color-reversetext);
-          font-size: var(--font-size-cta);
+          display: none;
 
           @media (min-width: $breakpoint-md) {
+            display: initial;
+            margin-left: 1rem;
+            padding: 0.2rem;
+            border-radius: 50%;
+            background-color: var(--color-background);
+            color: var(--color-reversetext);
             font-size: var(--font-size-bigger);
           }
         }

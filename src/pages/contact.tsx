@@ -31,8 +31,9 @@ const ContactPage: React.FC<WithLayoutProps> = () => {
             Hello
             <br /> World
           </Title>
-          <span className={styles.blurElement} />
-          <img src={ArmSvg} alt="rock-arm" />
+          <div>
+            <img src={ArmSvg} alt="rock-arm" />
+          </div>
         </div>
         <ul className={styles.contactMeans}>
           <li className={styles.contactMeansItem}>

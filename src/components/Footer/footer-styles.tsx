@@ -21,22 +21,45 @@ export const FooterWrapper = styled.div<FooterWrapperProps>`
 
 export const PermanentFooter = styled.div`
   position: relative;
+  width: 100%;
+  height: 5rem;
+  background-color: rgba(164, 164, 164, 0.1);
+
+  @media (min-width: ${breakPoints.breakPointMd}) {
+    height: 7rem;
+  }
+`;
+
+export const PermanentFooterContent = styled.div`
+  position: absolute;
+  top: 0;
+  left: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  height: 5rem;
-  padding: 1rem var(--layout-offset);
-  background-color: rgba(164, 164, 164, 0.1);
+  width: calc(100% - var(--layout-offset));
+  max-width: ${breakPoints.breakPointXl};
+  height: 100%;
+  padding: 1rem 0;
   font-family: Rubik, sans-serif;
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-default);
+  border-top: 1px solid var(--color-divider);
 
   @media (min-width: ${breakPoints.breakPointMd}) {
     flex-direction: row;
     align-items: flex-start;
-    height: 10rem;
+  }
+
+  @media (min-width: ${breakPoints.breakPointLg}) {
+    font-size: var(--font-size-normal);
+  }
+
+  // TODO: Why + 4px??? ¯\\_(ツ)_/¯
+  @media (min-width: calc(${breakPoints.breakPointXl} + ${breakPoints.layoutOffset} + 4px)) {
+    left: 0;
+    margin-left: calc((100vw - ${breakPoints.breakPointXl}) * 0.5);
   }
 
   .links-wrapper {
@@ -55,28 +78,12 @@ export const PermanentFooter = styled.div`
     justify-content: space-between;
     width: 15%;
 
+    @media (min-width: ${breakPoints.breakPointLg}) {
+      width: 17%;
+    }
+
     a {
       font-size: inherit;
-    }
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    left: 2rem;
-    top: 0;
-    height: 1px;
-    width: calc(100% - var(--layout-offset));
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-
-    @media (min-width: ${breakPoints.breakPointMd}) {
-      left: 4rem;
-      width: calc(100% - var(--layout-offset) * 2);
-    }
-
-    @media (min-width: $breakpoint-xl + $layout-offset + 0.25rem) {
-      left: 0;
-      margin-left: calc((100vw - ${breakPoints.breakPointXl}) * 0.5);
     }
   }
 `;
