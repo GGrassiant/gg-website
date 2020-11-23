@@ -90,18 +90,25 @@
 .homeProjectsWrapper {
   display: grid;
   grid-template-columns: 1fr;
-  grid-column-gap: 1rem;
   padding: 1rem 0;
+  grid-row-gap: 1.25rem;
+
+  @media (min-width: $breakpoint-sm) and (min-height: $breakpoint-small-height) {
+    grid-row-gap: 3rem;
+  }
 
   @media (min-width: $breakpoint-md) {
     grid-template-columns: repeat(2, 1fr);
-    height: 100%;
+    grid-column-gap: 1rem;
+    grid-row-gap: initial;
     width: 80%;
     margin: 0 auto;
   }
 
   > a:nth-child(even) {
-    margin-top: 20%;
+    @media (min-width: $breakpoint-md) {
+      margin-top: 15%;
+    }
   }
 
   a {

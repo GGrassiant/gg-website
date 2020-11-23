@@ -57,6 +57,7 @@ export const breakPoints = {
   breakPointLg: '1280px',
   breakPointXl: '1440px',
   layoutOffset: '64px', // equivalent to $layout-offset: 4rem;
+  largeHeight: '1300px',
 };
 
 export const COLOR_MODE_KEY = 'color-mode';

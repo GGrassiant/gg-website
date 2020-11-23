@@ -8,7 +8,6 @@ export const LinkWrapper = styled.a`
   font-family: var(--default-content-font);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-default);
-  line-height: 13px;
   color: var(--color-reversetext);
   text-transform: capitalize;
   text-decoration: none;

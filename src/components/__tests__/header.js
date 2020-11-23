@@ -72,16 +72,16 @@ describe('<Header>', () => {
     });
 
     test('render menu', () => {
-      siteMetaData.menu.slice(2, -1).forEach((menuItem, index) => {
-        const projectMenuName = index + 1;
+      const { container } = render(
+        <Location>
+          {(location) => (
+            <Header siteTitle="site title" location={location} locale="en" />
+          )}
+        </Location>,
+      );
+      siteMetaData.menu.slice(2, -1).forEach((menuItem) => {
+        const projectMenuName = menuItem.label;
         const projectMenuLink = menuItem.slug;
-        const { container } = render(
-          <Location>
-            {(location) => (
-              <Header siteTitle="site title" location={location} locale="en" />
-            )}
-          </Location>,
-        );
         expect(getByText(container, `${projectMenuName}`)).toBeInTheDocument();
         expect(
           getByText(container, `${projectMenuName}`).closest('li').children[0],

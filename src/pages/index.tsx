@@ -23,7 +23,7 @@ import SEO from '../components/seo';
 import Title from '../components/Title';
 import CTA from '../components/CTA';
 import ProjectCard from '../components/ProjectCard';
-import LetsConnect from '../components/CTA/footer-cta/LetConnect';
+import LetsConnect from '../components/CTA/footer-cta/LetsConnect';
 
 export const getRedirectLanguage = (): string => {
   if (typeof navigator === 'undefined') {
@@ -109,6 +109,7 @@ export const query = graphql`
             year
             slug
             id
+            githubLink
             mainPicture {
               id
               fluid(maxWidth: 500) {

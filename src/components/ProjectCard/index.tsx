@@ -3,8 +3,6 @@ import React from 'react';
 import Img from 'gatsby-image';
 
 // Utils
-import { LocalizedLink } from 'gatsby-theme-i18n';
-import * as siteMetaData from '../../utils/siteMetaData';
 import { ProjectCardProps } from './project-card-types';
 
 // Styles
@@ -12,11 +10,12 @@ import { ProjectCardWrapper, ProjectCardHeader } from './project-card-styles';
 
 // Components
 import Title from '../Title';
+import Link from '../Link';
 
 const ProjectCard: React.FC<ProjectCardProps> = (props) => {
   const { edge } = props;
   return (
-    <LocalizedLink to={`${siteMetaData.menu[1].slug}${edge.node.slug}`}>
+    <Link href={edge.node.githubLink}>
       <ProjectCardWrapper>
         <ProjectCardHeader>
           <span>{edge.node.mainTech}</span>
@@ -33,7 +32,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
           />
         </div>
       </ProjectCardWrapper>
-    </LocalizedLink>
+    </Link>
   );
 };
 

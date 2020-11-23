@@ -7,7 +7,7 @@ import { breakPoints } from '../../utils/constants';
 export const ProjectCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 20rem;
+  height: 16rem;
   width: 100%;
   padding: 0 2.5rem;
   border-radius: 11px;
@@ -17,8 +17,16 @@ export const ProjectCardWrapper = styled.div`
   color: var(--project-text-color);
   overflow: hidden;
 
-  @media (min-width: ${breakPoints.breakPointLg}) {
-    height: 36rem;
+  @media (min-width: ${breakPoints.breakPointXsm}) {
+    height: 20rem;
+  }
+
+  @media (min-width: ${breakPoints.breakPointSm}) {
+    height: 30rem;
+  }
+
+  @media (min-width: ${breakPoints.breakPointMd}) and (min-height: ${breakPoints.largeHeight}) {
+    height: 25rem;
   }
 
   > div:nth-child(2) {
@@ -27,23 +35,27 @@ export const ProjectCardWrapper = styled.div`
     margin-top: 1rem;
     margin-bottom: -1rem;
 
-    @media (min-width: ${breakPoints.breakPointLg}) {
+    @media (min-width: ${breakPoints.breakPointSm}) {
       width: 75%;
-      margin-top: 2rem;
+      margin-top: 1rem;
       margin-bottom: -2rem;
     }
   }
 
   > div:nth-child(3) {
     flex: 2;
+    display: flex;
     overflow: hidden;
 
-    @media (min-width: ${breakPoints.breakPointLg}) {
-      flex: 2.5;
+    @media (min-width: ${breakPoints.breakPointSm}) {
+      flex: 3;
     }
   }
 
   .gatsby-image-wrapper {
+    width: 100%;
+    height: 100%;
+    align-self: flex-end;
     border-radius: 10px 10px 0 0;
   }
 `;
@@ -59,7 +71,7 @@ export const ProjectCardHeader = styled.div`
   span {
     margin-top: 1.2rem;
 
-    @media (min-width: ${breakPoints.breakPointLg}) {
+    @media (min-width: ${breakPoints.breakPointSm}) {
       font-size: var(--font-size-normal-alt);
     }
   }

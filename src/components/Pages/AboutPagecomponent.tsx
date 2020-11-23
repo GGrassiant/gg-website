@@ -21,7 +21,7 @@ import Title from '../Title';
 import Image from '../Image/image';
 import CTA from '../CTA';
 import Link from '../Link';
-import LetsConnect from '../CTA/footer-cta/LetConnect';
+import LetsConnect from '../CTA/footer-cta/LetsConnect';
 
 const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
   const intl = useIntl();
