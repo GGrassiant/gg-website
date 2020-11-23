@@ -2,11 +2,22 @@
  * Projects coming from the headless CMS
  * Contentful
  */
+import { FluidObject } from 'gatsby-image';
+
+interface ContenfulImage {
+  title: string;
+  fluid: FluidObject;
+}
+
 export interface ContentfulProject {
   title: string;
   slug: string;
   shortDescription: string;
   id: string;
+  mainPicture: ContenfulImage;
+  mainTech: string;
+  year: string;
+  githubLink: string;
 }
 
 export interface ContentfulDescription {
@@ -36,4 +47,4 @@ export interface SiteMetaData {
 }
 
 // MENU: Add all new routes to this constant
-export const menuItems = ['projects', 'about'] as const;
+export type menuItems = 'about' | 'blog' | 'contact' | '';

@@ -1,12 +1,18 @@
 // Libs
-import React, { useEffect } from 'react';
-import { navigate } from 'gatsby';
-import { AiOutlineArrowRight } from 'react-icons/ai';
-import { BsBoxArrowUpRight } from 'react-icons/bs';
+import React, { useEffect, useRef } from 'react';
+import { graphql, navigate } from 'gatsby';
+import { AiOutlineArrowDown } from 'react-icons/ai';
 import { useIntl } from 'react-intl';
 
 // Utils
 import * as langsSettings from '../utils/languages';
+import {
+  ensure,
+  scrollToRefObject,
+  generateRandomFooterCta,
+} from '../utils/typescript.utils';
+import { Edge } from '../../pages';
+import { WithLayoutProps } from '../Hoc/hoc.types';
 
 // Styles
 import styles from './index.module.scss';
@@ -16,7 +22,8 @@ import withLayout from '../Hoc/PageWrapper/WithLayout';
 import SEO from '../components/seo';
 import Title from '../components/Title';
 import CTA from '../components/CTA';
-import Link from '../components/Link';
+import ProjectCard from '../components/ProjectCard';
+import LetsConnect from '../components/CTA/footer-cta/LetsConnect';
 
 export const getRedirectLanguage = (): string => {
   if (typeof navigator === 'undefined') {
@@ -35,8 +42,25 @@ export const getRedirectLanguage = (): string => {
   }
 };
 
-const IndexPage: React.FC = () => {
+const IndexPage: React.FC<Pick<WithLayoutProps, 'data' | 'locale'>> = (
+  props,
+) => {
+  const { data, locale } = props;
   const intl = useIntl();
+
+  const informationElements: Array<Edge> = ensure(
+    data?.allContentfulProject.group.find((lang) => lang.fieldValue === locale),
+  ).edges;
+
+  const renderInformation = (): Array<React.ReactElement> =>
+    informationElements.map(
+      (edge): React.ReactElement => (
+        <ProjectCard edge={edge} key={edge.node.id} />
+      ),
+    );
+
+  const projectsRef = useRef(null);
+  const executeScroll = () => scrollToRefObject(projectsRef);
 
   useEffect((): void => {
     const urlLang: string = getRedirectLanguage();
@@ -47,39 +71,62 @@ const IndexPage: React.FC = () => {
   }, []);
 
   return (
-    <div className={styles.home}>
-      <SEO title="Home" />
-      <div className={styles.home__title}>
-        <Title size="xxl" weight="semibold">
-          <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
-        </Title>
-        <Title size="xxl" weight="semibold">
-          <p>{intl.formatMessage({ id: 'Developer' })}</p>
-          <CTA link="about">
-            {intl.formatMessage(
-              {
-                id: 'get to know me',
-              },
-              { breakingLine: <br key="get to know me" /> },
-            )}
-            <AiOutlineArrowRight />
-          </CTA>
-        </Title>
+    <>
+      <div className={styles.home}>
+        <SEO title="Home" />
+        <div className={styles.home__title}>
+          <Title size="xxl" weight="semibold">
+            <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
+          </Title>
+          <Title size="xxl" weight="semibold">
+            <p>{intl.formatMessage({ id: 'Developer' })}</p>
+            <CTA link="" onClick={executeScroll}>
+              {intl.formatMessage({ id: 'Explore' })}
+              <br />
+              {intl.formatMessage({ id: 'my Projects' })}
+              <AiOutlineArrowDown />
+            </CTA>
+          </Title>
+        </div>
       </div>
-      <div className={styles.home__links}>
-        <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
-          LinkedIn
-          <BsBoxArrowUpRight />
-        </Link>
-        <Link href="https://github.com/GGrassiant">
-          Github
-          <BsBoxArrowUpRight />
-        </Link>
+      <div className={styles.homeProjectsWrapper} ref={projectsRef}>
+        {renderInformation()}
       </div>
-    </div>
+    </>
   );
 };
 
-const fullHeight = true;
+export const query = graphql`
+  query {
+    allContentfulProject {
+      group(field: node_locale) {
+        fieldValue
+        totalCount
+        edges {
+          node {
+            title
+            mainTech
+            year
+            slug
+            id
+            githubLink
+            mainPicture {
+              id
+              fluid(maxWidth: 500) {
+                ...GatsbyContentfulFluid
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
-export default withLayout(IndexPage, fullHeight);
+const fullHeight = true;
+const ctaContent = {
+  title: generateRandomFooterCta(),
+  component: () => <LetsConnect />,
+};
+
+export default withLayout(IndexPage, fullHeight, ctaContent);

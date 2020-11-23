@@ -75,7 +75,7 @@ const getMenuItems = (
 
   return siteMetaData.menu.reduce(
     (acc: Array<React.ReactElement>, cur: Menu) => {
-      if (isHome(cur.slug)) {
+      if (isHome(cur.slug) || cur.label === 'projects') {
         return acc;
       }
 

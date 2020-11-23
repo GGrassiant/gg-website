@@ -5,12 +5,12 @@ import React from 'react';
 import { render } from '../../components/__tests__/utils/test-utils';
 
 // Components
-import ProjectsPage from '../projects';
+import ContactPage from '../contact';
 
-describe('<ProjectsPage />', () => {
+describe('<ContactPage />', () => {
   describe('mounts', () => {
     test('mounts', () => {
-      const { container } = render(<ProjectsPage />);
+      const { container } = render(<ContactPage />);
       expect(container).toBeInTheDocument();
     });
   });

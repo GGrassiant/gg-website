@@ -2,6 +2,6 @@
 import React from 'react';
 
 export interface LinkProps {
-  children: string | Array<string | React.ReactElement>;
+  children: string | Array<string | React.ReactElement> | React.ReactElement;
   href: string;
 }

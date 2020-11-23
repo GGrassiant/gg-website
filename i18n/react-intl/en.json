@@ -11,11 +11,19 @@
   "my Projects": "my projects",
   "for": "for",
   "intimes": "my friends",
+  "contact": "Contact",
+  "contact me": "Contact me",
+  "Contact Me": "Contact me",
   "contact-me": "Contact me",
   "now": "now",
   "skills": "Skills",
   "experience": "Experience",
   "education": "Education",
   "Resume": "Resume",
-  "get to know me": "Get to{breakingLine} know me"
+  "Linkedin profile": "See my Linkedin Profile",
+  "Github profile": "See my Github Profile",
+  "get to know me": "Get to{breakingLine} know me",
+  "get coffee": "Let's talk over coffee!",
+  "learn more about me": "Learn more about me",
+  "start project": "Let's start a project!"
 }

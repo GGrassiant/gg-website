@@ -32,7 +32,11 @@ export const TitleWrapperNormal = styled(TitleWrapper)<TitleWrapperProps>`
 TitleWrapperNormal.displayName = 'TitleWrapperNormal';
 
 export const TitleWrapperMedium = styled(TitleWrapper)<TitleWrapperProps>`
-  font-size: var(--font-size-medium-light);
+  font-size: var(--font-size-bigger);
+
+  @media (min-width: ${breakPoints.breakPointLg}) {
+    font-size: var(--font-size-medium-light);
+  }
 `;
 TitleWrapperNormal.displayName = 'TitleWrapperMedium';
 
