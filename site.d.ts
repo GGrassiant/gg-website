@@ -17,7 +17,9 @@ export interface ContentfulProject {
   mainPicture: ContenfulImage;
   mainTech: string;
   year: string;
-  githubLink: string;
+  link: string;
+  team: string;
+  techStack: string;
 }
 
 export interface ContentfulDescription {

@@ -4,7 +4,11 @@ import styled from 'styled-components';
 // Utils
 import { breakPoints } from '../../utils/constants';
 
-export const ProjectCardWrapper = styled.div`
+interface ProjectCardWrapperProps {
+  id?: string;
+}
+
+export const ProjectCardWrapper = styled.div<ProjectCardWrapperProps>`
   display: flex;
   flex-direction: column;
   height: 16rem;
