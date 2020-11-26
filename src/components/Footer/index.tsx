@@ -20,12 +20,14 @@ import { validateObjectValues } from '../../utils/typescript.utils';
 const Footer: React.FC<FooterProps> = (props) => {
   const { ctaContent } = props;
   const ctaInFooter = ctaContent && validateObjectValues(ctaContent);
+  const inProjectPage = Boolean(ctaInFooter && ctaContent?.projectPage);
   return (
-    <FooterWrapper cta={ctaInFooter}>
+    <FooterWrapper cta={ctaInFooter} projectPage={inProjectPage}>
       {ctaInFooter && (
         <FooterCta
           title={ctaContent?.title}
           component={ctaContent?.component}
+          projectPage={inProjectPage}
         />
       )}
       <PermanentFooter>

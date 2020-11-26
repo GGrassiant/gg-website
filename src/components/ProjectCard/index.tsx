@@ -1,11 +1,12 @@
 // Libs
-import React from 'react';
+import React, { useContext } from 'react';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 import Img from 'gatsby-image';
 
 // Utils
 import { ProjectCardProps } from './project-card-types';
 import * as siteMetaData from '../../utils/siteMetaData';
+import { ProjectContext } from '../../context/ProjectContext';
 
 // Styles
 import { ProjectCardWrapper, ProjectCardHeader } from './project-card-styles';
@@ -15,9 +16,14 @@ import Title from '../Title';
 
 const ProjectCard: React.FC<ProjectCardProps> = (props) => {
   const { edge } = props;
+  const { setCurrentProjectId } = useContext(ProjectContext);
+
+  const handleOnClick = () => {
+    setCurrentProjectId(edge.node.id);
+  };
   return (
     <LocalizedLink to={`${siteMetaData.menu[1].slug}${edge.node.slug}`}>
-      <ProjectCardWrapper id={edge.node.title}>
+      <ProjectCardWrapper id={edge.node.title} onClick={handleOnClick}>
         <ProjectCardHeader>
           <span>{edge.node.mainTech}</span>
           <span>{edge.node.year}</span>

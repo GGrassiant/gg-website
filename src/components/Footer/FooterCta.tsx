@@ -11,13 +11,14 @@ import Title from '../Title';
 type FooterCtaProps = {
   title?: string;
   component?: React.FC<any>;
+  projectPage?: boolean;
 };
 
 const FooterCta: React.FC<FooterCtaProps> = (props) => {
-  const { title, component } = props;
+  const { title, component, projectPage } = props;
   const intl = useIntl();
   return (
-    <FooterCtaWrapper>
+    <FooterCtaWrapper projectPage={projectPage}>
       <Title size="l">{intl.formatMessage({ id: title })}</Title>
       {component && component(undefined)}
     </FooterCtaWrapper>

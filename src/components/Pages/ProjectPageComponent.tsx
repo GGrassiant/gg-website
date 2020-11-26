@@ -2,7 +2,8 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import { useIntl } from 'react-intl';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { AiOutlineArrowLeft, AiOutlineCalendar } from 'react-icons/ai';
+import { BsCodeSlash, BsPeople, BsLink45Deg } from 'react-icons/bs';
 
 // Utils
 import { ProjectPageComponentProps } from '../../../pages';
@@ -16,6 +17,8 @@ import { BackButton } from './project-page.style';
 import withLayout from '../../Hoc/PageWrapper/WithLayout';
 import SEO from '../seo';
 import LetsConnect from '../CTA/footer-cta/LetsConnect';
+import NextProject from '../CTA/footer-cta/NextProject';
+import Link from '../Link';
 
 const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
   const {
@@ -67,10 +70,22 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
           </BackButton>
           <h2>{title}</h2>
           <ul className={styles.projectInfoList}>
-            <li className={styles.projectInfoItem}>{year}</li>
-            <li className={styles.projectInfoItem}>{techStack}</li>
-            <li className={styles.projectInfoItem}>{team}</li>
-            <li className={styles.projectInfoItem}>{link}</li>
+            <li className={styles.projectInfoItem}>
+              <AiOutlineCalendar />
+              {year}
+            </li>
+            <li className={styles.projectInfoItem}>
+              <BsCodeSlash />
+              {techStack}
+            </li>
+            <li className={styles.projectInfoItem}>
+              <BsPeople />
+              {team}
+            </li>
+            <li className={styles.projectInfoItem}>
+              <BsLink45Deg />
+              <Link href={link}>{link}</Link>
+            </li>
           </ul>
           <div className={styles.imageWrapper}>
             <Img
@@ -99,7 +114,8 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
 const fullHeight = true;
 const ctaContent = {
   title: 'next project',
-  component: () => <LetsConnect />,
+  component: () => <NextProject />,
+  projectPage: true,
 };
 
 export default withLayout(ProjectPageComponent, fullHeight, ctaContent);
