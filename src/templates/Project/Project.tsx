@@ -30,6 +30,12 @@ export const query = graphql`
           ...GatsbyContentfulFluid
         }
       }
+      projectPictures {
+        id
+        fluid(maxWidth: 1220) {
+          ...GatsbyContentfulFluid
+        }
+      }
     }
   }
 `;

@@ -1,21 +1,21 @@
 // Libs
 import React from 'react';
 import Img from 'gatsby-image';
+import { useIntl } from 'react-intl';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 // Utils
 import { ProjectPageComponentProps } from '../../../pages';
+import { ContenfulImage } from '../../../site';
 
 // Styles
 import styles from './project.module.scss';
+import { BackButton } from './project-page.style';
 
 // Components
 import withLayout from '../../Hoc/PageWrapper/WithLayout';
 import SEO from '../seo';
-import { generateRandomFooterCta } from '../../utils/typescript.utils';
-import GetToKnowMe from '../CTA/footer-cta/GetToKnowMe';
 import LetsConnect from '../CTA/footer-cta/LetsConnect';
-import { BackButton } from './project-page.style';
 
 const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
   const {
@@ -28,9 +28,33 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
         techStack,
         shortDescription,
         link,
+        projectPictures,
       },
     },
   } = props;
+  const intl = useIntl();
+
+  const renderProjectImages = (images: Array<ContenfulImage>) => (
+    <>
+      <div className={styles.mainProjectImage}>
+        <Img
+          fluid={images[0].fluid}
+          key={images[0].fluid.src}
+          alt={images[0].title}
+        />
+      </div>
+      <div className={styles.otherProjectImages}>
+        {images.slice(1).map((otherImage: ContenfulImage) => (
+          <Img
+            fluid={otherImage.fluid}
+            key={otherImage.fluid.src}
+            alt={otherImage.title}
+            imgStyle={{ objectPosition: '0 0' }}
+          />
+        ))}
+      </div>
+    </>
+  );
 
   return (
     <>
@@ -59,9 +83,13 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
         <div className={styles.projectDetails}>
           <h3>Description</h3>
           <p className={styles.projectDescription}>{shortDescription}</p>
-          <p>Photos/....</p>
-          <h3>Know more</h3>
-          <LetsConnect />
+          <div>{renderProjectImages(projectPictures)}</div>
+        </div>
+        <div className={styles.projectCTA}>
+          <div className={styles.projectCTAContent}>
+            <h3>{intl.formatMessage({ id: 'know more' })}</h3>
+            <LetsConnect />
+          </div>
         </div>
       </div>
     </>
@@ -70,8 +98,8 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
 
 const fullHeight = true;
 const ctaContent = {
-  title: generateRandomFooterCta(),
-  component: () => <GetToKnowMe />,
+  title: 'next project',
+  component: () => <LetsConnect />,
 };
 
 export default withLayout(ProjectPageComponent, fullHeight, ctaContent);

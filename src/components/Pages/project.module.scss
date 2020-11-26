@@ -1,12 +1,28 @@
 @import 'src/utils/variables';
 
+$vertical-padding: 2.5rem;
+$horizontal-padding: 3.5rem;
+
+@mixin project-section-layout {
+  position: relative;
+  padding: $vertical-padding $horizontal-padding;
+
+  &:before {
+    position: absolute;
+    content: '';
+    top: $vertical-padding;
+    width: calc(100% - 7rem);
+    border-top: 1px solid var(--color-divider);
+  }
+}
+
 .projectPage {
   padding-top: $header-height;
 
   .projectInfo {
     position: relative;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
+    padding-top: $vertical-padding;
+    padding-bottom: $vertical-padding;
 
     h2 {
       margin: 2rem 0;
@@ -62,16 +78,7 @@
   }
 
   .projectDetails {
-    position: relative;
-    padding: 2.5rem 3.5rem;
-
-    &:before {
-      position: absolute;
-      content: '';
-      top: 2.5rem;
-      width: 100%;
-      border-top: 1px solid var(--color-divider);
-    }
+    @include project-section-layout;
 
     h3 {
       font-size: var(--font-size-normal-alt);
@@ -83,6 +90,41 @@
       font-size: var(--font-size-large);
       font-weight: 400;
       font-style: italic;
+    }
+
+    .mainProjectImage {
+      height: 1200px;
+      overflow: hidden;
+
+      img {
+        object-position: 0 0;
+      }
+    }
+
+    .otherProjectImages {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+      grid-gap: 2rem;
+      margin-top: 4rem;
+      height: 1000px;
+    }
+  }
+
+  .projectCTA {
+    @include project-section-layout;
+  }
+
+  .projectCTAContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25%;
+
+    h3 {
+      font-size: var(--font-size-medium-light);
+      font-weight: var(--font-weight-bold);
+      text-align: center;
     }
   }
 }

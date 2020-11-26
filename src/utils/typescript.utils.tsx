@@ -30,6 +30,10 @@ export const validateObjectValues = (object: {
   [key: string]: string | React.FC;
 }): boolean => Object.values(object)?.length > 0;
 
+// Helper to get random value from an array
+export const randomValueFromArray = (array: Array<any>) =>
+  array[Math.floor(Math.random() * array.length)];
+
 // Random Footer CTA String
 export const generateRandomFooterCta = (): string =>
-  FOOTER_CTA_MESSAGES[Math.floor(Math.random() * FOOTER_CTA_MESSAGES.length)];
+  randomValueFromArray(FOOTER_CTA_MESSAGES);

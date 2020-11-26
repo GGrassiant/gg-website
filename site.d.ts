@@ -15,6 +15,7 @@ export interface ContentfulProject {
   shortDescription: string;
   id: string;
   mainPicture: ContenfulImage;
+  projectPictures: Array<ContenfulImage>;
   mainTech: string;
   year: string;
   link: string;
