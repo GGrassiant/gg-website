@@ -26,13 +26,13 @@ export const query = graphql`
       link
       mainPicture {
         id
-        fluid(maxWidth: 1220) {
+        fluid(maxWidth: 1280) {
           ...GatsbyContentfulFluid
         }
       }
       projectPictures {
         id
-        fluid(maxWidth: 1220) {
+        fluid(maxWidth: 1280) {
           ...GatsbyContentfulFluid
         }
       }

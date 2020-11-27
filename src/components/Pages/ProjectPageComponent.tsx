@@ -46,16 +46,24 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
           alt={images[0].title}
         />
       </div>
-      <div className={styles.otherProjectImages}>
-        {images.slice(1).map((otherImage: ContenfulImage) => (
-          <Img
-            fluid={otherImage.fluid}
-            key={otherImage.fluid.src}
-            alt={otherImage.title}
-            imgStyle={{ objectPosition: '0 0' }}
-          />
-        ))}
-      </div>
+      {images.length > 1 && (
+        <div
+          className={
+            images.length > 2
+              ? styles.otherProjectImages
+              : styles.otherProjectImage
+          }
+        >
+          {images.slice(1).map((otherImage: ContenfulImage) => (
+            <Img
+              fluid={otherImage.fluid}
+              key={otherImage.fluid.src}
+              alt={otherImage.title}
+              imgStyle={{ objectPosition: '0 0' }}
+            />
+          ))}
+        </div>
+      )}
     </>
   );
 
@@ -71,19 +79,27 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
           <h2>{title}</h2>
           <ul className={styles.projectInfoList}>
             <li className={styles.projectInfoItem}>
-              <AiOutlineCalendar />
+              <div>
+                <AiOutlineCalendar />
+              </div>
               {year}
             </li>
             <li className={styles.projectInfoItem}>
-              <BsCodeSlash />
+              <div>
+                <BsCodeSlash />
+              </div>
               {techStack}
             </li>
             <li className={styles.projectInfoItem}>
-              <BsPeople />
+              <div>
+                <BsPeople />
+              </div>
               {team}
             </li>
             <li className={styles.projectInfoItem}>
-              <BsLink45Deg />
+              <div>
+                <BsLink45Deg />
+              </div>
               <Link href={link}>{link}</Link>
             </li>
           </ul>
@@ -92,6 +108,7 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
               fluid={mainPicture.fluid}
               key={mainPicture.fluid.src}
               alt={mainPicture.title}
+              style={{ height: '100%' }}
             />
           </div>
         </div>
