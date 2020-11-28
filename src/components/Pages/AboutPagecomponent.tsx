@@ -32,6 +32,8 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
     ),
   ).edges;
 
+  const resumeURL = data?.allContentfulAsset.edges[0].node.file.url;
+
   const renderDescription = (): React.ReactNode => (
     <p>{descriptionElement[0].node.content}</p>
   );
@@ -105,7 +107,7 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
           <div className={styles.experience__content__wrapper}>
             <div className={styles.experience__content}>
               <TiDocumentText />
-              <Link href="https://drive.google.com/file/d/1FWqspNFcz4xOw326Uckna7Ciam8erI_-/view?usp=sharing">
+              <Link href={resumeURL}>
                 {intl.formatMessage({ id: 'Resume' })}
                 <BsBoxArrowUpRight />
               </Link>

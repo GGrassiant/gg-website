@@ -24,6 +24,13 @@ export interface ContentfulDescription {
   content: string;
 }
 
+export interface ResumeFile {
+  id: string;
+  file: {
+    url: string;
+  };
+}
+
 /**
  * Metadata coming from Gatsby
  */
