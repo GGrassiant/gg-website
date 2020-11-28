@@ -132,7 +132,6 @@ const fullHeight = true;
 const ctaContent = {
   title: 'next project',
   component: () => <NextProject />,
-  projectPage: true,
 };
 
 export default withLayout(ProjectPageComponent, fullHeight, ctaContent);

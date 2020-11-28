@@ -9,7 +9,7 @@ import { ensure, randomValueFromArray } from '../../../utils/typescript.utils';
 
 // Components
 import { useSiteMetadata } from '../../../utils/query-hooks';
-import ProjectCard from '../../ProjectCard';
+import SimplifiedProjectCard from '../../ProjectCard/simplified-card';
 
 const NextProject: React.FC = () => {
   const { locale } = useLocalization();
@@ -27,7 +27,9 @@ const NextProject: React.FC = () => {
     informationElements.filter((el) => el.node.id !== currentProjectId),
   );
 
-  return <ProjectCard edge={randomProject} key={randomProject.node.id} />;
+  return (
+    <SimplifiedProjectCard edge={randomProject} key={randomProject.node.id} />
+  );
 };
 
 export default NextProject;

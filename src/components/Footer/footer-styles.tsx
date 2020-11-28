@@ -6,25 +6,7 @@ import { breakPoints } from '../../utils/constants';
 
 interface FooterWrapperProps {
   cta?: boolean;
-  projectPage?: boolean;
 }
-
-const footerWrapperHeight = (propElement: {
-  projectPage?: boolean;
-  cta?: boolean;
-}) => {
-  let heightValue;
-  if (propElement.projectPage) {
-    heightValue = '125%';
-    return heightValue;
-  }
-  if (propElement.cta) {
-    heightValue = '100%';
-    return heightValue;
-  }
-  heightValue = 'initial';
-  return heightValue;
-};
 
 export const FooterWrapper = styled.div<FooterWrapperProps>`
   display: flex;
@@ -33,7 +15,7 @@ export const FooterWrapper = styled.div<FooterWrapperProps>`
   position: absolute;
   left: 0;
   width: 100%;
-  height: ${(props) => footerWrapperHeight(props)};
+  height: 100%;
   overflow: hidden;
 `;
 
