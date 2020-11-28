@@ -1,4 +1,4 @@
-import { ContentfulProject, ContentfulDescription } from './site';
+import { ContentfulProject, ContentfulDescription, ResumeFile } from './site';
 
 export type Edge = {
   node: ContentfulProject;
@@ -6,6 +6,10 @@ export type Edge = {
 
 export type DescriptionEdge = {
   node: ContentfulDescription;
+};
+
+export type ResumeEdge = {
+  node: ResumeFile;
 };
 
 export interface ProjectPageComponentProps {

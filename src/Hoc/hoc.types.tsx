@@ -1,5 +1,5 @@
 // Lib
-import { Edge, DescriptionEdge } from '../../pages';
+import { Edge, DescriptionEdge, ResumeEdge } from '../../pages';
 import { FooterProps } from '../components/Footer/footer-types';
 
 export interface WithLayoutProps {
@@ -17,6 +17,9 @@ export interface WithLayoutProps {
         edges: Array<DescriptionEdge>;
         totalCount: number;
       }>;
+    };
+    allContentfulAsset: {
+      edges: Array<ResumeEdge>;
     };
   };
   locale?: string;
