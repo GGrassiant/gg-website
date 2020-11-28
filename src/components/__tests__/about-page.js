@@ -14,6 +14,9 @@ describe('<AboutPageComponent />', () => {
         allContentfulDescription: {
           group: [{ fieldValue: 'en', edges: [{ node: { content: 'lol' } }] }],
         },
+        allContentfulAsset: {
+          edges: [{ node: { id: 'resume', file: { url: 'url-resume' } } }],
+        },
       };
       const { container } = render(<AboutPageComponent data={data} />);
       expect(container).toBeInTheDocument();
@@ -25,6 +28,9 @@ describe('<AboutPageComponent />', () => {
       const data = {
         allContentfulDescription: {
           group: [{ fieldValue: 'en', edges: [{ node: { content: 'lol' } }] }],
+        },
+        allContentfulAsset: {
+          edges: [{ node: { id: 'resume', file: { url: 'url-resume' } } }],
         },
       };
       const mockScroll = jest.fn();

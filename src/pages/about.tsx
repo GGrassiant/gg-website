@@ -23,6 +23,18 @@ export const query = graphql`
         fieldValue
       }
     }
+    allContentfulAsset(
+      filter: { contentful_id: { eq: "1nqOrhi7IYCsZqg1IbszGl" } }
+    ) {
+      edges {
+        node {
+          id
+          file {
+            url
+          }
+        }
+      }
+    }
   }
 `;
 
