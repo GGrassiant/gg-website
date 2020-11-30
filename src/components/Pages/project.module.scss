@@ -2,6 +2,7 @@
 
 $vertical-padding: 2.5rem;
 $horizontal-padding: 3.5rem;
+$grid-gap: 2rem;
 
 @mixin project-section-layout {
   position: relative;
@@ -156,16 +157,21 @@ $horizontal-padding: 3.5rem;
       grid-template-columns: 1fr;
       grid-gap: 2rem;
       margin-top: 4rem;
-      height: 100%;
 
       @media (min-width: $breakpoint-sm) {
         grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
       }
 
       > div {
+        max-height: calc(
+          (100vw - var(--layout-offset)) * var(--iphone11-aspect-ratio)
+        );
+
         @media (min-width: $breakpoint-sm) {
-          width: 100%;
-          max-height: 752px;
+          max-height: calc(
+            ((100vw - 7rem - 4rem) / 3) * var(--iphone11-aspect-ratio)
+          );
+          //  100 - padding - grid-gap TODO: css variables
         }
       }
     }

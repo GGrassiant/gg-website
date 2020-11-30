@@ -53,4 +53,8 @@ $layout-offset: 4rem;
 
   //offset:
   --layout-offset: 4rem;
+
+  // app simulator screenshot resolution
+  // is the lower denominator for images height
+  --iphone11-aspect-ratio: calc(812 / 375);
 }
