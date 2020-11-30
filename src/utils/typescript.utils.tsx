@@ -27,9 +27,13 @@ export const scrollToRefObject = (ref: React.MutableRefObject<null>): void => {
 
 // Helper to validate footer CTA
 export const validateObjectValues = (object: {
-  [key: string]: string | React.FC;
+  [key: string]: string | React.FC | boolean | undefined;
 }): boolean => Object.values(object)?.length > 0;
+
+// Helper to get random value from an array
+export const randomValueFromArray = (array: Array<any>): any =>
+  array[Math.floor(Math.random() * array.length)];
 
 // Random Footer CTA String
 export const generateRandomFooterCta = (): string =>
-  FOOTER_CTA_MESSAGES[Math.floor(Math.random() * FOOTER_CTA_MESSAGES.length)];
+  randomValueFromArray(FOOTER_CTA_MESSAGES);

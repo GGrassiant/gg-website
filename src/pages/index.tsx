@@ -89,7 +89,11 @@ const IndexPage: React.FC<Pick<WithLayoutProps, 'data' | 'locale'>> = (
           </Title>
         </div>
       </div>
-      <div className={styles.homeProjectsWrapper} ref={projectsRef}>
+      <div
+        className={styles.homeProjectsWrapper}
+        ref={projectsRef}
+        id="projects"
+      >
         {renderInformation()}
       </div>
     </>

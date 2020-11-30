@@ -20,9 +20,18 @@ export const ContenfulDataQuery = graphql`
         totalCount
         edges {
           node {
-            shortDescription
+            title
+            mainTech
+            year
             slug
             id
+            githubLink
+            mainPicture {
+              id
+              fluid(maxWidth: 500) {
+                ...GatsbyContentfulFluid
+              }
+            }
           }
         }
       }

@@ -1,0 +1,208 @@
+@import 'src/utils/variables';
+
+$vertical-padding: 2.5rem;
+$horizontal-padding: 3.5rem;
+$grid-gap: 2rem;
+
+@mixin project-section-layout {
+  position: relative;
+  padding-bottom: 1rem;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: $vertical-padding $horizontal-padding;
+  }
+
+  &:before {
+    display: none;
+
+    @media (min-width: $breakpoint-sm) {
+      display: block;
+      position: absolute;
+      content: '';
+      top: $vertical-padding;
+      width: calc(100% - 3.5rem * 2);
+      border-top: 1px solid var(--color-divider);
+    }
+  }
+}
+
+@mixin secondary-image {
+  img {
+    border: 1px solid var(--color-reversetextwithopacity);
+    border-radius: 20px;
+  }
+}
+
+.projectPage {
+  padding-top: $header-height;
+
+  .projectInfo {
+    position: relative;
+    padding-top: $vertical-padding;
+
+    h2 {
+      margin: 2rem 0;
+      font-size: var(--font-size-medium-light);
+      font-weight: 300;
+
+      @media (min-width: $breakpoint-sm) {
+        padding-bottom: $vertical-padding;
+        font-size: var(--font-size-large);
+      }
+
+      @media (min-width: $breakpoint-md) {
+        max-width: 12ch;
+        height: 210px;
+      }
+    }
+
+    .projectInfoList {
+      list-style-type: none;
+      padding: 0;
+      width: 100%;
+
+      @media (min-width: $breakpoint-md) {
+        width: 50%;
+      }
+    }
+
+    .imageWrapper {
+      display: none;
+
+      @media (min-width: $breakpoint-md) {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 720px;
+        top: 5%;
+        right: -60%;
+        overflow: hidden;
+        border: 1px solid var(--color-reversetextwithopacity);
+        border-radius: 5px;
+        z-index: 1;
+      }
+    }
+  }
+
+  .projectInfoItem {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-borderlight);
+    font-size: var(--font-size-normal-alt);
+    font-weight: var(--font-weight-regular);
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-of-type {
+      @media (max-width: $breakpoint-lg) {
+        border-bottom: none;
+      }
+    }
+
+    svg {
+      background-color: var(--color-reversebackground);
+      margin-right: 1rem;
+      padding: 0.2rem;
+      border-radius: 50%;
+      font-size: var(--font-size-bigger);
+      color: var(--color-text);
+      font-weight: var(--font-weight-medium);
+    }
+
+    a {
+      font-size: var(--font-size-normal-alt);
+      text-transform: lowercase;
+    }
+  }
+
+  .projectDetails {
+    @include project-section-layout;
+
+    h3 {
+      font-size: var(--font-size-normal-alt);
+      font-weight: var(--font-weight-regular);
+    }
+
+    .projectDescription {
+      margin: 2rem 0;
+      font-size: var(--font-size-bigger);
+      font-weight: 400;
+      font-style: italic;
+      text-align: center;
+
+      @media (min-width: $breakpoint-sm) {
+        margin: 4rem 0;
+        font-size: var(--font-size-large);
+        text-align: left;
+      }
+    }
+
+    .mainProjectImage {
+      max-height: 1200px;
+      overflow: hidden;
+      border: 1px solid var(--color-reversetextwithopacity);
+      border-radius: 1%;
+
+      img {
+        object-position: 0 0;
+      }
+    }
+
+    .otherProjectImages {
+      @include secondary-image;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 2rem;
+      margin-top: 4rem;
+
+      @media (min-width: $breakpoint-sm) {
+        grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+      }
+
+      > div {
+        max-height: calc(
+          (100vw - var(--layout-offset)) * var(--iphone11-aspect-ratio)
+        );
+
+        @media (min-width: $breakpoint-sm) {
+          max-height: calc(
+            ((100vw - 7rem - 4rem) / 3) * var(--iphone11-aspect-ratio)
+          );
+          //  100 - padding - grid-gap TODO: css variables
+        }
+      }
+    }
+
+    .otherProjectImage {
+      @include secondary-image;
+      display: flex;
+      margin-top: 4rem;
+      height: 500px;
+    }
+  }
+
+  .projectCTA {
+    @include project-section-layout;
+  }
+
+  .projectCTAContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25%;
+
+    h3 {
+      font-size: var(--font-size-bigger);
+      font-weight: var(--font-weight-bold);
+      text-align: center;
+
+      @media (min-width: $breakpoint-sm) {
+        font-size: var(--font-size-medium-light);
+      }
+    }
+  }
+}

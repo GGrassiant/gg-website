@@ -19,6 +19,23 @@ export const query = graphql`
   query ProjectQuery($id: String!) {
     contentfulProject(id: { eq: $id }) {
       title
+      year
+      team
+      techStack
+      shortDescription
+      link
+      mainPicture {
+        id
+        fluid(maxWidth: 1280) {
+          ...GatsbyContentfulFluid
+        }
+      }
+      projectPictures {
+        id
+        fluid(maxWidth: 1280) {
+          ...GatsbyContentfulFluid
+        }
+      }
     }
   }
 `;

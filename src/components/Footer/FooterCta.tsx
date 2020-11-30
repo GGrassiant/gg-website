@@ -11,6 +11,7 @@ import Title from '../Title';
 type FooterCtaProps = {
   title?: string;
   component?: React.FC<any>;
+  projectPage?: boolean;
 };
 
 const FooterCta: React.FC<FooterCtaProps> = (props) => {

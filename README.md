@@ -1,7 +1,7 @@
 <h1 align="center">
   GG Website <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/ggrassiant/gg-website/GG%20Website%20CI">
 </h1> 
-This is my personal website repository. (Under construction, like early early stage 😛 )
+This is my personal website repository.
 
 ## 🚀 Tech Stack
 
@@ -27,8 +27,12 @@ When adding a route don't forget to edit:
 
 - siteMetaData
 - site.d.ts 
-- fr.json and en.json with the route name
+- fr.json and en.json with the route name for SEO/Meta
+
+## To Do's
+See the [project's kanban](https://github.com/GGrassiant/gg-website/projects/1)
 
 ## Articles I used so far:
 - Josh Comeau: [Dark Mode](https://joshwcomeau.com/gatsby/dark-mode/) 
 - [css variables styled components](https://ronvalstar.nl/react-styled-components-and-sass-less-variables)
+- [aspect ratio in Gatsby](https://medium.com/swlh/art-direction-with-gatsby-image-the-aspect-ratio-bug-8281f7a8594c)

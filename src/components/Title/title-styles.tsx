@@ -6,6 +6,7 @@ import { breakPoints } from '../../utils/constants';
 
 interface TitleWrapperProps {
   readonly weight: string;
+  footer?: boolean;
 }
 
 const customFontWeight: { [key: string]: string } = {
@@ -30,6 +31,11 @@ export const TitleWrapperNormal = styled(TitleWrapper)<TitleWrapperProps>`
   font-size: var(--font-size-normal);
 `;
 TitleWrapperNormal.displayName = 'TitleWrapperNormal';
+
+export const TitleWrapperFooter = styled(TitleWrapper)<TitleWrapperProps>`
+  font-size: var(--font-size-cta);
+`;
+TitleWrapperFooter.displayName = 'TitleWrapperFooter';
 
 export const TitleWrapperMedium = styled(TitleWrapper)<TitleWrapperProps>`
   font-size: var(--font-size-bigger);

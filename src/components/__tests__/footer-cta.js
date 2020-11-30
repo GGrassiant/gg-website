@@ -7,6 +7,7 @@ import { render } from './utils/test-utils';
 // Components
 import GetToKnowMe from '../CTA/footer-cta/GetToKnowMe';
 import LetsConnect from '../CTA/footer-cta/LetsConnect';
+import NextProject from '../CTA/footer-cta/NextProject';
 
 describe('<FooterCta>', () => {
   describe('<LetsConnect />', () => {
@@ -23,6 +24,16 @@ describe('<FooterCta>', () => {
     describe('mounts', () => {
       test('Layout mounts correctly', () => {
         const { container } = render(<GetToKnowMe />);
+
+        expect(container).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe('<NextProject />', () => {
+    describe('mounts', () => {
+      test('Layout mounts correctly', () => {
+        const { container } = render(<NextProject />);
 
         expect(container).toBeInTheDocument();
       });

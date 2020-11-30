@@ -31,6 +31,7 @@ export const FooterCtaWrapper = styled.div`
 
   > div:first-child {
     margin-bottom: 2rem;
+    margin-top: 4rem;
 
     @media (max-width: ${breakPoints.breakPointMd}) {
       font-size: var(--font-size-bigger);

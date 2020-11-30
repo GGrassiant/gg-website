@@ -15,7 +15,7 @@ export const FooterWrapper = styled.div<FooterWrapperProps>`
   position: absolute;
   left: 0;
   width: 100%;
-  height: ${({ cta }) => (cta ? '100%' : 'initial')};
+  height: 100%;
   overflow: hidden;
 `;
 

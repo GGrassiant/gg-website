@@ -1,4 +1,5 @@
-import React, { useEffect, createContext, Context } from 'react';
+// Libs
+import React, { useState, useEffect, createContext, Context } from 'react';
 
 // Utils
 import {
@@ -15,7 +16,7 @@ interface BackgroundMode {
   colorMode: string | undefined;
 }
 
-export interface ThemeContextState extends BackgroundMode {
+interface ThemeContextState extends BackgroundMode {
   setColorMode: (arg: string) => void;
 }
 
@@ -29,9 +30,9 @@ export const ThemeContext: Context<ThemeContextState> = createContext(
 );
 
 export const ThemeProvider: React.FC<ThemeProps> = ({ children }) => {
-  const [colorMode, rawSetColorMode] = React.useState<
-    BackgroundMode['colorMode']
-  >(undefined);
+  const [colorMode, rawSetColorMode] = useState<BackgroundMode['colorMode']>(
+    undefined,
+  );
 
   useEffect(() => {
     const root = window.document.documentElement;

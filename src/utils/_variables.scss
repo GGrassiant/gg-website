@@ -29,7 +29,7 @@ $layout-offset: 4rem;
 
   //font-size
   --font-size-xl: 8.5rem;
-  --font-size-very-large: 7.2rem;
+  --font-size-very-large: 6.8rem;
   --font-size-large: 4.5rem;
   --font-size-medium: 3.2rem;
   --font-size-medium-light: 2.5rem;
@@ -53,4 +53,8 @@ $layout-offset: 4rem;
 
   //offset:
   --layout-offset: 4rem;
+
+  // app simulator screenshot resolution
+  // is the lower denominator for images height
+  --iphone11-aspect-ratio: calc(812 / 375);
 }
