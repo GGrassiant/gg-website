@@ -4,19 +4,14 @@ import styled from 'styled-components';
 // Utils
 import { breakPoints } from '../../utils/constants';
 
-interface FooterWrapperProps {
-  projectPage?: boolean;
-}
-
-export const FooterCtaWrapper = styled.div<FooterWrapperProps>`
+export const FooterCtaWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: ${(props) => (props.projectPage ? 'flex-end' : 'center')};
+  justify-content: center;
   width: 100%;
   height: 100%;
-  margin-bottom: ${(props) => (props.projectPage ? '2rem' : 'initial')};
   background-color: var(--color-background);
 
   &:before {
@@ -32,13 +27,14 @@ export const FooterCtaWrapper = styled.div<FooterWrapperProps>`
 
   a {
     z-index: 10;
-    width: ${(props) => (props.projectPage ? '40%' : 'auto')};
   }
 
   > div:first-child {
     margin-bottom: 2rem;
+    margin-top: 7rem;
 
     @media (max-width: ${breakPoints.breakPointMd}) {
+      margin-top: 4rem;
       font-size: var(--font-size-bigger);
       text-align: center;
     }

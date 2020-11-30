@@ -1,11 +1,13 @@
 // Libs
 import styled from 'styled-components';
+import { LocalizedLink } from 'gatsby-theme-i18n';
 
 // Utils
 import { breakPoints } from '../../utils/constants';
 
 interface ProjectCardWrapperProps {
   id?: string;
+  footer?: boolean;
 }
 
 export const ProjectCardWrapper = styled.div<ProjectCardWrapperProps>`
@@ -26,7 +28,8 @@ export const ProjectCardWrapper = styled.div<ProjectCardWrapperProps>`
   }
 
   @media (min-width: ${breakPoints.breakPointSm}) {
-    height: 30rem;
+    height: ${(props) => (props.footer ? '18rem' : '30rem')};
+    width: ${(props) => (props.footer ? '25rem' : 'auto')};
   }
 
   @media (min-width: ${breakPoints.breakPointMd}) and (min-height: ${breakPoints.largeHeight}) {
@@ -77,6 +80,13 @@ export const ProjectCardHeader = styled.div`
 
     @media (min-width: ${breakPoints.breakPointSm}) {
       font-size: var(--font-size-normal-alt);
+    }
+  }
+`;
+
+export const SimplifiedCardLink = styled(LocalizedLink)`
+    @media (max-width: ${breakPoints.breakPointSm}) {
+      width: 80%;
     }
   }
 `;

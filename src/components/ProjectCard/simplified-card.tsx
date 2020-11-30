@@ -1,7 +1,6 @@
 // Libs
 import React, { useContext } from 'react';
 import Img from 'gatsby-image';
-import { LocalizedLink } from 'gatsby-theme-i18n';
 
 // Utils
 import { ProjectCardProps } from './project-card-types';
@@ -9,7 +8,11 @@ import { ProjectContext } from '../../context/ProjectContext';
 import * as siteMetaData from '../../utils/siteMetaData';
 
 // Styles
-import { ProjectCardHeader, ProjectCardWrapper } from './project-card-styles';
+import {
+  ProjectCardHeader,
+  ProjectCardWrapper,
+  SimplifiedCardLink,
+} from './project-card-styles';
 
 // Components
 import Title from '../Title';
@@ -22,13 +25,13 @@ const SimplifiedProjectCard: React.FC<ProjectCardProps> = (props) => {
     setCurrentProjectId(edge.node.id);
   };
   return (
-    <LocalizedLink to={`${siteMetaData.menu[1].slug}${edge.node.slug}`}>
-      <ProjectCardWrapper id={edge.node.title} onClick={handleOnClick}>
+    <SimplifiedCardLink to={`${siteMetaData.menu[1].slug}${edge.node.slug}`}>
+      <ProjectCardWrapper id={edge.node.title} onClick={handleOnClick} footer>
         <ProjectCardHeader>
           <span>{edge.node.mainTech}</span>
           <span>{edge.node.year}</span>
         </ProjectCardHeader>
-        <Title size="medium" weight="bold">
+        <Title size="footer" weight="bold">
           {edge.node.title}
         </Title>
         <div>
@@ -39,7 +42,7 @@ const SimplifiedProjectCard: React.FC<ProjectCardProps> = (props) => {
           />
         </div>
       </ProjectCardWrapper>
-    </LocalizedLink>
+    </SimplifiedCardLink>
   );
 };
 

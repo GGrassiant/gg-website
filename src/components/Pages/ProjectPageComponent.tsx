@@ -100,7 +100,7 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
               <div>
                 <BsLink45Deg />
               </div>
-              <Link href={link}>{link}</Link>
+              <Link href={`https://${link}`}>{link}</Link>
             </li>
           </ul>
           <div className={styles.imageWrapper}>

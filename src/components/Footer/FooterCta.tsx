@@ -15,10 +15,10 @@ type FooterCtaProps = {
 };
 
 const FooterCta: React.FC<FooterCtaProps> = (props) => {
-  const { title, component, projectPage } = props;
+  const { title, component } = props;
   const intl = useIntl();
   return (
-    <FooterCtaWrapper projectPage={projectPage}>
+    <FooterCtaWrapper>
       <Title size="l">{intl.formatMessage({ id: title })}</Title>
       {component && component(undefined)}
     </FooterCtaWrapper>
