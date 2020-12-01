@@ -39,6 +39,7 @@ const SimplifiedProjectCard: React.FC<ProjectCardProps> = (props) => {
             fluid={edge.node.mainPicture.fluid}
             key={edge.node.mainPicture.fluid.src}
             alt={edge.node.mainPicture.title}
+            imgStyle={{ objectPosition: '0 0' }}
           />
         </div>
       </ProjectCardWrapper>
