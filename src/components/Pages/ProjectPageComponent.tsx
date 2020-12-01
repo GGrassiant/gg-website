@@ -59,7 +59,11 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
               fluid={otherImage.fluid}
               key={otherImage.fluid.src}
               alt={otherImage.title}
-              imgStyle={{ objectPosition: '0 0' }}
+              imgStyle={{
+                objectPosition: '0 0',
+                height: 'auto',
+                width: '100%',
+              }}
             />
           ))}
         </div>
