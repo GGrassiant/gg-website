@@ -108,7 +108,6 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
               fluid={mainPicture.fluid}
               key={mainPicture.fluid.src}
               alt={mainPicture.title}
-              style={{ height: '100%' }}
             />
           </div>
         </div>
