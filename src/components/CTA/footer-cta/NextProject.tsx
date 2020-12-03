@@ -19,13 +19,11 @@ const NextProject: React.FC = () => {
     allContentfulProject: { group },
   } = useSiteMetadata();
 
-  const informationElements: Array<Edge> = ensure(
+  const localizedProjects: Array<Edge> = ensure(
     group.find((lang) => lang.fieldValue === locale),
-  ).edges;
+  ).edges.filter((el) => el.node.id !== currentProjectId);
 
-  const randomProject = randomValueFromArray(
-    informationElements.filter((el) => el.node.id !== currentProjectId),
-  );
+  const randomProject = randomValueFromArray(localizedProjects);
 
   return (
     <SimplifiedProjectCard edge={randomProject} key={randomProject.node.id} />
