@@ -1,9 +1,10 @@
-// Helper to handle the undefined issue of Array.find
+// Libs
 import React from 'react';
 
 // Utils
 import { FOOTER_CTA_MESSAGES } from './constants';
 
+// Helper to handle the undefined issue of Array.find
 export const ensure = <T, _>(
   argument: T | undefined | null,
   message = 'This value was promised to be there.',

@@ -21,6 +21,7 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
   const handleOnClick = () => {
     setCurrentProjectId(edge.node.id);
   };
+
   return (
     <LocalizedLink to={`${siteMetaData.menu[1].slug}${edge.node.slug}`}>
       <ProjectCardWrapper id={edge.node.title} onClick={handleOnClick}>
