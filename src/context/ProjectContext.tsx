@@ -1,6 +1,9 @@
 // Libs
 import React, { useState, createContext, Context } from 'react';
 
+// Utils
+import { Edge } from '../../pages';
+
 interface ProjectProps {
   children: Array<React.ReactElement>;
 }
@@ -9,13 +12,20 @@ interface ProjectState {
   currentProjectId: string | undefined;
 }
 
-interface ProjectStateContext extends ProjectState {
+interface ProjectsState extends ProjectState {
+  projects: Array<Edge> | [];
+}
+
+interface ProjectStateContext extends ProjectsState {
   setCurrentProjectId: (arg: string) => void;
+  setProjects: (arg: Array<Edge> | []) => void;
 }
 
 export const defaultState: ProjectStateContext = {
   currentProjectId: undefined,
+  projects: [],
   setCurrentProjectId: (newProjectId) => console.log(newProjectId),
+  setProjects: (newProjects) => console.log(newProjects),
 };
 
 export const ProjectContext: Context<ProjectStateContext> = createContext(
@@ -27,11 +37,15 @@ export const ProjectProvider: React.FC<ProjectProps> = ({ children }) => {
     ProjectState['currentProjectId']
   >(undefined);
 
+  const [projects, setProjects] = useState<ProjectsState['projects']>([]);
+
   return (
     <ProjectContext.Provider
       value={{
         currentProjectId,
+        projects,
         setCurrentProjectId,
+        setProjects,
       }}
     >
       {children}

@@ -1,5 +1,5 @@
 // Libs
-import React, { useEffect, useRef } from 'react';
+import React, { memo, useContext, useEffect, useMemo, useRef } from 'react';
 import { graphql, navigate } from 'gatsby';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { useIntl } from 'react-intl';
@@ -7,12 +7,13 @@ import { useIntl } from 'react-intl';
 // Utils
 import * as langsSettings from '../utils/languages';
 import {
-  ensure,
-  scrollToRefObject,
   generateRandomFooterCta,
+  getLocalizedDataFromContentful,
+  scrollToRefObject,
 } from '../utils/typescript.utils';
 import { Edge } from '../../pages';
 import { WithLayoutProps } from '../Hoc/hoc.types';
+import { ProjectContext } from '../context/ProjectContext';
 
 // Styles
 import styles from './index.module.scss';
@@ -46,14 +47,21 @@ const IndexPage: React.FC<Pick<WithLayoutProps, 'data' | 'locale'>> = (
   props,
 ) => {
   const { data, locale } = props;
+  const { setProjects } = useContext(ProjectContext);
   const intl = useIntl();
 
-  const informationElements: Array<Edge> = ensure(
-    data?.allContentfulProject.group.find((lang) => lang.fieldValue === locale),
-  ).edges;
+  const informationElements: Array<Edge> | undefined = useMemo(() => {
+    if (data && locale) {
+      return getLocalizedDataFromContentful(
+        data.allContentfulProject.group,
+        locale,
+      );
+    }
+    return undefined;
+  }, [data, locale]);
 
-  const renderInformation = (): Array<React.ReactElement> =>
-    informationElements.map(
+  const renderInformation = (): Array<React.ReactElement> | undefined =>
+    informationElements?.map(
       (edge): React.ReactElement => (
         <ProjectCard edge={edge} key={edge.node.id} />
       ),
@@ -69,6 +77,12 @@ const IndexPage: React.FC<Pick<WithLayoutProps, 'data' | 'locale'>> = (
       navigate(`/${urlLang}`);
     }
   }, []);
+
+  useEffect((): void => {
+    if (informationElements?.length) {
+      setProjects(informationElements);
+    }
+  }, [informationElements, setProjects]);
 
   return (
     <>
@@ -133,4 +147,4 @@ const ctaContent = {
   component: () => <LetsConnect />,
 };
 
-export default withLayout(IndexPage, fullHeight, ctaContent);
+export default memo(withLayout(IndexPage, fullHeight, ctaContent));
