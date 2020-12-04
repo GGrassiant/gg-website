@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import Img from 'gatsby-image';
 
 // Utils
-import { ProjectCardProps } from './project-card-types';
+import { SimplifiedProjectCardProps } from './project-card-types';
 import { ProjectContext } from '../../context/ProjectContext';
 import * as siteMetaData from '../../utils/siteMetaData';
 
@@ -17,13 +17,16 @@ import {
 // Components
 import Title from '../Title';
 
-const SimplifiedProjectCard: React.FC<ProjectCardProps> = (props) => {
+const SimplifiedProjectCard: React.FC<SimplifiedProjectCardProps> = (props) => {
   const { edge } = props;
   const { setCurrentProjectId } = useContext(ProjectContext);
 
-  const handleOnClick = () => {
-    setCurrentProjectId(edge.node.id);
-  };
+  const handleOnClick = () => edge && setCurrentProjectId(edge.node.id);
+
+  if (!edge) {
+    return <p />;
+  }
+
   return (
     <SimplifiedCardLink to={`${siteMetaData.menu[1].slug}${edge.node.slug}`}>
       <ProjectCardWrapper id={edge.node.title} onClick={handleOnClick} footer>

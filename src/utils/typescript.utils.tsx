@@ -3,6 +3,8 @@ import React from 'react';
 
 // Utils
 import { FOOTER_CTA_MESSAGES } from './constants';
+import { ContentfulDataGroup } from './query-hooks';
+import { Edge } from '../../pages';
 
 // Helper to handle the undefined issue of Array.find
 export const ensure = <T, _>(
@@ -38,3 +40,10 @@ export const randomValueFromArray = (array: Array<any>): any =>
 // Random Footer CTA String
 export const generateRandomFooterCta = (): string =>
   randomValueFromArray(FOOTER_CTA_MESSAGES);
+
+// Get right values for the language
+export const getLocalizedDataFromContentful: (
+  arrayOfItems: ContentfulDataGroup,
+  locale: string,
+) => Array<Edge> = (arrayOfItems: ContentfulDataGroup, locale: string) =>
+  ensure(arrayOfItems.find((item) => item.fieldValue === locale)).edges;
