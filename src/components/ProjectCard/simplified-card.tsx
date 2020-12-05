@@ -19,9 +19,9 @@ import Title from '../Title';
 
 const SimplifiedProjectCard: React.FC<SimplifiedProjectCardProps> = (props) => {
   const { edge } = props;
-  const { setCurrentProjectId } = useContext(ProjectContext);
+  const { setDelayedProjectId } = useContext(ProjectContext);
 
-  const handleOnClick = () => edge && setCurrentProjectId(edge.node.id);
+  const handleOnClick = () => edge && setDelayedProjectId(edge.node.id);
 
   if (!edge) {
     return <p />;

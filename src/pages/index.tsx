@@ -1,6 +1,6 @@
 // Libs
-import React, { memo, useContext, useEffect, useMemo, useRef } from 'react';
-import { graphql, navigate } from 'gatsby';
+import React, { memo, useContext, useEffect, useRef } from 'react';
+import { navigate } from 'gatsby';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { useIntl } from 'react-intl';
 
@@ -8,12 +8,10 @@ import { useIntl } from 'react-intl';
 import * as langsSettings from '../utils/languages';
 import {
   generateRandomFooterCta,
-  getLocalizedDataFromContentful,
   scrollToRefObject,
 } from '../utils/typescript.utils';
-import { Edge } from '../../pages';
-import { WithLayoutProps } from '../Hoc/hoc.types';
 import { ProjectContext } from '../context/ProjectContext';
+import { Edge } from '../../pages';
 
 // Styles
 import styles from './index.module.scss';
@@ -43,27 +41,14 @@ export const getRedirectLanguage = (): string => {
   }
 };
 
-const IndexPage: React.FC<Pick<WithLayoutProps, 'data' | 'locale'>> = (
-  props,
-) => {
-  const { data, locale } = props;
-  const { setProjects } = useContext(ProjectContext);
+const IndexPage: React.FC = () => {
+  const { projects } = useContext(ProjectContext);
   const intl = useIntl();
 
-  const informationElements: Array<Edge> | undefined = useMemo(() => {
-    if (data && locale) {
-      return getLocalizedDataFromContentful(
-        data.allContentfulProject.group,
-        locale,
-      );
-    }
-    return undefined;
-  }, [data, locale]);
-
   const renderInformation = (): Array<React.ReactElement> | undefined =>
-    informationElements?.map(
-      (edge): React.ReactElement => (
-        <ProjectCard edge={edge} key={edge.node.id} />
+    projects?.map(
+      (project: Edge): React.ReactElement => (
+        <ProjectCard edge={project} key={project?.node.id} />
       ),
     );
 
@@ -77,12 +62,6 @@ const IndexPage: React.FC<Pick<WithLayoutProps, 'data' | 'locale'>> = (
       navigate(`/${urlLang}`);
     }
   }, []);
-
-  useEffect((): void => {
-    if (informationElements?.length) {
-      setProjects(informationElements);
-    }
-  }, [informationElements, setProjects]);
 
   return (
     <>
@@ -113,33 +92,6 @@ const IndexPage: React.FC<Pick<WithLayoutProps, 'data' | 'locale'>> = (
     </>
   );
 };
-
-export const query = graphql`
-  query {
-    allContentfulProject {
-      group(field: node_locale) {
-        fieldValue
-        totalCount
-        edges {
-          node {
-            title
-            mainTech
-            year
-            slug
-            id
-            githubLink
-            mainPicture {
-              id
-              fluid(maxWidth: 500) {
-                ...GatsbyContentfulFluid
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 const fullHeight = true;
 const ctaContent = {

@@ -17,15 +17,18 @@ const NextProject: React.FC = () => {
 
   // Gatsby Link pre fetches data on hover at first load
   // https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-link/src/index.js#LC227
-  // Therefore triggers a re-render of the Simplified Card on hover
+  // Therefore triggers a re-render of the SimplifiedCard on hover
   // Causing a flicker. If using a normal Link from react/router with no prefetch
   // prevents the static page to be created hence causes a 404 (needs a page reload)
   // To solve this, instead of just creating the randomProject on the fly,
   // we store it in a local state and change it through a useEffect dependency
+  // Also, on mobile the touch event is slightly delayed and still causes the flicker
+  // hence a setTimeout in Context
   useEffect(() => {
-    const localizedProjects = projects?.filter(
-      (el) => el.node.id !== currentProjectId,
-    );
+    const localizedProjects =
+      currentProjectId !== undefined
+        ? projects?.filter((el) => el.node.id !== currentProjectId)
+        : projects;
 
     return (
       localizedProjects &&

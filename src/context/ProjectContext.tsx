@@ -13,19 +13,19 @@ interface ProjectState {
 }
 
 interface ProjectsState extends ProjectState {
-  projects: Array<Edge> | [];
+  projects: Array<Edge> | undefined;
 }
 
 interface ProjectStateContext extends ProjectsState {
-  setCurrentProjectId: (arg: string) => void;
   setProjects: (arg: Array<Edge> | []) => void;
+  setDelayedProjectId: (arg: string) => void;
 }
 
 export const defaultState: ProjectStateContext = {
   currentProjectId: undefined,
   projects: [],
-  setCurrentProjectId: (newProjectId) => console.log(newProjectId),
   setProjects: (newProjects) => console.log(newProjects),
+  setDelayedProjectId: (newProjectId: string) => console.log(newProjectId),
 };
 
 export const ProjectContext: Context<ProjectStateContext> = createContext(
@@ -37,6 +37,16 @@ export const ProjectProvider: React.FC<ProjectProps> = ({ children }) => {
     ProjectState['currentProjectId']
   >(undefined);
 
+  // As mention in NextProject.tsx, Gatsby Link prefetches data
+  // and also causes a slight delay on mobile when navigating
+  // causing a premature re-rendering of the NextProject card in the footer
+  // and messing up with the randomized project.
+  // A hacky-yet-working fix is to encapsulate the setting of the new project
+  // id in a setTimeout.
+  // The queue in the JS event loop doing the rest.
+  const setDelayedProjectId = (id: string) =>
+    setTimeout(() => setCurrentProjectId(id), 500);
+
   const [projects, setProjects] = useState<ProjectsState['projects']>([]);
 
   return (
@@ -44,7 +54,7 @@ export const ProjectProvider: React.FC<ProjectProps> = ({ children }) => {
       value={{
         currentProjectId,
         projects,
-        setCurrentProjectId,
+        setDelayedProjectId,
         setProjects,
       }}
     >

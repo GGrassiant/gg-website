@@ -16,10 +16,10 @@ import Title from '../Title';
 
 const ProjectCard: React.FC<ProjectCardProps> = (props) => {
   const { edge } = props;
-  const { setCurrentProjectId } = useContext(ProjectContext);
+  const { setDelayedProjectId } = useContext(ProjectContext);
 
   const handleOnClick = () => {
-    setCurrentProjectId(edge.node.id);
+    setDelayedProjectId(edge.node.id);
   };
 
   return (
