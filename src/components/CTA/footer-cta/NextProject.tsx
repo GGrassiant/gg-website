@@ -1,5 +1,5 @@
 // Libs
-import React, { useContext, useState, useEffect, memo } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 // Utils
 import { ProjectContext } from '../../../context/ProjectContext';
@@ -9,7 +9,7 @@ import { Edge } from '../../../../pages';
 import SimplifiedProjectCard from '../../ProjectCard/simplified-card';
 
 const NextProject: React.FC = () => {
-  const { currentRandomProjectId, projects } = useContext(ProjectContext);
+  const { currentRandomProject } = useContext(ProjectContext);
   const [randomProject, setRandomProject] = useState<Edge | undefined>(
     undefined,
   );
@@ -22,10 +22,8 @@ const NextProject: React.FC = () => {
   // To solve this, instead of just creating the randomProject on the fly,
   // we store it in a local state and change it through a useEffect dependency
   useEffect(() => {
-    setRandomProject(
-      projects?.find((project) => project.node.id === currentRandomProjectId),
-    );
-  }, [currentRandomProjectId, projects]);
+    setRandomProject(currentRandomProject);
+  }, [currentRandomProject]);
 
   if (!randomProject) {
     return <p />;
@@ -36,4 +34,4 @@ const NextProject: React.FC = () => {
   );
 };
 
-export default memo(NextProject);
+export default NextProject;

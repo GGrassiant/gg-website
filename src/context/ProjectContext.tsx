@@ -10,7 +10,7 @@ interface ProjectProps {
 }
 
 interface ProjectState {
-  currentRandomProjectId: string | undefined;
+  currentRandomProject: Edge | undefined;
 }
 
 interface ProjectsState extends ProjectState {
@@ -23,7 +23,7 @@ interface ProjectStateContext extends ProjectsState {
 }
 
 export const defaultState: ProjectStateContext = {
-  currentRandomProjectId: undefined,
+  currentRandomProject: undefined,
   projects: [],
   setProjects: (newProjects) => console.log(newProjects),
   setProjectInfo: (newProjectId: string) => console.log(newProjectId),
@@ -34,8 +34,8 @@ export const ProjectContext: Context<ProjectStateContext> = createContext(
 );
 
 export const ProjectProvider: React.FC<ProjectProps> = ({ children }) => {
-  const [currentRandomProjectId, setCurrentRandomProjectId] = useState<
-    ProjectState['currentRandomProjectId']
+  const [currentRandomProject, setCurrentRandomProject] = useState<
+    ProjectState['currentRandomProject']
   >(undefined);
 
   const [projects, setProjects] = useState<ProjectsState['projects']>([]);
@@ -47,7 +47,7 @@ export const ProjectProvider: React.FC<ProjectProps> = ({ children }) => {
 
     return (
       filteredProjects &&
-      setCurrentRandomProjectId(randomValueFromArray(filteredProjects)?.node.id)
+      setCurrentRandomProject(randomValueFromArray(filteredProjects))
     );
   };
 
@@ -57,7 +57,7 @@ export const ProjectProvider: React.FC<ProjectProps> = ({ children }) => {
         setProjects,
         projects,
         setProjectInfo,
-        currentRandomProjectId,
+        currentRandomProject,
       }}
     >
       {children}
