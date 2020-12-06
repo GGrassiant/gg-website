@@ -37,7 +37,7 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
       },
     },
   } = props;
-  const { setDelayedProjectId } = useContext(ProjectContext);
+  const { setProjectInfo } = useContext(ProjectContext);
   const intl = useIntl();
 
   const renderProjectImages = (images: Array<ContenfulImage>) => (
@@ -75,8 +75,8 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
   );
 
   useEffect(() => {
-    setDelayedProjectId(id);
-  }, [id, setDelayedProjectId]);
+    setProjectInfo(id);
+  }, [id, setProjectInfo]);
 
   return (
     <>

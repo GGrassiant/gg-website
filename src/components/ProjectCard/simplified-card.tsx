@@ -1,10 +1,9 @@
 // Libs
-import React, { useContext } from 'react';
+import React from 'react';
 import Img from 'gatsby-image';
 
 // Utils
 import { SimplifiedProjectCardProps } from './project-card-types';
-import { ProjectContext } from '../../context/ProjectContext';
 import * as siteMetaData from '../../utils/siteMetaData';
 
 // Styles
@@ -19,9 +18,6 @@ import Title from '../Title';
 
 const SimplifiedProjectCard: React.FC<SimplifiedProjectCardProps> = (props) => {
   const { edge } = props;
-  const { setDelayedProjectId } = useContext(ProjectContext);
-
-  const handleOnClick = () => edge && setDelayedProjectId(edge.node.id);
 
   if (!edge) {
     return <p />;
@@ -29,7 +25,7 @@ const SimplifiedProjectCard: React.FC<SimplifiedProjectCardProps> = (props) => {
 
   return (
     <SimplifiedCardLink to={`${siteMetaData.menu[1].slug}${edge.node.slug}`}>
-      <ProjectCardWrapper id={edge.node.title} onClick={handleOnClick} footer>
+      <ProjectCardWrapper id={edge.node.title} footer>
         <ProjectCardHeader>
           <span>{edge.node.mainTech}</span>
           <span>{edge.node.year}</span>

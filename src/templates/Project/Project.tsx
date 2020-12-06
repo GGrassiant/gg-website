@@ -24,6 +24,7 @@ export const query = graphql`
       techStack
       shortDescription
       link
+      id
       mainPicture {
         id
         fluid(maxWidth: 1280) {
