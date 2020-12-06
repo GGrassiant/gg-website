@@ -3,6 +3,7 @@
  * Contentful
  */
 import { FluidObject } from 'gatsby-image';
+import { Edge } from './pages';
 
 interface ContenfulImage {
   title: string;
@@ -43,7 +44,7 @@ export type Menu = {
   label: string;
 };
 
-export interface SiteMetaData {
+export interface SiteMasterData {
   site: {
     siteMetadata: {
       title: string;
@@ -53,6 +54,13 @@ export interface SiteMetaData {
       };
       menu: Menu;
     };
+  };
+  allContentfulProject: {
+    group: Array<{
+      fieldValue: string;
+      edges: Array<Edge>;
+      totalCount: number;
+    }>;
   };
 }
 

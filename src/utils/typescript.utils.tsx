@@ -34,7 +34,7 @@ export const validateObjectValues = (object: {
 }): boolean => Object.values(object)?.length > 0;
 
 // Helper to get random value from an array
-export const randomValueFromArray = (array: Array<any>): any =>
+export const randomValueFromArray = <T, _>(array: Array<T>): T =>
   array[Math.floor(Math.random() * array.length)];
 
 // Random Footer CTA String

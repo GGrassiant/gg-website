@@ -4,8 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 // Utils
 import { Location } from '@reach/router';
-// TODO: retype
-// import { SiteMetaData } from '../../../site';
+import { SiteMasterData } from '../../../site';
 import { ProjectContext } from '../../context/ProjectContext';
 
 // Styles
@@ -24,7 +23,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = (props) => {
   const { children, locale, fullHeight = false } = props;
-  const data: any = useStaticQuery(graphql`
+  const data: SiteMasterData = useStaticQuery(graphql`
     query {
       site {
         siteMetadata {
@@ -67,6 +66,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
     return undefined;
   }, [data, locale]);
 
+  // load the projects in context on first mount
   useEffect((): void => {
     if (informationElements?.length && !projects?.length) {
       setProjects(informationElements);
