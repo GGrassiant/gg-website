@@ -3,7 +3,7 @@ import React from 'react';
 
 // Utils
 import { render } from './utils/test-utils';
-import { FLUID } from '../../pages/__tests__/index';
+import { FLUID, FLUID_2 } from '../../pages/__tests__/index';
 
 // Components
 import ProjectCard from '../ProjectCard';
@@ -11,6 +11,11 @@ import SimplifiedProjectCard from '../ProjectCard/simplified-card';
 
 const picture = {
   fluid: FLUID,
+  title: 'lol-picture',
+};
+
+const picture2 = {
+  fluid: FLUID_2,
   title: 'lol-picture',
 };
 
@@ -23,6 +28,38 @@ export const EDGE = {
     year: '1982',
     mainPicture: picture,
     projectPictures: [picture],
+    team: 'A Team',
+    techStack: 'React',
+    shortDescription: 'short description',
+    link: 'www.lolz.com',
+  },
+};
+
+export const EDGE_TWO_IMAGES = {
+  node: {
+    id: 'lol',
+    slug: 'lol',
+    title: 'lolz',
+    mainTech: 'internet',
+    year: '1982',
+    mainPicture: picture,
+    projectPictures: [picture, picture],
+    team: 'A Team',
+    techStack: 'React',
+    shortDescription: 'short description',
+    link: 'www.lolz.com',
+  },
+};
+
+export const EDGE_MULTIPLE_IMAGES = {
+  node: {
+    id: 'lol',
+    slug: 'lol',
+    title: 'lolz',
+    mainTech: 'internet',
+    year: '1982',
+    mainPicture: picture,
+    projectPictures: [picture, picture, picture2],
     team: 'A Team',
     techStack: 'React',
     shortDescription: 'short description',

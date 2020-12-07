@@ -4,10 +4,23 @@ import { render } from '@testing-library/react';
 
 // Utils
 import { ThemeContext } from '../../../context/ThemeContext';
+import { ProjectContext } from '../../../context/ProjectContext';
+import { randomValueFromArray } from '../../../utils/typescript.utils';
 
 const AllTheProviders = ({ children }) => {
   const [colorMode, setColorModeHandler] = useState(undefined);
+  const [currentRandomProject, setCurrentRandomProject] = useState(undefined);
+  const [projects, setProjects] = useState([]);
   const setColorMode = (value) => setColorModeHandler(value);
+  const setProjectInfo = (value) => {
+    const filteredProjects = projects?.filter(
+      (project) => project.node.id !== value,
+    );
+    return (
+      filteredProjects &&
+      setCurrentRandomProject(randomValueFromArray(filteredProjects))
+    );
+  };
   return (
     <ThemeContext.Provider
       value={{
@@ -15,7 +28,16 @@ const AllTheProviders = ({ children }) => {
         setColorMode,
       }}
     >
-      {children}
+      <ProjectContext.Provider
+        value={{
+          currentRandomProject,
+          setProjectInfo,
+          projects,
+          setProjects,
+        }}
+      >
+        {children}
+      </ProjectContext.Provider>
     </ThemeContext.Provider>
   );
 };

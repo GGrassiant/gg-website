@@ -56,15 +56,13 @@ const Layout: React.FC<LayoutProps> = (props) => {
   `);
   const { setProjects, projects } = useContext(ProjectContext);
 
+  // eslint-disable-next-line arrow-body-style
   const informationElements: Array<Edge> | undefined = useMemo(() => {
-    if (data && locale) {
-      return getLocalizedDataFromContentful(
-        data.allContentfulProject.group,
-        locale,
-      );
-    }
-    return undefined;
-  }, [data, locale]);
+    return getLocalizedDataFromContentful(
+      data.allContentfulProject?.group,
+      locale,
+    );
+  }, [data.allContentfulProject, locale]);
 
   // load the projects in context on first mount
   useEffect((): void => {
