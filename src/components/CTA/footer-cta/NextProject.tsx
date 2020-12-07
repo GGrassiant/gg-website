@@ -26,7 +26,7 @@ const NextProject: React.FC = () => {
   }, [currentRandomProject]);
 
   if (!randomProject) {
-    return <p />;
+    return <p>Loading...</p>;
   }
 
   return (

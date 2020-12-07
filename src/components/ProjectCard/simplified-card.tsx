@@ -20,7 +20,7 @@ const SimplifiedProjectCard: React.FC<SimplifiedProjectCardProps> = (props) => {
   const { edge } = props;
 
   if (!edge) {
-    return <p />;
+    return <p>Loading...</p>;
   }
 
   return (
