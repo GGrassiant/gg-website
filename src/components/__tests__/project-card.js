@@ -41,9 +41,15 @@ describe('<ProjectCard />', () => {
 
 describe('<SimplifiedProjectCard />', () => {
   describe('mounts', () => {
-    test('mounts correctly', () => {
+    test('mounts correctly', async () => {
       const { container } = render(<SimplifiedProjectCard edge={EDGE} />);
       expect(container).toBeInTheDocument();
+    });
+
+    test('mounts with no Edge', async () => {
+      const { findByText } = render(<SimplifiedProjectCard edge={undefined} />);
+      const loadingElement = await findByText('Loading...');
+      expect(loadingElement).toBeInTheDocument();
     });
   });
 });

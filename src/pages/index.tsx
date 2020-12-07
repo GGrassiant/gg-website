@@ -1,18 +1,17 @@
 // Libs
-import React, { useEffect, useRef } from 'react';
-import { graphql, navigate } from 'gatsby';
+import React, { memo, useContext, useEffect, useRef } from 'react';
+import { navigate } from 'gatsby';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { useIntl } from 'react-intl';
 
 // Utils
 import * as langsSettings from '../utils/languages';
 import {
-  ensure,
-  scrollToRefObject,
   generateRandomFooterCta,
+  scrollToRefObject,
 } from '../utils/typescript.utils';
+import { ProjectContext } from '../context/ProjectContext';
 import { Edge } from '../../pages';
-import { WithLayoutProps } from '../Hoc/hoc.types';
 
 // Styles
 import styles from './index.module.scss';
@@ -42,20 +41,14 @@ export const getRedirectLanguage = (): string => {
   }
 };
 
-const IndexPage: React.FC<Pick<WithLayoutProps, 'data' | 'locale'>> = (
-  props,
-) => {
-  const { data, locale } = props;
+const IndexPage: React.FC = () => {
+  const { projects } = useContext(ProjectContext);
   const intl = useIntl();
 
-  const informationElements: Array<Edge> = ensure(
-    data?.allContentfulProject.group.find((lang) => lang.fieldValue === locale),
-  ).edges;
-
-  const renderInformation = (): Array<React.ReactElement> =>
-    informationElements.map(
-      (edge): React.ReactElement => (
-        <ProjectCard edge={edge} key={edge.node.id} />
+  const renderInformation = (): Array<React.ReactElement> | undefined =>
+    projects?.map(
+      (project: Edge): React.ReactElement => (
+        <ProjectCard edge={project} key={project?.node.id} />
       ),
     );
 
@@ -100,37 +93,10 @@ const IndexPage: React.FC<Pick<WithLayoutProps, 'data' | 'locale'>> = (
   );
 };
 
-export const query = graphql`
-  query {
-    allContentfulProject {
-      group(field: node_locale) {
-        fieldValue
-        totalCount
-        edges {
-          node {
-            title
-            mainTech
-            year
-            slug
-            id
-            githubLink
-            mainPicture {
-              id
-              fluid(maxWidth: 500) {
-                ...GatsbyContentfulFluid
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 const fullHeight = true;
 const ctaContent = {
   title: generateRandomFooterCta(),
   component: () => <LetsConnect />,
 };
 
-export default withLayout(IndexPage, fullHeight, ctaContent);
+export default memo(withLayout(IndexPage, fullHeight, ctaContent));

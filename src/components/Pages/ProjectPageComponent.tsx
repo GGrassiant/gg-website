@@ -1,5 +1,5 @@
 // Libs
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import Img from 'gatsby-image';
 import { useIntl } from 'react-intl';
 import { AiOutlineArrowLeft, AiOutlineCalendar } from 'react-icons/ai';
@@ -8,6 +8,7 @@ import { BsCodeSlash, BsPeople, BsLink45Deg } from 'react-icons/bs';
 // Utils
 import { ProjectPageComponentProps } from '../../../pages';
 import { ContenfulImage } from '../../../site';
+import { ProjectContext } from '../../context/ProjectContext';
 
 // Styles
 import styles from './project.module.scss';
@@ -28,6 +29,7 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
         year,
         mainPicture,
         team,
+        id,
         techStack,
         shortDescription,
         link,
@@ -35,6 +37,7 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
       },
     },
   } = props;
+  const { setProjectInfo } = useContext(ProjectContext);
   const intl = useIntl();
 
   const renderProjectImages = (images: Array<ContenfulImage>) => (
@@ -70,6 +73,10 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
       )}
     </>
   );
+
+  useEffect(() => {
+    setProjectInfo(id);
+  }, [id, setProjectInfo]);
 
   return (
     <>

@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 const Image: React.FC = () => {
-  const data: { [key: string]: any } = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "gg2020.jpeg" }) {
         childImageSharp {

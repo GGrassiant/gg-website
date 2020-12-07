@@ -32,10 +32,12 @@ describe('<FooterCta>', () => {
 
   describe('<NextProject />', () => {
     describe('mounts', () => {
-      test('Layout mounts correctly', () => {
-        const { container } = render(<NextProject />);
+      test('Layout mounts correctly', async () => {
+        const { container, findByText } = render(<NextProject />);
+        const loadingElement = await findByText('Loading...');
 
         expect(container).toBeInTheDocument();
+        expect(loadingElement).toBeInTheDocument();
       });
     });
   });

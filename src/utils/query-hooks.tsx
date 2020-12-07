@@ -2,14 +2,18 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import { Edge } from '../../pages';
 
+export type ContentfulDataGroup = Array<{
+  fieldValue: string;
+  edges: Array<Edge>;
+  totalCount: number;
+}>;
+
+export interface ContenfulDataProject {
+  group: ContentfulDataGroup;
+}
+
 export interface ContentFulData {
-  allContentfulProject: {
-    group: Array<{
-      fieldValue: string;
-      edges: Array<Edge>;
-      totalCount: number;
-    }>;
-  };
+  allContentfulProject: ContenfulDataProject;
 }
 
 export const ContenfulDataQuery = graphql`

@@ -1,9 +1,12 @@
-// Helper to handle the undefined issue of Array.find
+// Libs
 import React from 'react';
 
 // Utils
 import { FOOTER_CTA_MESSAGES } from './constants';
+import { ContentfulDataGroup } from './query-hooks';
+import { Edge } from '../../pages';
 
+// Helper to handle the undefined issue of Array.find
 export const ensure = <T, _>(
   argument: T | undefined | null,
   message = 'This value was promised to be there.',
@@ -31,9 +34,16 @@ export const validateObjectValues = (object: {
 }): boolean => Object.values(object)?.length > 0;
 
 // Helper to get random value from an array
-export const randomValueFromArray = (array: Array<any>): any =>
+export const randomValueFromArray = <T, _>(array: Array<T>): T =>
   array[Math.floor(Math.random() * array.length)];
 
 // Random Footer CTA String
 export const generateRandomFooterCta = (): string =>
   randomValueFromArray(FOOTER_CTA_MESSAGES);
+
+// Get right values for the language
+export const getLocalizedDataFromContentful: (
+  arrayOfItems: ContentfulDataGroup,
+  locale: string,
+) => Array<Edge> = (arrayOfItems: ContentfulDataGroup, locale: string) =>
+  ensure(arrayOfItems.find((item) => item.fieldValue === locale)).edges;

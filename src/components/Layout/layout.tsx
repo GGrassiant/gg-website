@@ -1,16 +1,19 @@
 // Libs
-import React from 'react';
+import React, { useMemo, useEffect, useContext } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 // Utils
 import { Location } from '@reach/router';
-import { SiteMetaData } from '../../../site';
+import { SiteMasterData } from '../../../site';
+import { ProjectContext } from '../../context/ProjectContext';
 
 // Styles
 import './layout.scss';
 
 // Components
 import Header from '../Header/header';
+import { Edge } from '../../../pages';
+import { getLocalizedDataFromContentful } from '../../utils/typescript.utils';
 
 interface LayoutProps {
   children: Array<React.ReactElement> | React.ReactElement;
@@ -20,15 +23,55 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = (props) => {
   const { children, locale, fullHeight = false } = props;
-  const data: SiteMetaData = useStaticQuery(graphql`
-    query SiteTitleQuery {
+  const data: SiteMasterData = useStaticQuery(graphql`
+    query {
       site {
         siteMetadata {
           title
         }
       }
+      allContentfulProject {
+        group(field: node_locale) {
+          fieldValue
+          totalCount
+          edges {
+            node {
+              title
+              mainTech
+              year
+              slug
+              id
+              githubLink
+              mainPicture {
+                id
+                fluid(maxWidth: 500) {
+                  ...GatsbyContentfulFluid
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `);
+  const { setProjects, projects } = useContext(ProjectContext);
+
+  const informationElements: Array<Edge> | undefined = useMemo(() => {
+    if (data && locale) {
+      return getLocalizedDataFromContentful(
+        data.allContentfulProject.group,
+        locale,
+      );
+    }
+    return undefined;
+  }, [data, locale]);
+
+  // load the projects in context on first mount
+  useEffect((): void => {
+    if (informationElements?.length && !projects?.length) {
+      setProjects(informationElements);
+    }
+  }, [informationElements, projects, setProjects]);
 
   return (
     <>
