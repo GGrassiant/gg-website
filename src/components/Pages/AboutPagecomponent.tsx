@@ -40,7 +40,7 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
 
   const renderSkills = (): Array<React.ReactNode> =>
     SKILLS.map((skillSet) => (
-      <li key={skillSet.id} className={styles.skill__item}>
+      <li key={skillSet.id} className={styles.skillItem}>
         <BsCodeSlash />
         {skillSet.skill}
       </li>
@@ -67,7 +67,7 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
       <SEO title="About Me" />
       <div className={styles.about}>
         <div className={styles.intro}>
-          <div className={styles.id_wrapper}>
+          <div className={styles.idWrapper}>
             <Title size="xxl" weight="semibold">
               <span className={styles.initials}>GG,</span>{' '}
               {intl.formatMessage({ id: 'for' })}
@@ -75,18 +75,18 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
             </Title>
             <div className={styles.description}>{renderDescription()}</div>
           </div>
-          <div className={styles.id_images}>
+          <div className={styles.idImages}>
             <div className={styles.avatar}>
               <Image />
             </div>
-            <div className={styles.cta__wrapper}>
+            <div className={styles.ctaWrapper}>
               <CTA onClick={executeScroll} data-testid="custom-scroll-element">
                 <span dangerouslySetInnerHTML={{ __html: translatedCta }} />
                 <AiOutlineArrowDown />
               </CTA>
             </div>
           </div>
-          <div className={styles.cta__wrapper__mobile}>
+          <div className={styles.ctaWrapper__mobile}>
             <CTA onClick={executeScroll}>
               <span dangerouslySetInnerHTML={{ __html: translatedCta }} />
               <AiOutlineArrowDown />
@@ -97,15 +97,15 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
           <Title size="medium" weight="semibold">
             {intl.formatMessage({ id: 'skills' })}
           </Title>
-          <ul className={styles.skills__list}>{renderSkills()}</ul>
+          <ul className={styles.skillsList}>{renderSkills()}</ul>
         </div>
         <div className={styles.experience}>
           <Title size="medium" weight="semibold">
             {intl.formatMessage({ id: 'experience' })}
             <br /> & {intl.formatMessage({ id: 'education' })}
           </Title>
-          <div className={styles.experience__content__wrapper}>
-            <div className={styles.experience__content}>
+          <div className={styles.experienceContent__wrapper}>
+            <div className={styles.experienceContent}>
               <TiDocumentText />
               <Link href={resumeURL}>
                 {intl.formatMessage({ id: 'Resume' })}
