@@ -34,7 +34,7 @@ $grid-gap: 2rem;
 }
 
 .projectPage {
-  padding-top: $header-height;
+  padding-top: var(--layout-header-height);
 
   .projectInfo {
     position: relative;
@@ -159,7 +159,7 @@ $grid-gap: 2rem;
       @include secondary-image;
       display: grid;
       grid-template-columns: 1fr;
-      grid-gap: 2rem;
+      grid-gap: var(--layout-project-grid-gap);
       margin-top: 4rem;
 
       @media (min-width: $breakpoint-sm) {
@@ -173,9 +173,13 @@ $grid-gap: 2rem;
 
         @media (min-width: $breakpoint-sm) {
           max-height: calc(
-            ((100vw - 7rem - 4rem) / 3) * var(--iphone11-aspect-ratio)
+            (
+                (
+                    100vw - var(--layout-project-grid-padding) - 2 *
+                      var(--layout-project-grid-gap)
+                  ) / 3
+              ) * var(--iphone11-aspect-ratio)
           );
-          //  100 - padding - grid-gap TODO: css variables
         }
       }
     }

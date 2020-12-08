@@ -8,7 +8,7 @@
   width: 100%;
 
   @media (max-width: $breakpoint-md) {
-    padding-top: $header-height;
+    padding-top: var(--layout-header-height);
   }
 
   &__title {
@@ -29,7 +29,7 @@
     > div:first-child {
       @media (min-width: $breakpoint-md) {
         text-align: left;
-        margin-left: $title-offset;
+        margin-left: var(--layout-title-offset);
       }
     }
 

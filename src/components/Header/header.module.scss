@@ -7,11 +7,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: $header-height;
+  height: var(--layout-header-height);
   width: calc(100% - var(--layout-offset));
   max-width: $breakpoint-xl;
   font-family: var(--default-content-font);
-  border-bottom: $header-border solid var(--color-divider);
+  border-bottom: var(--layout-header-border) solid var(--color-divider);
 
   // TODO: Why + 0.25rem??? ¯\_(ツ)_/¯
   @media (min-width: $breakpoint-xl + $layout-offset + 0.25rem) {

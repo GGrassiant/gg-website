@@ -1,6 +1,6 @@
 // If you make modifications to this file, restart your server
 
-// Breakpoints. Need scss version for media queries
+// Breakpoints. Need scss version for media queries calculation
 // Styled Components version in the constant.js file
 $breakpoint-xsm: 325px; // before that breakpoint: old smartphones such as iphone 5
 $breakpoint-sm: 600px; // start of tablets
@@ -10,17 +10,10 @@ $breakpoint-xl: 90rem;
 $breakpoint-small-height: 668px;
 $breakpoint-large-height: 1300px;
 $breakpoint-x-large-height: 1700px;
-
-// layout variables
-$header-height: 5rem;
-$header-border: 1px;
-
-$title-offset: 6rem;
-
-// Needed for media queries since css variables don't work
+// layout variables for media queries calculation
 $layout-offset: 4rem;
 
-// To get access to variables in the styles components
+// To get access to variables in the styled components
 :root {
   //fonts
   --default-title-font: Roboto, sans-serif;
@@ -51,8 +44,13 @@ $layout-offset: 4rem;
   --default-transition-time: 0.3s;
   --medium-transition-time: 0.6s;
 
-  //offset:
+  // layout variables
+  --layout-header-height: 5rem;
+  --layout-header-border: 1px;
+  --layout-title-offset: 6rem;
   --layout-offset: 4rem;
+  --layout-project-grid-gap: 2rem;
+  --layout-project-grid-padding: 7rem;
 
   // app simulator screenshot resolution
   // is the lower denominator for images height

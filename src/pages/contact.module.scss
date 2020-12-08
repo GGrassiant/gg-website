@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2fr 1fr;
-  padding-top: $header-height;
+  padding-top: var(--layout-header-height);
   height: 90%;
   font-family: var(--default-content-font);
 

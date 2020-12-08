@@ -1,11 +1,11 @@
 @import '../../utils/variables';
 
 .about {
-  padding-top: $header-height;
+  padding-top: var(--layout-header-height);
   font-family: var(--default-content-font);
 
   @media (min-height: $breakpoint-md) {
-    padding: $header-height 9rem;
+    padding: var(--layout-header-height) 9rem;
   }
 
   .intro {
@@ -50,7 +50,7 @@
 
         @media (min-width: $breakpoint-lg) {
           text-align: left;
-          margin-left: $title-offset;
+          margin-left: var(--layout-title-offset);
         }
       }
     }
