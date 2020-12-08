@@ -2,8 +2,8 @@
 import styled from 'styled-components';
 import { LocalizedLink } from 'gatsby-theme-i18n';
 
-// Utils
-import { breakPoints } from '../../utils/constants';
+// Styles
+import { breakPoints, theme } from '../../utils/constants';
 
 interface ProjectCardWrapperProps {
   id?: string;
@@ -23,16 +23,16 @@ export const ProjectCardWrapper = styled.div<ProjectCardWrapperProps>`
   color: var(--project-text-color);
   overflow: hidden;
 
-  @media (min-width: ${breakPoints.breakPointXsm}) {
+  @media (min-width: ${breakPoints.xsm}) {
     height: 20rem;
   }
 
-  @media (min-width: ${breakPoints.breakPointSm}) {
+  @media (min-width: ${breakPoints.sm}) {
     height: ${(props) => (props.footer ? '18rem' : '30rem')};
     width: ${(props) => (props.footer ? '25rem' : 'auto')};
   }
 
-  @media (min-width: ${breakPoints.breakPointMd}) and (min-height: ${breakPoints.largeHeight}) {
+  @media (min-width: ${breakPoints.md}) and (min-height: ${breakPoints.largeHeight}) {
     height: 25rem;
   }
 
@@ -42,7 +42,7 @@ export const ProjectCardWrapper = styled.div<ProjectCardWrapperProps>`
     margin-top: 1rem;
     margin-bottom: -1rem;
 
-    @media (min-width: ${breakPoints.breakPointSm}) {
+    @media (min-width: ${breakPoints.sm}) {
       width: 75%;
       margin-top: 1rem;
       margin-bottom: -2rem;
@@ -54,7 +54,7 @@ export const ProjectCardWrapper = styled.div<ProjectCardWrapperProps>`
     display: flex;
     overflow: hidden;
 
-    @media (min-width: ${breakPoints.breakPointSm}) {
+    @media (min-width: ${breakPoints.sm}) {
       flex: 3;
     }
   }
@@ -72,20 +72,20 @@ export const ProjectCardHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--font-size-default);
+  font-size: ${theme.fontSizes.default};
   border-bottom: 1px solid black;
 
   span {
     margin-top: 1.2rem;
 
-    @media (min-width: ${breakPoints.breakPointSm}) {
-      font-size: var(--font-size-normal-alt);
+    @media (min-width: ${breakPoints.sm}) {
+      font-size: ${theme.fontSizes.normalAlt};
     }
   }
 `;
 
 export const SimplifiedCardLink = styled(LocalizedLink)`
-    @media (max-width: ${breakPoints.breakPointSm}) {
+    @media (max-width: ${breakPoints.sm}) {
       width: 80%;
     }
   }

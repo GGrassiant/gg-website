@@ -1,8 +1,8 @@
 // Libs
 import styled from 'styled-components';
 
-// Utils
-import { breakPoints } from '../../utils/constants';
+// Styles
+import { breakPoints, theme } from '../../utils/constants';
 
 interface FooterWrapperProps {
   cta?: boolean;
@@ -25,7 +25,7 @@ export const PermanentFooter = styled.div`
   height: 5rem;
   background-color: rgba(164, 164, 164, 0.1);
 
-  @media (min-width: ${breakPoints.breakPointMd}) {
+  @media (min-width: ${breakPoints.md}) {
     height: 7rem;
   }
 `;
@@ -38,32 +38,33 @@ export const PermanentFooterContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: calc(100% - var(--layout-offset));
-  max-width: ${breakPoints.breakPointXl};
+  width: calc(100% - ${theme.layout.layoutOffset});
+  max-width: ${breakPoints.xl};
   height: 100%;
   padding: 1rem 0;
   font-family: Rubik, sans-serif;
-  font-weight: var(--font-weight-regular);
-  font-size: var(--font-size-default);
+  font-weight: ${theme.fontWeight.regular};
+  font-size: ${theme.fontSizes.default};
   border-top: 1px solid var(--color-divider);
 
-  @media (min-width: ${breakPoints.breakPointMd}) {
+  @media (min-width: ${breakPoints.md}) {
     flex-direction: row;
     align-items: flex-start;
   }
 
-  @media (min-width: ${breakPoints.breakPointLg}) {
-    font-size: var(--font-size-normal);
+  @media (min-width: ${breakPoints.lg}) {
+    font-size: ${theme.fontSizes.normal};
   }
 
   // TODO: Why + 4px??? ¯\\_(ツ)_/¯
-  @media (min-width: calc(${breakPoints.breakPointXl} + ${breakPoints.layoutOffset} + 4px)) {
+  @media (min-width: calc(${breakPoints.xl} + ${theme.layout
+      .layoutOffset} + 4px)) {
     left: 0;
-    margin-left: calc((100vw - ${breakPoints.breakPointXl}) * 0.5);
+    margin-left: calc((100vw - ${breakPoints.xl}) * 0.5);
   }
 
   .links-wrapper {
-    @media (max-width: ${breakPoints.breakPointMd}) {
+    @media (max-width: ${breakPoints.md}) {
       display: flex;
       width: 100%;
     }
@@ -78,7 +79,7 @@ export const PermanentFooterContent = styled.div`
     justify-content: space-between;
     width: 15%;
 
-    @media (min-width: ${breakPoints.breakPointLg}) {
+    @media (min-width: ${breakPoints.lg}) {
       width: 17%;
     }
 
