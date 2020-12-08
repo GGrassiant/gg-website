@@ -6,6 +6,7 @@ import { render, fireEvent } from '../../components/__tests__/utils/test-utils';
 
 // Component
 import IndexPage, { getRedirectLanguage } from '../index';
+import Layout from '../../components/Layout/layout';
 
 export const FLUID = {
   base64:
@@ -59,6 +60,26 @@ describe('<Index>', () => {
         }),
       );
       expect(window.scrollTo).toBeCalledWith({ behavior: 'smooth', top: 0 });
+    });
+
+    test('lang navigate default', () => {
+      render(<IndexPage />);
+      expect(window.location.pathname).toEqual('/');
+    });
+
+    test('undefined navigator', () => {
+      // TODO: make navigator return undefined
+    });
+
+    test('lang navigate other locale', () => {
+      const languageGetter = jest.spyOn(window.navigator, 'language', 'get');
+      languageGetter.mockReturnValue('fr');
+      render(
+        <Layout locale="fr">
+          <IndexPage />
+        </Layout>,
+      );
+      expect(window.location.pathname).toEqual('/fr');
     });
   });
 });
