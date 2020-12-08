@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Utils
-import { render, getAllByTestId, fireEvent } from './utils/test-utils';
+import { render, fireEvent } from './utils/test-utils';
 
 // Components
 import AboutPageComponent from '../Pages/AboutPagecomponent';
@@ -33,17 +33,16 @@ describe('<AboutPageComponent />', () => {
           edges: [{ node: { id: 'resume', file: { url: 'url-resume' } } }],
         },
       };
-      const mockScroll = jest.fn();
-      window.scrollTo = mockScroll;
-      const { container } = render(<AboutPageComponent data={data} />);
+      global.scrollTo = jest.fn();
+      const { getByTestId } = render(<AboutPageComponent data={data} />);
       fireEvent(
-        getAllByTestId(container, 'custom-element')[0],
+        getByTestId('custom-scroll-element'),
         new MouseEvent('click', {
           bubbles: true,
           cancelable: true,
         }),
       );
-      expect(mockScroll).toHaveBeenCalledTimes(1);
+      expect(window.scrollTo).toBeCalledWith({ behavior: 'smooth', top: 0 });
     });
   });
 });

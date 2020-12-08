@@ -11,7 +11,7 @@ import { ensure } from '../../utils/typescript.utils';
 import { CTAWrapper } from './cta-styles';
 
 const CTA: React.FC<CTAProps> = (props) => {
-  const { link, children, onClick } = props;
+  const { link, children, onClick, ...rest } = props;
   let hrefUrl;
 
   if (link) {
@@ -21,7 +21,7 @@ const CTA: React.FC<CTAProps> = (props) => {
   return (
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    <CTAWrapper onClick={onClick} data-testid="custom-element">
+    <CTAWrapper onClick={onClick} {...rest}>
       {link ? (
         <LocalizedLink to={hrefUrl}>
           <p>{children}</p>

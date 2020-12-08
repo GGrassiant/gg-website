@@ -80,7 +80,7 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
               <Image />
             </div>
             <div className={styles.cta__wrapper}>
-              <CTA onClick={executeScroll}>
+              <CTA onClick={executeScroll} data-testid="custom-scroll-element">
                 <span dangerouslySetInnerHTML={{ __html: translatedCta }} />
                 <AiOutlineArrowDown />
               </CTA>

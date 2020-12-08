@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Utils
-import { render, getByText } from './utils/test-utils';
+import { render } from './utils/test-utils';
 
 // Components
 import Link from '../Link';
@@ -22,13 +22,13 @@ describe('<Link>', () => {
 
   describe('props', () => {
     test('renders the children', () => {
-      const { container } = render(
+      const { getByText } = render(
         <Link href="www.lolz.com" theme="dark">
           Coucou
         </Link>,
       );
 
-      expect(getByText(container, 'Coucou')).toBeInTheDocument();
+      expect(getByText('Coucou')).toBeInTheDocument();
     });
 
     test('renders the link', () => {

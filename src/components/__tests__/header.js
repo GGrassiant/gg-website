@@ -3,7 +3,7 @@ import React from 'react';
 
 // Utils
 import { Location } from '@reach/router';
-import { render, fireEvent, getByText } from './utils/test-utils';
+import { render, fireEvent } from './utils/test-utils';
 
 // Component
 import Header, { isHome } from '../Header/header';
@@ -25,54 +25,56 @@ describe('<Header>', () => {
 
   describe('click', () => {
     test('toggle theme', () => {
-      const { container } = render(
+      const { getByText } = render(
         <Location>
           {(location) => (
             <Header siteTitle="site title" location={location} locale="en" />
           )}
         </Location>,
       );
-      expect(getByText(container, '🌝')).toBeInTheDocument();
+      expect(getByText('🌝')).toBeInTheDocument();
       fireEvent(
-        getByText(container, '🌝'),
+        getByText('🌝'),
         new MouseEvent('click', {
           bubbles: true,
           cancelable: true,
         }),
       );
-      expect(getByText(container, '🌞')).toBeInTheDocument();
+      expect(getByText('🌞')).toBeInTheDocument();
     });
 
     test('language toggler fr', () => {
-      const { container } = render(
+      const { getByText } = render(
         <Location>
           {(location) => (
             <Header siteTitle="site title" location={location} locale="en" />
           )}
         </Location>,
       );
-      expect(getByText(container, 'fr')).toBeInTheDocument();
-      expect(
-        getByText(container, 'fr').closest('li').children[0],
-      ).toHaveAttribute('href', '/fr/');
+      expect(getByText('fr')).toBeInTheDocument();
+      expect(getByText('fr').closest('li').children[0]).toHaveAttribute(
+        'href',
+        '/fr/',
+      );
     });
 
     test('language toggler en', () => {
-      const { container } = render(
+      const { getByText } = render(
         <Location>
           {(location) => (
             <Header siteTitle="site title" location={location} locale="fr" />
           )}
         </Location>,
       );
-      expect(getByText(container, 'en')).toBeInTheDocument();
-      expect(
-        getByText(container, 'en').closest('li').children[0],
-      ).toHaveAttribute('href', '/');
+      expect(getByText('en')).toBeInTheDocument();
+      expect(getByText('en').closest('li').children[0]).toHaveAttribute(
+        'href',
+        '/',
+      );
     });
 
     test('render menu', () => {
-      const { container } = render(
+      const { getByText } = render(
         <Location>
           {(location) => (
             <Header siteTitle="site title" location={location} locale="en" />
@@ -82,9 +84,9 @@ describe('<Header>', () => {
       siteMetaData.menu.slice(2, -1).forEach((menuItem) => {
         const projectMenuName = menuItem.label;
         const projectMenuLink = menuItem.slug;
-        expect(getByText(container, `${projectMenuName}`)).toBeInTheDocument();
+        expect(getByText(`${projectMenuName}`)).toBeInTheDocument();
         expect(
-          getByText(container, `${projectMenuName}`).closest('li').children[0],
+          getByText(`${projectMenuName}`).closest('li').children[0],
         ).toHaveAttribute('href', `${projectMenuLink}`);
       });
     });

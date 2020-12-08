@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Utils
-import { render } from '../../components/__tests__/utils/test-utils';
+import { render, fireEvent } from '../../components/__tests__/utils/test-utils';
 
 // Component
 import IndexPage, { getRedirectLanguage } from '../index';
@@ -44,6 +44,21 @@ describe('<Index>', () => {
   describe('helpers', () => {
     test('url helpers', () => {
       expect(getRedirectLanguage()).toBe('en');
+    });
+
+    test('window scroll', () => {
+      global.scrollTo = jest.fn();
+      const { getByTestId } = render(<IndexPage />);
+      const exploreProjects = getByTestId('custom-scroll-element');
+      expect(exploreProjects).toBeInTheDocument();
+      fireEvent(
+        exploreProjects,
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+        }),
+      );
+      expect(window.scrollTo).toBeCalledWith({ behavior: 'smooth', top: 0 });
     });
   });
 });
