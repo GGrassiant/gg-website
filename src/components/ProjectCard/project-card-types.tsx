@@ -1,5 +1,5 @@
 // Utils
-import { Edge } from '../../../pages';
+import { Edge } from '../../../site';
 
 export interface ProjectCardProps {
   edge: Edge;

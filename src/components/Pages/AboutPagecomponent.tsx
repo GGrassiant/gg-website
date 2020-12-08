@@ -7,7 +7,7 @@ import { TiDocumentText } from 'react-icons/ti';
 
 // Utils
 import { WithLayoutProps } from '../../Hoc/hoc.types';
-import { DescriptionEdge } from '../../../pages';
+import { DescriptionEdge } from '../../../site';
 import { ensure, generateRandomFooterCta } from '../../utils/typescript.utils';
 import { SKILLS } from '../../utils/constants';
 

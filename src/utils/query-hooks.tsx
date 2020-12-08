@@ -1,23 +1,16 @@
 // Libs
 import { graphql, useStaticQuery } from 'gatsby';
-import { Edge } from '../../pages';
 
-export type ContentfulDataGroup = Array<{
-  fieldValue: string;
-  edges: Array<Edge>;
-  totalCount: number;
-}>;
-
-export interface ContenfulDataProject {
-  group: ContentfulDataGroup;
-}
-
-export interface ContentFulData {
-  allContentfulProject: ContenfulDataProject;
-}
+// Utils
+import { SiteMasterData } from '../../site';
 
 export const ContenfulDataQuery = graphql`
   query ContentfulData {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allContentfulProject {
       group(field: node_locale) {
         fieldValue
@@ -29,7 +22,6 @@ export const ContenfulDataQuery = graphql`
             year
             slug
             id
-            githubLink
             mainPicture {
               id
               fluid(maxWidth: 500) {
@@ -43,5 +35,5 @@ export const ContenfulDataQuery = graphql`
   }
 `;
 
-export const useSiteMetadata = (): ContentFulData =>
+export const useSiteMetadata = (): SiteMasterData =>
   useStaticQuery(ContenfulDataQuery);

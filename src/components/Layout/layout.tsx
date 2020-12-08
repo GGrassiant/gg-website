@@ -1,18 +1,17 @@
 // Libs
 import React, { useMemo, useEffect, useContext } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 
 // Utils
 import { Location } from '@reach/router';
-import { SiteMasterData } from '../../../site';
+import { SiteMasterData, Edge } from '../../../site';
 import { ProjectContext } from '../../context/ProjectContext';
+import { useSiteMetadata } from '../../utils/query-hooks';
 
 // Styles
 import './layout.scss';
 
 // Components
 import Header from '../Header/header';
-import { Edge } from '../../../pages';
 import { getLocalizedDataFromContentful } from '../../utils/typescript.utils';
 
 interface LayoutProps {
@@ -23,37 +22,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = (props) => {
   const { children, locale, fullHeight = false } = props;
-  const data: SiteMasterData = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-      allContentfulProject {
-        group(field: node_locale) {
-          fieldValue
-          totalCount
-          edges {
-            node {
-              title
-              mainTech
-              year
-              slug
-              id
-              githubLink
-              mainPicture {
-                id
-                fluid(maxWidth: 500) {
-                  ...GatsbyContentfulFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
+  const data: SiteMasterData = useSiteMetadata();
   const { setProjects, projects } = useContext(ProjectContext);
 
   // eslint-disable-next-line arrow-body-style

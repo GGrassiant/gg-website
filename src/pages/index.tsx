@@ -11,7 +11,7 @@ import {
   scrollToRefObject,
 } from '../utils/typescript.utils';
 import { ProjectContext } from '../context/ProjectContext';
-import { Edge } from '../../pages';
+import { Edge } from '../../site';
 
 // Styles
 import styles from './index.module.scss';

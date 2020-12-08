@@ -1,5 +1,5 @@
 // Lib
-import { Edge, DescriptionEdge, ResumeEdge } from '../../pages';
+import { Edge, DescriptionEdge, ResumeEdge } from '../../site';
 import { FooterProps } from '../components/Footer/footer-types';
 
 export interface WithLayoutProps {

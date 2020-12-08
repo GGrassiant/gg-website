@@ -6,8 +6,7 @@ import { AiOutlineArrowLeft, AiOutlineCalendar } from 'react-icons/ai';
 import { BsCodeSlash, BsPeople, BsLink45Deg } from 'react-icons/bs';
 
 // Utils
-import { ProjectPageComponentProps } from '../../../pages';
-import { ContenfulImage } from '../../../site';
+import { ContenfulImage, ProjectPageComponentProps } from '../../../site';
 import { ProjectContext } from '../../context/ProjectContext';
 
 // Styles
