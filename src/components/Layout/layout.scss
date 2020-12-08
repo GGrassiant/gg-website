@@ -74,7 +74,7 @@ a:hover {
 
 .content-wrapper {
   width: calc(100% - var(--layout-offset));
-  max-width: $breakpoint-xl;
+  max-width: var(--breakpoint-xl);
   margin: 0 auto;
   background-color: var(--color-background);
   height: 100%;

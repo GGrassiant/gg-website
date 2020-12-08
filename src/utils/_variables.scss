@@ -8,12 +8,11 @@ $breakpoint-md: 960px; // start of desktops
 $breakpoint-lg: 1280px;
 $breakpoint-xl: 90rem;
 $breakpoint-small-height: 668px;
-$breakpoint-large-height: 1300px;
-$breakpoint-x-large-height: 1700px;
 // layout variables for media queries calculation
 $layout-offset: 4rem;
 
-// To get access to variables in the styled components
+// css variables in addition of the ones
+// for dark/light mode in constant.js
 :root {
   //fonts
   --default-title-font: Roboto, sans-serif;
@@ -55,4 +54,12 @@ $layout-offset: 4rem;
   // app simulator screenshot resolution
   // is the lower denominator for images height
   --iphone11-aspect-ratio: calc(812 / 375);
+
+  // breakpoints
+  // Important: make sure they are the same as the scss variable at the top of the file
+  --breakpoint-xsm: 325px; // before that breakpoint: old smartphones such as iphone 5
+  --breakpoint-sm: 600px; // start of tablets
+  --breakpoint-md: 960px; // start of desktops
+  --breakpoint-lg: 1280px;
+  --breakpoint-xl: 90rem;
 }
