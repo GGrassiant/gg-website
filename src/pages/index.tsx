@@ -11,7 +11,7 @@ import {
   scrollToRefObject,
 } from '../utils/typescript.utils';
 import { ProjectContext } from '../context/ProjectContext';
-import { Edge } from '../../pages';
+import { Edge } from '../../site';
 
 // Styles
 import styles from './index.module.scss';
@@ -73,7 +73,11 @@ const IndexPage: React.FC = () => {
           </Title>
           <Title size="xxl" weight="semibold">
             <p>{intl.formatMessage({ id: 'Developer' })}</p>
-            <CTA link="" onClick={executeScroll}>
+            <CTA
+              link=""
+              onClick={executeScroll}
+              data-testid="custom-scroll-element"
+            >
               {intl.formatMessage({ id: 'Explore' })}
               <br />
               {intl.formatMessage({ id: 'my Projects' })}

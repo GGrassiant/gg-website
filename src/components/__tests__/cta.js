@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Utils
-import { render, getByText } from './utils/test-utils';
+import { render } from './utils/test-utils';
 
 // Components
 import CTA from '../CTA';
@@ -17,17 +17,17 @@ describe('<CTA>', () => {
 
   describe('props', () => {
     test('renders the children', () => {
-      const { container } = render(<CTA size="large">Click Me</CTA>);
-      expect(getByText(container, 'Click Me')).toBeInTheDocument();
+      const { getByText } = render(<CTA size="large">Click Me</CTA>);
+      expect(getByText('Click Me')).toBeInTheDocument();
     });
 
     test('renders the link', () => {
-      const { container } = render(
+      const { getByText } = render(
         <CTA size="large" link="about">
           Click Me
         </CTA>,
       );
-      expect(getByText(container, 'Click Me').closest('a')).toHaveAttribute(
+      expect(getByText('Click Me').closest('a')).toHaveAttribute(
         'href',
         '/about/',
       );

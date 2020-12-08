@@ -7,7 +7,7 @@ import { TiDocumentText } from 'react-icons/ti';
 
 // Utils
 import { WithLayoutProps } from '../../Hoc/hoc.types';
-import { DescriptionEdge } from '../../../pages';
+import { DescriptionEdge } from '../../../site';
 import { ensure, generateRandomFooterCta } from '../../utils/typescript.utils';
 import { SKILLS } from '../../utils/constants';
 
@@ -80,7 +80,7 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
               <Image />
             </div>
             <div className={styles.cta__wrapper}>
-              <CTA onClick={executeScroll}>
+              <CTA onClick={executeScroll} data-testid="custom-scroll-element">
                 <span dangerouslySetInnerHTML={{ __html: translatedCta }} />
                 <AiOutlineArrowDown />
               </CTA>

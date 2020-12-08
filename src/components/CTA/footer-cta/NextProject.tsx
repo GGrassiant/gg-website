@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 
 // Utils
 import { ProjectContext } from '../../../context/ProjectContext';
-import { Edge } from '../../../../pages';
+import { Edge } from '../../../../site';
 
 // Components
 import SimplifiedProjectCard from '../../ProjectCard/simplified-card';

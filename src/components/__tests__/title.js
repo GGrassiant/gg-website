@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 // Utils
-import { render, getByText } from './utils/test-utils';
+import { render } from './utils/test-utils';
 
 // Components
 import Title from '../Title';
@@ -27,9 +27,9 @@ describe('<Title>', () => {
 
   describe('props', () => {
     test('renders the children', () => {
-      const { container } = render(<Title>Coucou</Title>);
+      const { getByText } = render(<Title>Coucou</Title>);
 
-      expect(getByText(container, 'Coucou')).toBeInTheDocument();
+      expect(getByText('Coucou')).toBeInTheDocument();
     });
 
     test('renders the default props', () => {

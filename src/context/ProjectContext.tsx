@@ -2,7 +2,7 @@
 import React, { useState, createContext, Context } from 'react';
 
 // Utils
-import { Edge } from '../../pages';
+import { Edge } from '../../site';
 import { randomValueFromArray } from '../utils/typescript.utils';
 
 interface ProjectProps {

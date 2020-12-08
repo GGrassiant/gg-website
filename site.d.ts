@@ -2,8 +2,8 @@
  * Projects coming from the headless CMS
  * Contentful
  */
+// Libs
 import { FluidObject } from 'gatsby-image';
-import { Edge } from './pages';
 
 interface ContenfulImage {
   title: string;
@@ -26,6 +26,24 @@ export interface ContentfulProject {
 
 export interface ContentfulDescription {
   content: string;
+}
+
+export type Edge = {
+  node: ContentfulProject;
+};
+
+export type DescriptionEdge = {
+  node: ContentfulDescription;
+};
+
+export type ResumeEdge = {
+  node: ResumeFile;
+};
+
+export interface ProjectPageComponentProps {
+  data: {
+    contentfulProject: ContentfulProject;
+  };
 }
 
 export interface ResumeFile {
@@ -63,6 +81,12 @@ export interface SiteMasterData {
     }>;
   };
 }
+
+export type ContentfulDataGroup = Array<{
+  fieldValue: string;
+  edges: Array<Edge>;
+  totalCount: number;
+}>;
 
 // MENU: Add all new routes to this constant
 export type menuItems = 'about' | 'blog' | 'contact' | '';

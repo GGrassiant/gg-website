@@ -8,7 +8,6 @@ import { ThemeContext } from '../../context/ThemeContext';
 import * as langsSettings from '../../utils/languages';
 import * as siteMetaData from '../../utils/siteMetaData';
 import { Menu } from '../../../site';
-import { useSiteMetadata } from '../../utils/query-hooks';
 
 // Styles
 import styles from './header.module.scss';
@@ -64,12 +63,7 @@ const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
   );
 };
 
-const getMenuItems = (
-  pathname: string,
-  locale: string,
-  intl: IntlShape,
-  numberOfProjects: number,
-) => {
+const getMenuItems = (pathname: string, locale: string, intl: IntlShape) => {
   const delocalizedPath: string =
     locale === `${langsSettings.defaultLangKey}` ? pathname : pathname.slice(3);
 
@@ -89,9 +83,6 @@ const getMenuItems = (
           <LocalizedLink to={cur.slug} className={className}>
             {intl.formatMessage({ id: `${cur.label}` })}
           </LocalizedLink>
-          {cur.slug === '/projects/' && (
-            <span className={styles.projects__number}>{numberOfProjects}</span>
-          )}
         </li>
       );
       return acc.concat(link);
@@ -108,12 +99,6 @@ const Header: React.FC<HeaderProps> = (props) => {
       location: { pathname },
     },
   } = props;
-
-  const {
-    allContentfulProject: { group },
-  } = useSiteMetadata();
-  const numberOfProjects = group.length;
-
   const intl = useIntl();
 
   const toggleTheme = () => {
@@ -145,7 +130,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         </LocalizedLink>
       </h1>
       <ul className={styles.headerWrapper__menu}>
-        {getMenuItems(pathname, locale, intl, numberOfProjects)}
+        {getMenuItems(pathname, locale, intl)}
         <SelectLanguage pathname={pathname} locale={locale} />
         <li>
           <button

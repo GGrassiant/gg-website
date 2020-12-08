@@ -8,4 +8,5 @@ export interface CTAProps {
   children: string | Array<string | React.ReactElement>;
   link?: menuItems;
   onClick?: () => void;
+  rest?: string;
 }

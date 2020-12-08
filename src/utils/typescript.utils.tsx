@@ -3,8 +3,7 @@ import React from 'react';
 
 // Utils
 import { FOOTER_CTA_MESSAGES } from './constants';
-import { ContentfulDataGroup } from './query-hooks';
-import { Edge } from '../../pages';
+import { Edge, ContentfulDataGroup } from '../../site';
 
 // Helper to handle the undefined issue of Array.find
 export const ensure = <T, _>(
