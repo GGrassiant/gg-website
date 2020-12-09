@@ -1,16 +1,21 @@
 // Libs
 import React, { useContext } from 'react';
 import { IntlShape, useIntl } from 'react-intl';
+import { LocalizedLink } from 'gatsby-theme-i18n';
 
 // Utils
-import { LocalizedLink } from 'gatsby-theme-i18n';
 import { ThemeContext } from '../../context/ThemeContext';
 import * as langsSettings from '../../utils/languages';
 import * as siteMetaData from '../../utils/siteMetaData';
 import { Menu } from '../../../site';
 
 // Styles
-import styles from './header.module.scss';
+import {
+  ToggleThemeElement,
+  HeaderElement,
+  MenuWrapper,
+  ToggleThemeWrapper,
+} from './header-styles';
 
 // Helpers
 interface HeaderProps {
@@ -55,8 +60,8 @@ const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
       : `${langsSettings.defaultLangKey}`;
 
   return (
-    <li className={styles.lang__wrapper}>
-      <LocalizedLink to={to} language={newLocale} className={styles.lang}>
+    <li className="lang-wrapper">
+      <LocalizedLink to={to} language={newLocale} className="lang">
         <span>{newLocale}</span>
       </LocalizedLink>
     </li>
@@ -73,9 +78,9 @@ const getMenuItems = (pathname: string, locale: string, intl: IntlShape) => {
         return acc;
       }
 
-      const className: string =
+      const className =
         !isHome(cur.slug) && delocalizedPath.startsWith(cur.slug)
-          ? `${styles.headerWrapper__menu} ${styles.active}`
+          ? 'active'
           : '';
 
       const link = (
@@ -106,44 +111,34 @@ const Header: React.FC<HeaderProps> = (props) => {
   };
 
   const toggleElement = () => (
-    <span
-      role="img"
-      aria-label="toggle"
-      className={`dark-switcher__toggle ${
-        !colorMode && 'dark-switcher__toggle--no-display'
-      }`}
-    >
+    <ToggleThemeElement role="img" aria-label="toggle" colorMode={colorMode}>
       {colorMode === 'dark' ? '🌞' : '🌝'}
-    </span>
+    </ToggleThemeElement>
   );
 
   return (
-    <header className={styles.headerWrapper}>
-      <h1 className={styles.headerWrapper__gg}>
-        <LocalizedLink
-          to="/"
-          locale={locale}
-          className={styles.headerWrapper__logo}
-        >
+    <HeaderElement>
+      <h1>
+        <LocalizedLink to="/" locale={locale}>
           <p>Guillaume</p>
           <p>Grassiant</p>
         </LocalizedLink>
       </h1>
-      <ul className={styles.headerWrapper__menu}>
+      <MenuWrapper>
         {getMenuItems(pathname, locale, intl)}
         <SelectLanguage pathname={pathname} locale={locale} />
         <li>
-          <button
+          <ToggleThemeWrapper
             className="dark-switcher"
             onClick={toggleTheme}
             onKeyDown={toggleTheme}
             type="button"
           >
             {toggleElement()}
-          </button>
+          </ToggleThemeWrapper>
         </li>
-      </ul>
-    </header>
+      </MenuWrapper>
+    </HeaderElement>
   );
 };
 

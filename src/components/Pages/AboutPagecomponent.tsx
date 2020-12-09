@@ -12,7 +12,22 @@ import { ensure, generateRandomFooterCta } from '../../utils/typescript.utils';
 import { SKILLS } from '../../utils/constants';
 
 // Styles
-import styles from './about.module.scss';
+import {
+  AboutPageWrapper,
+  IntroWrapper,
+  IdWrapper,
+  Initials,
+  DescriptionWrapper,
+  IdImages,
+  Avatar,
+  CtaWrapper,
+  CtaWrapperMobile,
+  AttributesWrapper,
+  SkillsList,
+  SkillItem,
+  ExperienceContentWrapper,
+  ExperienceContent,
+} from './about-page-styles';
 
 // Components
 import withLayout from '../../Hoc/PageWrapper/WithLayout';
@@ -40,10 +55,10 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
 
   const renderSkills = (): Array<React.ReactNode> =>
     SKILLS.map((skillSet) => (
-      <li key={skillSet.id} className={styles.skill__item}>
+      <SkillItem key={skillSet.id}>
         <BsCodeSlash />
         {skillSet.skill}
-      </li>
+      </SkillItem>
     ));
 
   const translatedCta = intl.formatMessage(
@@ -65,64 +80,62 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
   return (
     <>
       <SEO title="About Me" />
-      <div className={styles.about}>
-        <div className={styles.intro}>
-          <div className={styles.id_wrapper}>
+      <AboutPageWrapper>
+        <IntroWrapper>
+          <IdWrapper>
             <Title size="xxl" weight="semibold">
-              <span className={styles.initials}>GG,</span>{' '}
-              {intl.formatMessage({ id: 'for' })}
+              <Initials>GG,</Initials> {intl.formatMessage({ id: 'for' })}
               <br /> {intl.formatMessage({ id: 'intimes' })}
             </Title>
-            <div className={styles.description}>{renderDescription()}</div>
-          </div>
-          <div className={styles.id_images}>
-            <div className={styles.avatar}>
+            <DescriptionWrapper>{renderDescription()}</DescriptionWrapper>
+          </IdWrapper>
+          <IdImages>
+            <Avatar>
               <Image />
-            </div>
-            <div className={styles.cta__wrapper}>
+            </Avatar>
+            <CtaWrapper>
               <CTA onClick={executeScroll} data-testid="custom-scroll-element">
                 <span dangerouslySetInnerHTML={{ __html: translatedCta }} />
                 <AiOutlineArrowDown />
               </CTA>
-            </div>
-          </div>
-          <div className={styles.cta__wrapper__mobile}>
+            </CtaWrapper>
+          </IdImages>
+          <CtaWrapperMobile>
             <CTA onClick={executeScroll}>
               <span dangerouslySetInnerHTML={{ __html: translatedCta }} />
               <AiOutlineArrowDown />
             </CTA>
-          </div>
-        </div>
-        <div className={styles.skills} ref={contactRef}>
+          </CtaWrapperMobile>
+        </IntroWrapper>
+        <AttributesWrapper ref={contactRef}>
           <Title size="medium" weight="semibold">
             {intl.formatMessage({ id: 'skills' })}
           </Title>
-          <ul className={styles.skills__list}>{renderSkills()}</ul>
-        </div>
-        <div className={styles.experience}>
+          <SkillsList>{renderSkills()}</SkillsList>
+        </AttributesWrapper>
+        <AttributesWrapper className="experience">
           <Title size="medium" weight="semibold">
             {intl.formatMessage({ id: 'experience' })}
             <br /> & {intl.formatMessage({ id: 'education' })}
           </Title>
-          <div className={styles.experience__content__wrapper}>
-            <div className={styles.experience__content}>
+          <ExperienceContentWrapper>
+            <ExperienceContent>
               <TiDocumentText />
               <Link href={resumeURL}>
                 {intl.formatMessage({ id: 'Resume' })}
                 <BsBoxArrowUpRight />
               </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+            </ExperienceContent>
+          </ExperienceContentWrapper>
+        </AttributesWrapper>
+      </AboutPageWrapper>
     </>
   );
 };
 
-const fullHeight = true;
 const ctaContent = {
   title: generateRandomFooterCta(),
   component: () => <LetsConnect />,
 };
 
-export default withLayout(AboutPageComponent, fullHeight, ctaContent);
+export default withLayout(AboutPageComponent, ctaContent);

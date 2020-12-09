@@ -8,7 +8,7 @@ import { ProjectContext } from '../../context/ProjectContext';
 import { useSiteMetadata } from '../../utils/query-hooks';
 
 // Styles
-import './layout.scss';
+import { PageWrapper, ContentWrapper, MainElement } from './layout-styles';
 
 // Components
 import Header from '../Header/header';
@@ -17,15 +17,13 @@ import { getLocalizedDataFromContentful } from '../../utils/typescript.utils';
 interface LayoutProps {
   children: Array<React.ReactElement> | React.ReactElement;
   locale: string;
-  fullHeight?: boolean;
 }
 
 const Layout: React.FC<LayoutProps> = (props) => {
-  const { children, locale, fullHeight = false } = props;
+  const { children, locale } = props;
   const data: SiteMasterData = useSiteMetadata();
   const { setProjects, projects } = useContext(ProjectContext);
 
-  // eslint-disable-next-line arrow-body-style
   const informationElements: Array<Edge> | undefined = useMemo(() => {
     return getLocalizedDataFromContentful(
       data.allContentfulProject?.group,
@@ -51,16 +49,11 @@ const Layout: React.FC<LayoutProps> = (props) => {
           />
         )}
       </Location>
-      <div className="page-wrapper">
-        <div
-          className={`content-wrapper ${
-            // eslint-disable-next-line no-nested-ternary
-            fullHeight ? 'full-height' : ''
-          }`}
-        >
-          <main className="full-height-main">{children}</main>
-        </div>
-      </div>
+      <PageWrapper>
+        <ContentWrapper>
+          <MainElement>{children}</MainElement>
+        </ContentWrapper>
+      </PageWrapper>
     </>
   );
 };

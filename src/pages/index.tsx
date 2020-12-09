@@ -14,7 +14,11 @@ import { ProjectContext } from '../context/ProjectContext';
 import { Edge } from '../../site';
 
 // Styles
-import styles from './index.module.scss';
+import {
+  HomePageWrapper,
+  TitleWrapper,
+  HomeProjectsWrapper,
+} from '../components/Pages/index-page-styles';
 
 // Components
 import withLayout from '../Hoc/PageWrapper/WithLayout';
@@ -65,9 +69,9 @@ const IndexPage: React.FC = () => {
 
   return (
     <>
-      <div className={styles.home}>
+      <HomePageWrapper>
         <SEO title="Home" />
-        <div className={styles.home__title}>
+        <TitleWrapper>
           <Title size="xxl" weight="semibold">
             <p>{intl.formatMessage({ id: 'I am a Software' })}</p>
           </Title>
@@ -84,23 +88,18 @@ const IndexPage: React.FC = () => {
               <AiOutlineArrowDown />
             </CTA>
           </Title>
-        </div>
-      </div>
-      <div
-        className={styles.homeProjectsWrapper}
-        ref={projectsRef}
-        id="projects"
-      >
+        </TitleWrapper>
+      </HomePageWrapper>
+      <HomeProjectsWrapper ref={projectsRef} id="projects">
         {renderInformation()}
-      </div>
+      </HomeProjectsWrapper>
     </>
   );
 };
 
-const fullHeight = true;
 const ctaContent = {
   title: generateRandomFooterCta(),
   component: () => <LetsConnect />,
 };
 
-export default memo(withLayout(IndexPage, fullHeight, ctaContent));
+export default memo(withLayout(IndexPage, ctaContent));
