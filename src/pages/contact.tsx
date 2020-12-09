@@ -75,10 +75,9 @@ const ContactPage: React.FC<WithLayoutProps> = () => {
   );
 };
 
-const fullHeight = true;
 const ctaContent = {
   title: generateRandomFooterCta(),
   component: () => <GetToKnowMe />,
 };
 
-export default withLayout(ContactPage, fullHeight, ctaContent);
+export default withLayout(ContactPage, ctaContent);

@@ -97,10 +97,9 @@ const IndexPage: React.FC = () => {
   );
 };
 
-const fullHeight = true;
 const ctaContent = {
   title: generateRandomFooterCta(),
   component: () => <LetsConnect />,
 };
 
-export default memo(withLayout(IndexPage, fullHeight, ctaContent));
+export default memo(withLayout(IndexPage, ctaContent));

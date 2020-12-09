@@ -140,10 +140,9 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
   );
 };
 
-const fullHeight = true;
 const ctaContent = {
   title: 'next project',
   component: () => <NextProject />,
 };
 
-export default withLayout(ProjectPageComponent, fullHeight, ctaContent);
+export default withLayout(ProjectPageComponent, ctaContent);

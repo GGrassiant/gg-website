@@ -14,6 +14,7 @@ export const ToggleThemeWrapper = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
+  color: var(--color-reversetext);
 `;
 
 export const ToggleThemeElement = styled.span<ToggleThemeElementProps>`

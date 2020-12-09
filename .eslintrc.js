@@ -52,6 +52,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off', // Allow import modules like @reach/router
     indent: 'off', // Disable to avoid conflict with prettier
     'no-confusing-arrow': 'off', // Disable to avoid conflict with prettier
+    'arrow-body-style': 'off', // Disable to avoid conflict with prettier
   },
   overrides: [
     // Override some TypeScript rules just for .js files

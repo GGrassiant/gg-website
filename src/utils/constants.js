@@ -54,7 +54,7 @@ export const breakPoints = {
   md: '960px',
   lg: '1280px',
   xl: '1440px',
-  breakPointSmallHeight: '668px',
+  SmallHeight: '668px',
   largeHeight: '1300px',
   largeBreakPointLimit: '1508px', // breakPoints.xl + theme.layout.layoutOffset + 0.25rem; TODO: Why + 0.25rem??? ¯\_(ツ)_/¯
 };
