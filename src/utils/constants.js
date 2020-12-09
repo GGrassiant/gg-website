@@ -56,12 +56,12 @@ export const breakPoints = {
   xl: '1440px',
   breakPointSmallHeight: '668px',
   largeHeight: '1300px',
+  largeBreakPointLimit: '1508px', // breakPoints.xl + theme.layout.layoutOffset + 0.25rem; TODO: Why + 0.25rem??? ¯\_(ツ)_/¯
 };
 
 export const theme = {
   fonts: {
-    defaultFont: 'Roboto, sans-serif',
-    alternateFont: 'Rubik, sans-serif',
+    defaultFont: 'Rubik, sans-serif',
   },
   fontSizes: {
     xl: '8.5rem',

@@ -51,6 +51,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off', // Allow spreading props;
     'import/no-extraneous-dependencies': 'off', // Allow import modules like @reach/router
     indent: 'off', // Disable to avoid conflict with prettier
+    'no-confusing-arrow': 'off', // Disable to avoid conflict with prettier
   },
   overrides: [
     // Override some TypeScript rules just for .js files

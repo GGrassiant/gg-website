@@ -51,20 +51,6 @@ a:hover {
 
 .dark-switcher {
   color: var(--color-reversetext);
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-
-  &__toggle {
-    font-size: 2rem;
-    transition: opacity 0.3s ease-in;
-
-    &--no-display {
-      opacity: 0;
-    }
-  }
 }
 
 .dark a,
