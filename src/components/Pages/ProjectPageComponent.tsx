@@ -10,8 +10,21 @@ import { ContenfulImage, ProjectPageComponentProps } from '../../../site';
 import { ProjectContext } from '../../context/ProjectContext';
 
 // Styles
-import styles from './project.module.scss';
-import { BackButton } from './project-page.style';
+
+import {
+  ProjectPageWrapper,
+  BackButton,
+  ProjectInfoWrapper,
+  ProjectInfoList,
+  ProjectInfoItem,
+  ImageWrapper,
+  ProjectDetailsWrapper,
+  ProjectDescription,
+  MainProjectImageWrapper,
+  ProjectImagesWrapper,
+  ProjectCTA,
+  ProjectCTAContent,
+} from './project-page.style';
 
 // Components
 import withLayout from '../../Hoc/PageWrapper/WithLayout';
@@ -41,21 +54,15 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
 
   const renderProjectImages = (images: Array<ContenfulImage>) => (
     <>
-      <div className={styles.mainProjectImage}>
+      <MainProjectImageWrapper>
         <Img
           fluid={images[0].fluid}
           key={images[0].fluid.src}
           alt={images[0].title}
         />
-      </div>
+      </MainProjectImageWrapper>
       {images.length > 1 && (
-        <div
-          className={
-            images.length > 2
-              ? styles.otherProjectImages
-              : styles.otherProjectImage
-          }
-        >
+        <ProjectImagesWrapper manyImages={images.length > 2}>
           {images.slice(1).map((otherImage: ContenfulImage) => (
             <Img
               fluid={otherImage.fluid}
@@ -68,7 +75,7 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
               }}
             />
           ))}
-        </div>
+        </ProjectImagesWrapper>
       )}
     </>
   );
@@ -80,40 +87,40 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
   return (
     <>
       <SEO title="Project page" />
-      <div className={styles.projectPage}>
-        <div className={styles.projectInfo}>
+      <ProjectPageWrapper>
+        <ProjectInfoWrapper>
           <BackButton to={`/#${title}`}>
             <AiOutlineArrowLeft />
             All Projects
           </BackButton>
           <h2>{title}</h2>
-          <ul className={styles.projectInfoList}>
-            <li className={styles.projectInfoItem}>
+          <ProjectInfoList>
+            <ProjectInfoItem>
               <div>
                 <AiOutlineCalendar />
               </div>
               {year}
-            </li>
-            <li className={styles.projectInfoItem}>
+            </ProjectInfoItem>
+            <ProjectInfoItem>
               <div>
                 <BsCodeSlash />
               </div>
               {techStack}
-            </li>
-            <li className={styles.projectInfoItem}>
+            </ProjectInfoItem>
+            <ProjectInfoItem>
               <div>
                 <BsPeople />
               </div>
               {team}
-            </li>
-            <li className={styles.projectInfoItem}>
+            </ProjectInfoItem>
+            <ProjectInfoItem>
               <div>
                 <BsLink45Deg />
               </div>
               <Link href={`https://${link}`}>{link}</Link>
-            </li>
-          </ul>
-          <div className={styles.imageWrapper}>
+            </ProjectInfoItem>
+          </ProjectInfoList>
+          <ImageWrapper>
             <Img
               fluid={mainPicture.fluid}
               key={mainPicture.fluid.src}
@@ -122,20 +129,20 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
                 objectPosition: '0 0',
               }}
             />
-          </div>
-        </div>
-        <div className={styles.projectDetails}>
+          </ImageWrapper>
+        </ProjectInfoWrapper>
+        <ProjectDetailsWrapper>
           <h3>Description</h3>
-          <p className={styles.projectDescription}>{shortDescription}</p>
+          <ProjectDescription>{shortDescription}</ProjectDescription>
           <div>{renderProjectImages(projectPictures)}</div>
-        </div>
-        <div className={styles.projectCTA}>
-          <div className={styles.projectCTAContent}>
+        </ProjectDetailsWrapper>
+        <ProjectCTA>
+          <ProjectCTAContent>
             <h3>{intl.formatMessage({ id: 'know more' })}</h3>
             <LetsConnect />
-          </div>
-        </div>
-      </div>
+          </ProjectCTAContent>
+        </ProjectCTA>
+      </ProjectPageWrapper>
     </>
   );
 };

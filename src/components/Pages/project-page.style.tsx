@@ -43,7 +43,6 @@ interface ProjectImages {
 }
 
 // Elements
-
 export const ProjectPageWrapper = styled.div`
   padding-top: ${theme.layout.headerHeight};
 `;

@@ -10,8 +10,13 @@ import { generateRandomFooterCta } from '../utils/typescript.utils';
 import { WithLayoutProps } from '../Hoc/hoc.types';
 
 // Styles
-import styles from './contact.module.scss';
 import ArmSvg from '../images/arm.svg';
+import {
+  ContactPageWrapper,
+  IntroWrapper,
+  ContactMeansList,
+  ContactMeansItem,
+} from '../components/Pages/contact-page-styles';
 
 // Components
 import GetToKnowMe from '../components/CTA/footer-cta/GetToKnowMe';
@@ -25,8 +30,8 @@ const ContactPage: React.FC<WithLayoutProps> = () => {
   return (
     <>
       <SEO title="Contact Me" />
-      <div className={styles.contactPage}>
-        <div className={styles.intro}>
+      <ContactPageWrapper>
+        <IntroWrapper>
           <Title size="xl">
             Hello
             <br /> World
@@ -34,43 +39,43 @@ const ContactPage: React.FC<WithLayoutProps> = () => {
           <div>
             <img src={ArmSvg} alt="rock-arm" />
           </div>
-        </div>
-        <ul className={styles.contactMeans}>
-          <li className={styles.contactMeansItem}>
+        </IntroWrapper>
+        <ContactMeansList>
+          <ContactMeansItem>
             <span>
-              <HiOutlineMail className={styles.contactMeansType} />
+              <HiOutlineMail className="contact-means__type" />
             </span>
             <Link href="mailto:guillaumegrassiant@hey.com">
               guillaumegrassiant@hey.com
             </Link>
             <span>
-              <AiOutlineArrowRight className={styles.contactMeansArrow} />
+              <AiOutlineArrowRight className="contact-means__arrow" />
             </span>
-          </li>
-          <li className={styles.contactMeansItem}>
+          </ContactMeansItem>
+          <ContactMeansItem>
             <span>
-              <FaLinkedinIn className={styles.contactMeansType} />
+              <FaLinkedinIn className="contact-means__type" />
             </span>
             <Link href="https://www.linkedin.com/in/guillaumegrassiant">
               {intl.formatMessage({ id: 'Linkedin profile' })}
             </Link>
             <span>
-              <AiOutlineArrowRight className={styles.contactMeansArrow} />
+              <AiOutlineArrowRight className="contact-means__arrow" />
             </span>
-          </li>
-          <li className={styles.contactMeansItem}>
+          </ContactMeansItem>
+          <ContactMeansItem>
             <span>
-              <AiFillGithub className={styles.contactMeansType} />
+              <AiFillGithub className="contact-means__type" />
             </span>
             <Link href="https://github.com/GGrassiant">
               {intl.formatMessage({ id: 'Github profile' })}
             </Link>
             <span>
-              <AiOutlineArrowRight className={styles.contactMeansArrow} />
+              <AiOutlineArrowRight className="contact-means__arrow" />
             </span>
-          </li>
-        </ul>
-      </div>
+          </ContactMeansItem>
+        </ContactMeansList>
+      </ContactPageWrapper>
     </>
   );
 };
