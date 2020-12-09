@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 import { breakPoints, theme } from '../../utils/constants';
 
 // Commons
-const verticalPadding = '2,5rem';
+const verticalPadding = '2.5rem';
 const horizontalPadding = '3.5rem';
 
 const projectSectionLayoutMixin = css`
@@ -176,7 +176,7 @@ export const MainProjectImageWrapper = styled.div`
   }
 `;
 
-const OtherProjectImagesWrapper = styled.div`
+const OtherProjectImagesWrapper = css`
   ${() => secondaryImageMixin}
   display: grid;
   grid-template-columns: 1fr;
@@ -202,7 +202,7 @@ const OtherProjectImagesWrapper = styled.div`
     }
 `;
 
-const OtherProjectImageWrapper = styled.div`
+const OtherProjectImageWrapper = css`
   ${() => secondaryImageMixin}
   display: flex;
   margin-top: 4rem;

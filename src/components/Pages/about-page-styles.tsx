@@ -25,7 +25,7 @@ export const IntroWrapper = styled.div`
     height: calc(100vh - 5rem);
   }
 
-  @media (min-width: ${breakPoints.lg}) and (min-height: $${breakPoints.SmallHeight}) {
+  @media (min-width: ${breakPoints.lg}) and (min-height: ${breakPoints.SmallHeight}) {
     height: 600px;
   }
 `;
@@ -57,7 +57,7 @@ export const DescriptionWrapper = styled.div`
 
   @media (min-width: ${breakPoints.lg}) {
     text-align: left;
-    margin-left: ${theme.layout.layoutOffset};
+    margin-left: ${theme.layout.titleOffset};
   }
 }
 `;

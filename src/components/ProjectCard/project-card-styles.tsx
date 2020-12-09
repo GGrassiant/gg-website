@@ -20,7 +20,7 @@ export const ProjectCardWrapper = styled.div<ProjectCardWrapperProps>`
   background-color: #ececec;
   box-shadow: 0 0 64px rgba(0, 0, 0, 0.07);
   font-family: Rubik, sans-serif;
-  color: var(--project-text-color);
+  color: ${theme.fontColor.projectTextColor};
   overflow: hidden;
 
   @media (min-width: ${breakPoints.xsm}) {
