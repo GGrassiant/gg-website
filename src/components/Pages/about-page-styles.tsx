@@ -8,7 +8,7 @@ export const AboutPageWrapper = styled.div`
   padding-top: ${theme.layout.headerHeight};
   font-family: ${theme.fonts.defaultFont};
 
-  @media (min-height: ${breakPoints.sm}) {
+  @media (min-width: ${breakPoints.sm}) {
     padding: ${theme.layout.headerHeight} 3.5rem;
   }
 `;
