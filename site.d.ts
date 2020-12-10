@@ -28,12 +28,21 @@ export interface ContentfulDescription {
   content: string;
 }
 
+export interface ContentfulTechSkill {
+  id: string;
+  skill: string;
+}
+
 export type Edge = {
   node: ContentfulProject;
 };
 
 export type DescriptionEdge = {
   node: ContentfulDescription;
+};
+
+export type TechSkillEdge = {
+  node: ContentfulTechSkill;
 };
 
 export type ResumeEdge = {

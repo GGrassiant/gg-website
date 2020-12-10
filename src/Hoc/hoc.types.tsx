@@ -1,5 +1,5 @@
 // Lib
-import { Edge, DescriptionEdge, ResumeEdge } from '../../site';
+import { Edge, DescriptionEdge, ResumeEdge, TechSkillEdge } from '../../site';
 import { FooterProps } from '../components/Footer/footer-types';
 
 export interface WithLayoutProps {
@@ -20,6 +20,12 @@ export interface WithLayoutProps {
     };
     allContentfulAsset: {
       edges: Array<ResumeEdge>;
+    };
+    allContentfulTechSkills: {
+      group: Array<{
+        fieldValue: string;
+        edges: Array<TechSkillEdge>;
+      }>;
     };
   };
   locale?: string;

@@ -2,7 +2,6 @@
 import React from 'react';
 
 // Utils
-import { FOOTER_CTA_MESSAGES } from './constants';
 import { Edge, ContentfulDataGroup } from '../../site';
 
 // Helper to handle the undefined issue of Array.find
@@ -37,6 +36,12 @@ export const randomValueFromArray = <T, _>(array: Array<T>): T =>
   array[Math.floor(Math.random() * array.length)];
 
 // Random Footer CTA String
+const FOOTER_CTA_MESSAGES = [
+  'get coffee',
+  'learn more about me',
+  'start project',
+];
+
 export const generateRandomFooterCta = (): string =>
   randomValueFromArray(FOOTER_CTA_MESSAGES);
 

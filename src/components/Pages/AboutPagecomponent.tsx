@@ -7,9 +7,8 @@ import { TiDocumentText } from 'react-icons/ti';
 
 // Utils
 import { WithLayoutProps } from '../../Hoc/hoc.types';
-import { DescriptionEdge } from '../../../site';
+import { DescriptionEdge, TechSkillEdge } from '../../../site';
 import { ensure, generateRandomFooterCta } from '../../utils/typescript.utils';
-import { SKILLS } from '../../utils/constants';
 
 // Styles
 import {
@@ -47,6 +46,12 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
     ),
   ).edges;
 
+  const skillsElement: Array<TechSkillEdge> = ensure(
+    data?.allContentfulTechSkills.group.find(
+      (lang) => lang.fieldValue === locale,
+    ),
+  ).edges;
+
   const resumeURL = data?.allContentfulAsset.edges[0].node.file.url;
 
   const renderDescription = (): React.ReactNode => (
@@ -54,10 +59,10 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
   );
 
   const renderSkills = (): Array<React.ReactNode> =>
-    SKILLS.map((skillSet) => (
-      <SkillItem key={skillSet.id}>
+    skillsElement.map((skillSet) => (
+      <SkillItem key={skillSet.node.id}>
         <BsCodeSlash />
-        {skillSet.skill}
+        {skillSet.node.skill}
       </SkillItem>
     ));
 

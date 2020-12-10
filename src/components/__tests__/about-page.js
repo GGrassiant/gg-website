@@ -17,6 +17,14 @@ describe('<AboutPageComponent />', () => {
         allContentfulAsset: {
           edges: [{ node: { id: 'resume', file: { url: 'url-resume' } } }],
         },
+        allContentfulTechSkills: {
+          group: [
+            {
+              fieldValue: 'en',
+              edges: [{ node: { id: 'lol', skill: 'manger' } }],
+            },
+          ],
+        },
       };
       const { container } = render(<AboutPageComponent data={data} />);
       expect(container).toBeInTheDocument();
@@ -31,6 +39,14 @@ describe('<AboutPageComponent />', () => {
         },
         allContentfulAsset: {
           edges: [{ node: { id: 'resume', file: { url: 'url-resume' } } }],
+        },
+        allContentfulTechSkills: {
+          group: [
+            {
+              fieldValue: 'en',
+              edges: [{ node: { id: 'lol', skill: 'manger' } }],
+            },
+          ],
         },
       };
       global.scrollTo = jest.fn();

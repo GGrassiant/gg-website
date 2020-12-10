@@ -17,6 +17,14 @@ describe('<AboutPage />', () => {
         allContentfulAsset: {
           edges: [{ node: { id: 'resume', file: { url: 'url-resume' } } }],
         },
+        allContentfulTechSkills: {
+          group: [
+            {
+              fieldValue: 'en',
+              edges: [{ node: { id: 'lol', skill: 'manger' } }],
+            },
+          ],
+        },
       };
       const { container } = render(<AboutPage data={data} />);
       expect(container).toBeInTheDocument();
