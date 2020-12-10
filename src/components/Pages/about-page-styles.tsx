@@ -8,8 +8,8 @@ export const AboutPageWrapper = styled.div`
   padding-top: ${theme.layout.headerHeight};
   font-family: ${theme.fonts.defaultFont};
 
-  @media (min-height: ${breakPoints.md}) {
-    padding: ${theme.layout.headerHeight} 9rem;
+  @media (min-height: ${breakPoints.sm}) {
+    padding: ${theme.layout.headerHeight} 3.5rem;
   }
 `;
 
@@ -21,7 +21,7 @@ export const IntroWrapper = styled.div`
 
   @media (min-width: ${breakPoints.lg}) {
     display: grid;
-    grid-template-columns: 5fr 2fr;
+    grid-template-columns: 4fr 2fr;
     height: calc(100vh - 5rem);
   }
 
@@ -35,6 +35,10 @@ export const IdWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   order: 2;
+
+  @media (min-width: ${breakPoints.lg}) {
+    align-items: flex-start;
+  }
 
   div {
     text-align: center;
@@ -79,6 +83,10 @@ export const Avatar = styled.div`
   margin: 0 auto;
   height: 60%;
   width: 250px;
+
+  @media (min-width: ${breakPoints.lg}) {
+    margin: 0 0 0 4rem;
+  }
 
   img {
     border-radius: 50%;
@@ -191,6 +199,10 @@ export const ExperienceContent = styled.div`
   height: fit-content;
   width: 100%;
   padding: 1.5rem 0;
+
+  a {
+    font-size: ${theme.fontSizes.normalAlt};
+  }
 
   > svg:first-of-type {
     background-color: var(--color-reversebackground);
