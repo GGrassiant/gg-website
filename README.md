@@ -11,7 +11,7 @@ This is my personal website repository.
 
 1.  **Gatsby-theme-i18n**
 
-1.  **Styled-Components and SCSS modules**
+1.  **Styled-Components**
 
 1.  **Eslint and Prettier with a Husky / Lint-staged hook**
 
