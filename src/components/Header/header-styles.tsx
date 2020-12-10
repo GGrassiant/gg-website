@@ -85,12 +85,13 @@ export const MenuWrapper = styled.ul`
     text-transform: capitalize;
 
     @media (min-width: ${breakPoints.xsm}) {
-      font-size: ${theme.fontSizes.normal};
+      font-size: ${theme.fontSizes.default};
       font-weight: ${theme.fontWeight.regular};
       margin: 0 1rem 0 0;
     }
 
     @media (min-width: ${breakPoints.md}) {
+      font-size: ${theme.fontSizes.normal};
       margin: 0 2rem 0 0;
     }
 
