@@ -88,7 +88,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['Roboto', 'Rubik'],
+        fonts: ['Piazzolla', 'Rubik'],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: ['G-NYFYB7JT3P'],
       },
     },
   ],
