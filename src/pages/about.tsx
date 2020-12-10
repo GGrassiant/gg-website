@@ -35,6 +35,17 @@ export const query = graphql`
         }
       }
     }
+    allContentfulTechSkills(sort: { order: ASC, fields: createdAt }) {
+      group(field: node_locale) {
+        edges {
+          node {
+            id
+            skill
+          }
+        }
+        fieldValue
+      }
+    }
   }
 `;
 

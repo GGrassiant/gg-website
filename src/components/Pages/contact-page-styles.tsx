@@ -99,15 +99,19 @@ export const ContactMeansItem = styled.li`
     text-transform: none;
 
     @media (min-width: ${breakPoints.xsm}) {
-      font-size: var(--font-size-normal);
+      font-size: ${theme.fontSizes.normal};
     }
 
     @media (min-width: ${breakPoints.sm}) {
-      font-size: var(--font-size-normal-alt);
+      font-size: ${theme.fontSizes.normalAlt};
     }
 
     @media (min-width: ${breakPoints.md}) {
-      font-size: var(--font-size-bigger);
+      font-size: ${theme.fontSizes.bigger};
+    }
+
+    @media (min-width: ${breakPoints.xl}) {
+      font-size: ${theme.fontSizes.mediumLight};
     }
   }
 
