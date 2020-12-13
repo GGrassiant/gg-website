@@ -1,10 +1,39 @@
 // Libs
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 // Styles
 import { breakPoints, theme } from '../../utils/constants';
 
-export const CTAWrapper = styled.div`
+interface CTAWrapperProps {
+  animate?: boolean;
+  animationDirection?: 'x' | 'y';
+}
+
+const arrowAnimationX = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(15%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`;
+
+const arrowAnimationY = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
+export const CTAWrapper = styled.div<CTAWrapperProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,6 +42,24 @@ export const CTAWrapper = styled.div`
   border-radius: 4rem;
   background-color: var(--color-reversebackground);
   transition: all ${theme.transition.default} ease-in;
+  cursor: pointer;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: ${({ animate }) => (animate ? 'scale(1.2)' : '')};
+
+      svg {
+        animation: ${({ animate, animationDirection }) =>
+          animate && animationDirection
+            ? css`
+                ${theme.transition.medium} ${animationDirection === 'x'
+                  ? arrowAnimationX
+                  : arrowAnimationY} ease-in-out
+              `
+            : ''};
+      }
+    }
+  }
 
   @media (min-width: ${breakPoints.sm}) {
     height: 10rem;

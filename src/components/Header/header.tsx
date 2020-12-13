@@ -120,8 +120,12 @@ const Header: React.FC<HeaderProps> = (props) => {
     <HeaderElement>
       <h1>
         <LocalizedLink to="/" locale={locale}>
-          <p>Guillaume</p>
-          <p>Grassiant</p>
+          <p>
+            Guillaume <span>Guillaume</span>
+          </p>
+          <p>
+            Grassiant <span>Grassiant</span>
+          </p>
         </LocalizedLink>
       </h1>
       <MenuWrapper>

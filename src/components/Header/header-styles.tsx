@@ -42,28 +42,53 @@ export const HeaderElement = styled.header`
   }
 
   h1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     margin: 0;
     width: 5rem;
 
     p {
+      position: relative;
       margin: 0;
       font-family: ${theme.fonts.defaultFont};
       font-size: 1rem;
       font-weight: ${theme.fontWeight.medium};
       line-height: 1rem;
       color: var(--color-reversetext);
+      transition: color ${theme.transition.medium} ease-in-out;
 
       &:first-of-type {
-        text-align: right;
+        align-self: flex-end;
       }
+    }
+
+    span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      overflow: hidden;
+      transition: width ${theme.transition.medium} ease-in-out;
+      white-space: nowrap;
+      color: ${theme.fontColor.accentColor};
     }
   }
 
   a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-decoration: none;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        p {
+          color: ${theme.fontColor.accentColor};
+
+          span {
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -133,9 +158,11 @@ export const MenuWrapper = styled.ul`
       }
     }
 
-    &:hover:before {
-      width: 100%;
-      border-bottom: 1px solid var(--color-reversetext);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover:before {
+        width: 100%;
+        border-bottom: 1px solid var(--color-reversetext);
+      }
     }
   }
 `;

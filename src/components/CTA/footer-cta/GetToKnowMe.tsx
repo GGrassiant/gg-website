@@ -13,7 +13,7 @@ const GetToKnowMe: React.FC = () => {
     { breakingLine: '<br/>' },
   );
   return (
-    <CTA link="about">
+    <CTA link="about" animate animationDirection="x">
       <span dangerouslySetInnerHTML={{ __html: translatedCta }} />
       <AiOutlineArrowRight />
     </CTA>

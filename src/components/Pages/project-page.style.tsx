@@ -48,6 +48,7 @@ export const ProjectPageWrapper = styled.div`
 `;
 
 export const BackButton = styled(LocalizedLink)`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,6 +56,36 @@ export const BackButton = styled(LocalizedLink)`
   font-size: ${theme.fontSizes.normalAlt};
   font-weight: 500;
   color: var(--color-reversetext);
+
+  &:hover {
+    span {
+      &:before {
+        width: 100%;
+        border-bottom: 1px solid var(--color-reversetext);
+      }
+    }
+
+    svg {
+      transform: translateX(-15%);
+    }
+  }
+
+  span {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 1.5rem;
+      left: 0;
+      width: 0;
+      transition: all ${theme.transition.default} ease-in;
+    }
+  }
+
+  svg {
+    transition: all ${theme.transition.default} ease-in;
+  }
 `;
 
 export const ProjectInfoWrapper = styled.div`

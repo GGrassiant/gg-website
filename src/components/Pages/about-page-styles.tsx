@@ -50,7 +50,7 @@ export const IdWrapper = styled.div`
 `;
 
 export const Initials = styled.span`
-  color: #e1e417;
+  color: ${theme.fontColor.accentColor};
 `;
 
 export const DescriptionWrapper = styled.div`
@@ -102,35 +102,11 @@ export const CtaWrapper = styled.div`
     justify-content: center;
     height: 40%;
   }
-
-  div {
-    position: relative;
-    cursor: pointer;
-
-    svg {
-      position: absolute;
-      left: 50%;
-      bottom: 15%;
-      transform: translateX(-50%);
-    }
-  }
 `;
 
 export const CtaWrapperMobile = styled.div`
   order: 3;
   margin: 1rem auto;
-
-  div {
-    position: relative;
-    cursor: pointer;
-
-    svg {
-      position: absolute;
-      left: 50%;
-      bottom: 20%;
-      transform: translateX(-50%);
-    }
-  }
 
   @media (min-width: ${breakPoints.lg}) {
     display: none;
@@ -202,6 +178,13 @@ export const ExperienceContent = styled.div`
 
   a {
     font-size: ${theme.fontSizes.normalAlt};
+    transition: color ${theme.transition.default} ease-in;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: ${theme.fontColor.accentColor};
+      }
+    }
   }
 
   > svg:first-of-type {

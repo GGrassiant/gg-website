@@ -97,6 +97,7 @@ export const ContactMeansItem = styled.li`
     font-weight: ${theme.fontWeight.regular};
     color: var(--color-reversetext);
     text-transform: none;
+    transition: color ${theme.transition.default} ease-in;
 
     @media (min-width: ${breakPoints.xsm}) {
       font-size: ${theme.fontSizes.normal};
@@ -112,6 +113,12 @@ export const ContactMeansItem = styled.li`
 
     @media (min-width: ${breakPoints.xl}) {
       font-size: ${theme.fontSizes.mediumLight};
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: ${theme.fontColor.accentColor};
+      }
     }
   }
 
