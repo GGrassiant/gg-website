@@ -8,6 +8,7 @@ import { breakPoints, theme } from '../../utils/constants';
 interface ProjectCardWrapperProps {
   id?: string;
   footer?: boolean;
+  colorMode?: string;
 }
 
 export const ProjectCardWrapper = styled.div<ProjectCardWrapperProps>`
@@ -18,12 +19,20 @@ export const ProjectCardWrapper = styled.div<ProjectCardWrapperProps>`
   padding: 0 2.5rem;
   border-radius: 11px;
   background-color: #ececec;
-  box-shadow: 0 0 64px rgba(0, 0, 0, 0.07);
   font-family: Rubik, sans-serif;
   color: ${theme.fontColor.projectTextColor};
   overflow: hidden;
-  border: ${(props) =>
-    props.footer ? '1px solid var(--color-reversetextwithopacity)' : ''};
+  border: ${({ footer, colorMode }) =>
+    footer && colorMode === 'light'
+      ? '1px solid var(--color-reversetextwithopacity)'
+      : ''};
+  transition: all ${theme.transition.default} ease-in;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      box-shadow: 0 0 1rem var(--color-reversetextwithopacity);
+    }
+  }
 
   @media (min-width: ${breakPoints.xsm}) {
     height: 20rem;

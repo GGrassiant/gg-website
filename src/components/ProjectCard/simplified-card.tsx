@@ -1,10 +1,11 @@
 // Libs
-import React from 'react';
+import React, { useContext } from 'react';
 import Img from 'gatsby-image';
 
 // Utils
 import { SimplifiedProjectCardProps } from './project-card-types';
 import * as siteMetaData from '../../utils/siteMetaData';
+import { ThemeContext } from '../../context/ThemeContext';
 
 // Styles
 import {
@@ -18,6 +19,7 @@ import Title from '../Title';
 
 const SimplifiedProjectCard: React.FC<SimplifiedProjectCardProps> = (props) => {
   const { edge } = props;
+  const { colorMode } = useContext(ThemeContext);
 
   if (!edge) {
     return <p>Loading...</p>;
@@ -25,7 +27,7 @@ const SimplifiedProjectCard: React.FC<SimplifiedProjectCardProps> = (props) => {
 
   return (
     <SimplifiedCardLink to={`${siteMetaData.menu[1].slug}${edge.node.slug}`}>
-      <ProjectCardWrapper id={edge.node.title} footer>
+      <ProjectCardWrapper id={edge.node.title} footer colorMode={colorMode}>
         <ProjectCardHeader>
           <span>{edge.node.mainTech}</span>
           <span>{edge.node.year}</span>
