@@ -33,11 +33,11 @@ const Footer: React.FC<FooterProps> = (props) => {
           <p>Guillaume Grassiant - 2020</p>
           <div className="links-wrapper">
             <Link href="https://www.linkedin.com/in/guillaumegrassiant/">
-              LinkedIn
+              <span>LinkedIn</span>
               <BsBoxArrowUpRight />
             </Link>
             <Link href="https://github.com/GGrassiant">
-              Github
+              <span>Github</span>
               <BsBoxArrowUpRight />
             </Link>
           </div>
