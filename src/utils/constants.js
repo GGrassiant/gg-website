@@ -85,6 +85,7 @@ export const theme = {
   },
   fontColor: {
     projectTextColor: '#282828',
+    accentColor: '#e1e417',
   },
   transition: {
     default: '0.3s',

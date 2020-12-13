@@ -116,7 +116,7 @@ export const ContactMeansItem = styled.li`
     }
 
     &:hover {
-      color: #e1e417;
+      color: ${theme.fontColor.accentColor};
     }
   }
 

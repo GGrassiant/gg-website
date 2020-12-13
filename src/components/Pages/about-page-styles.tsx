@@ -50,7 +50,7 @@ export const IdWrapper = styled.div`
 `;
 
 export const Initials = styled.span`
-  color: #e1e417;
+  color: ${theme.fontColor.accentColor};
 `;
 
 export const DescriptionWrapper = styled.div`
@@ -178,6 +178,11 @@ export const ExperienceContent = styled.div`
 
   a {
     font-size: ${theme.fontSizes.normalAlt};
+    transition: color ${theme.transition.default} ease-in;
+
+    &:hover {
+      color: ${theme.fontColor.accentColor};
+    }
   }
 
   > svg:first-of-type {
