@@ -22,6 +22,7 @@ export const ProjectCardWrapper = styled.div<ProjectCardWrapperProps>`
   font-family: Rubik, sans-serif;
   color: ${theme.fontColor.projectTextColor};
   overflow: hidden;
+  border: 1px solid var(--color-reversetextwithopacity);
 
   @media (min-width: ${breakPoints.xsm}) {
     height: 20rem;
