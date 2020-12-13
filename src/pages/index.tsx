@@ -81,6 +81,8 @@ const IndexPage: React.FC = () => {
               link=""
               onClick={executeScroll}
               data-testid="custom-scroll-element"
+              animate
+              animationDirection="y"
             >
               {intl.formatMessage({ id: 'Explore' })}
               <br />

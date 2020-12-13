@@ -102,35 +102,11 @@ export const CtaWrapper = styled.div`
     justify-content: center;
     height: 40%;
   }
-
-  div {
-    position: relative;
-    cursor: pointer;
-
-    svg {
-      position: absolute;
-      left: 50%;
-      bottom: 15%;
-      transform: translateX(-50%);
-    }
-  }
 `;
 
 export const CtaWrapperMobile = styled.div`
   order: 3;
   margin: 1rem auto;
-
-  div {
-    position: relative;
-    cursor: pointer;
-
-    svg {
-      position: absolute;
-      left: 50%;
-      bottom: 20%;
-      transform: translateX(-50%);
-    }
-  }
 
   @media (min-width: ${breakPoints.lg}) {
     display: none;
