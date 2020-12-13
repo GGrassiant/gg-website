@@ -42,13 +42,11 @@ export const HeaderElement = styled.header`
   }
 
   h1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     margin: 0;
     width: 5rem;
 
     p {
+      position: relative;
       margin: 0;
       font-family: ${theme.fonts.defaultFont};
       font-size: 1rem;
@@ -57,13 +55,33 @@ export const HeaderElement = styled.header`
       color: var(--color-reversetext);
 
       &:first-of-type {
-        text-align: right;
+        align-self: flex-end;
       }
+    }
+
+    span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      overflow: hidden;
+      transition: width ${theme.transition.medium} ease-in-out;
+      white-space: nowrap;
+      color: var(--color-reversetextwithopacity);
     }
   }
 
   a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-decoration: none;
+
+    &:hover {
+      p span {
+        width: 100%;
+      }
+    }
   }
 `;
 
