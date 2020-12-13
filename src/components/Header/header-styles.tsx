@@ -53,6 +53,7 @@ export const HeaderElement = styled.header`
       font-weight: ${theme.fontWeight.medium};
       line-height: 1rem;
       color: var(--color-reversetext);
+      transition: color ${theme.transition.medium} ease-in-out;
 
       &:first-of-type {
         align-self: flex-end;
@@ -67,7 +68,7 @@ export const HeaderElement = styled.header`
       overflow: hidden;
       transition: width ${theme.transition.medium} ease-in-out;
       white-space: nowrap;
-      color: var(--color-reversetextwithopacity);
+      color: ${theme.fontColor.accentColor};
     }
   }
 
@@ -78,8 +79,12 @@ export const HeaderElement = styled.header`
     text-decoration: none;
 
     &:hover {
-      p span {
-        width: 100%;
+      p {
+        color: ${theme.fontColor.accentColor};
+
+        span {
+          width: 100%;
+        }
       }
     }
   }
