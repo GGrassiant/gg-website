@@ -91,7 +91,7 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
         <ProjectInfoWrapper>
           <BackButton to={`/#${title}`}>
             <AiOutlineArrowLeft />
-            All Projects
+            <span>All Projects</span>
           </BackButton>
           <h2>{title}</h2>
           <ProjectInfoList>
