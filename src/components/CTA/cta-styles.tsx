@@ -44,18 +44,20 @@ export const CTAWrapper = styled.div<CTAWrapperProps>`
   transition: all ${theme.transition.default} ease-in;
   cursor: pointer;
 
-  &:hover {
-    transform: ${({ animate }) => (animate ? 'scale(1.2)' : '')};
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: ${({ animate }) => (animate ? 'scale(1.2)' : '')};
 
-    svg {
-      animation: ${({ animate, animationDirection }) =>
-        animate && animationDirection
-          ? css`
-              ${theme.transition.medium} ${animationDirection === 'x'
-                ? arrowAnimationX
-                : arrowAnimationY} ease-in-out
-            `
-          : ''};
+      svg {
+        animation: ${({ animate, animationDirection }) =>
+          animate && animationDirection
+            ? css`
+                ${theme.transition.medium} ${animationDirection === 'x'
+                  ? arrowAnimationX
+                  : arrowAnimationY} ease-in-out
+              `
+            : ''};
+      }
     }
   }
 

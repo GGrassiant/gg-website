@@ -180,8 +180,10 @@ export const ExperienceContent = styled.div`
     font-size: ${theme.fontSizes.normalAlt};
     transition: color ${theme.transition.default} ease-in;
 
-    &:hover {
-      color: ${theme.fontColor.accentColor};
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: ${theme.fontColor.accentColor};
+      }
     }
   }
 

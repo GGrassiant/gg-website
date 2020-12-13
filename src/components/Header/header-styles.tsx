@@ -78,12 +78,14 @@ export const HeaderElement = styled.header`
     justify-content: center;
     text-decoration: none;
 
-    &:hover {
-      p {
-        color: ${theme.fontColor.accentColor};
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        p {
+          color: ${theme.fontColor.accentColor};
 
-        span {
-          width: 100%;
+          span {
+            width: 100%;
+          }
         }
       }
     }
@@ -156,9 +158,11 @@ export const MenuWrapper = styled.ul`
       }
     }
 
-    &:hover:before {
-      width: 100%;
-      border-bottom: 1px solid var(--color-reversetext);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover:before {
+        width: 100%;
+        border-bottom: 1px solid var(--color-reversetext);
+      }
     }
   }
 `;

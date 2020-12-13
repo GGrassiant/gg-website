@@ -115,8 +115,10 @@ export const ContactMeansItem = styled.li`
       font-size: ${theme.fontSizes.mediumLight};
     }
 
-    &:hover {
-      color: ${theme.fontColor.accentColor};
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: ${theme.fontColor.accentColor};
+      }
     }
   }
 

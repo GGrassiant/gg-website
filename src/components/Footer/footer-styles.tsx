@@ -86,16 +86,18 @@ export const PermanentFooterContent = styled.div`
     a {
       font-size: inherit;
 
-      &:hover {
-        span {
-          &:before {
-            width: 100%;
-            border-bottom: 1px solid var(--color-reversetext);
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          span {
+            &:before {
+              width: 100%;
+              border-bottom: 1px solid var(--color-reversetext);
+            }
           }
-        }
 
-        svg {
-          transform: translate(3px, -3px);
+          svg {
+            transform: translate(3px, -3px);
+          }
         }
       }
 
