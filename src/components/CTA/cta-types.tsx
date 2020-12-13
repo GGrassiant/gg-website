@@ -9,4 +9,6 @@ export interface CTAProps {
   link?: menuItems;
   onClick?: () => void;
   rest?: string;
+  animate?: boolean;
+  animationDirection?: 'x' | 'y';
 }

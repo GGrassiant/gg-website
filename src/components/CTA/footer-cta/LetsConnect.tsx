@@ -9,7 +9,7 @@ import CTA from '../index';
 const LetsConnect: React.FC = () => {
   const intl = useIntl();
   return (
-    <CTA link="contact">
+    <CTA link="contact" animate animationDirection="x">
       {intl.formatMessage({ id: 'contact me' })}
       <AiOutlineArrowRight />
     </CTA>
