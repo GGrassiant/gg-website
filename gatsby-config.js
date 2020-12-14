@@ -90,6 +90,7 @@ module.exports = {
       options: {
         fonts: ['Piazzolla', 'Rubik'],
       },
+      display: 'swap',
     },
     {
       resolve: 'gatsby-plugin-google-gtag',
