@@ -7,6 +7,7 @@ import { Edge } from '../../../../site';
 
 // Components
 import SimplifiedProjectCard from '../../ProjectCard/simplified-card';
+import Loader from '../../Loader';
 
 const NextProject: React.FC = () => {
   const { currentRandomProject } = useContext(ProjectContext);
@@ -26,7 +27,7 @@ const NextProject: React.FC = () => {
   }, [currentRandomProject]);
 
   if (!randomProject) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   return (

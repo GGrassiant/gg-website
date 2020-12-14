@@ -84,8 +84,10 @@ describe('<SimplifiedProjectCard />', () => {
     });
 
     test('mounts with no Edge', async () => {
-      const { findByText } = render(<SimplifiedProjectCard edge={undefined} />);
-      const loadingElement = await findByText('Loading...');
+      const { getByTestId } = render(
+        <SimplifiedProjectCard edge={undefined} />,
+      );
+      const loadingElement = await getByTestId('custom-loader');
       expect(loadingElement).toBeInTheDocument();
     });
   });

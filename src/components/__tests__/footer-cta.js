@@ -33,8 +33,8 @@ describe('<FooterCta>', () => {
   describe('<NextProject />', () => {
     describe('mounts', () => {
       test('Layout mounts correctly', async () => {
-        const { container, findByText } = render(<NextProject />);
-        const loadingElement = await findByText('Loading...');
+        const { container, getByTestId } = render(<NextProject />);
+        const loadingElement = await getByTestId('custom-loader');
 
         expect(container).toBeInTheDocument();
         expect(loadingElement).toBeInTheDocument();
