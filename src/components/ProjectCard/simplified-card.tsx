@@ -16,13 +16,14 @@ import {
 
 // Components
 import Title from '../Title';
+import Loader from '../Loader';
 
 const SimplifiedProjectCard: React.FC<SimplifiedProjectCardProps> = (props) => {
   const { edge } = props;
   const { colorMode } = useContext(ThemeContext);
 
   if (!edge) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   return (
