@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 // Styles
 import { breakPoints, theme } from '../../utils/constants';
+import { FunnyFaceWrapper } from '../Layout/layout-styles';
 
 interface FooterWrapperProps {
   cta?: boolean;
@@ -72,6 +73,11 @@ export const PermanentFooterContent = styled.div`
 
   p {
     line-height: 13px;
+    cursor: pointer;
+
+    &:hover ~ ${FunnyFaceWrapper} {
+      transform: translate(-4rem, -5rem) rotate(20deg);
+    }
   }
 
   > div {

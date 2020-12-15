@@ -70,3 +70,17 @@ export const ContentWrapper = styled.div`
 export const MainElement = styled.main`
   height: 100%;
 `;
+
+export const FunnyFaceWrapper = styled.div`
+  position: fixed;
+  bottom: 3rem;
+  left: 0;
+  transform: translate(-100%, -5rem);
+  transition: all ${theme.transition.medium} ease-in-out;
+  transition-delay: ${theme.transition.default};
+  width: 5rem;
+
+  img {
+    border-radius: 50%;
+  }
+`;
