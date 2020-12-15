@@ -1,5 +1,6 @@
 // Libs
 import styled, { keyframes } from 'styled-components';
+import { theme } from '../../utils/constants';
 
 const rotatingLoader = keyframes`
   100% {
@@ -35,7 +36,7 @@ export const LoaderWrapper = styled.div`
 `;
 LoaderWrapper.displayName = 'LoaderWrapper';
 
-export const Loaderdot = styled.div`
+export const LoaderDot = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
@@ -48,7 +49,7 @@ export const Loaderdot = styled.div`
     display: block;
     width: 25%;
     height: 25%;
-    background-color: var(--color-reversetextwithopacity);
+    background-color: ${theme.fontColor.accentColor};
     border-radius: 100%;
     animation: ${rotatingLoaderDotsBefore} 2s infinite ease-in-out both;
   }
@@ -101,4 +102,4 @@ export const Loaderdot = styled.div`
     }
   }
 `;
-Loaderdot.displayName = 'Loaderdot';
+LoaderDot.displayName = 'Loaderdot';

@@ -1,12 +1,29 @@
 // Libs
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 // Styles
 import { breakPoints, theme } from '../../utils/constants';
+import {
+  FunnyFaceWrapper,
+  SpeechBubbleParagraph,
+  SpeechBubbleWrapper,
+} from '../HenloFren/henlofren-styles';
 
 interface FooterWrapperProps {
   cta?: boolean;
 }
+
+const GlowingText = keyframes`
+  0%, 20%, 40%, 50%, 60%, 100% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(0.7);
+  }
+  80% {
+    transform: scale(1.3);
+  }
+`;
 
 export const FooterWrapper = styled.div<FooterWrapperProps>`
   display: flex;
@@ -64,20 +81,14 @@ export const PermanentFooterContent = styled.div`
   }
 
   .links-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+
     @media (max-width: ${breakPoints.md}) {
       display: flex;
       width: 100%;
     }
-  }
-
-  p {
-    line-height: 13px;
-  }
-
-  > div {
-    display: flex;
-    justify-content: space-between;
-    width: 15%;
 
     @media (min-width: ${breakPoints.lg}) {
       width: 17%;
@@ -116,6 +127,33 @@ export const PermanentFooterContent = styled.div`
 
       svg {
         transition: all ${theme.transition.default} ease-in;
+      }
+    }
+  }
+
+  p {
+    line-height: 13px;
+    cursor: pointer;
+    z-index: 10;
+    transition: color ${theme.transition.default} ease-in;
+    transition-delay: ${theme.transition.default};
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: ${theme.fontColor.accentColor};
+      }
+
+      &:hover ~ ${FunnyFaceWrapper} {
+        transform: translate(-4rem, -5rem) rotate(20deg);
+      }
+
+      &:hover ~ ${SpeechBubbleWrapper} {
+        opacity: 1;
+        transition-delay: 1s;
+
+        ${SpeechBubbleParagraph} {
+          animation: ${GlowingText} 2s linear forwards;
+        }
       }
     }
   }

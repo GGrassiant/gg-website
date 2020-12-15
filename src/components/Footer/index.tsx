@@ -12,6 +12,7 @@ import {
 // Components
 import FooterCta from './FooterCta';
 import Link from '../Link';
+import HenloFren from '../HenloFren/HenloFren';
 
 // Utils
 import { FooterProps } from './footer-types';
@@ -41,6 +42,7 @@ const Footer: React.FC<FooterProps> = (props) => {
               <BsBoxArrowUpRight />
             </Link>
           </div>
+          <HenloFren />
         </PermanentFooterContent>
       </PermanentFooter>
     </FooterWrapper>
