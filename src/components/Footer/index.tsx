@@ -8,16 +8,15 @@ import {
   PermanentFooter,
   PermanentFooterContent,
 } from './footer-styles';
-import { FunnyFaceWrapper } from '../Layout/layout-styles';
 
 // Components
 import FooterCta from './FooterCta';
 import Link from '../Link';
+import HenloFren from '../HenloFren/HenloFren';
 
 // Utils
 import { FooterProps } from './footer-types';
 import { validateObjectValues } from '../../utils/typescript.utils';
-import Image from '../Image/image';
 
 const Footer: React.FC<FooterProps> = (props) => {
   const { ctaContent } = props;
@@ -43,9 +42,7 @@ const Footer: React.FC<FooterProps> = (props) => {
               <BsBoxArrowUpRight />
             </Link>
           </div>
-          <FunnyFaceWrapper>
-            <Image />
-          </FunnyFaceWrapper>
+          <HenloFren />
         </PermanentFooterContent>
       </PermanentFooter>
     </FooterWrapper>

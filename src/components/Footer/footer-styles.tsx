@@ -3,7 +3,10 @@ import styled from 'styled-components';
 
 // Styles
 import { breakPoints, theme } from '../../utils/constants';
-import { FunnyFaceWrapper } from '../Layout/layout-styles';
+import {
+  FunnyFaceWrapper,
+  SpeechBubbleWrapper,
+} from '../HenloFren/henlofren-styles';
 
 interface FooterWrapperProps {
   cta?: boolean;
@@ -78,9 +81,14 @@ export const PermanentFooterContent = styled.div`
     &:hover ~ ${FunnyFaceWrapper} {
       transform: translate(-4rem, -5rem) rotate(20deg);
     }
+
+    &:hover ~ ${SpeechBubbleWrapper} {
+      opacity: 1;
+      transition-delay: 1s;
+    }
   }
 
-  > div {
+  > div:not(${FunnyFaceWrapper}) {
     display: flex;
     justify-content: space-between;
     width: 15%;
