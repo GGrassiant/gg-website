@@ -2,17 +2,17 @@
 import React from 'react';
 
 // Styles
-import { LoaderWrapper, Loaderdot } from './loader-styles';
+import { LoaderWrapper, LoaderDot } from './loader-styles';
 
 const Loader: React.FC = () => {
   return (
     <LoaderWrapper data-testid="custom-loader">
-      <Loaderdot />
-      <Loaderdot />
-      <Loaderdot />
-      <Loaderdot />
-      <Loaderdot />
-      <Loaderdot />
+      <LoaderDot />
+      <LoaderDot />
+      <LoaderDot />
+      <LoaderDot />
+      <LoaderDot />
+      <LoaderDot />
     </LoaderWrapper>
   );
 };

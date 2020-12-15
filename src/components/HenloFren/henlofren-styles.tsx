@@ -38,7 +38,7 @@ export const SpeechBubbleContent = styled.div`
   justify-content: center;
   background-color: white;
   height: 100%;
-  width: 100%;
+  width: 10rem;
   border-radius: 10px;
 `;
 SpeechBubbleWrapper.displayName = 'SpeechBubbleWrapper';

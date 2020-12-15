@@ -25,7 +25,7 @@ const HenloFren: React.FC = () => {
           <SpeechBubbleTip>
             <img src={BubbleTipSvg} alt="speech-bubble" />
           </SpeechBubbleTip>
-          <SpeechBubbleParagraph>Henlo frens</SpeechBubbleParagraph>
+          <SpeechBubbleParagraph>Oh henlo frens</SpeechBubbleParagraph>
         </SpeechBubbleContent>
       </SpeechBubbleWrapper>
     </>
