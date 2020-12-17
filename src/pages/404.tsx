@@ -1,5 +1,5 @@
 // Libs
-import React, { Suspense } from 'react';
+import React, { useState, Suspense } from 'react';
 import useSWR, { SWRConfig } from 'swr';
 import axios from 'axios';
 
@@ -8,6 +8,7 @@ import {
   FOFWrapper,
   FOFWrapperContent,
   FOFImageWrapper,
+  DoggoPictureSkeleton,
 } from '../components/Pages/404-styles';
 
 // Components
@@ -16,12 +17,24 @@ import SEO from '../components/seo';
 import Loader from '../components/Loader';
 
 const DoggoProfile: React.FC = () => {
+  const [doggoPictureLoaded, setDoggoPictureLoaded] = useState<boolean>(false);
   const { data } = useSWR('https://dog.ceo/api/breeds/image/random');
+
+  const handleImageLoad = () => setDoggoPictureLoaded(true);
 
   return (
     <FOFWrapperContent>
       <FOFImageWrapper>
-        <img alt={data?.data?.message} src={data?.data?.message} />
+        <img
+          alt={data?.data?.message}
+          src={data?.data?.message}
+          onLoad={handleImageLoad}
+        />
+        <DoggoPictureSkeleton
+          style={{ display: doggoPictureLoaded ? 'none' : 'flex' }}
+        >
+          <div />
+        </DoggoPictureSkeleton>
       </FOFImageWrapper>
       <h1>NOT FOUND</h1>
       <p>
