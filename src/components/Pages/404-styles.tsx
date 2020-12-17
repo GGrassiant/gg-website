@@ -24,9 +24,17 @@ export const FOFWrapperContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+FOFWrapperContent.displayName = ' FOFWrapperContent';
+
+export const FOFImageWrapper = styled.div`
+  border-radius: 10%;
+  overflow: hidden;
+  height: 20rem;
+  max-width: 30rem;
 
   img {
-    max-height: 20rem;
-    border-radius: 10%;
+    object-fit: cover;
   }
 `;
+FOFImageWrapper.displayName = 'FOFImageWrapper';

@@ -53,6 +53,7 @@ module.exports = {
     indent: 'off', // Disable to avoid conflict with prettier
     'no-confusing-arrow': 'off', // Disable to avoid conflict with prettier
     'arrow-body-style': 'off', // Disable to avoid conflict with prettier
+    'function-paren-newline': 'off', // Disable to avoid conflict with prettier
   },
   overrides: [
     // Override some TypeScript rules just for .js files
