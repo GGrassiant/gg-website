@@ -64,6 +64,7 @@
     "react-icons": "^4.1.0",
     "react-intl": "^4.6.9",
     "styled-components": "^5.2.1",
+    "swr": "^0.3.9",
     "terser": "^3.16.1 "
   },
   "devDependencies": {

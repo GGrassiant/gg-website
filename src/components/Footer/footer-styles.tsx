@@ -32,18 +32,18 @@ export const FooterWrapper = styled.div<FooterWrapperProps>`
   position: absolute;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: ${({ cta }) => (cta ? '100%' : '')};
   overflow: hidden;
 `;
 
 export const PermanentFooter = styled.div`
   position: relative;
   width: 100%;
-  height: 5rem;
+  height: ${theme.layout.footerHeightSm};
   background-color: rgba(164, 164, 164, 0.1);
 
   @media (min-width: ${breakPoints.md}) {
-    height: 7rem;
+    height: ${theme.layout.footerHeightMd};
   }
 `;
 
