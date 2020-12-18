@@ -28,5 +28,7 @@
   "next project": "See the next project",
   "learn more about me": "Learn more about me",
   "start project": "Let's start a project!",
-  "404": "Oups!"
+  "404": "Oups!",
+  "not-found": "Not Found ¯\\_(ツ)_/¯",
+  "good-doggo": "You just hit a route that doesn't exist...the sadness. Here is a very good boy or girl doing tricks!"
 }

@@ -15,7 +15,7 @@ This is my personal website repository.
 
 1.  **Eslint and Prettier with a Husky / Lint-staged hook**
 
-1.  **Contentful**
+1.  **Contentful CMS**
 
 1.  **Heroku for hosting + Netlify for previews**
 
@@ -29,8 +29,9 @@ When adding a route don't forget to edit:
 
 - siteMetaData
 - site.d.ts 
-- fr.json and en.json with the route name for SEO/Meta
-- also...there is an Easter egg for you to find ;)
+- fr.json and en.json with the route name and the SEO title for SEO/Meta
+
+Also...there is an Easter egg for you to find ;)
 
 ## To Do's
 See the [project's kanban](https://github.com/GGrassiant/gg-website/projects/1)
@@ -46,4 +47,4 @@ See the [project's kanban](https://github.com/GGrassiant/gg-website/projects/1)
 - [SWR](https://swr.vercel.app/)
 - [SWR data fetching](https://dev.to/dance2die/useswr-react-hooks-for-remote-data-fetching-1nlo)
 - [SWR data fetching](https://dev.to/dance2die/useswr-react-hooks-for-remote-data-fetching-1nlo)
-- [SWR Suspense Image Skeletong](https://medium.com/creditas-tech/react-suspense-swr-skeleton-e1979e9f32f0)
+- [SWR Suspense Image Skeleton](https://medium.com/creditas-tech/react-suspense-swr-skeleton-e1979e9f32f0)

@@ -1,6 +1,7 @@
 // Libs
 import React, { useState, Suspense } from 'react';
 import useSWR, { SWRConfig } from 'swr';
+import { useIntl } from 'react-intl';
 import axios from 'axios';
 
 // Styles
@@ -17,6 +18,7 @@ import Loader from '../components/Loader';
 
 const DoggoProfile: React.FC = () => {
   const [doggoPictureLoaded, setDoggoPictureLoaded] = useState<boolean>(false);
+  const intl = useIntl();
   const { data } = useSWR('https://dog.ceo/api/breeds/image/random');
 
   const handleImageLoad = () => setDoggoPictureLoaded(true);
@@ -32,11 +34,8 @@ const DoggoProfile: React.FC = () => {
       <DoggoPictureSkeleton doggoPictureLoaded={doggoPictureLoaded}>
         <div />
       </DoggoPictureSkeleton>
-      <h1>NOT FOUND</h1>
-      <p>
-        You just hit a route that doesn&#39;t exist... the sadness. Here is a
-        very good boy or girl doing tricks!
-      </p>
+      <h1>{intl.formatMessage({ id: 'not-found' })}</h1>
+      <p>{intl.formatMessage({ id: 'good-doggo' })}</p>
     </>
   );
 };
@@ -47,15 +46,7 @@ const DoggoProfileContainer: React.FC = () => (
   </Suspense>
 );
 
-const fetcher = (url: string) =>
-  axios(url).then(
-    (response) =>
-      new Promise((resolve) =>
-        setTimeout(() => {
-          resolve(response);
-        }, 0),
-      ),
-  );
+const fetcher = (url: string) => axios(url);
 
 const NotFoundPage: React.FC = () => {
   return (
