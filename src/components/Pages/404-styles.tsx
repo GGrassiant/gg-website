@@ -37,9 +37,14 @@ export const FOFWrapper = styled.div`
   height: calc(100% - ${theme.layout.footerHeightSm});
   padding-top: ${theme.layout.headerHeight};
   font-family: ${theme.fonts.defaultFont};
+  text-align: center;
 
   @media (min-width: ${breakPoints.md}) {
     height: calc(100% - ${theme.layout.footerHeightMd});
+  }
+
+  h1 {
+    font-size: ${theme.fontSizes.bigger};
   }
 `;
 FOFWrapper.displayName = 'FOFWrapper';
