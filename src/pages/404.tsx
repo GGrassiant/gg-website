@@ -10,6 +10,9 @@ import {
   FOFImageWrapper,
   DoggoPictureSkeleton,
 } from '../components/Pages/404-styles';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import doggos from '../images/doggos.jpg';
 
 // Components
 import withLayout from '../Hoc/PageWrapper/WithLayout';
@@ -19,15 +22,15 @@ import Loader from '../components/Loader';
 const DoggoProfile: React.FC = () => {
   const [doggoPictureLoaded, setDoggoPictureLoaded] = useState<boolean>(false);
   const intl = useIntl();
-  const { data } = useSWR('https://dog.ceo/api/breeds/image/random');
+  const { data, error } = useSWR('https://dog.ceo/api/breeds/image/random');
 
   const handleImageLoad = () => setDoggoPictureLoaded(true);
 
   return (
     <>
       <FOFImageWrapper
-        alt={data?.data?.message}
-        src={data?.data?.message}
+        alt="dogs are the best"
+        src={error ? doggos : data?.data?.message}
         doggoPictureLoaded={doggoPictureLoaded}
         onLoad={handleImageLoad}
       />
