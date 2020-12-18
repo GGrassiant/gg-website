@@ -21,15 +21,20 @@ This is my personal website repository.
 
 1.  **Jest / Enzyme / React-Testing-Library**
     
-1.  **useSWR and React Suspense on the 404 page (playing around)**
+1.  **useSWR on the 404 page (playing around)**
 
 ## Note
 
-When adding a route don't forget to edit:
+a) When adding a route don't forget to edit:
 
 - siteMetaData
 - site.d.ts 
 - fr.json and en.json with the route name and the SEO title for SEO/Meta
+
+b) for the 404, I initially used Suspense but since Gatsby is a static site generator
+and renders on the server at build time, Suspense not being currently supporter
+on ssr (as of Dec 2020), I decided to check for data and return a Loader.
+An alternative would be [this post on Stack Overflow](https://stackoverflow.com/questions/63066974/how-to-use-react-lazy-in-gatsby)
 
 Also...there is an Easter egg for you to find ;)
 

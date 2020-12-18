@@ -1,6 +1,6 @@
 // Libs
-import React, { useState, Suspense } from 'react';
-import useSWR, { SWRConfig } from 'swr';
+import React, { useState } from 'react';
+import useSWR from 'swr';
 import { useIntl } from 'react-intl';
 import axios from 'axios';
 
@@ -19,12 +19,19 @@ import withLayout from '../Hoc/PageWrapper/WithLayout';
 import SEO from '../components/seo';
 import Loader from '../components/Loader';
 
+const fetcher = (url: string) => axios(url);
+
 const DoggoProfile: React.FC = () => {
   const [doggoPictureLoaded, setDoggoPictureLoaded] = useState<boolean>(false);
   const intl = useIntl();
-  const { data, error } = useSWR('https://dog.ceo/api/breeds/image/random');
+  const { data, error } = useSWR(
+    'https://dog.ceo/api/breeds/image/random',
+    fetcher,
+  );
 
   const handleImageLoad = () => setDoggoPictureLoaded(true);
+
+  if (!data && !error) return <Loader />;
 
   return (
     <>
@@ -43,27 +50,12 @@ const DoggoProfile: React.FC = () => {
   );
 };
 
-const DoggoProfileContainer: React.FC = () => (
-  <Suspense fallback={<Loader />}>
-    <DoggoProfile />
-  </Suspense>
-);
-
-const fetcher = (url: string) => axios(url);
-
 const NotFoundPage: React.FC = () => {
   return (
-    <SWRConfig
-      value={{
-        fetcher,
-        suspense: true,
-      }}
-    >
-      <FOFWrapper>
-        <SEO title="404" />
-        <DoggoProfileContainer />
-      </FOFWrapper>
-    </SWRConfig>
+    <FOFWrapper>
+      <SEO title="404" />
+      <DoggoProfile />
+    </FOFWrapper>
   );
 };
 
