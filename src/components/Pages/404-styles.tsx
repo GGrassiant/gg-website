@@ -4,6 +4,31 @@ import styled, { keyframes } from 'styled-components';
 // Styles
 import { breakPoints, theme } from '../../utils/constants';
 
+const sweep = keyframes`
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(150%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+`;
+
+const doggoSpino = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+interface ImageLoadProps {
+  doggoPictureLoaded: boolean;
+}
+
 export const FOFWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,43 +44,25 @@ export const FOFWrapper = styled.div`
 `;
 FOFWrapper.displayName = 'FOFWrapper';
 
-export const FOFWrapperContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-FOFWrapperContent.displayName = ' FOFWrapperContent';
-
-export const FOFImageWrapper = styled.div`
-  height: 20rem;
-  max-width: 30rem;
-  overflow: hidden;
+export const FOFImageWrapper = styled.img<ImageLoadProps>`
+  display: ${({ doggoPictureLoaded }) =>
+    doggoPictureLoaded ? 'flex' : 'none'};
+  height: 40vmin;
   border-radius: 10%;
 
-  img {
-    object-fit: cover;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ${doggoSpino} infinite 20s linear;
   }
 `;
 FOFImageWrapper.displayName = 'FOFImageWrapper';
 
-const sweep = keyframes`
-  0% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(150%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-`;
-
-export const DoggoPictureSkeleton = styled.div`
+export const DoggoPictureSkeleton = styled.div<ImageLoadProps>`
   position: relative;
+  display: ${({ doggoPictureLoaded }) =>
+    doggoPictureLoaded ? 'none' : 'flex'};
   overflow: hidden;
-  height: 20rem;
-  width: 30rem;
+  height: 40vmin;
+  width: 40vmin;
   border-radius: 10%;
 
   &:after {
@@ -77,7 +84,6 @@ export const DoggoPictureSkeleton = styled.div`
 
   div {
     height: 100%;
-    width: 100%;
     border-radius: 10%;
     background-color: rgba(58, 57, 57, 0.3);
   }

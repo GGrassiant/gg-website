@@ -6,7 +6,6 @@ import axios from 'axios';
 // Styles
 import {
   FOFWrapper,
-  FOFWrapperContent,
   FOFImageWrapper,
   DoggoPictureSkeleton,
 } from '../components/Pages/404-styles';
@@ -23,25 +22,22 @@ const DoggoProfile: React.FC = () => {
   const handleImageLoad = () => setDoggoPictureLoaded(true);
 
   return (
-    <FOFWrapperContent>
-      <FOFImageWrapper>
-        <img
-          alt={data?.data?.message}
-          src={data?.data?.message}
-          onLoad={handleImageLoad}
-        />
-        <DoggoPictureSkeleton
-          style={{ display: doggoPictureLoaded ? 'none' : 'flex' }}
-        >
-          <div />
-        </DoggoPictureSkeleton>
-      </FOFImageWrapper>
+    <>
+      <FOFImageWrapper
+        alt={data?.data?.message}
+        src={data?.data?.message}
+        doggoPictureLoaded={doggoPictureLoaded}
+        onLoad={handleImageLoad}
+      />
+      <DoggoPictureSkeleton doggoPictureLoaded={doggoPictureLoaded}>
+        <div />
+      </DoggoPictureSkeleton>
       <h1>NOT FOUND</h1>
       <p>
         You just hit a route that doesn&#39;t exist... the sadness. Here is a
-        very good boy or girl to make it up.
+        very good boy or girl doing tricks!
       </p>
-    </FOFWrapperContent>
+    </>
   );
 };
 
