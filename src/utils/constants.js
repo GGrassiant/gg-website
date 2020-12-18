@@ -93,6 +93,8 @@ export const theme = {
   },
   layout: {
     headerHeight: '5rem',
+    footerHeightSm: '5rem',
+    footerHeightMd: '7rem',
     headerBorder: '1px',
     titleOffset: '6rem',
     offset: '4rem',
