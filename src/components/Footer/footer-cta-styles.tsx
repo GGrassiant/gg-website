@@ -37,5 +37,9 @@ export const FooterCtaWrapper = styled.div`
       font-size: ${theme.fontSizes.bigger};
       text-align: center;
     }
+
+    @media screen and (orientation: landscape) {
+      margin-bottom: 0.5rem;
+    }
   }
 `;

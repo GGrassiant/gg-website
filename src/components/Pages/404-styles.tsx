@@ -1,3 +1,7 @@
+// This file is in the src/component
+// otherwise, if placed in pages folder
+// it will mess up Gatsby build
+
 // Libs
 import styled, { keyframes } from 'styled-components';
 
