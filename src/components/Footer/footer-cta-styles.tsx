@@ -13,16 +13,20 @@ export const FooterCtaWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: calc(100% - ${theme.layout.footerHeightSm});
   background-color: var(--color-background);
+
+  @media (min-width: ${breakPoints.md}) {
+    height: calc(100% - ${theme.layout.footerHeightMd});
+  }
 
   @media screen and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
     ${ProjectCardWrapper} {
       height: 8rem;
+    }
 
-      ${TitleWrapper} {
-        margin-bottom: 0.1rem !important;
-      }
+    ${TitleWrapper} {
+      margin-bottom: 0.1rem !important;
     }
   }
 

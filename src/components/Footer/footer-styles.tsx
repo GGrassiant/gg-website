@@ -32,7 +32,7 @@ export const FooterWrapper = styled.div<FooterWrapperProps>`
   position: absolute;
   left: 0;
   width: 100%;
-  height: ${({ cta }) => (cta ? '100%' : '')};
+  height: ${({ cta }) => (cta ? '100vh' : '')};
   overflow: hidden;
 `;
 
