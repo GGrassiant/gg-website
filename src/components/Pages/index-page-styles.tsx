@@ -19,7 +19,7 @@ export const HomePageWrapper = styled.div`
     padding-top: ${theme.layout.headerHeight};
   }
 
-  @media screen and (orientation: landscape) {
+  @media screen and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
     height: initial;
   }
 `;
@@ -35,7 +35,7 @@ export const TitleWrapper = styled.div`
     align-items: flex-start;
   }
 
-  @media screen and (orientation: landscape) {
+  @media screen and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
     padding-top: 1rem;
   }
 

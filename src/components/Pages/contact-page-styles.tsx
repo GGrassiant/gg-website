@@ -31,6 +31,11 @@ export const IntroWrapper = styled.div`
 
   > div:first-child {
     text-align: left;
+
+    @media screen and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
+      margin-top: 1rem;
+      font-size: ${theme.fontSizes.mediumLight};
+    }
   }
 
   > div:last-child {

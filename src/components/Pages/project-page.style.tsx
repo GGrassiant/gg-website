@@ -25,7 +25,7 @@ const projectSectionLayoutMixin = css`
     padding: ${verticalPadding} ${horizontalPadding};
   }
 
-  @media screen and (orientation: landscape) {
+  @media screen and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
     padding: 0;
   }
 
@@ -37,7 +37,7 @@ const projectSectionLayoutMixin = css`
       width: calc(100% - 3.5rem * 2);
     }
 
-    @media screen and (orientation: landscape) {
+    @media screen and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
       ${() => borderElementMixin}
       width: 100%;
     }
@@ -233,17 +233,32 @@ const OtherProjectImagesWrapper = css`
 
   > div {
     max-height: calc(
-      (100vw - ${theme.layout.layoutOffset}) * ${
-  theme.ratios.iphone11AspectRatio
-}
+      (100vw - ${theme.layout.layoutOffset}) *
+        ${theme.ratios.iphone11AspectRatio}
     );
 
     @media (min-width: ${breakPoints.sm}) {
       max-height: calc(
-        ((100vw - ${theme.layout.projectGridPadding} - 2 * ${
-  theme.layout.projectGridGap
-}) / 3) * ${theme.ratios.iphone11AspectRatio});
+        (
+            (
+                100vw - ${theme.layout.projectGridPadding} - 2 *
+                  ${theme.layout.projectGridGap}
+              ) / 3
+          ) * ${theme.ratios.iphone11AspectRatio}
+      );
     }
+
+    @media screen and (max-height: ${breakPoints.xsm}) and (orientation: landscape) {
+      max-height: 100%;
+    }
+
+    @media screen and (min-height: ${breakPoints.xsm}) and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
+      max-height: calc(
+        (100vw - ${theme.layout.layoutOffset}) *
+          ${theme.ratios.iphone11AspectRatio}
+      );
+    }
+  }
 `;
 
 const OtherProjectImageWrapper = css`
@@ -279,7 +294,7 @@ export const ProjectCTAContent = styled.div`
     }
   }
 
-  @media screen and (orientation: landscape) {
+  @media screen and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
     padding: 1rem 0;
   }
 `;

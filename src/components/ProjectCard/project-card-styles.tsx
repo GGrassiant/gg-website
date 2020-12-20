@@ -68,6 +68,10 @@ export const ProjectCardWrapper = styled.div<ProjectCardWrapperProps>`
     @media (min-width: ${breakPoints.sm}) {
       flex: 3;
     }
+
+    @media screen and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
+      flex: 5;
+    }
   }
 
   .gatsby-image-wrapper {
@@ -96,8 +100,7 @@ export const ProjectCardHeader = styled.div`
 `;
 
 export const SimplifiedCardLink = styled(LocalizedLink)`
-    @media (max-width: ${breakPoints.sm}) {
-      width: 80%;
-    }
+  @media (max-width: ${breakPoints.sm}) {
+    width: 80%;
   }
 `;
