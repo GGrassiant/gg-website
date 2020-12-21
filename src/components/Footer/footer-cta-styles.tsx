@@ -3,7 +3,10 @@ import styled from 'styled-components';
 
 // Styles
 import { breakPoints, theme } from '../../utils/constants';
-import { ProjectCardWrapper } from '../ProjectCard/project-card-styles';
+import {
+  ProjectCardWrapper,
+  ProjectCardHeader,
+} from '../ProjectCard/project-card-styles';
 import { TitleWrapper } from '../Title/title-styles';
 
 export const FooterCtaWrapper = styled.div`
@@ -20,7 +23,22 @@ export const FooterCtaWrapper = styled.div`
     height: calc(100% - ${theme.layout.footerHeightMd});
   }
 
-  @media screen and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
+  @media screen and (max-height: ${breakPoints.xsm}) and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
+    ${ProjectCardWrapper} {
+      height: 8rem;
+      margin-bottom: 3rem;
+    }
+
+    ${TitleWrapper} {
+      margin-bottom: 1rem !important;
+    }
+
+    ${ProjectCardHeader} {
+      border-bottom: none;
+    }
+  }
+
+  @media screen and (min-height: ${breakPoints.xsm}) and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
     ${ProjectCardWrapper} {
       height: 12rem;
       margin-bottom: 3rem;
@@ -28,6 +46,10 @@ export const FooterCtaWrapper = styled.div`
 
     ${TitleWrapper} {
       margin-bottom: 1rem !important;
+    }
+
+    ${ProjectCardHeader} {
+      border-bottom: none;
     }
   }
 
