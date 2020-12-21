@@ -51,6 +51,22 @@ export const EDGE_TWO_IMAGES = {
   },
 };
 
+export const EDGE_RANDOM_PROJECT = {
+  node: {
+    id: 'Notlol',
+    slug: 'lol',
+    title: 'lolz',
+    mainTech: 'internet',
+    year: '1982',
+    mainPicture: picture,
+    projectPictures: [picture, picture],
+    team: 'A Team',
+    techStack: 'React',
+    shortDescription: 'short description',
+    link: 'www.lolz.com',
+  },
+};
+
 export const EDGE_MULTIPLE_IMAGES = {
   node: {
     id: 'lol',

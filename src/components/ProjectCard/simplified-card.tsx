@@ -17,6 +17,7 @@ import {
 // Components
 import Title from '../Title';
 import Loader from '../Loader';
+import CTA from '../CTA';
 
 const SimplifiedProjectCard: React.FC<SimplifiedProjectCardProps> = (props) => {
   const { edge } = props;
@@ -27,7 +28,10 @@ const SimplifiedProjectCard: React.FC<SimplifiedProjectCardProps> = (props) => {
   }
 
   return (
-    <SimplifiedCardLink to={`${siteMetaData.menu[1].slug}${edge.node.slug}`}>
+    <SimplifiedCardLink
+      to={`${siteMetaData.menu[1].slug}${edge.node.slug}`}
+      data-testid="simplifiedCardLink"
+    >
       <ProjectCardWrapper id={edge.node.title} footer colorMode={colorMode}>
         <ProjectCardHeader>
           <span>{edge.node.mainTech}</span>
