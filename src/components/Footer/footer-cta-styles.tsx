@@ -22,11 +22,12 @@ export const FooterCtaWrapper = styled.div`
 
   @media screen and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
     ${ProjectCardWrapper} {
-      height: 8rem;
+      height: 12rem;
+      margin-bottom: 3rem;
     }
 
     ${TitleWrapper} {
-      margin-bottom: 0.1rem !important;
+      margin-bottom: 1rem !important;
     }
   }
 
