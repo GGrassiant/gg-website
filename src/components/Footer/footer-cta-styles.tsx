@@ -34,7 +34,12 @@ export const FooterCtaWrapper = styled.div`
     }
 
     ${ProjectCardHeader} {
-      border-bottom: none;
+      flex: 2;
+
+      span {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -49,7 +54,12 @@ export const FooterCtaWrapper = styled.div`
     }
 
     ${ProjectCardHeader} {
-      border-bottom: none;
+      flex: 2;
+
+      span {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
     }
   }
 

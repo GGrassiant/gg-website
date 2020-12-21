@@ -91,7 +91,8 @@ export const ProjectCardHeader = styled.div`
   border-bottom: 1px solid black;
 
   span {
-    margin-top: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
 
     @media (min-width: ${breakPoints.sm}) {
       font-size: ${theme.fontSizes.normalAlt};
