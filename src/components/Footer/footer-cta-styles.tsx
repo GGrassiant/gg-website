@@ -23,7 +23,7 @@ export const FooterCtaWrapper = styled.div`
     height: calc(100% - ${theme.layout.footerHeightMd});
   }
 
-  @media screen and (max-height: ${breakPoints.xsm}) and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
+  @media screen and (orientation: landscape) and (max-height: ${breakPoints.xsm}) {
     ${ProjectCardWrapper} {
       height: 8rem;
       margin-bottom: 3rem;
@@ -43,7 +43,7 @@ export const FooterCtaWrapper = styled.div`
     }
   }
 
-  @media screen and (min-height: ${breakPoints.xsm}) and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
+  @media screen and (orientation: landscape) and (min-height: ${breakPoints.xsm}) and (max-height: ${breakPoints.sm}) {
     ${ProjectCardWrapper} {
       height: 12rem;
       margin-bottom: 3rem;
