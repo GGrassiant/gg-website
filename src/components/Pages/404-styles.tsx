@@ -1,3 +1,7 @@
+// This file is in the src/component
+// otherwise, if placed in pages folder
+// it will mess up Gatsby build
+
 // Libs
 import styled, { keyframes } from 'styled-components';
 
@@ -43,6 +47,10 @@ export const FOFWrapper = styled.div`
     height: calc(100% - ${theme.layout.footerHeightMd});
   }
 
+  @media screen and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
+    height: 100%;
+    padding-bottom: 2rem;
+
   h1 {
     font-size: ${theme.fontSizes.bigger};
   }
@@ -69,6 +77,10 @@ export const DoggoPictureSkeleton = styled.div<ImageLoadProps>`
   height: 40vmin;
   width: 40vmin;
   border-radius: 10%;
+
+  @media screen and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
+    overflow: initial;
+  }
 
   &:after {
     content: '';
