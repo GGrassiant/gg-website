@@ -45,6 +45,14 @@ describe('<Header>', () => {
         }),
       );
       expect(getByText('🌞')).toBeInTheDocument();
+      fireEvent(
+        getByText('🌞'),
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+        }),
+      );
+      expect(getByText('🌝')).toBeInTheDocument();
     });
 
     test('language toggler fr', () => {
@@ -76,7 +84,9 @@ describe('<Header>', () => {
         '/',
       );
     });
+  });
 
+  describe('render menu', () => {
     test('render menu', () => {
       const { getByText } = render(
         <Location>
