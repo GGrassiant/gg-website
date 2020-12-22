@@ -1,5 +1,6 @@
 // Libs
 import React, { useState } from 'react';
+import { Location } from '@reach/router';
 import { render } from '@testing-library/react';
 
 // Utils
@@ -7,6 +8,7 @@ import { ThemeContext } from '../../../context/ThemeContext';
 import { ProjectContext } from '../../../context/ProjectContext';
 import { randomValueFromArray } from '../../../utils/typescript.utils';
 
+// a - Context Providers
 const AllTheProviders = ({ children }) => {
   const [colorMode, setColorModeHandler] = useState(undefined);
   const [currentRandomProject, setCurrentRandomProject] = useState(undefined);
@@ -50,3 +52,18 @@ export * from '@testing-library/react';
 
 // override render method
 export { customRender as render };
+
+// b - Reach Router mock
+export const renderWithRouterLocation = (
+  Component,
+  location = { location: { pathname: '/' } },
+  locale = 'en',
+) => {
+  return {
+    ...render(
+      <Location>
+        <Component locale={locale} siteTitle="site title" location={location} />
+      </Location>,
+    ),
+  };
+};

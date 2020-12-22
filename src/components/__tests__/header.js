@@ -3,7 +3,11 @@ import React from 'react';
 
 // Utils
 import { Location } from '@reach/router';
-import { render, fireEvent } from './utils/test-utils';
+import {
+  render,
+  fireEvent,
+  renderWithRouterLocation,
+} from './utils/test-utils';
 
 // Component
 import Header, { isHome } from '../Header/header';
@@ -85,10 +89,62 @@ describe('<Header>', () => {
         const projectMenuName = menuItem.label;
         const projectMenuLink = menuItem.slug;
         expect(getByText(`${projectMenuName}`)).toBeInTheDocument();
+        expect(getByText(`${projectMenuName}`)).not.toHaveClass();
         expect(
           getByText(`${projectMenuName}`).closest('li').children[0],
         ).toHaveAttribute('href', `${projectMenuLink}`);
       });
+    });
+
+    test('render menu in fr', () => {
+      const { getByText } = renderWithRouterLocation(
+        Header,
+        {
+          location: { pathname: 'fr/about/' },
+        },
+        'fr',
+      );
+      siteMetaData.menu.slice(2, -1).forEach((menuItem) => {
+        const projectMenuName = menuItem.label;
+        const projectMenuLink = menuItem.slug;
+        expect(getByText(`${projectMenuName}`)).toBeInTheDocument();
+        expect(getByText(`${projectMenuName}`)).not.toHaveClass();
+        expect(
+          getByText(`${projectMenuName}`).closest('li').children[0],
+        ).toHaveAttribute('href', `${projectMenuLink}`);
+      });
+    });
+  });
+
+  describe('i18n pathname selection', () => {
+    test('landing on another page than the homepage in English', () => {
+      const { container, getByTestId } = renderWithRouterLocation(
+        Header,
+        {
+          location: { pathname: '/another-route' },
+        },
+        'en',
+      );
+      expect(getByTestId('LocalizedLink').closest('a')).toHaveAttribute(
+        'href',
+        '/fr/another-route',
+      );
+      expect(container).toBeInTheDocument();
+    });
+
+    test('landing on another page than the homepage in French', () => {
+      const { container, getByTestId } = renderWithRouterLocation(
+        Header,
+        {
+          location: { pathname: '/fr/another-route' },
+        },
+        'fr',
+      );
+      expect(getByTestId('LocalizedLink').closest('a')).toHaveAttribute(
+        'href',
+        '/another-route',
+      );
+      expect(container).toBeInTheDocument();
     });
   });
 

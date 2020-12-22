@@ -34,27 +34,27 @@ describe('<FooterCta>', () => {
 
   describe('<NextProject />', () => {
     describe('mounts', () => {
-      test('Layout mounts correctly', async () => {
+      test('Layout mounts correctly', () => {
         const { container, getByTestId, queryByTestId } = render(
           <NextProject />,
         );
-        const loadingElement = await getByTestId('custom-loader');
-        const CardWrapper = await queryByTestId('simplifiedCardLink');
+        const loadingElement = getByTestId('custom-loader');
+        const CardWrapper = queryByTestId('simplifiedCardLink');
 
         expect(container).toBeInTheDocument();
         expect(loadingElement).toBeInTheDocument();
         expect(CardWrapper).toBeNull();
       });
 
-      test('Layout mounts with data', async () => {
+      test('Layout mounts with data', () => {
         const data = {
           contentfulProject: EDGE_RANDOM_PROJECT.node,
         };
         const { container, getByTestId, queryByTestId } = render(
           <ProjectPageComponent data={data} />,
         );
-        const CardWrapper = await getByTestId('simplifiedCardLink');
-        const loadingElement = await queryByTestId('custom-loader');
+        const CardWrapper = getByTestId('simplifiedCardLink');
+        const loadingElement = queryByTestId('custom-loader');
 
         expect(container).toBeInTheDocument();
         expect(CardWrapper).toBeInTheDocument();

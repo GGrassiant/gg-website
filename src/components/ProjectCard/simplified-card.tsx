@@ -17,7 +17,6 @@ import {
 // Components
 import Title from '../Title';
 import Loader from '../Loader';
-import CTA from '../CTA';
 
 const SimplifiedProjectCard: React.FC<SimplifiedProjectCardProps> = (props) => {
   const { edge } = props;

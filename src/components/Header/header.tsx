@@ -61,7 +61,12 @@ const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
 
   return (
     <li className="lang-wrapper">
-      <LocalizedLink to={to} language={newLocale} className="lang">
+      <LocalizedLink
+        to={to}
+        language={newLocale}
+        className="lang"
+        data-testid="LocalizedLink"
+      >
         <span>{newLocale}</span>
       </LocalizedLink>
     </li>
@@ -77,6 +82,14 @@ const getMenuItems = (pathname: string, locale: string, intl: IntlShape) => {
       if (isHome(cur.slug) || cur.label === 'projects') {
         return acc;
       }
+
+      console.log(
+        'check path',
+        cur.slug,
+        !isHome(cur.slug),
+        delocalizedPath,
+        delocalizedPath.startsWith(cur.slug),
+      );
 
       const className =
         !isHome(cur.slug) && delocalizedPath.startsWith(cur.slug)
