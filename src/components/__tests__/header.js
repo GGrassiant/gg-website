@@ -88,11 +88,11 @@ describe('<Header>', () => {
       siteMetaData.menu.slice(2, -1).forEach((menuItem) => {
         const projectMenuName = menuItem.label;
         const projectMenuLink = menuItem.slug;
-        expect(getByText(`${projectMenuName}`)).toBeInTheDocument();
-        expect(getByText(`${projectMenuName}`)).not.toHaveClass();
+        expect(getByText(projectMenuName)).toBeInTheDocument();
+        expect(getByText(projectMenuName)).not.toHaveClass();
         expect(
-          getByText(`${projectMenuName}`).closest('li').children[0],
-        ).toHaveAttribute('href', `${projectMenuLink}`);
+          getByText(projectMenuName).closest('li').children[0],
+        ).toHaveAttribute('href', projectMenuLink);
       });
     });
 
@@ -100,17 +100,24 @@ describe('<Header>', () => {
       const { getByText } = renderWithRouterLocation(
         Header,
         {
-          location: { pathname: 'fr/about/' },
+          location: { pathname: '/fr/about/' },
         },
         'fr',
       );
+      const aboutPage = siteMetaData.menu.find(
+        (menuItem) => menuItem.label === 'about',
+      );
+      const contactPage = siteMetaData.menu.find(
+        (menuItem) => menuItem.label === 'contact',
+      );
+      expect(getByText(aboutPage.label)).toHaveClass('active');
+      expect(getByText(contactPage.label)).not.toHaveClass();
       siteMetaData.menu.slice(2, -1).forEach((menuItem) => {
         const projectMenuName = menuItem.label;
         const projectMenuLink = menuItem.slug;
-        expect(getByText(`${projectMenuName}`)).toBeInTheDocument();
-        expect(getByText(`${projectMenuName}`)).not.toHaveClass();
+        expect(getByText(projectMenuName)).toBeInTheDocument();
         expect(
-          getByText(`${projectMenuName}`).closest('li').children[0],
+          getByText(projectMenuName).closest('li').children[0],
         ).toHaveAttribute('href', `${projectMenuLink}`);
       });
     });

@@ -83,14 +83,6 @@ const getMenuItems = (pathname: string, locale: string, intl: IntlShape) => {
         return acc;
       }
 
-      console.log(
-        'check path',
-        cur.slug,
-        !isHome(cur.slug),
-        delocalizedPath,
-        delocalizedPath.startsWith(cur.slug),
-      );
-
       const className =
         !isHome(cur.slug) && delocalizedPath.startsWith(cur.slug)
           ? 'active'
