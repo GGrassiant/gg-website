@@ -8,6 +8,7 @@ import { FLUID, FLUID_2 } from '../../pages/__tests__/index';
 // Components
 import ProjectCard from '../ProjectCard';
 import SimplifiedProjectCard from '../ProjectCard/simplified-card';
+import { ProjectCardWrapper } from '../ProjectCard/project-card-styles';
 
 const picture = {
   fluid: FLUID,
@@ -105,6 +106,24 @@ describe('<SimplifiedProjectCard />', () => {
       );
       const loadingElement = await getByTestId('custom-loader');
       expect(loadingElement).toBeInTheDocument();
+    });
+  });
+});
+
+describe('styled components', () => {
+  describe('<ProjectCardWrapper>', () => {
+    test('no props', () => {
+      const { getByTestId } = render(
+        <div>
+          <ProjectCardWrapper
+            data-testid="project-card-wrapper"
+            footer
+            colorMode="light"
+          />
+        </div>,
+      );
+      const wrapper = getByTestId('project-card-wrapper');
+      expect(wrapper).toBeInTheDocument();
     });
   });
 });

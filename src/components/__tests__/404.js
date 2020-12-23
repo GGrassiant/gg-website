@@ -58,9 +58,9 @@ describe('<NotFoundPage>', () => {
             />
           </div>,
         );
-        const button = getByTestId('doggo-skeleton');
+        const doggo = getByTestId('doggo-skeleton');
 
-        expect(button).toHaveStyle('display: flex');
+        expect(doggo).toHaveStyle('display: flex');
       });
 
       test('picture loaded', () => {
@@ -72,9 +72,9 @@ describe('<NotFoundPage>', () => {
             />
           </div>,
         );
-        const button = getByTestId('doggo-skeleton');
+        const doggo = getByTestId('doggo-skeleton');
 
-        expect(button).toHaveStyle('display: none');
+        expect(doggo).toHaveStyle('display: none');
       });
     });
 
@@ -88,9 +88,9 @@ describe('<NotFoundPage>', () => {
             />
           </div>,
         );
-        const button = getByTestId('doggo-wrapper');
+        const doggo = getByTestId('doggo-wrapper');
 
-        expect(button).toHaveStyle('display: none');
+        expect(doggo).toHaveStyle('display: none');
       });
 
       test('picture loaded', () => {
@@ -99,9 +99,9 @@ describe('<NotFoundPage>', () => {
             <FOFImageWrapper doggoPictureLoaded data-testid="doggo-wrapper" />
           </div>,
         );
-        const button = getByTestId('doggo-wrapper');
+        const doggo = getByTestId('doggo-wrapper');
 
-        expect(button).toHaveStyle('display: flex');
+        expect(doggo).toHaveStyle('display: flex');
       });
     });
   });
