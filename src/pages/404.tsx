@@ -32,10 +32,9 @@ const NotFoundPage: React.FC = () => {
   return (
     <FOFWrapper>
       <SEO title="404" />
-
       {!data && !error && <Loader />}
 
-      {data && (
+      {(data || error) && (
         <>
           <FOFImageWrapper
             alt="dogs are the best"
