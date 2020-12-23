@@ -38,7 +38,6 @@
     "url": "https://github.com/GGrassiant/gg-website"
   },
   "dependencies": {
-    "axios": "^0.21.0",
     "babel-jest": "^26.6.3",
     "babel-plugin-styled-components": "^1.12.0",
     "dotenv": "^8.2.0",
@@ -91,6 +90,7 @@
     "husky": "^4.3.6",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
+    "jest-fetch-mock": "^3.0.3",
     "lint-staged": "^10.5.3",
     "prettier": "2.2.1",
     "react-test-renderer": "^16.14.0",
