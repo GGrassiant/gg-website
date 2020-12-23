@@ -9,11 +9,12 @@ import NotFoundPage from '../../pages/404';
 
 jest.mock('../../utils/fetcher', () => {
   return {
-    fetcher: jest.fn().mockImplementation(() => ({
-      data: {
+    fetcher: jest.fn().mockImplementation(() => {
+      console.log('lol');
+      return {
         message: 'lolz',
-      },
-    })),
+      };
+    }),
   };
 });
 
