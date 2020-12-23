@@ -21,17 +21,6 @@ describe('<NotFoundPage>', () => {
       expect(getByTestId('custom-loader')).toBeInTheDocument();
     });
 
-    test('fetches the doggo', async () => {
-      fetcher.mockImplementation(() => ({
-        message: 'lolz',
-      }));
-      const { findByText, findByTestId } = render(<NotFoundPage />);
-      const notFound = await findByText('not-found');
-      const imgUrl = await findByTestId('doggo-img');
-      expect(notFound).toBeInTheDocument();
-      expect(imgUrl).toHaveAttribute('src', 'lolz');
-    });
-
     test('error', async () => {
       fetcher.mockImplementation(() => {
         throw new Error('API Client Error');
@@ -41,6 +30,17 @@ describe('<NotFoundPage>', () => {
       const imgUrl = await findByTestId('doggo-img');
       expect(notFound).toBeInTheDocument();
       expect(imgUrl).toHaveAttribute('src', 'test-file-stub');
+    });
+
+    test('fetches the doggo', async () => {
+      fetcher.mockImplementation(() => ({
+        message: 'lolz',
+      }));
+      const { findByText, findByTestId } = render(<NotFoundPage />);
+      const notFound = await findByText('not-found');
+      const imgUrl = await findByTestId('doggo-img');
+      expect(notFound).toBeInTheDocument();
+      expect(imgUrl).toHaveAttribute('src', 'lolz');
     });
   });
 });

@@ -33,4 +33,5 @@ module.exports = {
       lines: 80,
     },
   },
+  restoreMocks: true,
 };
