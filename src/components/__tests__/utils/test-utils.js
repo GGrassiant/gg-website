@@ -60,7 +60,7 @@ export const renderWithRouterLocation = (
   locale = 'en',
 ) => {
   return {
-    ...render(
+    ...customRender(
       <Location>
         <Component locale={locale} siteTitle="site title" location={location} />
       </Location>,
