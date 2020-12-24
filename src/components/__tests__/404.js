@@ -1,5 +1,6 @@
 // Libs
 import React from 'react';
+import { cache, SWRConfig } from 'swr';
 
 // Utils
 import { render } from './utils/test-utils';
@@ -9,6 +10,10 @@ import { fetcher } from '../../utils/fetcher';
 import NotFoundPage from '../../pages/404';
 import { FOFImageWrapper, DoggoPictureSkeleton } from '../Pages/404-styles';
 
+afterEach(() => {
+  cache.clear();
+});
+
 jest.mock('../../utils/fetcher', () => ({
   fetcher: jest.fn(),
 }));
@@ -17,33 +22,45 @@ describe('<NotFoundPage>', () => {
   describe('mounts', () => {
     test('component mounts loader', () => {
       fetcher.mockImplementation(() => undefined);
-      const { container, getByTestId } = render(<NotFoundPage />);
+      const { container, getByTestId } = render(
+        <SWRConfig value={{ dedupingInterval: 0 }}>
+          <NotFoundPage />
+        </SWRConfig>,
+      );
       expect(container).toBeInTheDocument();
       expect(getByTestId('custom-loader')).toBeInTheDocument();
-    });
-
-    test('error', async () => {
-      fetcher.mockImplementation(() => {
-        throw new Error('API Client Error');
-      });
-      const { container, findByText, findByTestId } = render(<NotFoundPage />);
-      const notFound = await findByText('not-found');
-      const imgUrl = await findByTestId('doggo-img');
-      expect(container).toBeInTheDocument();
-      expect(notFound).toBeInTheDocument();
-      expect(imgUrl).toHaveAttribute('src', 'test-file-stub');
     });
 
     test('fetches the doggo', async () => {
       fetcher.mockImplementation(() => ({
         message: 'lolz',
       }));
-      const { container, findByText, findByTestId } = render(<NotFoundPage />);
+      const { container, findByText, findByTestId } = render(
+        <SWRConfig value={{ dedupingInterval: 0 }}>
+          <NotFoundPage />
+        </SWRConfig>,
+      );
       const notFound = await findByText('not-found');
       const imgUrl = await findByTestId('doggo-img');
       expect(container).toBeInTheDocument();
       expect(notFound).toBeInTheDocument();
       expect(imgUrl).toHaveAttribute('src', 'lolz');
+    });
+
+    test('error', async () => {
+      fetcher.mockImplementation(() => {
+        throw new Error('API Client Error');
+      });
+      const { container, findByText, findByTestId } = render(
+        <SWRConfig value={{ dedupingInterval: 0 }}>
+          <NotFoundPage />
+        </SWRConfig>,
+      );
+      const notFound = await findByText('not-found');
+      const imgUrl = await findByTestId('doggo-img');
+      expect(container).toBeInTheDocument();
+      expect(notFound).toBeInTheDocument();
+      expect(imgUrl).toHaveAttribute('src', 'test-file-stub');
     });
   });
 
