@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import useSWR from 'swr';
 import { useIntl } from 'react-intl';
-import axios from 'axios';
+
+// Utils
+import { fetcher } from '../utils/fetcher';
 
 // Styles
 import {
@@ -10,16 +12,12 @@ import {
   FOFImageWrapper,
   DoggoPictureSkeleton,
 } from '../components/Pages/404-styles';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import doggos from '../images/doggos.jpg';
 
 // Components
 import withLayout from '../Hoc/PageWrapper/WithLayout';
 import SEO from '../components/seo';
 import Loader from '../components/Loader';
-
-const fetcher = (url: string) => axios(url);
 
 const NotFoundPage: React.FC = () => {
   const [doggoPictureLoaded, setDoggoPictureLoaded] = useState<boolean>(false);
@@ -34,16 +32,16 @@ const NotFoundPage: React.FC = () => {
   return (
     <FOFWrapper>
       <SEO title="404" />
-
       {!data && !error && <Loader />}
 
-      {data && (
+      {(data || error) && (
         <>
           <FOFImageWrapper
             alt="dogs are the best"
-            src={error ? doggos : data?.data?.message}
+            src={error ? doggos : data?.message}
             doggoPictureLoaded={doggoPictureLoaded}
             onLoad={handleImageLoad}
+            data-testid="doggo-img"
           />
           <DoggoPictureSkeleton doggoPictureLoaded={doggoPictureLoaded}>
             <div />

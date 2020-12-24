@@ -11,6 +11,8 @@ module.exports = {
     'src/**/*.{js,ts,tsx,jsx}',
     '!src/**/*.types.tsx',
     '!src/**/*types.tsx',
+    '!src/context/*',
+    '!src/components/__tests__/utils/test-utils.js',
   ],
   testPathIgnorePatterns: [
     'node_modules',
@@ -33,4 +35,5 @@ module.exports = {
       lines: 80,
     },
   },
+  restoreMocks: true,
 };

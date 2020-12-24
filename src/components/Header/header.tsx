@@ -61,7 +61,12 @@ const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
 
   return (
     <li className="lang-wrapper">
-      <LocalizedLink to={to} language={newLocale} className="lang">
+      <LocalizedLink
+        to={to}
+        language={newLocale}
+        className="lang"
+        data-testid="LocalizedLink"
+      >
         <span>{newLocale}</span>
       </LocalizedLink>
     </li>
