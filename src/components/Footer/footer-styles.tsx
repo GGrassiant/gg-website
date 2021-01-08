@@ -32,14 +32,16 @@ export const FooterWrapper = styled.div<FooterWrapperProps>`
   position: absolute;
   left: 0;
   width: 100%;
-  height: ${({ cta }) => (cta ? '100vh' : '')};
+  height: 100vh;
+  //height: ${({ cta }) => (cta ? '100vh' : '')};
   overflow: hidden;
 `;
 
 export const PermanentFooter = styled.div`
   position: relative;
   width: 100%;
-  height: ${theme.layout.footerHeightSm};
+  height: 100%;
+  //height: ${theme.layout.footerHeightSm};
   background-color: rgba(164, 164, 164, 0.1);
 
   @media (min-width: ${breakPoints.md}) {

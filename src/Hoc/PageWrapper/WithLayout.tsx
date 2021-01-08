@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Libs
 import React from 'react';
 
@@ -23,7 +24,7 @@ const withLayout: (
       <GlobalStyle />
       <Layout locale={locale}>
         <WrappedComponent {...props} locale={locale} />
-        <Footer ctaContent={ctaContent} />
+        <Footer />
       </Layout>
     </>
   );
