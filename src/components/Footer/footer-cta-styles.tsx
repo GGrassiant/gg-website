@@ -18,6 +18,7 @@ export const FooterCtaWrapper = styled.div`
   width: 100%;
   height: calc(100% - ${theme.layout.footerHeightSm});
   background-color: var(--color-background);
+  overflow: hidden;
 
   @media (min-width: ${breakPoints.md}) {
     height: calc(100% - ${theme.layout.footerHeightMd});
