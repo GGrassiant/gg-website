@@ -34,6 +34,14 @@ export const FooterWrapper = styled.div<FooterWrapperProps>`
   width: 100%;
   height: ${({ cta }) => (cta ? '100vh' : '')};
   overflow: hidden;
+
+  @media (max-width: ${breakPoints.md}) {
+    height: ${({ cta }) => (cta ? '100vh' : '')};
+    height: ${({ cta }) =>
+      cta ? '-moz-available' : ''}; // fix issue on mobile moz
+    height: ${({ cta }) =>
+      cta ? '-webkit-fill-available' : ''}; // fix issue on mobile chrome-like
+  }
 `;
 
 export const PermanentFooter = styled.div`
