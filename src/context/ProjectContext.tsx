@@ -29,9 +29,7 @@ export const defaultState: ProjectStateContext = {
   setProjectInfo: (newProjectId: string) => console.log(newProjectId),
 };
 
-export const ProjectContext: Context<ProjectStateContext> = createContext(
-  defaultState,
-);
+export const ProjectContext: Context<ProjectStateContext> = createContext(defaultState);
 
 export const ProjectProvider: React.FC<ProjectProps> = ({ children }) => {
   const [currentRandomProject, setCurrentRandomProject] = useState<
@@ -41,14 +39,9 @@ export const ProjectProvider: React.FC<ProjectProps> = ({ children }) => {
   const [projects, setProjects] = useState<ProjectsState['projects']>([]);
 
   const setProjectInfo = (id: string): void => {
-    const filteredProjects = projects?.filter(
-      (project) => project.node.id !== id,
-    );
+    const filteredProjects = projects?.filter((project) => project.node.id !== id);
 
-    return (
-      filteredProjects &&
-      setCurrentRandomProject(randomValueFromArray(filteredProjects))
-    );
+    return filteredProjects && setCurrentRandomProject(randomValueFromArray(filteredProjects));
   };
 
   return (

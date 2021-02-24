@@ -3,11 +3,7 @@ import React from 'react';
 
 // Utils
 import { Location } from '@reach/router';
-import {
-  render,
-  fireEvent,
-  renderWithRouterLocation,
-} from './utils/test-utils';
+import { render, fireEvent, renderWithRouterLocation } from './utils/test-utils';
 
 // Component
 import Header, { isHome } from '../Header/header';
@@ -18,9 +14,7 @@ describe('<Header>', () => {
     test('component mounts', () => {
       const { container } = render(
         <Location>
-          {(location) => (
-            <Header siteTitle="site title" location={location} locale="en" />
-          )}
+          {(location) => <Header siteTitle="site title" location={location} locale="en" />}
         </Location>,
       );
       expect(container).toBeInTheDocument();
@@ -31,9 +25,7 @@ describe('<Header>', () => {
     test('toggle theme', () => {
       const { getByText } = render(
         <Location>
-          {(location) => (
-            <Header siteTitle="site title" location={location} locale="en" />
-          )}
+          {(location) => <Header siteTitle="site title" location={location} locale="en" />}
         </Location>,
       );
       expect(getByText('🌝')).toBeInTheDocument();
@@ -58,31 +50,21 @@ describe('<Header>', () => {
     test('language toggler fr', () => {
       const { getByText } = render(
         <Location>
-          {(location) => (
-            <Header siteTitle="site title" location={location} locale="en" />
-          )}
+          {(location) => <Header siteTitle="site title" location={location} locale="en" />}
         </Location>,
       );
       expect(getByText('fr')).toBeInTheDocument();
-      expect(getByText('fr').closest('li').children[0]).toHaveAttribute(
-        'href',
-        '/fr/',
-      );
+      expect(getByText('fr').closest('li').children[0]).toHaveAttribute('href', '/fr/');
     });
 
     test('language toggler en', () => {
       const { getByText } = render(
         <Location>
-          {(location) => (
-            <Header siteTitle="site title" location={location} locale="fr" />
-          )}
+          {(location) => <Header siteTitle="site title" location={location} locale="fr" />}
         </Location>,
       );
       expect(getByText('en')).toBeInTheDocument();
-      expect(getByText('en').closest('li').children[0]).toHaveAttribute(
-        'href',
-        '/',
-      );
+      expect(getByText('en').closest('li').children[0]).toHaveAttribute('href', '/');
     });
   });
 
@@ -90,9 +72,7 @@ describe('<Header>', () => {
     test('render menu', () => {
       const { getByText } = render(
         <Location>
-          {(location) => (
-            <Header siteTitle="site title" location={location} locale="en" />
-          )}
+          {(location) => <Header siteTitle="site title" location={location} locale="en" />}
         </Location>,
       );
       siteMetaData.menu.slice(2, -1).forEach((menuItem) => {
@@ -100,9 +80,10 @@ describe('<Header>', () => {
         const projectMenuLink = menuItem.slug;
         expect(getByText(projectMenuName)).toBeInTheDocument();
         expect(getByText(projectMenuName)).not.toHaveClass();
-        expect(
-          getByText(projectMenuName).closest('li').children[0],
-        ).toHaveAttribute('href', projectMenuLink);
+        expect(getByText(projectMenuName).closest('li').children[0]).toHaveAttribute(
+          'href',
+          projectMenuLink,
+        );
       });
     });
 
@@ -114,21 +95,18 @@ describe('<Header>', () => {
         },
         'fr',
       );
-      const aboutPage = siteMetaData.menu.find(
-        (menuItem) => menuItem.label === 'about',
-      );
-      const contactPage = siteMetaData.menu.find(
-        (menuItem) => menuItem.label === 'contact',
-      );
+      const aboutPage = siteMetaData.menu.find((menuItem) => menuItem.label === 'about');
+      const contactPage = siteMetaData.menu.find((menuItem) => menuItem.label === 'contact');
       expect(getByText(aboutPage.label)).toHaveClass('active');
       expect(getByText(contactPage.label)).not.toHaveClass();
       siteMetaData.menu.slice(2, -1).forEach((menuItem) => {
         const projectMenuName = menuItem.label;
         const projectMenuLink = menuItem.slug;
         expect(getByText(projectMenuName)).toBeInTheDocument();
-        expect(
-          getByText(projectMenuName).closest('li').children[0],
-        ).toHaveAttribute('href', `${projectMenuLink}`);
+        expect(getByText(projectMenuName).closest('li').children[0]).toHaveAttribute(
+          'href',
+          `${projectMenuLink}`,
+        );
       });
     });
   });
@@ -157,10 +135,7 @@ describe('<Header>', () => {
         },
         'fr',
       );
-      expect(getByTestId('LocalizedLink').closest('a')).toHaveAttribute(
-        'href',
-        '/another-route',
-      );
+      expect(getByTestId('LocalizedLink').closest('a')).toHaveAttribute('href', '/another-route');
       expect(container).toBeInTheDocument();
     });
   });

@@ -6,10 +6,7 @@ import { useIntl } from 'react-intl';
 
 // Utils
 import * as langsSettings from '../utils/languages';
-import {
-  generateRandomFooterCta,
-  scrollToRefObject,
-} from '../utils/typescript.utils';
+import { generateRandomFooterCta, scrollToRefObject } from '../utils/typescript.utils';
 import { ProjectContext } from '../context/ProjectContext';
 import { Edge } from '../../site';
 
@@ -33,8 +30,7 @@ export const getRedirectLanguage = (): string => {
     return `${langsSettings.defaultLangKey}`;
   }
 
-  const lang: string =
-    navigator && navigator.language && navigator.language.split('-')[0];
+  const lang: string = navigator && navigator.language && navigator.language.split('-')[0];
   if (!lang) return `${langsSettings.defaultLangKey}`;
 
   switch (lang) {
@@ -51,9 +47,7 @@ const IndexPage: React.FC = () => {
 
   const renderInformation = (): Array<React.ReactElement> | undefined =>
     projects?.map(
-      (project: Edge): React.ReactElement => (
-        <ProjectCard edge={project} key={project?.node.id} />
-      ),
+      (project: Edge): React.ReactElement => <ProjectCard edge={project} key={project?.node.id} />,
     );
 
   const projectsRef = useRef(null);

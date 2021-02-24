@@ -27,10 +27,7 @@ describe('<CTA>', () => {
           Click Me
         </CTA>,
       );
-      expect(getByText('Click Me').closest('a')).toHaveAttribute(
-        'href',
-        '/about/',
-      );
+      expect(getByText('Click Me').closest('a')).toHaveAttribute('href', '/about/');
     });
   });
 });

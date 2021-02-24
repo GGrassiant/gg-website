@@ -39,9 +39,7 @@ const languagesHomeUrlArray: Array<string> = langsSettings.langs.reduce(
 export const isHome: (arg: string) => boolean = (path: string) =>
   languagesHomeUrlArray.includes(path);
 
-const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
-  props,
-) => {
+const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (props) => {
   const { pathname, locale } = props;
 
   let to: string;
@@ -55,18 +53,11 @@ const SelectLanguage: React.FC<{ pathname: string; locale: string }> = (
   }
 
   const newLocale =
-    locale === `${langsSettings.defaultLangKey}`
-      ? 'fr'
-      : `${langsSettings.defaultLangKey}`;
+    locale === `${langsSettings.defaultLangKey}` ? 'fr' : `${langsSettings.defaultLangKey}`;
 
   return (
     <li className="lang-wrapper">
-      <LocalizedLink
-        to={to}
-        language={newLocale}
-        className="lang"
-        data-testid="LocalizedLink"
-      >
+      <LocalizedLink to={to} language={newLocale} className="lang" data-testid="LocalizedLink">
         <span>{newLocale}</span>
       </LocalizedLink>
     </li>
@@ -77,28 +68,22 @@ const getMenuItems = (pathname: string, locale: string, intl: IntlShape) => {
   const delocalizedPath: string =
     locale === `${langsSettings.defaultLangKey}` ? pathname : pathname.slice(3);
 
-  return siteMetaData.menu.reduce(
-    (acc: Array<React.ReactElement>, cur: Menu) => {
-      if (isHome(cur.slug) || cur.label === 'projects') {
-        return acc;
-      }
+  return siteMetaData.menu.reduce((acc: Array<React.ReactElement>, cur: Menu) => {
+    if (isHome(cur.slug) || cur.label === 'projects') {
+      return acc;
+    }
 
-      const className =
-        !isHome(cur.slug) && delocalizedPath.startsWith(cur.slug)
-          ? 'active'
-          : '';
+    const className = !isHome(cur.slug) && delocalizedPath.startsWith(cur.slug) ? 'active' : '';
 
-      const link = (
-        <li key={cur.slug}>
-          <LocalizedLink to={cur.slug} className={className}>
-            {intl.formatMessage({ id: `${cur.label}` })}
-          </LocalizedLink>
-        </li>
-      );
-      return acc.concat(link);
-    },
-    [],
-  );
+    const link = (
+      <li key={cur.slug}>
+        <LocalizedLink to={cur.slug} className={className}>
+          {intl.formatMessage({ id: `${cur.label}` })}
+        </LocalizedLink>
+      </li>
+    );
+    return acc.concat(link);
+  }, []);
 };
 
 const Header: React.FC<HeaderProps> = (props) => {

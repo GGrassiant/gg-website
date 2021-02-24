@@ -101,9 +101,7 @@ describe('<SimplifiedProjectCard />', () => {
     });
 
     test('mounts with no Edge', async () => {
-      const { getByTestId } = render(
-        <SimplifiedProjectCard edge={undefined} />,
-      );
+      const { getByTestId } = render(<SimplifiedProjectCard edge={undefined} />);
       const loadingElement = await getByTestId('custom-loader');
       expect(loadingElement).toBeInTheDocument();
     });
@@ -115,11 +113,7 @@ describe('styled components', () => {
     test('no props', () => {
       const { getByTestId } = render(
         <div>
-          <ProjectCardWrapper
-            data-testid="project-card-wrapper"
-            footer
-            colorMode="light"
-          />
+          <ProjectCardWrapper data-testid="project-card-wrapper" footer colorMode="light" />
         </div>,
       );
       const wrapper = getByTestId('project-card-wrapper');

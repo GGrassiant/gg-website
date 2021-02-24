@@ -55,11 +55,7 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
   const renderProjectImages = (images: Array<ContenfulImage>) => (
     <>
       <MainProjectImageWrapper>
-        <Img
-          fluid={images[0].fluid}
-          key={images[0].fluid.src}
-          alt={images[0].title}
-        />
+        <Img fluid={images[0].fluid} key={images[0].fluid.src} alt={images[0].title} />
       </MainProjectImageWrapper>
       {images.length > 1 && (
         <ProjectImagesWrapper manyImages={images.length > 2}>

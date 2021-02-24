@@ -232,19 +232,12 @@ const OtherProjectImagesWrapper = css`
   }
 
   > div {
-    max-height: calc(
-      (100vw - ${theme.layout.layoutOffset}) *
-        ${theme.ratios.iphone11AspectRatio}
-    );
+    max-height: calc((100vw - ${theme.layout.layoutOffset}) * ${theme.ratios.iphone11AspectRatio});
 
     @media (min-width: ${breakPoints.sm}) {
       max-height: calc(
-        (
-            (
-                100vw - ${theme.layout.projectGridPadding} - 2 *
-                  ${theme.layout.projectGridGap}
-              ) / 3
-          ) * ${theme.ratios.iphone11AspectRatio}
+        ((100vw - ${theme.layout.projectGridPadding} - 2 * ${theme.layout.projectGridGap}) / 3) *
+          ${theme.ratios.iphone11AspectRatio}
       );
     }
 
@@ -254,8 +247,7 @@ const OtherProjectImagesWrapper = css`
 
     @media screen and (min-height: ${breakPoints.xsm}) and (max-height: ${breakPoints.sm}) and (orientation: landscape) {
       max-height: calc(
-        (100vw - ${theme.layout.layoutOffset}) *
-          ${theme.ratios.iphone11AspectRatio}
+        (100vw - ${theme.layout.layoutOffset}) * ${theme.ratios.iphone11AspectRatio}
       );
     }
   }
@@ -269,8 +261,7 @@ const OtherProjectImageWrapper = css`
 `;
 
 export const ProjectImagesWrapper = styled.div<ProjectImages>`
-  ${({ manyImages }) =>
-    manyImages ? OtherProjectImagesWrapper : OtherProjectImageWrapper}
+  ${({ manyImages }) => (manyImages ? OtherProjectImagesWrapper : OtherProjectImageWrapper)}
 `;
 
 export const ProjectCTA = styled.div`

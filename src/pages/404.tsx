@@ -7,11 +7,7 @@ import { useIntl } from 'react-intl';
 import { fetcher } from '../utils/fetcher';
 
 // Styles
-import {
-  FOFWrapper,
-  FOFImageWrapper,
-  DoggoPictureSkeleton,
-} from '../components/Pages/404-styles';
+import { FOFWrapper, FOFImageWrapper, DoggoPictureSkeleton } from '../components/Pages/404-styles';
 import doggos from '../images/doggos.jpg';
 
 // Components
@@ -22,10 +18,7 @@ import Loader from '../components/Loader';
 const NotFoundPage: React.FC = () => {
   const [doggoPictureLoaded, setDoggoPictureLoaded] = useState<boolean>(false);
   const intl = useIntl();
-  const { data, error } = useSWR(
-    'https://dog.ceo/api/breeds/image/random',
-    fetcher,
-  );
+  const { data, error } = useSWR('https://dog.ceo/api/breeds/image/random', fetcher);
 
   const handleImageLoad = () => setDoggoPictureLoaded(true);
 

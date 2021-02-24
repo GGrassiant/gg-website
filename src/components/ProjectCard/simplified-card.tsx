@@ -8,11 +8,7 @@ import * as siteMetaData from '../../utils/siteMetaData';
 import { ThemeContext } from '../../context/ThemeContext';
 
 // Styles
-import {
-  ProjectCardHeader,
-  ProjectCardWrapper,
-  SimplifiedCardLink,
-} from './project-card-styles';
+import { ProjectCardHeader, ProjectCardWrapper, SimplifiedCardLink } from './project-card-styles';
 
 // Components
 import Title from '../Title';

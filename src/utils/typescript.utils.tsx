@@ -36,14 +36,9 @@ export const randomValueFromArray = <T, _>(array: Array<T>): T =>
   array[Math.floor(Math.random() * array.length)];
 
 // Random Footer CTA String
-const FOOTER_CTA_MESSAGES = [
-  'get coffee',
-  'learn more about me',
-  'start project',
-];
+const FOOTER_CTA_MESSAGES = ['get coffee', 'learn more about me', 'start project'];
 
-export const generateRandomFooterCta = (): string =>
-  randomValueFromArray(FOOTER_CTA_MESSAGES);
+export const generateRandomFooterCta = (): string => randomValueFromArray(FOOTER_CTA_MESSAGES);
 
 // Get right values for the language
 export const getLocalizedDataFromContentful: (

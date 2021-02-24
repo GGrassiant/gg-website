@@ -35,9 +35,7 @@ describe('<FooterCta>', () => {
   describe('<NextProject />', () => {
     describe('mounts', () => {
       test('Layout mounts correctly', () => {
-        const { container, getByTestId, queryByTestId } = render(
-          <NextProject />,
-        );
+        const { container, getByTestId, queryByTestId } = render(<NextProject />);
         const loadingElement = getByTestId('custom-loader');
         const CardWrapper = queryByTestId('simplifiedCardLink');
 

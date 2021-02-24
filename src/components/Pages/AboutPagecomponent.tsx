@@ -41,22 +41,16 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
   const intl = useIntl();
   const { data, locale } = props;
   const descriptionElement: Array<DescriptionEdge> = ensure(
-    data?.allContentfulDescription.group.find(
-      (lang) => lang.fieldValue === locale,
-    ),
+    data?.allContentfulDescription.group.find((lang) => lang.fieldValue === locale),
   ).edges;
 
   const skillsElement: Array<TechSkillEdge> = ensure(
-    data?.allContentfulTechSkills.group.find(
-      (lang) => lang.fieldValue === locale,
-    ),
+    data?.allContentfulTechSkills.group.find((lang) => lang.fieldValue === locale),
   ).edges;
 
   const resumeURL = data?.allContentfulAsset.edges[0].node.file.url;
 
-  const renderDescription = (): React.ReactNode => (
-    <p>{descriptionElement[0].node.content}</p>
-  );
+  const renderDescription = (): React.ReactNode => <p>{descriptionElement[0].node.content}</p>;
 
   const renderSkills = (): Array<React.ReactNode> =>
     skillsElement.map((skillSet) => (
@@ -66,10 +60,7 @@ const AboutPageComponent: React.FC<WithLayoutProps> = (props) => {
       </SkillItem>
     ));
 
-  const translatedCta = intl.formatMessage(
-    { id: 'get to know me' },
-    { breakingLine: '<br/>' },
-  );
+  const translatedCta = intl.formatMessage({ id: 'get to know me' }, { breakingLine: '<br/>' });
 
   const contactRef = useRef(null);
   const scrollToRefObject = (ref: React.MutableRefObject<null>) => {

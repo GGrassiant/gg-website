@@ -23,9 +23,7 @@ export const ProjectCardWrapper = styled.div<ProjectCardWrapperProps>`
   color: ${theme.fontColor.projectTextColor};
   overflow: hidden;
   border: ${({ footer, colorMode }) =>
-    footer && colorMode === 'light'
-      ? '1px solid var(--color-reversetextwithopacity)'
-      : ''};
+    footer && colorMode === 'light' ? '1px solid var(--color-reversetextwithopacity)' : ''};
   transition: all ${theme.transition.default} ease-in;
 
   @media (hover: hover) and (pointer: fine) {
