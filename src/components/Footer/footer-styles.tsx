@@ -37,8 +37,7 @@ export const FooterWrapper = styled.div<FooterWrapperProps>`
 
   @media (max-width: ${breakPoints.md}) {
     height: ${({ cta }) => (cta ? '100vh' : '')};
-    height: ${({ cta }) =>
-      cta ? '-moz-available' : ''}; // fix issue on mobile moz
+    height: ${({ cta }) => (cta ? '-moz-available' : '')}; // fix issue on mobile moz
     height: ${({ cta }) =>
       cta ? '-webkit-fill-available' : ''}; // fix issue on mobile chrome-like
   }
@@ -82,8 +81,7 @@ export const PermanentFooterContent = styled.div`
   }
 
   // TODO: Why + 4px??? ¯\\_(ツ)_/¯
-  @media (min-width: calc(${breakPoints.xl} + ${theme.layout
-      .layoutOffset} + 4px)) {
+  @media (min-width: calc(${breakPoints.xl} + ${theme.layout.layoutOffset} + 4px)) {
     left: 0;
     margin-left: calc((100vw - ${breakPoints.xl}) * 0.5);
   }

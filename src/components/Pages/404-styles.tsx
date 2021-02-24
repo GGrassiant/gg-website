@@ -58,8 +58,7 @@ export const FOFWrapper = styled.div`
 FOFWrapper.displayName = 'FOFWrapper';
 
 export const FOFImageWrapper = styled.img<ImageLoadProps>`
-  display: ${({ doggoPictureLoaded }) =>
-    doggoPictureLoaded ? 'flex' : 'none'};
+  display: ${({ doggoPictureLoaded }) => (doggoPictureLoaded ? 'flex' : 'none')};
   height: 40vmin;
   border-radius: 10%;
 
@@ -71,8 +70,7 @@ FOFImageWrapper.displayName = 'FOFImageWrapper';
 
 export const DoggoPictureSkeleton = styled.div<ImageLoadProps>`
   position: relative;
-  display: ${({ doggoPictureLoaded }) =>
-    doggoPictureLoaded ? 'none' : 'flex'};
+  display: ${({ doggoPictureLoaded }) => (doggoPictureLoaded ? 'none' : 'flex')};
   overflow: hidden;
   height: 40vmin;
   width: 40vmin;
@@ -91,12 +89,7 @@ export const DoggoPictureSkeleton = styled.div<ImageLoadProps>`
     width: 50%;
     height: 100%;
     animation: ${sweep} 2s infinite;
-    background-image: linear-gradient(
-      to left,
-      transparent,
-      rgba(255, 255, 255, 0.4),
-      transparent
-    );
+    background-image: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.4), transparent);
   }
 
   div {

@@ -3,11 +3,11 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
     'airbnb',
     'airbnb/hooks',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
   settings: {
     react: {
@@ -26,10 +26,7 @@ module.exports = {
     jest: true,
   },
   plugins: ['@typescript-eslint', 'react'],
-  ignorePatterns: [
-    '_this_is_virtual_fs_path_/$virtual/sync-requires.js',
-    'gatsby.js',
-  ],
+  ignorePatterns: ['_this_is_virtual_fs_path_/$virtual/sync-requires.js', 'gatsby.js'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,

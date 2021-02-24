@@ -3,10 +3,7 @@ import styled from 'styled-components';
 
 // Styles
 import { breakPoints, theme } from '../../utils/constants';
-import {
-  ProjectCardWrapper,
-  ProjectCardHeader,
-} from '../ProjectCard/project-card-styles';
+import { ProjectCardWrapper, ProjectCardHeader } from '../ProjectCard/project-card-styles';
 import { TitleWrapper } from '../Title/title-styles';
 
 export const FooterCtaWrapper = styled.div`

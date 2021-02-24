@@ -35,5 +35,4 @@ export const ContenfulDataQuery = graphql`
   }
 `;
 
-export const useSiteMetadata = (): SiteMasterData =>
-  useStaticQuery(ContenfulDataQuery);
+export const useSiteMetadata = (): SiteMasterData => useStaticQuery(ContenfulDataQuery);

@@ -69,10 +69,7 @@ describe('<NotFoundPage>', () => {
       test('picture not loader', () => {
         const { getByTestId } = render(
           <div>
-            <DoggoPictureSkeleton
-              doggoPictureLoaded={false}
-              data-testid="doggo-skeleton"
-            />
+            <DoggoPictureSkeleton doggoPictureLoaded={false} data-testid="doggo-skeleton" />
           </div>,
         );
         const doggo = getByTestId('doggo-skeleton');
@@ -83,10 +80,7 @@ describe('<NotFoundPage>', () => {
       test('picture loaded', () => {
         const { getByTestId } = render(
           <div>
-            <DoggoPictureSkeleton
-              doggoPictureLoaded
-              data-testid="doggo-skeleton"
-            />
+            <DoggoPictureSkeleton doggoPictureLoaded data-testid="doggo-skeleton" />
           </div>,
         );
         const doggo = getByTestId('doggo-skeleton');
@@ -99,10 +93,7 @@ describe('<NotFoundPage>', () => {
       test('picture not loader', () => {
         const { getByTestId } = render(
           <div>
-            <FOFImageWrapper
-              doggoPictureLoaded={false}
-              data-testid="doggo-wrapper"
-            />
+            <FOFImageWrapper doggoPictureLoaded={false} data-testid="doggo-wrapper" />
           </div>,
         );
         const doggo = getByTestId('doggo-wrapper');

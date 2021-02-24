@@ -25,10 +25,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
   const { setProjects, projects } = useContext(ProjectContext);
 
   const informationElements: Array<Edge> | undefined = useMemo(() => {
-    return getLocalizedDataFromContentful(
-      data.allContentfulProject?.group,
-      locale,
-    );
+    return getLocalizedDataFromContentful(data.allContentfulProject?.group, locale);
   }, [data.allContentfulProject, locale]);
 
   // load the projects in context on first mount
@@ -42,11 +39,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
     <>
       <Location>
         {(location) => (
-          <Header
-            siteTitle={data.site.siteMetadata.title}
-            location={location}
-            locale={locale}
-          />
+          <Header siteTitle={data.site.siteMetadata.title} location={location} locale={locale} />
         )}
       </Location>
       <PageWrapper>

@@ -11,9 +11,7 @@ import Loader from '../../Loader';
 
 const NextProject: React.FC = () => {
   const { currentRandomProject } = useContext(ProjectContext);
-  const [randomProject, setRandomProject] = useState<Edge | undefined>(
-    undefined,
-  );
+  const [randomProject, setRandomProject] = useState<Edge | undefined>(undefined);
 
   // Gatsby Link pre fetches data on hover at first load
   // https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-link/src/index.js#LC227
@@ -30,9 +28,7 @@ const NextProject: React.FC = () => {
     return <Loader />;
   }
 
-  return (
-    <SimplifiedProjectCard edge={randomProject} key={randomProject?.node.id} />
-  );
+  return <SimplifiedProjectCard edge={randomProject} key={randomProject?.node.id} />;
 };
 
 export default NextProject;

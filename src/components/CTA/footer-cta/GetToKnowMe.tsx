@@ -8,10 +8,7 @@ import CTA from '../index';
 
 const GetToKnowMe: React.FC = () => {
   const intl = useIntl();
-  const translatedCta = intl.formatMessage(
-    { id: 'get to know me' },
-    { breakingLine: '<br/>' },
-  );
+  const translatedCta = intl.formatMessage({ id: 'get to know me' }, { breakingLine: '<br/>' });
   return (
     <CTA link="about" animate animationDirection="x">
       <span dangerouslySetInnerHTML={{ __html: translatedCta }} />

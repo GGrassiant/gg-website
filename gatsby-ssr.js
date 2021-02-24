@@ -5,11 +5,7 @@ import Terser from 'terser';
 // Components
 import { ThemeProvider } from './src/context/ThemeContext';
 
-import {
-  COLORS,
-  COLOR_MODE_KEY,
-  INITIAL_COLOR_MODE_CSS_PROP,
-} from './src/utils/constants';
+import { COLORS, COLOR_MODE_KEY, INITIAL_COLOR_MODE_CSS_PROP } from './src/utils/constants';
 
 function setColorsByTheme() {
   const colors = '🌈';
@@ -71,8 +67,7 @@ const FallbackStyles = () => {
   */
 
   const cssVariableString = Object.entries(COLORS).reduce(
-    (acc, [name, colorByTheme]) =>
-      `${acc}\n--color-${name}: ${colorByTheme.light};`,
+    (acc, [name, colorByTheme]) => `${acc}\n--color-${name}: ${colorByTheme.light};`,
     '',
   );
 
@@ -86,6 +81,4 @@ export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
   setPreBodyComponents(<MagicScriptTag />);
 };
 
-export const wrapPageElement = ({ element }) => (
-  <ThemeProvider>{element}</ThemeProvider>
-);
+export const wrapPageElement = ({ element }) => <ThemeProvider>{element}</ThemeProvider>;

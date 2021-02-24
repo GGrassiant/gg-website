@@ -15,13 +15,8 @@ const AllTheProviders = ({ children }) => {
   const [projects, setProjects] = useState([]);
   const setColorMode = (value) => setColorModeHandler(value);
   const setProjectInfo = (value) => {
-    const filteredProjects = projects?.filter(
-      (project) => project.node.id !== value,
-    );
-    return (
-      filteredProjects &&
-      setCurrentRandomProject(randomValueFromArray(filteredProjects))
-    );
+    const filteredProjects = projects?.filter((project) => project.node.id !== value);
+    return filteredProjects && setCurrentRandomProject(randomValueFromArray(filteredProjects));
   };
   return (
     <ThemeContext.Provider
@@ -44,8 +39,7 @@ const AllTheProviders = ({ children }) => {
   );
 };
 
-const customRender = (ui, options) =>
-  render(ui, { wrapper: AllTheProviders, ...options });
+const customRender = (ui, options) => render(ui, { wrapper: AllTheProviders, ...options });
 
 // re-export everything
 export * from '@testing-library/react';

@@ -45,9 +45,7 @@ const ContactPage: React.FC<WithLayoutProps> = () => {
             <span>
               <HiOutlineMail className="contact-means__type" />
             </span>
-            <Link href="mailto:guillaumegrassiant@hey.com">
-              guillaumegrassiant@hey.com
-            </Link>
+            <Link href="mailto:guillaumegrassiant@hey.com">guillaumegrassiant@hey.com</Link>
             <span>
               <AiOutlineArrowRight className="contact-means__arrow" />
             </span>

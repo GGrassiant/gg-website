@@ -7,8 +7,7 @@ module.exports = {
   description: 'React lover, JavaScript & Rails aficionado',
   author: {
     name: 'Guillaume Grassiant',
-    bio:
-      'I am a Web developer from Montreal with a knack for Front-End development with React',
+    bio: 'I am a Web developer from Montreal with a knack for Front-End development with React',
     homeCity: 'Montreal',
     email: 'guillaumegrassiant@hey.com',
     defaultLink: 'https://github.com/ggrassiant',

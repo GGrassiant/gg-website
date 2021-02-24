@@ -3,11 +3,7 @@ import React from 'react';
 import { BsBoxArrowUpRight } from 'react-icons/bs';
 
 // Styles
-import {
-  FooterWrapper,
-  PermanentFooter,
-  PermanentFooterContent,
-} from './footer-styles';
+import { FooterWrapper, PermanentFooter, PermanentFooterContent } from './footer-styles';
 
 // Components
 import FooterCta from './FooterCta';
@@ -23,12 +19,7 @@ const Footer: React.FC<FooterProps> = (props) => {
   const ctaInFooter = ctaContent && validateObjectValues(ctaContent);
   return (
     <FooterWrapper cta={ctaInFooter}>
-      {ctaInFooter && (
-        <FooterCta
-          title={ctaContent?.title}
-          component={ctaContent?.component}
-        />
-      )}
+      {ctaInFooter && <FooterCta title={ctaContent?.title} component={ctaContent?.component} />}
       <PermanentFooter>
         <PermanentFooterContent>
           <p>Guillaume Grassiant - 2021</p>
