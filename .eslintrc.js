@@ -3,11 +3,9 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:prettier/recommended',
-    'airbnb',
-    'airbnb/hooks',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
   ],
   settings: {
     react: {
@@ -36,6 +34,7 @@ module.exports = {
   },
   rules: {
     'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
+    'react/display-name': 'off', // Disable prop-types as we use TypeScript for type checking
     '@typescript-eslint/explicit-function-return-type': 'off',
     'no-console': 'off', // Allow console.log
     'import/extensions': 'off', // Don't need to specify file's extension
