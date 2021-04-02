@@ -58,7 +58,7 @@
     "gatsby-theme-i18n": "^1.0.5",
     "gatsby-theme-i18n-react-intl": "^1.0.4",
     "gatsby-transformer-sharp": "^2.12.1",
-    "react": "^16.14.0",
+    "react": "^17.0.2",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
