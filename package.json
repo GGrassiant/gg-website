@@ -43,7 +43,7 @@
     "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
-    "gatsby": "^2.32.11",
+    "gatsby": "^3.2.1",
     "gatsby-image": "^3.2.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-google-gtag": "^3.2.0",
