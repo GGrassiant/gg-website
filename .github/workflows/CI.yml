@@ -1,0 +1,29 @@
+name: GG Website CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+      # Install dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Runs linter
+    - name: Tests
+      run: npm run test:coverage
+
+      # Runs linter
+    - name: Lint
+      run: npm run lint
