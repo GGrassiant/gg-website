@@ -1,28 +1,27 @@
 // Libs
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const Image: React.FC = () => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "gg2020.jpeg" }) {
         childImageSharp {
-          fluid(maxWidth: 500) {
-            ...GatsbyImageSharpFluid
-          }
+          gatsbyImageData(width: 500)
         }
       }
     }
   `);
 
   return (
-    <Img
+    <GatsbyImage
       alt="gg-avatar"
-      fluid={data.placeholderImage.childImageSharp.fluid}
+      image={data.placeholderImage.childImageSharp.gatsbyImageData}
       style={{
         width: '100%',
         height: '100%',
+        borderRadius: '50%',
       }}
     />
   );

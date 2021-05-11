@@ -87,10 +87,6 @@ export const Avatar = styled.div`
   @media (min-width: ${breakPoints.lg}) {
     margin: 0 0 0 4rem;
   }
-
-  img {
-    border-radius: 50%;
-  }
 `;
 
 export const CtaWrapper = styled.div`
