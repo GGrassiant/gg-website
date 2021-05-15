@@ -210,7 +210,8 @@ export const ProjectDescription = styled.p`
 `;
 
 export const MainProjectImageWrapper = styled.div`
-  max-height: 150px;
+  height: 150px;
+  width: 100%;
   overflow: hidden;
   border: 1px solid var(--color-reversetextwithopacity);
   border-radius: 1%;
@@ -220,11 +221,16 @@ export const MainProjectImageWrapper = styled.div`
   }
 
   @media (min-width: ${breakPoints.xsm}) {
-    max-height: 200px;
+    height: 200px;
   }
 
   @media (min-width: ${breakPoints.sm}) {
-    max-height: 700px;
+    height: 700px;
+
+    > div {
+      width: 100%;
+      height: 100%;
+    }
   }
 `;
 
