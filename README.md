@@ -21,7 +21,7 @@ This is my personal website repository.
 
 1.  **Jest / Enzyme / React-Testing-Library**
     
-1.  **useSWR on the 404 page (playing around)**
+1.  **useSWR on the 404 page**
 
 ## Note
 
