@@ -27,15 +27,11 @@ export const query = graphql`
       id
       mainPicture {
         id
-        fluid(maxWidth: 1280) {
-          ...GatsbyContentfulFluid
-        }
+        gatsbyImageData(width: 1280)
       }
       projectPictures {
         id
-        fluid(maxWidth: 1280) {
-          ...GatsbyContentfulFluid
-        }
+        gatsbyImageData(width: 1280)
       }
     }
   }

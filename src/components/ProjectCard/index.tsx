@@ -1,7 +1,7 @@
 // Libs
 import React from 'react';
 import { LocalizedLink } from 'gatsby-theme-i18n';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 // Utils
 import { ProjectCardProps } from './project-card-types';
@@ -27,11 +27,12 @@ const ProjectCard: React.FC<ProjectCardProps> = (props) => {
           {edge.node.title}
         </Title>
         <div>
-          <Img
-            fluid={edge.node.mainPicture.fluid}
-            key={edge.node.mainPicture.fluid.src}
-            alt={edge.node.mainPicture.title}
-            imgStyle={{ objectPosition: '0 0' }}
+          <GatsbyImage
+            alt={edge.node.title}
+            image={edge.node.mainPicture.localFile.childImageSharp.gatsbyImageData}
+            style={{
+              objectPosition: '0 0',
+            }}
           />
         </div>
       </ProjectCardWrapper>

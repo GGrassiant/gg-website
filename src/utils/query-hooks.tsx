@@ -24,8 +24,10 @@ export const ContenfulDataQuery = graphql`
             id
             mainPicture {
               id
-              fluid(maxWidth: 500) {
-                ...GatsbyContentfulFluid
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(width: 500)
+                }
               }
             }
           }

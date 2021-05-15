@@ -8,6 +8,73 @@ import { render, fireEvent } from '../../components/__tests__/utils/test-utils';
 import IndexPage, { getRedirectLanguage } from '../index';
 import Layout from '../../components/Layout/layout';
 
+export const GatsbyImageData = {
+  backgroundColor: '#f8f8f8',
+  height: 900,
+  images: {
+    sources: [
+      {
+        sizes: '(min-width: 1280px) 1280px, 100vw',
+        srcSet:
+          '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=320&h=225&q=50&fm=webp 320w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=640&h=450&q=50&fm=webp 640w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=1280&h=900&q=50&fm=webp 1280w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=2560&h=1800&q=50&fm=webp 2560w',
+        type: 'image/webp',
+      },
+    ],
+  },
+  fallback: {
+    sizes: '(min-width: 1280px) 1280px, 100vw',
+    src: '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=1280&h=900&q=50&fm=png',
+    srcSet:
+      '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=320&h=225',
+  },
+  layout: 'constrained',
+  width: 1280,
+};
+
+export const GatsbyImageData2 = {
+  backgroundColor: '#f8f8f8',
+  height: 900,
+  images: {
+    sources: [
+      {
+        sizes: '(min-width: 1280px) 1280px, 100vw',
+        srcSet: 'sdfsfsdf',
+        type: 'sdfsfds',
+      },
+    ],
+  },
+  fallback: {
+    sizes: '(min-width: 1280px) 1280px, 100vw',
+    src: '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=1280&h=900&q=50&fm=png',
+    srcSet:
+      '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=320&h=225',
+  },
+  layout: 'constrained',
+  width: 1280,
+};
+
+export const GatsbyImageData3 = {
+  backgroundColor: '#f8f8f8',
+  height: 900,
+  images: {
+    sources: [
+      {
+        sizes: '(min-width: 1280px) 1280px, 100vw',
+        srcSet: 'sdfsfsdf',
+        type: 'sdfsfds',
+      },
+    ],
+  },
+  fallback: {
+    sizes: '(min-width: 1280px) 1280px, 100vw',
+    src: '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=1280&h=900&q=50&fm=png',
+    srcSet:
+      '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=320&h=225',
+  },
+  layout: 'constrained',
+  width: 1280,
+};
+
 export const FLUID = {
   base64:
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQA…kZXNjcmlwdGlvbgBEaXNwbGF5FxuVuAAAAABJRU5ErkJggg==',

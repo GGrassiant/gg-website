@@ -1,6 +1,6 @@
 // Libs
 import React, { useContext } from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 // Utils
 import { SimplifiedProjectCardProps } from './project-card-types';
@@ -36,10 +36,9 @@ const SimplifiedProjectCard: React.FC<SimplifiedProjectCardProps> = (props) => {
           {edge.node.title}
         </Title>
         <div>
-          <Img
-            fluid={edge.node.mainPicture.fluid}
-            key={edge.node.mainPicture.fluid.src}
-            alt={edge.node.mainPicture.title}
+          <GatsbyImage
+            alt="gg-avatar"
+            image={edge.node.mainPicture.localFile.childImageSharp.gatsbyImageData}
             imgStyle={{ objectPosition: '0 0' }}
           />
         </div>

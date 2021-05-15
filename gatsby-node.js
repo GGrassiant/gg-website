@@ -3,16 +3,6 @@ const path = require('path');
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  // Deprecated, was computed when using i18n-plugin
-  // If always redirecting to /en
-  // const { createPage, createRedirect } = actions;
-  // createRedirect({
-  //   fromPath: '/',
-  //   isPermanent: true,
-  //   redirectInBrowser: true,
-  //   toPath: '/en'
-  // });
-
   const result = await graphql(`
     query {
       allContentfulProject {

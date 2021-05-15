@@ -3,7 +3,7 @@ import React from 'react';
 
 // Utils
 import { render } from './utils/test-utils';
-import { FLUID, FLUID_2 } from '../../pages/__tests__/index';
+import { GatsbyImageData, GatsbyImageData2, GatsbyImageData3 } from '../../pages/__tests__/index';
 
 // Components
 import ProjectCard from '../ProjectCard';
@@ -11,13 +11,21 @@ import SimplifiedProjectCard from '../ProjectCard/simplified-card';
 import { ProjectCardWrapper } from '../ProjectCard/project-card-styles';
 
 const picture = {
-  fluid: FLUID,
-  title: 'lol-picture',
+  id: Math.random(),
+  gatsbyImageData: GatsbyImageData,
+  localFile: {
+    childImageSharp: { GatsbyImageData },
+  },
 };
 
 const picture2 = {
-  fluid: FLUID_2,
-  title: 'lol-picture',
+  id: Math.random(),
+  gatsbyImageData: GatsbyImageData2,
+};
+
+const picture3 = {
+  id: Math.random(),
+  gatsbyImageData: GatsbyImageData3,
 };
 
 export const EDGE = {
@@ -44,7 +52,7 @@ export const EDGE_TWO_IMAGES = {
     mainTech: 'internet',
     year: '1982',
     mainPicture: picture,
-    projectPictures: [picture, picture],
+    projectPictures: [picture3, picture2],
     team: 'A Team',
     techStack: 'React',
     shortDescription: 'short description',
@@ -60,7 +68,7 @@ export const EDGE_RANDOM_PROJECT = {
     mainTech: 'internet',
     year: '1982',
     mainPicture: picture,
-    projectPictures: [picture, picture],
+    projectPictures: [picture3, picture2],
     team: 'A Team',
     techStack: 'React',
     shortDescription: 'short description',
@@ -76,7 +84,7 @@ export const EDGE_MULTIPLE_IMAGES = {
     mainTech: 'internet',
     year: '1982',
     mainPicture: picture,
-    projectPictures: [picture, picture, picture2],
+    projectPictures: [picture, picture3, picture2],
     team: 'A Team',
     techStack: 'React',
     shortDescription: 'short description',

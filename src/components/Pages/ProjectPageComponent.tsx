@@ -1,6 +1,6 @@
 // Libs
 import React, { useEffect, useContext } from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { useIntl } from 'react-intl';
 import { AiOutlineArrowLeft, AiOutlineCalendar } from 'react-icons/ai';
 import { BsCodeSlash, BsPeople, BsLink45Deg } from 'react-icons/bs';
@@ -10,7 +10,6 @@ import { ContenfulImage, ProjectPageComponentProps } from '../../../site';
 import { ProjectContext } from '../../context/ProjectContext';
 
 // Styles
-
 import {
   ProjectPageWrapper,
   BackButton,
@@ -55,22 +54,28 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
   const renderProjectImages = (images: Array<ContenfulImage>) => (
     <>
       <MainProjectImageWrapper>
-        <Img fluid={images[0].fluid} key={images[0].fluid.src} alt={images[0].title} />
+        <GatsbyImage
+          key={images[0].gatsbyImageData.id}
+          alt={`${title}-other-picture-${images[0].title}`}
+          image={images[0].gatsbyImageData}
+        />
       </MainProjectImageWrapper>
       {images.length > 1 && (
         <ProjectImagesWrapper manyImages={images.length > 2}>
-          {images.slice(1).map((otherImage: ContenfulImage) => (
-            <Img
-              fluid={otherImage.fluid}
-              key={otherImage.fluid.src}
-              alt={otherImage.title}
-              imgStyle={{
-                objectPosition: '0 0',
-                height: 'auto',
-                width: '100%',
-              }}
-            />
-          ))}
+          {images.slice(1).map((otherImage: ContenfulImage) => {
+            return (
+              <GatsbyImage
+                key={otherImage.id}
+                alt={`${title}-other-picture-${otherImage.title}`}
+                image={otherImage.gatsbyImageData}
+                imgStyle={{
+                  objectPosition: '0 0',
+                  height: 'auto',
+                  width: '100%',
+                }}
+              />
+            );
+          })}
         </ProjectImagesWrapper>
       )}
     </>
@@ -117,10 +122,9 @@ const ProjectPageComponent: React.FC<ProjectPageComponentProps> = (props) => {
             </ProjectInfoItem>
           </ProjectInfoList>
           <ImageWrapper>
-            <Img
-              fluid={mainPicture.fluid}
-              key={mainPicture.fluid.src}
-              alt={mainPicture.title}
+            <GatsbyImage
+              alt={`${title}-main-picture`}
+              image={mainPicture.gatsbyImageData}
               imgStyle={{
                 objectPosition: '0 0',
               }}

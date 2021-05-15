@@ -2,12 +2,15 @@
  * Projects coming from the headless CMS
  * Contentful
  */
-// Libs
-import { FluidObject } from 'gatsby-image';
-
 interface ContenfulImage {
+  id: string;
+  gatsbyImageData: IGatsbyImageData;
+  localFile: {
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData;
+    };
+  };
   title: string;
-  fluid: FluidObject;
 }
 
 export interface ContentfulProject {

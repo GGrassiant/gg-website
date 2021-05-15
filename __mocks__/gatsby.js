@@ -12,8 +12,8 @@ module.exports = {
   navigate: jest.fn().mockImplementation((url) => {
     Object.defineProperty(window, 'location', {
       value: {
-        pathname: url
-      }
+        pathname: url,
+      },
     });
   }),
   Link: jest.fn().mockImplementation(
@@ -58,9 +58,9 @@ module.exports = {
           aspectRatio: 1,
           src: 'test.png',
           srcSet: 'test',
-          sizes: 'test,'
-        }
-      }
+          sizes: 'test,',
+        },
+      },
     },
     allContentfulProject: {
       group: [
@@ -76,20 +76,58 @@ module.exports = {
                 mainTech: 'internet',
                 year: '1982',
                 mainPicture: {
-                  fluid: {
-                    base64:
-                      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQA…kZXNjcmlwdGlvbgBEaXNwbGF5FxuVuAAAAABJRU5ErkJggg==',
-                    aspectRatio: 1.124251497005988,
-                    src:
-                      '//images.ctfassets.net/77qd04dslv2l/10TJDRTs9naw0r…reen_Shot_2020-07-18_at_3.41.48_PM.png?w=500&q=50',
-                    srcSet:
-                      '//images.ctfassets.net/77qd04dslv2l/10TJDRTs9naw0r…-07-18_at_3.41.48_PM.png?w=1502&h=1336&q=50 1502w',
-                    sizes: '(max-width: 500px) 100vw, 500px',
+                  gatsbyImageData: {
+                    backgroundColor: '#f8f8f8',
+                    height: 900,
+                    images: {
+                      sources: [
+                        {
+                          sizes: '(min-width: 1280px) 1280px, 100vw',
+                          srcSet:
+                            '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=320&h=225&q=50&fm=webp 320w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=640&h=450&q=50&fm=webp 640w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=1280&h=900&q=50&fm=webp 1280w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=2560&h=1800&q=50&fm=webp 2560w',
+                          type: 'image/webp',
+                        },
+                      ],
+                    },
+                    fallback: {
+                      sizes: '(min-width: 1280px) 1280px, 100vw',
+                      src: '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=1280&h=900&q=50&fm=png',
+                      srcSet:
+                        '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=320&h=225',
+                    },
+                    layout: 'constrained',
+                    width: 1280,
+                  },
+                  localFile: {
+                    childImageSharp: {
+                      gatsbyImageData: {
+                        backgroundColor: '#f8f8f8',
+                        height: 900,
+                        images: {
+                          sources: [
+                            {
+                              sizes: '(min-width: 1280px) 1280px, 100vw',
+                              srcSet:
+                                '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=320&h=225&q=50&fm=webp 320w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=640&h=450&q=50&fm=webp 640w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=1280&h=900&q=50&fm=webp 1280w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=2560&h=1800&q=50&fm=webp 2560w',
+                              type: 'image/webp',
+                            },
+                          ],
+                        },
+                        fallback: {
+                          sizes: '(min-width: 1280px) 1280px, 100vw',
+                          src: '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=1280&h=900&q=50&fm=png',
+                          srcSet:
+                            '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=320&h=225',
+                        },
+                        layout: 'constrained',
+                        width: 1280,
+                      },
+                    },
                   },
                   title: 'lol-picture',
                 },
               },
-            }
+            },
           ],
         },
         {
@@ -104,23 +142,61 @@ module.exports = {
                 mainTech: 'internet',
                 year: '1982',
                 mainPicture: {
-                  fluid: {
-                    base64:
-                      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQA…kZXNjcmlwdGlvbgBEaXNwbGF5FxuVuAAAAABJRU5ErkJggg==',
-                    aspectRatio: 1.124251497005988,
-                    src:
-                      '//images.ctfassets.net/77qd04dslv2l/10TJDRTs9naw0r…reen_Shot_2020-07-18_at_3.41.48_PM.png?w=500&q=50',
-                    srcSet:
-                      '//images.ctfassets.net/77qd04dslv2l/10TJDRTs9naw0r…-07-18_at_3.41.48_PM.png?w=1502&h=1336&q=50 1502w',
-                    sizes: '(max-width: 500px) 100vw, 500px',
+                  gatsbyImageData: {
+                    backgroundColor: '#f8f8f8',
+                    height: 900,
+                    images: {
+                      sources: [
+                        {
+                          sizes: '(min-width: 1280px) 1280px, 100vw',
+                          srcSet:
+                            '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=320&h=225&q=50&fm=webp 320w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=640&h=450&q=50&fm=webp 640w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=1280&h=900&q=50&fm=webp 1280w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=2560&h=1800&q=50&fm=webp 2560w',
+                          type: 'image/webp',
+                        },
+                      ],
+                    },
+                    fallback: {
+                      sizes: '(min-width: 1280px) 1280px, 100vw',
+                      src: '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=1280&h=900&q=50&fm=png',
+                      srcSet:
+                        '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=320&h=225',
+                    },
+                    layout: 'constrained',
+                    width: 1280,
+                  },
+                  localFile: {
+                    childImageSharp: {
+                      gatsbyImageData: {
+                        backgroundColor: '#f8f8f8',
+                        height: 900,
+                        images: {
+                          sources: [
+                            {
+                              sizes: '(min-width: 1280px) 1280px, 100vw',
+                              srcSet:
+                                '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=320&h=225&q=50&fm=webp 320w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=640&h=450&q=50&fm=webp 640w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=1280&h=900&q=50&fm=webp 1280w,\n//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=2560&h=1800&q=50&fm=webp 2560w',
+                              type: 'image/webp',
+                            },
+                          ],
+                        },
+                        fallback: {
+                          sizes: '(min-width: 1280px) 1280px, 100vw',
+                          src: '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=1280&h=900&q=50&fm=png',
+                          srcSet:
+                            '//images.ctfassets.net/77qd04dslv2l/4EAiKcsn19ocbeylIOIKX6/fb45f1b171423b667eb2260dab9170fc/localhost_3000_login_HighResScreenshot_.png?w=320&h=225',
+                        },
+                        layout: 'constrained',
+                        width: 1280,
+                      },
+                    },
                   },
                   title: 'lol-picture',
                 },
               },
-            }
+            },
           ],
-        }
-      ]
-    }
+        },
+      ],
+    },
   })),
 };
