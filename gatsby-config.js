@@ -24,6 +24,12 @@ module.exports = {
   siteMetadata,
   plugins: [
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        icon: 'src/images/favicon.png',
+      },
+    },
+    {
       resolve: `gatsby-plugin-typescript`,
       options: {
         isTSX: true,
