@@ -24,6 +24,7 @@ export const ContenfulDataQuery = graphql`
             id
             mainPicture {
               id
+              gatsbyImageData(width: 500)
               localFile {
                 childImageSharp {
                   gatsbyImageData(width: 500)
