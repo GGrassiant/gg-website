@@ -25,6 +25,7 @@ module.exports = {
   globals: {
     __PATH_PREFIX__: '',
   },
+  testEnvironment: 'jsdom',
   testURL: 'http://localhost',
   setupFiles: ['<rootDir>/loadershim.js', './setupJest.js'],
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
