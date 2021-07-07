@@ -40,7 +40,7 @@
     "gatsby-plugin-react-helmet": "^4.8.0",
     "gatsby-plugin-sharp": "^3.8.0",
     "gatsby-plugin-styled-components": "^4.8.0",
-    "gatsby-source-contentful": "^5.8.0",
+    "gatsby-source-contentful": "^5.9.0",
     "gatsby-source-filesystem": "^3.7.1",
     "gatsby-theme-i18n": "^2.0.0",
     "gatsby-theme-i18n-react-intl": "^2.0.0",
